@@ -1,0 +1,18 @@
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\bin\Debug\netcoreapp3.1\Game Buddy Finder.exe
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\bin\Debug\netcoreapp3.1\Game Buddy Finder.deps.json
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\bin\Debug\netcoreapp3.1\Game Buddy Finder.runtimeconfig.json
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\bin\Debug\netcoreapp3.1\Game Buddy Finder.runtimeconfig.dev.json
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\bin\Debug\netcoreapp3.1\Game Buddy Finder.dll
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\bin\Debug\netcoreapp3.1\Game Buddy Finder.pdb
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\obj\Debug\netcoreapp3.1\Game Buddy Finder.csprojAssemblyReference.cache
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\obj\Debug\netcoreapp3.1\staticwebassets\Game Buddy Finder.StaticWebAssets.Manifest.cache
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\obj\Debug\netcoreapp3.1\staticwebassets\Game Buddy Finder.StaticWebAssets.xml
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\obj\Debug\netcoreapp3.1\Game Buddy Finder.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\obj\Debug\netcoreapp3.1\Game Buddy Finder.AssemblyInfoInputs.cache
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\obj\Debug\netcoreapp3.1\Game Buddy Finder.AssemblyInfo.cs
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\obj\Debug\netcoreapp3.1\Game Buddy Finder.RazorTargetAssemblyInfo.cache
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\obj\Debug\netcoreapp3.1\Game Buddy Finder.dll
+C:\Users\Simon\Documents\GitHub\Programming-Project-1\Backend\game-buddy-finder\Game Buddy Finder\Game Buddy Finder\obj\Debug\netcoreapp3.1\Game Buddy Finder.pdb
