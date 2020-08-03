@@ -10,6 +10,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Game_Buddy_Finder.DataManager;
+using Game_Buddy_Finder.Data;
+using System.Text;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore;
+
 
 namespace Game_Buddy_Finder
 {
@@ -25,6 +33,12 @@ namespace Game_Buddy_Finder
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<GbfContext>(options =>
+                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<UserManager>();
+
+
             services.AddControllers();
         }
 
