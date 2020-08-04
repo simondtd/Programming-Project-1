@@ -33,6 +33,16 @@ namespace Game_Buddy_Finder
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder => builder
+                        .AllowAnyMethod()
+                        .AllowCredentials()
+                        .SetIsOriginAllowed((host) => true)
+                        .AllowAnyHeader());
+            });
+
             services.AddDbContext<GbfContext>(options =>
                  options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -53,6 +63,7 @@ namespace Game_Buddy_Finder
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthorization();
 

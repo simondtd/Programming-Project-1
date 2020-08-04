@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Game_Buddy_Finder.Attributes;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Game_Buddy_Finder.Models
@@ -12,7 +13,7 @@ namespace Game_Buddy_Finder.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
 
-        [Required, StringLength(3)]
+        [Required, Username(3,12)]
         public string UserName { get; set; }
 
         [Required]
