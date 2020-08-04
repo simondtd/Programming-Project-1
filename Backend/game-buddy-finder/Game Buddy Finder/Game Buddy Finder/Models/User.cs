@@ -13,8 +13,11 @@ namespace Game_Buddy_Finder.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
 
-        [Required, Username(3,12)]
+        [Required, Username(3, 12)]
         public string UserName { get; set; }
+
+        [Required]
+        public String Email { get; set; }
 
         [Required]
         public string PasswordHash { get; set; }
