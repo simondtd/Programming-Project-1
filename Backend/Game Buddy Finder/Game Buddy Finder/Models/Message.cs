@@ -27,7 +27,5 @@ namespace Game_Buddy_Finder.Models
         public virtual User Sender { get; set; }
 
         public virtual User Receiver { get; set; }
-
-
     }
 }
