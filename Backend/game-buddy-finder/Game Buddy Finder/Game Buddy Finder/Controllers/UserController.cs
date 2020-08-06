@@ -12,11 +12,11 @@ namespace Game_Buddy_Finder.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly UserManager _repo;
 
-        public UsersController(UserManager repo)
+        public UserController(UserManager repo)
         {
             _repo = repo;
         }
