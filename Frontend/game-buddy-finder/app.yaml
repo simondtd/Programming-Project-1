@@ -1,0 +1,20 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+- url: /
+  static_files: dist/game-buddy-finder/index.html
+  upload: dist/game-buddy-finder/index.html
+- url: /
+  static_dir: dist/game-buddy-finder
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - src/
+  - coverage
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.json$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE

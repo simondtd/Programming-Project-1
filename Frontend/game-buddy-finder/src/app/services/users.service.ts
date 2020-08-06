@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UsersService {
-  private usersUrl = environment.baseUrl + 'api/users';
+  private usersUrl = environment.baseUrl + 'api/user';
   constructor(private httpClient: HttpClient) { }
 
   public getUsers() {
