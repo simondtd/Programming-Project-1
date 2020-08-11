@@ -31,6 +31,11 @@ namespace Game_Buddy_Finder.DataManager
             return 1;
         }
 
+        public User Login(string username, string password)
+        {
+            return _context.Users.Where(x => x.UserName.Equals(username) && x.PasswordHash.Equals(password)).FirstOrDefault();
+        }
+
         public User Get(int id)
         {
             return _context.Users.Find(id);
