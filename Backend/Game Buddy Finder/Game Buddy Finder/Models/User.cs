@@ -17,9 +17,6 @@ namespace Game_Buddy_Finder.Models
         public string UserName { get; set; }
 
         [Required]
-        public String Email { get; set; }
-
-        [Required]
         public string PasswordHash { get; set; }
     }
 }

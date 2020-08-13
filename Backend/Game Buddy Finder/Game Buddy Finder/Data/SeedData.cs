@@ -19,8 +19,28 @@ namespace Game_Buddy_Finder.Data
             context.Users.AddRange(
                 new User
                 {
-                       UserName = "Test",
-                       PasswordHash = "secure hash"
+                    UserName = "Nicolas",
+                    PasswordHash = "secure hash"
+                },
+                new User
+                {
+                    UserName = "Adama",
+                    PasswordHash = "secure hash"
+                },
+                new User
+                {
+                    UserName = "Steven",
+                    PasswordHash = "secure hash"
+                },
+                new User
+                {
+                    UserName = "Andi",
+                    PasswordHash = "secure hash"
+                },
+                new User
+                {
+                    UserName = "Simon",
+                    PasswordHash = "secure hash"
                 });
 
             context.SaveChanges();

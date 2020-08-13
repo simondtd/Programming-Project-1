@@ -18,24 +18,26 @@ namespace Game_Buddy_Finder.DataManager
 
         public int Add(LoginAttempt item)
         {
-            _context.loginAttempts.Add(item);
+            _context.LoginAttempts.Add(item);
+            Console.WriteLine("Adding new login attempt");
+            _context.SaveChanges();
             return item.LoginAttemptId;
         }
 
         public int Delete(int id)
         {
-            _context.loginAttempts.Remove(_context.loginAttempts.Where(x => x.LoginAttemptId == id).FirstOrDefault());
+            _context.LoginAttempts.Remove(_context.LoginAttempts.Where(x => x.LoginAttemptId == id).FirstOrDefault());
             return id;
         }
 
         public LoginAttempt Get(int id)
         {
-            return _context.loginAttempts.Find(id);
+            return _context.LoginAttempts.Find(id);
         }
 
         public IEnumerable<LoginAttempt> GetAll()
         {
-            return _context.loginAttempts.ToList();
+            return _context.LoginAttempts.ToList();
         }
 
         public int Update(int id, LoginAttempt item)

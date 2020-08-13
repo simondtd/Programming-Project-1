@@ -32,7 +32,8 @@ namespace Game_Buddy_Finder.Controllers
         public int Login(string username, string password)
         {
             User user = _repo.Login(username, password);
-            return user.UserId;
+
+            return user != null ? user.UserId : 0;
         }
 
         // GET: api/Users/5
