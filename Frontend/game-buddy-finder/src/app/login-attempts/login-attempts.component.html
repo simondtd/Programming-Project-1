@@ -1,0 +1,6 @@
+<h1>Login Attempts</h1>
+<div *ngFor="let loginAttempt of loginAttempts">
+    <h2>Login Id: {{loginAttempt.loginAttemptId}}</h2>
+    <h3>User Id: {{loginAttempt.userId}}</h3>
+    <h3>Time : {{loginAttempt.attemptTimeUtc}}</h3>
+  </div>
