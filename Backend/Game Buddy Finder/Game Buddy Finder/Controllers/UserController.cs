@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Game_Buddy_Finder.Models;
-using Game_Buddy_Finder.Data;
+using Game_Buddy_Finder.Models.Repository;
 using Game_Buddy_Finder.DataManager;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,9 +14,9 @@ namespace Game_Buddy_Finder.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserManager _repo;
+        private readonly IUserRepository _repo;
 
-        public UserController(UserManager repo)
+        public UserController(IUserRepository repo)
         {
             _repo = repo;
         }
@@ -40,7 +40,7 @@ namespace Game_Buddy_Finder.Controllers
         [HttpGet("{id}", Name = "Get")]
         public User Get(int id)
         {
-            return _repo.Get(id);
+            return Get().Where(x => x.UserId == id).FirstOrDefault();
         }
 
         // POST: api/Users

@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Game_Buddy_Finder.Data;
 using Game_Buddy_Finder.Models;
+using Microsoft.EntityFrameworkCore;
 using Game_Buddy_Finder.Models.Repository;
 
 namespace Game_Buddy_Finder.DataManager
 {
-    public class LoginAttemptManager : IDataRepository<LoginAttempt, int>
+    public class LoginAttemptManager : ILoginAttemptRepository
     {
         private readonly GbfContext _context;
 
@@ -22,6 +24,12 @@ namespace Game_Buddy_Finder.DataManager
             Console.WriteLine("Adding new login attempt");
             _context.SaveChanges();
             return item.LoginAttemptId;
+        }
+
+        public void Add(List<LoginAttempt> items)
+        {
+            foreach (var item in items)
+                Add(item);
         }
 
         public int Delete(int id)
@@ -42,7 +50,8 @@ namespace Game_Buddy_Finder.DataManager
 
         public int Update(int id, LoginAttempt item)
         {
-            throw new NotImplementedException();
+            _context.Update(item);
+            return id;
         }
     }
 }
