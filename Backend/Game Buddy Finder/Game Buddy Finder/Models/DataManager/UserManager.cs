@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Game_Buddy_Finder.Data;
 using Game_Buddy_Finder.Models;
@@ -10,7 +9,7 @@ using Game_Buddy_Finder.Models.Repository;
 
 namespace Game_Buddy_Finder.DataManager
 {
-    public class UserManager : IUserRepository
+    public class UserManager : IDataRepository<User, int>
     {
         private readonly GbfContext _context;
 
@@ -69,12 +68,5 @@ namespace Game_Buddy_Finder.DataManager
 
             return id;
         }
-
-        public void Add(List<User> items)
-        {
-            foreach(var item in items)
-                Add(item);
-        }
-
     }
 }

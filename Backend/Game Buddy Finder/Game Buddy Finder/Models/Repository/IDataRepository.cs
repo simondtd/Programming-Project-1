@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Game_Buddy_Finder.Models.Repository
 {
@@ -11,6 +9,5 @@ namespace Game_Buddy_Finder.Models.Repository
         TKey Add(TEntity item);
         TKey Update(TKey id, TEntity item);
         TKey Delete(TKey id);
-        void Add(List<TEntity> items);
     }
 }
