@@ -17,8 +17,9 @@ export class UsersService {
   public getUser(id : number) {
     return this.httpClient.get(this.usersUrl + '/' + id);
   }
+
   public login(username, password) {
-    this.userId = this.httpClient.get(this.usersUrl + '/' + username + '/' + password);
+    return this.httpClient.get(this.usersUrl + '/login' + '/' + username + '/' + password);
   }
 }
 
