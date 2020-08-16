@@ -9,13 +9,15 @@ import { HeaderComponent } from './header/header.component';
 import { User } from './models/user';
 import { UsersComponent } from './users/users.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginAttemptsComponent } from './login-attempts/login-attempts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     UsersComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    LoginAttemptsComponent
   ],
   imports: [
     BrowserModule,

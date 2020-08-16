@@ -47,6 +47,7 @@ namespace Game_Buddy_Finder
                  options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<UserManager>();
+            services.AddTransient<LoginAttemptManager>();
 
 
             services.AddControllers();

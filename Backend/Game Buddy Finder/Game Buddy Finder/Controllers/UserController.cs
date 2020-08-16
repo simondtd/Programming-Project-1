@@ -28,6 +28,14 @@ namespace Game_Buddy_Finder.Controllers
             return _repo.GetAll();
         }
 
+        [HttpGet("login/{username}/{password}")]
+        public int Login(string username, string password)
+        {
+            User user = _repo.Login(username, password);
+
+            return user != null ? user.UserId : 0;
+        }
+
         // GET: api/Users/5
         [HttpGet("{id}", Name = "Get")]
         public User Get(int id)
