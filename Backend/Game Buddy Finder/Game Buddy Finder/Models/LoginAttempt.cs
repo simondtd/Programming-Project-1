@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using Game_Buddy_Finder.Attributes;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Game_Buddy_Finder.Models
 {
-    public class User
+    public class LoginAttempt
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
+        public int LoginAttemptId { get; set; }
 
-        [Required, Username(3, 12)]
-        public string UserName { get; set; }
+        [ForeignKey("User")]
+        public int UserId { get; set; }
+        
+        [Required]
+        public DateTime AttemptTimeUtc { get; set; }
 
         [Required]
-        public string PasswordHash { get; set; }
+        public bool Successful { get; set; }
+
+        public virtual User User { get; set; }
     }
 }
