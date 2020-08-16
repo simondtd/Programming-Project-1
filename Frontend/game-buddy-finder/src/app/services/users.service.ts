@@ -14,7 +14,7 @@ export class UsersService {
     return this.httpClient.get(this.usersUrl);
   }
 
-  public getUser(id : number) {
+  public getUser(id) {
     return this.httpClient.get(this.usersUrl + '/' + id);
   }
 

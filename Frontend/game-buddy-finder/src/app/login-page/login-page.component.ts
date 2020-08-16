@@ -15,6 +15,14 @@ export class LoginPageComponent implements OnInit {
 
 
   public login(username, password) {
-    this.usersService.
+    var userid = this.usersService.login(username, password)
+    var user = this.usersService.getUser(userid)
+    if (user == null){
+      
+    }
+    if (user != null) {
+
+    }
   }
+
 }
