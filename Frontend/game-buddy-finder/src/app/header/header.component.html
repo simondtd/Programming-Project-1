@@ -1,3 +1,16 @@
-<div style="background-color: #ccc">
-  <h1>{{title}} <a routerLink="/users" routerLinkActive="active">Users</a> <a routerLink="/login" routerLinkActive="active"> Login</a> <a routerLink="/loginattempts" routerLinkActive="active"> Logins</a></h1>
-</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav mx-auto">
+    <li class="nav-item" *ngIf="loggedIn">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+    <li class="nav-item" routerLink="/register" routerLinkActive="active" *ngIf="!loggedIn">
+      <a class="nav-link">Register</a>
+    </li>
+    <li class="nav-item" (click)="logout()" *ngIf="loggedIn">
+      <a class="nav-link">Log out</a>
+    </li>
+    <li class="nav-item" routerLink="/loginattempts" routerLinkActive="active" *ngIf="loggedIn">
+      <a class="nav-link">Login Attempts</a>
+    </li>
+  </ul>
+</nav>

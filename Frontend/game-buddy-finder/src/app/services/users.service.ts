@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Router} from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsersService {
   private usersUrl = environment.baseUrl + 'api/user';
   public UserId;
+  public UserIDSubject: Subject<boolean> = new Subject<boolean>();
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   public getUsers() {
@@ -24,9 +27,15 @@ export class UsersService {
   }
 
   public authorizeLogin(userId) {
-    this.UserId = userId
-
+    this.UserId = userId;
+    this.UserIDSubject.next(userId);
     this.router.navigate(['/home'])
+  }
+
+  public logout() {
+    this.UserId = null;
+    this.UserIDSubject.next(null);
+    this.router.navigate(['/login'])
   }
 }
 
