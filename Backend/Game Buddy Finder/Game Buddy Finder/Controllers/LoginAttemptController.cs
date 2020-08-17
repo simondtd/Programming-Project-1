@@ -28,6 +28,12 @@ namespace Game_Buddy_Finder.Controllers
             return _repo.GetAll();
         }
 
+        [HttpGet("user/{userid}")]
+        public IEnumerable<LoginAttempt> GetLoginAttemptsOfUser(int userid)
+        {
+            return _repo.GetLoginAttemptsOfUser(userid);
+        }
+
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public LoginAttempt Get(int id)

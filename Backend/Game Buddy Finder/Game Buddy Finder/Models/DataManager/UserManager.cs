@@ -41,9 +41,11 @@ namespace Game_Buddy_Finder.DataManager
                 {
                     AttemptTimeUtc = DateTime.UtcNow,
                     Successful = correctPassword,
+                    UserId = user.UserId,
                 };
 
                 _context.LoginAttempts.Add(attempt);
+                _context.SaveChanges();
 
                 if (!correctPassword) user = null;
             }

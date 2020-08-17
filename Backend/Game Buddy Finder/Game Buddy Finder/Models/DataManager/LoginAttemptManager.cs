@@ -30,6 +30,11 @@ namespace Game_Buddy_Finder.DataManager
             return id;
         }
 
+        public IEnumerable<LoginAttempt> GetLoginAttemptsOfUser(int id)
+        {
+            return _context.LoginAttempts.Where(x => x.UserId == id);
+        }
+
         public LoginAttempt Get(int id)
         {
             return _context.LoginAttempts.Find(id);

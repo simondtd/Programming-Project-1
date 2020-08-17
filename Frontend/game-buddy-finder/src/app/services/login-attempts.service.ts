@@ -13,4 +13,8 @@ export class LoginAttemptsService {
   public getLoginAttempts() {
     return this.httpClient.get(this.loginAttemptsUrl)
   }
+
+  public getLoginAttemptsOfUser(id) {
+    return this.httpClient.get(this.loginAttemptsUrl + '/user/' + id)
+  }
 }
