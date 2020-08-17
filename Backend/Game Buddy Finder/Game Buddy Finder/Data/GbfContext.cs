@@ -10,6 +10,7 @@ namespace Game_Buddy_Finder.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<LoginAttempt> LoginAttempts { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
 
         //Might use later to enforce rules
         protected override void OnModelCreating(ModelBuilder builder)
