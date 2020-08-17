@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 })
 export class UsersService {
   private usersUrl = environment.baseUrl + 'api/user';
+  public userId;
   constructor(private httpClient: HttpClient) { }
 
   public getUsers() {
@@ -16,4 +17,9 @@ export class UsersService {
   public getUser(id : number) {
     return this.httpClient.get(this.usersUrl + '/' + id);
   }
+
+  public login(username, password) {
+    return this.httpClient.get(this.usersUrl + '/login' + '/' + username + '/' + password);
+  }
 }
+
