@@ -11,6 +11,8 @@ import { UsersComponent } from './users/users.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginAttemptsComponent } from './login-attempts/login-attempts.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import { HomePageComponent } from './home-page/home-page.component';
     UsersComponent,
     LoginPageComponent,
     LoginAttemptsComponent,
-    HomePageComponent
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
