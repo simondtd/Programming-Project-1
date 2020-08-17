@@ -6,6 +6,9 @@
     <li class="nav-item" routerLink="/register" routerLinkActive="active" *ngIf="!loggedIn">
       <a class="nav-link">Register</a>
     </li>
+    <li class="nav-item" routerLink="/login" routerLinkActive="active" *ngIf="!loggedIn">
+      <a class="nav-link">Log In</a>
+    </li>
     <li class="nav-item" (click)="logout()" *ngIf="loggedIn">
       <a class="nav-link">Log out</a>
     </li>
