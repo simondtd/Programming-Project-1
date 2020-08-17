@@ -31,6 +31,26 @@ namespace Game_Buddy_Finder.DataManager
             return 1;
         }
 
+        public User Login(string username, string password)
+        {
+            User user = _context.Users.Where(x => x.UserName.Equals(username)).FirstOrDefault();
+            if (user != null)
+            {
+                bool correctPassword = user.PasswordHash.Equals(password);
+                LoginAttempt attempt = new LoginAttempt()
+                {
+                    AttemptTimeUtc = DateTime.UtcNow,
+                    Successful = correctPassword,
+                };
+
+                _context.LoginAttempts.Add(attempt);
+
+                if (!correctPassword) user = null;
+            }
+
+            return user;
+        }
+
         public User Get(int id)
         {
             return _context.Users.Find(id);

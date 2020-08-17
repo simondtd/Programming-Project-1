@@ -1,19 +1,41 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Router} from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UsersService {
   private usersUrl = environment.baseUrl + 'api/user';
-  constructor(private httpClient: HttpClient) { }
+  public UserId;
+  public UserIDSubject: Subject<boolean> = new Subject<boolean>();
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   public getUsers() {
     return this.httpClient.get(this.usersUrl);
   }
 
-  public getUser(id : number) {
+  public getUser(id) {
     return this.httpClient.get(this.usersUrl + '/' + id);
   }
+
+  public login(username, password) {
+    return this.httpClient.get(this.usersUrl + '/login' + '/' + username + '/' + password)
+  }
+
+  public authorizeLogin(userId) {
+    this.UserId = userId;
+    this.UserIDSubject.next(userId);
+    this.router.navigate(['/home'])
+  }
+
+  public logout() {
+    this.UserId = null;
+    this.UserIDSubject.next(null);
+    this.router.navigate(['/login'])
+  }
 }
+
