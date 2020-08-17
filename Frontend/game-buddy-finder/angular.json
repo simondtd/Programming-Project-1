@@ -127,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "game-buddy-finder"
+    }
+  },
+  "defaultProject": "game-buddy-finder",
+  "cli": {
+    "analytics": false
+  }
 }
