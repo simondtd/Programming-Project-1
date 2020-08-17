@@ -10,6 +10,7 @@ import { User } from './models/user';
 import { UsersComponent } from './users/users.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginAttemptsComponent } from './login-attempts/login-attempts.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginAttemptsComponent } from './login-attempts/login-attempts.componen
     HeaderComponent,
     UsersComponent,
     LoginPageComponent,
-    LoginAttemptsComponent
+    LoginAttemptsComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
