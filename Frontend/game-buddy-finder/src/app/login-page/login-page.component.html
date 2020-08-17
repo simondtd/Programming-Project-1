@@ -48,18 +48,18 @@
           <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
               <div id="login-box" class="col-md-12">
-                <form id="login-form" class="form" action="" method="post">
+                <form id="login-form" class="form" ng-submit="login()" [formGroup]="loginGroup">
                   <h3 class="text-center text-dark">Login</h3>
                   <div class="form-group text-center">
                     <label for="username" class="text-dark">Username:</label><br>
-                    <input type="text" name="username" id="username" class="form-control" style="border-radius: 50px;">
+                    <input type="text" name="username" id="username" class="form-control" style="border-radius: 50px;" formControlName="username">
                   </div>
                   <div class="form-group text-center">
                     <label for="password" class="text-dark">Password:</label><br>
-                    <input type="text" name="password" id="password" class="form-control" style="border-radius: 50px;">
+                    <input type="password" name="password" id="password" class="form-control" style="border-radius: 50px;" formControlName="password">
                   </div>
                   <div class="form-group text-center ">
-                    <input type="submit" name="submit" class="btn btn-primary" value="Login" style="border-radius: 50px;" ng-click="login()">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Login" style="border-radius: 50px;" (click)="login()">
                   </div>
                   
 
