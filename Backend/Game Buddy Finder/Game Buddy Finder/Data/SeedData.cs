@@ -13,38 +13,65 @@ namespace Game_Buddy_Finder.Data
             using var context = new GbfContext(serviceProvider.GetRequiredService<DbContextOptions<GbfContext>>());
 
             // Look for Users.
-            if (context.Users.Any())
-                return; // DB has already been seeded.
+            if (!context.Users.Any())
+            {
+                context.Users.AddRange(
+                    new User
+                    {
+                        UserName = "Nicolas",
+                        PasswordHash = "secure hash"
+                    },
+                    new User
+                    {
+                        UserName = "Adama",
+                        PasswordHash = "secure hash"
+                    },
+                    new User
+                    {
+                        UserName = "Steven",
+                        PasswordHash = "secure hash"
+                    },
+                    new User
+                    {
+                        UserName = "Andi",
+                        PasswordHash = "secure hash"
+                    },
+                    new User
+                    {
+                        UserName = "Simon",
+                        PasswordHash = "secure hash"
+                    });
 
-            context.Users.AddRange(
-                new User
-                {
-                    UserName = "Nicolas",
-                    PasswordHash = "secure hash"
-                },
-                new User
-                {
-                    UserName = "Adama",
-                    PasswordHash = "secure hash"
-                },
-                new User
-                {
-                    UserName = "Steven",
-                    PasswordHash = "secure hash"
-                },
-                new User
-                {
-                    UserName = "Andi",
-                    PasswordHash = "secure hash"
-                },
-                new User
-                {
-                    UserName = "Simon",
-                    PasswordHash = "secure hash"
-                });
+                context.SaveChanges();
+                Console.WriteLine("Seeded Users");
+            }
 
-            context.SaveChanges();
-            Console.WriteLine("Seeded DB");
+            if (!context.Profiles.Any())
+            {
+                context.Profiles.AddRange(
+                    new Profile() {
+
+                    },
+                    new Profile()
+                    {
+
+                    },
+                    new Profile()
+                    {
+
+                    },
+                    new Profile()
+                    {
+
+                    },
+                    new Profile()
+                    {
+
+                    });
+            }
+
+
+
         }
     }
 }
