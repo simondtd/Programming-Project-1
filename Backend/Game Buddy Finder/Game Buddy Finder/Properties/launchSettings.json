@@ -10,10 +10,9 @@
   },
   "profiles": {
     "Development": {
-      "commandName": "Project",
+      "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "api/user",
-      "applicationUrl": "http://*:44316",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
