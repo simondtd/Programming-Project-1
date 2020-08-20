@@ -21,7 +21,7 @@
     "Production": {
       "commandName": "Project",
       "launchBrowser": false,
-      "launchUrl": "api/users",
+      "launchUrl": "api/user",
       "applicationUrl": "http://*:8081",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production"
