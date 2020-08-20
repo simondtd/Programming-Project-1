@@ -1,6 +1,38 @@
-<h1>Login Attempts</h1>
-<div *ngFor="let loginAttempt of loginAttempts">
-    <h2>Login Id: {{loginAttempt.loginAttemptId}}</h2>
-    <h3>User Id: {{loginAttempt.userId}}</h3>
-    <h3>Time : {{loginAttempt.attemptTimeUtc}}</h3>
-  </div>
+
+<style>
+  body {
+    background-image: url('../../assets/loginattemp/bg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: pink;
+  }
+</style>
+<body>
+  <h1>Login Attempts</h1>
+  <div class="col-md-6 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
+    <div class="row justify-content-center">
+      <div class="">
+        <table class="table table-responsive">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Login Id</th>
+              <th scope="col">User Id</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let loginAttempt of loginAttempts">
+              <td>{{loginAttempt.loginAttemptId}}</td>
+              <td>{{loginAttempt.userId}}</td>
+              <td>{{loginAttempt.attemptTimeUtc}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+    <br><br><br>
+</body>
+
+
