@@ -6,6 +6,7 @@ import { LoginAttemptsComponent } from './login-attempts/login-attempts.componen
 import { HomePageComponent} from './home-page/home-page.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { RegisterProfileComponent } from './register-profile/register-profile.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 const routes: Routes = [
   { path: 'users', component: UsersComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'loginattempts', component: LoginAttemptsComponent },
   { path: 'home', component: HomePageComponent },
-  { path: 'register', component: RegisterProfileComponent }
+  { path: 'register', component: RegisterProfileComponent },
+  { path: 'profile', component: ViewProfileComponent },
 ];
 
 @NgModule({
