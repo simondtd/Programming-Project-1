@@ -2,6 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\game-buddy-finder",
+
     "\\game-buddy-finder\\e2e",
     "\\game-buddy-finder\\src",
     "\\game-buddy-finder\\src\\app",
@@ -9,8 +10,11 @@
     "\\game-buddy-finder\\src\\app\\login-page",
     "\\game-buddy-finder\\src\\app\\users",
     "\\game-buddy-finder\\src\\assets",
-    "\\game-buddy-finder\\src\\assets\\loginpage"
+    "\\game-buddy-finder\\src\\assets\\loginpage",
+    "\\game-buddy-finder\\src\\app\\login-attempts",
+    "\\game-buddy-finder\\src\\assets\\loginattemp"
   ],
   "SelectedNode": "\\game-buddy-finder\\src\\app\\users\\users.component.scss",
+
   "PreviewInSolutionExplorer": false
 }
