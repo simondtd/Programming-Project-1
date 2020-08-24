@@ -57,7 +57,6 @@ export class RegisterProfileComponent implements OnInit {
     console.log(phone);
 
 
-
     if (password == repassword) {
       var profile = new Profile(firstname, lastname, username, password, email, region);
       this.profilesService.createProfile(profile);
