@@ -14,6 +14,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public ProfileManager(GbfContext context)
         {
+            Console.WriteLine("Creating profile Manager");
             _context = context;
         }
 
@@ -22,18 +23,6 @@ namespace Game_Buddy_Finder.DataManager
             _context.Profiles.Add(item);
             _context.SaveChanges();
             return item.ProfileId;
-        }
-
-        public int AddUser(User user)
-        {
-            if (_context.Users.Where(x => x.UserName.Equals(user)).Count() == 0)
-            {
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                return _context.Users.Where(x => x.UserName.Equals(user.UserName)).FirstOrDefault().UserId;
-            }
-
-            return 0;
         }
 
         public int Delete(int id)
