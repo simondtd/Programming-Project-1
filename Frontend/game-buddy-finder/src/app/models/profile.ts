@@ -1,10 +1,13 @@
 export class Profile {
-    public userId;
-    public firstName;
-    public lastName;
-    public emailAddress;
-    public region;
+    public FirstName;
+    public LastName;
+    public EmailAddress;
+    public Region;
 
-    public constructor() {
+    public constructor(firstName, lastName, email, region) {
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.EmailAddress = email;
+        this.Region = region;
     }
 }

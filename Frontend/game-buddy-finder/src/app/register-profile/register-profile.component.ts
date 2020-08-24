@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../services/users.service';
+import { ProfilesService } from '../services/profiles.service';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { Profile } from '../models/profile';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class RegisterProfileComponent implements OnInit {
   public registerGroup: FormGroup;
 
 
-  constructor(private usersService: UsersService, private formBuilder: FormBuilder) {
+  constructor(private profilesService: ProfilesService, private formBuilder: FormBuilder) {
     this.registerGroup = new FormGroup({
       firstname: new FormControl(),
       lastname: new FormControl(),
@@ -44,6 +45,8 @@ export class RegisterProfileComponent implements OnInit {
     var phone = this.registerGroup.get('phone').value;
 
     //Debug to check, NOT SECURE
+
+    //DO ERROR CHECKING
     console.log(firstname);
     console.log(lastname);
     console.log(email);
@@ -53,26 +56,10 @@ export class RegisterProfileComponent implements OnInit {
     console.log(region);
     console.log(phone);
 
+    var profile = new Profile(firstname, lastname, email, region);
+    return;
 
-   /* //Get the user id
-    this.usersService.login(username, password).subscribe((userId) => {
+    this.profilesService.createProfile(profile);
 
-      //PRint out for debug purposes
-      console.log(userId);
-
-      //Get the user with that id
-      this.usersService.getUser(userId).subscribe((user) => {
-
-        //Check if user exists
-        if (user != null) {
-          console.log(user)
-          this.usersService.authorizeLogin(userId)
-        }
-        //Display error popup
-        else {
-
-        }
-      })
-    })*/
   }
 }

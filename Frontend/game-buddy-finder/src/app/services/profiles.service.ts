@@ -3,6 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Router} from '@angular/router';
 import { Profile } from '../models/profile';
+import { HttpHeaders } from '@angular/common/http';
+import { catchError, retry } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    Authorization: 'my-auth-token'
+  })
+};
 
 
 @Injectable({
@@ -20,8 +29,9 @@ export class ProfilesService {
     return this.httpClient.get(this.profilesUrl + '/' + id)
   }
 
-  public createProfile(_profile) {
-    var profile = new Profile();
-    profile.userId = 1;
+
+  public createProfile(profile: Profile) {
+    //Do error checking here
+    return this.httpClient.post<Profile>(this.profilesUrl, profile, httpOptions).pipe(catchError(null));
   }
 }
