@@ -33,8 +33,7 @@ export class ProfilesService {
 
 
   public createProfile(profile: Profile) {
-
-    console.log(profile.PasswordHash);
+    this.router.navigate(['/login']);
     return this.httpClient.post<any>(this.profilesUrl, profile).subscribe(data => {
       this.postId = data.id
     });

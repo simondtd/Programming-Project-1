@@ -23,8 +23,13 @@ namespace Game_Buddy_Finder.Models
         [Required]
         public string LastName { get; set; }
 
+        [Required]
         public string Email { get; set; }
-
+        
+        [Required]
+        public string PhoneNumber { get; set; }
+        
+        [Required]
         public string Region { get; set; }
 
         public string ProfilePicUrl { get; set; }
