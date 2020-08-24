@@ -14,7 +14,7 @@ import { LoginAttemptsComponent } from './login-attempts/login-attempts.componen
 import { HomePageComponent } from './home-page/home-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { RegisterPageComponent } from './register-page/register-page.component';
+import { RegisterProfileComponent } from './register-profile/register-profile.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     LoginPageComponent,
     LoginAttemptsComponent,
     HomePageComponent,
-    RegisterPageComponent,
+    RegisterProfileComponent,
   ],
   imports: [
     BrowserModule,

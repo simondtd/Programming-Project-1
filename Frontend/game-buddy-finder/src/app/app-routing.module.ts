@@ -5,7 +5,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginAttemptsComponent } from './login-attempts/login-attempts.component';
 import { HomePageComponent} from './home-page/home-page.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
+import { RegisterProfileComponent } from './register-profile/register-profile.component';
 
 const routes: Routes = [
   { path: 'users', component: UsersComponent },
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'loginattempts', component: LoginAttemptsComponent },
   { path: 'home', component: HomePageComponent },
-  { path: 'register', component: RegisterPageComponent }
+  { path: 'register', component: RegisterProfileComponent }
 ];
 
 @NgModule({
