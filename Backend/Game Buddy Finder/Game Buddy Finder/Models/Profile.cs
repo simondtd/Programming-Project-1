@@ -10,10 +10,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Game_Buddy_Finder.Models
 {
     public class Profile
-    {   
+    {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProfileId { get; set; }
-        
+
+        [ForeignKey("User")]
+        public int UserId { get; set; }
+
         [Required]
         public string FirstName { get; set; }
 
@@ -25,6 +28,8 @@ namespace Game_Buddy_Finder.Models
         public string Region { get; set; }
 
         public string ProfilePicUrl { get; set; }
+
+        public virtual User User { get; set; }
 
     }
 }
