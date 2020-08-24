@@ -26,7 +26,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public int AddUser(User user)
         {
-            if (_context.Users.Where(x => x.UserName.Equals(user)).Count() == 0)
+            if (_context.Users.Where(x => x.UserName.Equals(user.UserName)).Count() == 0)
             {
                 _context.Users.Add(user);
                 _context.SaveChanges();
