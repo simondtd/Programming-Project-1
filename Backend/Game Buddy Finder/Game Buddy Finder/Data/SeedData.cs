@@ -49,7 +49,36 @@ namespace Game_Buddy_Finder.Data
             if (!context.Profiles.Any())
             {
                 context.Profiles.AddRange(
-                    new Profile() {
+                    new Profile()
+                    {
+                        UserId = 1,
+                        FirstName = "Nicolas",
+                        LastName = "Nicolas",
+                        Region = "Oceania"
+                    },
+                    new Profile()
+                    {
+                        UserId = 2,
+                        FirstName = "Adama",
+                        LastName = "Adama",
+                        Region = "Oceania"
+                    }
+                    , new Profile()
+                    {
+                        UserId = 3,
+                        FirstName = "Steven",
+                        LastName = "Steven",
+                        Region = "Oceania"
+                    },
+                    new Profile()
+                    {
+                        UserId = 4,
+                        FirstName = "Andi",
+                        LastName = "Andi",
+                        Region = "Oceania"
+                    },
+                    new Profile()
+                    {
                         UserId = 5,
                         FirstName = "Simon",
                         LastName = "Hesjevik",
