@@ -9,14 +9,13 @@ using Game_Buddy_Finder.Data;
 
 namespace Game_Buddy_Finder.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class ProfileController
     {
         private readonly ProfileManager _repo;
 
         public ProfileController(ProfileManager repo)
         {
+            Console.WriteLine("Creating profile controller");
             _repo = repo;
         }
 
@@ -24,11 +23,12 @@ namespace Game_Buddy_Finder.Controllers
         [HttpGet]
         public IEnumerable<Profile> Get()
         {
+            Console.WriteLine("Test");
             return _repo.GetAll();
         }
 
-        [HttpGet("user/{userid}")]
-        public Profile GetProfileOfUser(int userid)
+        [HttpGet("user/{profileid}")]
+        public Profile GetLoginAttemptsOfUser(int userid)
         {
             return _repo.GetProfileOfUser(userid);
         }
@@ -37,34 +37,17 @@ namespace Game_Buddy_Finder.Controllers
         [HttpGet("{id}")]
         public Profile Get(int id)
         {
+            Console.WriteLine("yo");
             return _repo.Get(id);
         }
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody] RegisterModel value)
+        public void Post([FromBody] Profile value)
         {
-            Console.WriteLine(value.PasswordHash);
-            User user = new User()
-            {
-                UserName = value.UserName,
-                PasswordHash = value.PasswordHash
-            };
-            
-            int uid = _repo.AddUser(user);
-            if (uid > 0)
-            {
-                Profile profile = new Profile()
-                {
-                    UserId = uid,
-                    FirstName = value.FirstName,
-                    LastName = value.LastName,
-                    Email = value.Email,
-                    Region = value.Region,
-                };
-
-                _repo.Add(profile);
-            }
+            Console.WriteLine(value);
+            //return;
+            _repo.Add(value);
         }
 
         // PUT api/<controller>/5

@@ -19,8 +19,6 @@ const httpOptions = {
 })
 export class ProfilesService {
   private profilesUrl = environment.baseUrl + 'api/profile';
-
-  private postId;
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   public getProfileOfUser(id) {
@@ -33,10 +31,7 @@ export class ProfilesService {
 
 
   public createProfile(profile: Profile) {
-
-    console.log(profile.PasswordHash);
-    return this.httpClient.post<any>(this.profilesUrl, profile).subscribe(data => {
-      this.postId = data.id
-    });
+    //Do error checking here
+    return this.httpClient.post<Profile>(this.profilesUrl, profile, httpOptions).pipe(catchError(null));
   }
 }
