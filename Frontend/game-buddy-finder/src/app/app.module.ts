@@ -15,6 +15,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RegisterProfileComponent } from './register-profile/register-profile.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RegisterProfileComponent } from './register-profile/register-profile.co
     LoginAttemptsComponent,
     HomePageComponent,
     RegisterProfileComponent,
+    ViewProfileComponent,
   ],
   imports: [
     BrowserModule,

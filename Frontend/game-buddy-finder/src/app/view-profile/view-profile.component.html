@@ -1,0 +1,21 @@
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+<div class="container-fluid well span6">
+  <div class="row-fluid">
+    <div class="span2">
+      <img src="{{profile.profilePicUrl}}" class="img-circle">
+    </div>
+
+    <div class="span8">
+      <h3>User Name: {{ user ? user.userName : ""}}</h3>
+      <h6>First Name: {{ profile ? profile.firstName : ""}}</h6>
+      <h6>Last Name: {{ profile ? profile.lastName : ""}}</h6>
+      <h6>Email: {{ profile ? profile.email : ""}}</h6>
+      <h6>Region: {{ profile ? profile.region : ""}}</h6>
+      <h6>Phone Number: {{ profile ? profile.phoneNumber : ""}}</h6>
+
+    </div>
+
+  </div>
+</div>
