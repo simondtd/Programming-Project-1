@@ -54,35 +54,51 @@ namespace Game_Buddy_Finder.Data
                         UserId = 1,
                         FirstName = "Nicolas",
                         LastName = "Nicolas",
-                        Region = "Oceania"
+                        Region = "Oceania",
+                        Email = "Nicolas@gmail.com",
+                        ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                        PhoneNumber = "12345678"
                     },
                     new Profile()
                     {
                         UserId = 2,
                         FirstName = "Adama",
                         LastName = "Adama",
-                        Region = "Oceania"
+                        Region = "Oceania",
+                        Email = "Adama@gmail.com",
+                        ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                        PhoneNumber = "12345678"
                     }
                     , new Profile()
                     {
                         UserId = 3,
                         FirstName = "Steven",
                         LastName = "Steven",
-                        Region = "Oceania"
+                        Region = "Oceania",
+                        Email = "Steven@gmail.com",
+                        ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                        PhoneNumber = "12345678"
                     },
                     new Profile()
                     {
                         UserId = 4,
                         FirstName = "Andi",
                         LastName = "Andi",
-                        Region = "Oceania"
+                        Region = "Oceania",
+                        Email = "Andi@gmail.com",
+                        ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                        PhoneNumber = "12345678"
+
                     },
                     new Profile()
                     {
                         UserId = 5,
                         FirstName = "Simon",
                         LastName = "Hesjevik",
-                        Region = "Oceania"
+                        Region = "Oceania",
+                        Email = "Simon@gmail.com",
+                        ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                        PhoneNumber = "12345678"
                     }
                 );
 

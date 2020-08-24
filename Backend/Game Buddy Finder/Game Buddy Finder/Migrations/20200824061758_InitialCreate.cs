@@ -52,8 +52,9 @@ namespace Game_Buddy_Finder.Migrations
                     UserId = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
-                    Region = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: false),
+                    Region = table.Column<string>(nullable: false),
                     ProfilePicUrl = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

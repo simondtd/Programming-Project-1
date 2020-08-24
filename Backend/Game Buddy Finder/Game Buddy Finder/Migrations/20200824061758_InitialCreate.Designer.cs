@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Game_Buddy_Finder.Migrations
 {
     [DbContext(typeof(GbfContext))]
-    [Migration("20200824054018_InitialCreate")]
+    [Migration("20200824061758_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,7 @@ namespace Game_Buddy_Finder.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("FirstName")
@@ -58,10 +59,15 @@ namespace Game_Buddy_Finder.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
                     b.Property<string>("ProfilePicUrl")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Region")
+                        .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<int>("UserId")
