@@ -14,13 +14,13 @@ namespace Game_Buddy_Finder.DataManager
 
         public ProfileManager(GbfContext context)
         {
+            Console.WriteLine("Creating profile Manager");
             _context = context;
         }
 
         public int Add(Profile item)
         {
             _context.Profiles.Add(item);
-            Console.WriteLine("Adding new login attempt");
             _context.SaveChanges();
             return item.ProfileId;
         }

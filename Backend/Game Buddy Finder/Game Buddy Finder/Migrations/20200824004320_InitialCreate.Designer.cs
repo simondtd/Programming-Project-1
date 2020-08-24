@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Game_Buddy_Finder.Migrations
 {
     [DbContext(typeof(GbfContext))]
-    [Migration("20200818041640_Initial")]
-    partial class Initial
+    [Migration("20200824004320_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,6 +41,39 @@ namespace Game_Buddy_Finder.Migrations
                     b.ToTable("LoginAttempts");
                 });
 
+            modelBuilder.Entity("Game_Buddy_Finder.Models.Profile", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ProfilePicUrl")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Region")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProfileId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Profiles");
+                });
+
             modelBuilder.Entity("Game_Buddy_Finder.Models.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -61,6 +94,15 @@ namespace Game_Buddy_Finder.Migrations
                 });
 
             modelBuilder.Entity("Game_Buddy_Finder.Models.LoginAttempt", b =>
+                {
+                    b.HasOne("Game_Buddy_Finder.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Game_Buddy_Finder.Models.Profile", b =>
                 {
                     b.HasOne("Game_Buddy_Finder.Models.User", "User")
                         .WithMany()

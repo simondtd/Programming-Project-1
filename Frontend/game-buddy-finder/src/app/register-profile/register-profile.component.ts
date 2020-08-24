@@ -57,7 +57,6 @@ export class RegisterProfileComponent implements OnInit {
     console.log(phone);
 
     var profile = new Profile(firstname, lastname, email, region);
-    return;
 
     this.profilesService.createProfile(profile);
 

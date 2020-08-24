@@ -15,6 +15,7 @@ namespace Game_Buddy_Finder.Controllers
 
         public ProfileController(ProfileManager repo)
         {
+            Console.WriteLine("Creating profile controller");
             _repo = repo;
         }
 
@@ -22,10 +23,11 @@ namespace Game_Buddy_Finder.Controllers
         [HttpGet]
         public IEnumerable<Profile> Get()
         {
+            Console.WriteLine("Test");
             return _repo.GetAll();
         }
 
-        [HttpGet("user/{userid}")]
+        [HttpGet("user/{profileid}")]
         public Profile GetLoginAttemptsOfUser(int userid)
         {
             return _repo.GetProfileOfUser(userid);
@@ -35,6 +37,7 @@ namespace Game_Buddy_Finder.Controllers
         [HttpGet("{id}")]
         public Profile Get(int id)
         {
+            Console.WriteLine("yo");
             return _repo.Get(id);
         }
 
@@ -42,8 +45,8 @@ namespace Game_Buddy_Finder.Controllers
         [HttpPost]
         public void Post([FromBody] Profile value)
         {
-            System.Diagnostics.Debug.WriteLine(value);
-            return;
+            Console.WriteLine(value);
+            //return;
             _repo.Add(value);
         }
 
