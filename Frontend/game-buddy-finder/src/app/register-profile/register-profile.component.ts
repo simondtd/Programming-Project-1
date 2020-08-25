@@ -46,21 +46,7 @@ export class RegisterProfileComponent implements OnInit {
     var phone = this.registerGroup.get('phone').value;
     var profilepicurl = this.registerGroup.get('profilepicurl').value;
 
-    var profile = new Profile(firstname, lastname, username, password, repassword, email, region, "", phone);
-    console.log(profile.PhoneNumber);
-    //return;
-
-    //DO ERROR CHECKING
-    console.log(firstname);
-    console.log(lastname);
-    console.log(email);
-    console.log(username);
-    console.log(password);
-    console.log(repassword);
-    console.log(region);
-    console.log(phone);
-    console.log(profilepicurl);
-
+    var profile = new Profile(firstname, lastname, username, password, repassword, email, region, profilepicurl, phone);
 
     if (this.profilesService.validateUser(profile)) {
       this.profilesService.createProfile(profile);
