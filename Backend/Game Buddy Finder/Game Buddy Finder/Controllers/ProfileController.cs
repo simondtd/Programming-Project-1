@@ -44,7 +44,7 @@ namespace Game_Buddy_Finder.Controllers
         [HttpPost]
         public void Post([FromBody] RegisterModel value)
         {
-            Console.WriteLine(value.PasswordHash);
+            Console.WriteLine(value.PhoneNumber);
             User user = new User()
             {
                 UserName = value.UserName,
@@ -59,8 +59,10 @@ namespace Game_Buddy_Finder.Controllers
                     UserId = uid,
                     FirstName = value.FirstName,
                     LastName = value.LastName,
-                    Email = value.Email,
+                    Email = value.EmailAddress,
                     Region = value.Region,
+                    PhoneNumber = value.PhoneNumber,
+                    ProfilePicUrl = value.ProfilePicUrl
                 };
 
                 _repo.Add(profile);

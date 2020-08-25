@@ -7,8 +7,9 @@ export class Profile {
     public EmailAddress: string;
     public Region: string;
     public ProfilePicUrl: string;
+    public PhoneNumber: string;
 
-    public constructor(firstName, lastName, userName, passwordHash, rePasswordHash, email, region, profilePicUrl) {
+    public constructor(firstName, lastName, userName, passwordHash, rePasswordHash, email, region, profilePicUrl, phoneNumber) {
         this.FirstName = firstName;
         this.LastName = lastName;
         this.PasswordHash = passwordHash;
@@ -17,5 +18,6 @@ export class Profile {
         this.EmailAddress = email;
         this.Region = region;
         this.ProfilePicUrl = profilePicUrl;
+        this.PhoneNumber = phoneNumber;
     }
 }

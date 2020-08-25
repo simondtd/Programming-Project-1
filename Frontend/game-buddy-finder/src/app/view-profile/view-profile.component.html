@@ -8,14 +8,12 @@
     </div>
 
     <div class="span8">
-      <h3>User Name: {{ user ? user.username : ""}}</h3>
+      <h3>User Name: {{ user ? user.userName : ""}}</h3>
       <h6>First Name: {{ profile ? profile.firstName : ""}}</h6>
       <h6>Last Name: {{ profile ? profile.lastName : ""}}</h6>
-      <h6>Email: {{ profile ? profile.emailAddress : ""}}</h6>
+      <h6>Email: {{ profile ? profile.email : ""}}</h6>
       <h6>Region: {{ profile ? profile.region : ""}}</h6>
-      <h6>Phone Number: {{ profile ? profile.passwordHash : ""}}</h6>
-
+      <h6>Phone Number: {{ profile ? profile.phoneNumber : ""}}</h6>
     </div>
-
   </div>
 </div>
