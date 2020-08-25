@@ -40,7 +40,13 @@ namespace Game_Buddy_Finder.Data
                     {
                         UserName = "Simon",
                         PasswordHash = "secure hash"
-                    });
+                    },
+                    new User
+                    {
+                        UserName = "Shaahin",
+                        PasswordHash = "secure hash"
+                    }
+                    );
 
                 context.SaveChanges();
                 Console.WriteLine("Seeded Users");
@@ -97,6 +103,16 @@ namespace Game_Buddy_Finder.Data
                         LastName = "Hesjevik",
                         Region = "Oceania",
                         Email = "Simon@gmail.com",
+                        ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                        PhoneNumber = "12345678"
+                    },
+                    new Profile()
+                    {
+                        UserId = 6,
+                        FirstName = "Shaahin",
+                        LastName = "Madani",
+                        Region = "Oceania",
+                        Email = "Shaahin.Madani@gmail.com",
                         ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
                         PhoneNumber = "12345678"
                     }
