@@ -25,7 +25,7 @@ export class RegisterProfileComponent implements OnInit {
       repassword: new FormControl(),
       region: new FormControl(),
       phone: new FormControl(),
-
+      profilepicurl: new FormControl()
 
     });
   }
