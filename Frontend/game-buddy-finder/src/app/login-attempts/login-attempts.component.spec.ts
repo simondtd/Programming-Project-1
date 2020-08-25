@@ -1,32 +1,31 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import 'jasmine';
-import { LoginAttemptsComponent } from './login-attempts.component';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginAttemptsComponent } from './login-attempts.component';
+import { LoginAttemptsService} from '../services/login-attempts.service'
 
 describe('LoginAttemptsComponent', () => {
   let component: LoginAttemptsComponent;
   let fixture: ComponentFixture<LoginAttemptsComponent>;
+  let service: LoginAttemptsService;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginAttemptsComponent ]
+      imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
+      declarations: [LoginAttemptsComponent],
+      providers: [LoginAttemptsService]
     })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [HttpHandler, HttpClient, HttpClientModule, LoginAttemptsService]
-    });
-    service = TestBed.inject(LoginAttemptsService);
-  });
-
-  beforeEach(() => {
+      .compileComponents();
+    TestBed.inject(LoginAttemptsService);
+    
+    service = TestBed.get(LoginAttemptsService);
     fixture = TestBed.createComponent(LoginAttemptsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
+
+
 
   it('should create', () => {
     expect(component).toBeTruthy();

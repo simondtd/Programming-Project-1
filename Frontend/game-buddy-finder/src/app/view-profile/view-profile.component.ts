@@ -9,8 +9,8 @@ import { ProfilesService } from '../services/profiles.service';
 })
 export class ViewProfileComponent implements OnInit {
 
-  public user;
-  public profile;
+  public user = null;
+  public profile = null;
 
   constructor(private usersService: UsersService, private profilesService: ProfilesService) {
     console.log(this.usersService.UserId)

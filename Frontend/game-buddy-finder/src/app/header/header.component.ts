@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UsersService} from '../services/users.service';
-import {Router} from '@angular/router';
+import { UsersService } from '../services/users.service';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent {
 
 
 
-  constructor(private usersService: UsersService, private router:Router) {
+  constructor(private usersService: UsersService, private router: Router) {
     usersService.UserIDSubject.subscribe((data) => {
       this.loggedIn = usersService.UserId;
     })
