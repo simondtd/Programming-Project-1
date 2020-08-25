@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginAttemptsService} from '../services/login-attempts.service';
 import {UsersService} from '../services/users.service';
 
+
 @Component({
   selector: 'app-login-attempts',
   templateUrl: './login-attempts.component.html',

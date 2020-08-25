@@ -46,7 +46,9 @@ export class RegisterProfileComponent implements OnInit {
     var phone = this.registerGroup.get('phone').value;
     var profilepicurl = this.registerGroup.get('profilepicurl').value;
 
-    //Debug to check, NOT SECURE
+    var profile = new Profile(firstname, lastname, username, password, repassword, email, region, "", phone);
+    console.log(profile.PhoneNumber);
+    //return;
 
     //DO ERROR CHECKING
     console.log(firstname);
@@ -60,14 +62,9 @@ export class RegisterProfileComponent implements OnInit {
     console.log(profilepicurl);
 
 
-    if (password == repassword) {
-      var profile = new Profile(firstname, lastname, username, password, email, region, profilepicurl);
+    if (this.profilesService.validateUser(profile)) {
       this.profilesService.createProfile(profile);
     }
-
-    
-
-   
 
   }
 }

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { Profile } from '../models/profile';
 import { HttpHeaders } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
     Authorization: 'my-auth-token'
   })
 };
@@ -24,13 +23,44 @@ export class ProfilesService {
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   public getProfileOfUser(id) {
-    return this.httpClient.get(this.profilesUrl + '/' + 'user' + '/' + id)
+    return this.httpClient.get<Profile>(this.profilesUrl + '/' + 'user' + '/' + id)
   }
 
   public getProfile(id) {
     return this.httpClient.get(this.profilesUrl + '/' + id)
   }
 
+  public validateUser(profile: Profile) {
+    if ((profile.PasswordHash == null || profile.RePasswordHash == null) || profile.PasswordHash != profile.RePasswordHash) {
+      return false;
+    }
+
+    if (profile.UserName == null || (profile.UserName.length < 3 || profile.UserName.length > 12)) {
+      return false;
+    }
+
+    if (profile.FirstName == null || profile.FirstName.length == 0) {
+      return false;
+    }
+
+    if (profile.LastName == null || profile.LastName.length == 0) {
+      return false;
+    }
+
+    if (profile.EmailAddress == null || profile.EmailAddress.length == 0) {
+      return false;
+    }
+
+    if (profile.Region == null || profile.Region.length == 0) {
+      return false;
+    }
+
+    if (profile.ProfilePicUrl == null || profile.ProfilePicUrl.length == 0) {
+      profile.ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+    }
+
+    return true;
+  }
 
   public createProfile(profile: Profile) {
     this.router.navigate(['/login']);

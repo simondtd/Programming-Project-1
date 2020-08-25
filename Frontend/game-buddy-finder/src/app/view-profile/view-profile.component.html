@@ -3,7 +3,7 @@
 
 <div class="container-fluid well span6">
   <div class="row-fluid">
-    <div class="span2">
+    <div class="span2" *ngIf="profile">
       <img src="{{profile.profilePicUrl}}" class="img-circle">
     </div>
 
@@ -14,8 +14,6 @@
       <h6>Email: {{ profile ? profile.email : ""}}</h6>
       <h6>Region: {{ profile ? profile.region : ""}}</h6>
       <h6>Phone Number: {{ profile ? profile.phoneNumber : ""}}</h6>
-
     </div>
-
   </div>
 </div>
