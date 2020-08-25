@@ -91,6 +91,13 @@
                       <input name="" class="form-control" placeholder="Phone number" type="text" pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$" formControlName="phone" required>
                     </div>
 
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-clipboard"></i> </span>
+                      </div>
+                      <input class="form-control" placeholder="Profile Picture URL" type="text" formControlName="profilepicurl" required>
+                    </div>
+
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary btn-block" (click)="register()"> Register  </button>
                     </div>

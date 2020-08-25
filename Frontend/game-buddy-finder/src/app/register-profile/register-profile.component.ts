@@ -26,6 +26,7 @@ export class RegisterProfileComponent implements OnInit {
       region: new FormControl(),
       phone: new FormControl(),
 
+
     });
   }
 
@@ -43,6 +44,7 @@ export class RegisterProfileComponent implements OnInit {
     var repassword = this.registerGroup.get('repassword').value;
     var region = this.registerGroup.get('region').value;
     var phone = this.registerGroup.get('phone').value;
+    var profilepicurl = this.registerGroup.get('profilepicurl').value;
 
     //Debug to check, NOT SECURE
 
@@ -55,10 +57,11 @@ export class RegisterProfileComponent implements OnInit {
     console.log(repassword);
     console.log(region);
     console.log(phone);
+    console.log(profilepicurl);
 
 
     if (password == repassword) {
-      var profile = new Profile(firstname, lastname, username, password, email, region);
+      var profile = new Profile(firstname, lastname, username, password, email, region, profilepicurl);
       this.profilesService.createProfile(profile);
     }
 
