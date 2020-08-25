@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { ProfilesService } from '../services/profiles.service';
+import { User } from '../models/user'
+import { Profile } from '../models/profile'
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-view-profile',
@@ -9,20 +12,19 @@ import { ProfilesService } from '../services/profiles.service';
 })
 export class ViewProfileComponent implements OnInit {
 
-  public user = null;
-  public profile = null;
+  public user;
+  public profile;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService) {
-    console.log(this.usersService.UserId)
-  }
+  constructor(private usersService: UsersService, private profilesService: ProfilesService) { }
 
   ngOnInit(): void {
-    this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
-      this.user = data;
-    })
-    this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
-      this.profile = data;
-    })
+    if (this.user == null) {
+      this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
+        this.user = data;
+      })
+      this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
+        this.profile = data;
+      })
+    }
   }
-
 }

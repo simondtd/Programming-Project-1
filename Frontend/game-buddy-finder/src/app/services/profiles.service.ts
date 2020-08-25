@@ -4,7 +4,6 @@ import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { Profile } from '../models/profile';
 import { HttpHeaders } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,7 +23,7 @@ export class ProfilesService {
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   public getProfileOfUser(id) {
-    return this.httpClient.get(this.profilesUrl + '/' + 'user' + '/' + id)
+    return this.httpClient.get<Profile>(this.profilesUrl + '/' + 'user' + '/' + id)
   }
 
   public getProfile(id) {

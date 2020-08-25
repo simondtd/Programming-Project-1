@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Router} from '@angular/router';
 import { Subject } from 'rxjs';
+import { User } from '../models/user'
+import { Profile } from '../models/profile'
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,7 @@ export class UsersService {
   }
 
   public getUser(id) {
-    return this.httpClient.get(this.usersUrl + '/' + id);
+    return this.httpClient.get<User>(this.usersUrl + '/' + id);
   }
 
   public login(username, password) {

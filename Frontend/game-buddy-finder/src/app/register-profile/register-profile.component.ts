@@ -44,7 +44,7 @@ export class RegisterProfileComponent implements OnInit {
     var region = this.registerGroup.get('region').value;
     var phone = this.registerGroup.get('phone').value;
 
-    var profile = new Profile(firstname, lastname, username, password, repassword, email, region);
+    var profile = new Profile(firstname, lastname, username, password, repassword, email, region, "");
 
     if (this.profilesService.validateUser(profile)) {
       
