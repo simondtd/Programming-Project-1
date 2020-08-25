@@ -9,7 +9,7 @@ describe('RegisterProfileComponent', () => {
   let component: RegisterProfileComponent;
   let fixture: ComponentFixture<RegisterProfileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
       declarations: [ RegisterProfileComponent ],
