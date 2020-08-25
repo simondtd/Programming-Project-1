@@ -3,12 +3,12 @@
 
 <div class="container-fluid well span6">
   <div class="row-fluid">
-    <div class="span2">
+    <div class="span2" *ngIf="profile">
       <img src="{{profile.profilePicUrl}}" class="img-circle">
     </div>
 
     <div class="span8">
-      <h3>User Name: {{ user ? user.userName : ""}}</h3>
+      <h3>User Name: {{ user ? user.username : ""}}</h3>
       <h6>First Name: {{ profile ? profile.firstName : ""}}</h6>
       <h6>Last Name: {{ profile ? profile.lastName : ""}}</h6>
       <h6>Email: {{ profile ? profile.emailAddress : ""}}</h6>

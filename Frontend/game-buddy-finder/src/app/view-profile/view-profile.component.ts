@@ -15,6 +15,7 @@ export class ViewProfileComponent implements OnInit {
   public user;
   public profile;
 
+
   constructor(private usersService: UsersService, private profilesService: ProfilesService) { }
 
   ngOnInit(): void {
