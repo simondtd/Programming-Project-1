@@ -44,27 +44,12 @@ export class RegisterProfileComponent implements OnInit {
     var region = this.registerGroup.get('region').value;
     var phone = this.registerGroup.get('phone').value;
 
-    //Debug to check, NOT SECURE
+    var profile = new Profile(firstname, lastname, username, password, repassword, email, region);
 
-    //DO ERROR CHECKING
-    console.log(firstname);
-    console.log(lastname);
-    console.log(email);
-    console.log(username);
-    console.log(password);
-    console.log(repassword);
-    console.log(region);
-    console.log(phone);
-
-
-    if (password == repassword) {
-      var profile = new Profile(firstname, lastname, username, password, email, region);
+    if (this.profilesService.validateUser(profile)) {
+      
       this.profilesService.createProfile(profile);
     }
-
-    
-
-   
 
   }
 }

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { Profile } from '../models/profile';
 import { HttpHeaders } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json',
+    'Content-Type': 'application/json',
     Authorization: 'my-auth-token'
   })
 };
@@ -31,6 +31,33 @@ export class ProfilesService {
     return this.httpClient.get(this.profilesUrl + '/' + id)
   }
 
+  public validateUser(profile: Profile) {
+    if (profile.PasswordHash != profile.RePasswordHash) {
+      return false;
+    }
+
+    if (profile.UserName.length < 3 || profile.UserName.length > 12) {
+      return false;
+    }
+
+    if (profile.FirstName.length == 0) {
+      return false;
+    }
+    
+    if (profile.LastName.length == 0) {
+      return false;
+    }
+
+    if (profile.EmailAddress.length == 0) {
+      return false;
+    }
+
+    if (profile.Region.length == 0) {
+      return false;
+    }
+
+    return true;
+  }
 
   public createProfile(profile: Profile) {
     this.router.navigate(['/login']);
