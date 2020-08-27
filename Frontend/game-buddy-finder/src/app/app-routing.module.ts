@@ -8,6 +8,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { RegisterProfileComponent } from './register-profile/register-profile.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { InboxComponent } from './inbox/inbox.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 
 const routes: Routes = [
   { path: 'users', component: UsersComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterProfileComponent },
   { path: 'profile', component: ViewProfileComponent },
   { path: 'inbox', component: InboxComponent },
+  { path: 'sendmessage', component: SendMessageComponent },
 ];
 
 @NgModule({

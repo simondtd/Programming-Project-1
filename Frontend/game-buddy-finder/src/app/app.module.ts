@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterProfileComponent } from './register-profile/register-profile.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { InboxComponent } from './inbox/inbox.component';
+import { SendMessageComponent } from './send-message/send-message.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { InboxComponent } from './inbox/inbox.component';
     RegisterProfileComponent,
     ViewProfileComponent,
     InboxComponent,
+    SendMessageComponent,
   ],
   imports: [
     BrowserModule,
