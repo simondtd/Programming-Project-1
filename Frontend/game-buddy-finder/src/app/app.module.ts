@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -19,6 +18,7 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { MessagePreviewComponent } from './message-preview/message-preview.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,8 @@ import { MessagePreviewComponent } from './message-preview/message-preview.compo
     InboxComponent,
     SendMessageComponent,
     MessagePreviewComponent,
+    EditProfileComponent,
+
   ],
   imports: [
     BrowserModule,

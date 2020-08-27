@@ -10,6 +10,7 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { MessagePreviewComponent } from './message-preview/message-preview.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   { path: 'users', component: UsersComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'inbox', component: InboxComponent },
   { path: 'sendmessage', component: SendMessageComponent },
   { path: 'messagepreview', component: MessagePreviewComponent },
+  { path: 'editprofile', component: EditProfileComponent },
 ];
 
 @NgModule({
