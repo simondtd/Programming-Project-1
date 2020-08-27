@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RegisterProfileComponent } from './register-profile/register-profile.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
     HomePageComponent,
     RegisterProfileComponent,
     ViewProfileComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
