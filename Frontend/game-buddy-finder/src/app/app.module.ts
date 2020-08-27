@@ -18,6 +18,7 @@ import { RegisterProfileComponent } from './register-profile/register-profile.co
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { SendMessageComponent } from './send-message/send-message.component';
+import { MessagePreviewComponent } from './message-preview/message-preview.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SendMessageComponent } from './send-message/send-message.component';
     ViewProfileComponent,
     InboxComponent,
     SendMessageComponent,
+    MessagePreviewComponent,
   ],
   imports: [
     BrowserModule,
