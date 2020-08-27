@@ -59,7 +59,8 @@ namespace Game_Buddy_Finder.DataManager
 
         public int Update(int id, Profile item)
         {
-            throw new NotImplementedException();
+            _context.Update(item);
+            return id;
         }
     }
 }
