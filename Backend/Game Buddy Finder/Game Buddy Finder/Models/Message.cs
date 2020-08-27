@@ -22,6 +22,9 @@ namespace Game_Buddy_Finder.Models
         public int ReceiverId { get; set; }
 
         [Required]
+        public string Subject { get; set; }
+
+        [Required]
         public string Content { get; set; }
 
         public virtual User Sender { get; set; }
