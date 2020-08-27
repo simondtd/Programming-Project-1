@@ -26,7 +26,6 @@ export class RegisterProfileComponent implements OnInit {
       region: new FormControl(),
       phone: new FormControl(),
       profilepicurl: new FormControl()
-
     });
   }
 
@@ -46,7 +45,7 @@ export class RegisterProfileComponent implements OnInit {
     var phone = this.registerGroup.get('phone').value;
     var profilepicurl = this.registerGroup.get('profilepicurl').value;
 
-    var profile = new Profile(firstname, lastname, username, password, repassword, email, region, profilepicurl, phone);
+    var profile = new Profile(0, firstname, lastname, username, password, repassword, email, region, profilepicurl, phone);
 
     if (this.profilesService.validateUser(profile)) {
       this.profilesService.createProfile(profile);
