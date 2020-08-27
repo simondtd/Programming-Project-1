@@ -13,3 +13,11 @@ export class SendMessageComponent implements OnInit {
   }
 
 }
+
+/*
+  reciever: new FormControl(),
+  cc: new FormControl(),
+  bcc: new FormControl(),
+  subject: new FormControl(),
+  subject: new FormControl()
+*/
