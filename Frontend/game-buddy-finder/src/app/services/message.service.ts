@@ -6,14 +6,14 @@ import { Message } from '../models/message'
 @Injectable({
   providedIn: 'root'
 })
-export class MessageService {
+export class MessagesService {
 
   private messagesUrl = environment.baseUrl + 'api/message';
 
   constructor(private httpClient: HttpClient) { }
 
   public getMessagesToUser(id) {
-    return this.httpClient.get(this.messagesUrl + 'to/' + id);
+    return this.httpClient.get(this.messagesUrl + '/to/' + id);
   }
 
   public sendMessage(message: Message) {

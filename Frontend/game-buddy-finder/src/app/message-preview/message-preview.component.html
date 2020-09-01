@@ -2,17 +2,21 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
-  <form id="message-form" class="form" ng-submit="" [formGroup]="">
+  <form id="message-form" class="form">
     <h1 style="color:white">PlayWith</h1>
     <div class="col-md-5 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
-      <button type="submit" class="btn btn-dark"  routerLink="/inbox"><i class="fa fa-inbox"></i>&nbsp;Inbox</button>
+      <button type="submit" class="btn btn-dark" routerLink="/inbox"><i class="fa fa-inbox"></i>&nbsp;Inbox</button>
       <button type="submit" class="btn btn-dark" routerLink="*"><i class="fa fa-check"></i>&nbsp;Sent</button>
       <button type="submit" class="btn btn-danger float-right" routerLink="/sendmessage"><i class="fa fa-edit"></i>&nbsp;New Message </button><br /><br />
-      <h3>TITLE</h3>
+      <h3>{{ message ? message.subject : ""}}</h3>
       <br />
-      <h5>From: NAME <span style="color:grey">EMAIL</span><span class="float-right">TIME</span></h5>
 
-      <div style="width: auto; padding: 10px; border: 1px solid black; margin: 1px;">CONTENT</div>
+    
+
+
+      <h5>From: {{user.userName}} <span style="color:grey">({{profile.email}})</span><span class="float-right">{{ message ? message.sendTime : ""}}</span></h5>
+
+      <div style="width: auto; padding: 10px; border: 1px solid black; margin: 1px;">{{ message ? message.content : ""}}</div>
     </div>
   </form>
 
