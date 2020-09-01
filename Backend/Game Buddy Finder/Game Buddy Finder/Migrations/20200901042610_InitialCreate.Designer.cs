@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Game_Buddy_Finder.Migrations
 {
     [DbContext(typeof(GbfContext))]
-    [Migration("20200901021345_InitialCreate")]
+    [Migration("20200901042610_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,34 @@ namespace Game_Buddy_Finder.Migrations
                     b.HasKey("LoginAttemptId");
 
                     b.ToTable("LoginAttempts");
+                });
+
+            modelBuilder.Entity("Game_Buddy_Finder.Models.Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SendTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("Game_Buddy_Finder.Models.Profile", b =>

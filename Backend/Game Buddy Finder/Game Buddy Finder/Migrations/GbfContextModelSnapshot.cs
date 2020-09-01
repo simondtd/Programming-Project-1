@@ -37,6 +37,34 @@ namespace Game_Buddy_Finder.Migrations
                     b.ToTable("LoginAttempts");
                 });
 
+            modelBuilder.Entity("Game_Buddy_Finder.Models.Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SendTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("Game_Buddy_Finder.Models.Profile", b =>
                 {
                     b.Property<int>("ProfileId")

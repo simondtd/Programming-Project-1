@@ -24,6 +24,23 @@ namespace Game_Buddy_Finder.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Messages",
+                columns: table => new
+                {
+                    MessageId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    SendTime = table.Column<DateTime>(nullable: false),
+                    SenderId = table.Column<int>(nullable: false),
+                    ReceiverId = table.Column<int>(nullable: false),
+                    Subject = table.Column<string>(nullable: false),
+                    Content = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Messages", x => x.MessageId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Profiles",
                 columns: table => new
                 {
@@ -61,6 +78,9 @@ namespace Game_Buddy_Finder.Migrations
         {
             migrationBuilder.DropTable(
                 name: "LoginAttempts");
+
+            migrationBuilder.DropTable(
+                name: "Messages");
 
             migrationBuilder.DropTable(
                 name: "Profiles");
