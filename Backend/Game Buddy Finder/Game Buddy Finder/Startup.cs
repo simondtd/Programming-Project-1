@@ -49,6 +49,7 @@ namespace Game_Buddy_Finder
             services.AddTransient<UserManager>();
             services.AddTransient<ProfileManager>();
             services.AddTransient<LoginAttemptManager>();
+            services.AddTransient<MessageManager>();
 
 
             services.AddControllers();
