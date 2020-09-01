@@ -71,9 +71,19 @@ namespace Game_Buddy_Finder.Controllers
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Profile value)
+        public void Put(int id, [FromBody] RegisterModel value)
         {
-            _repo.Update(id, value);
+            Console.WriteLine(value.FirstName);
+            Profile profile = new Profile{
+                ProfileId = id,
+                FirstName = value.FirstName,
+                LastName = value.LastName,
+                Email = value.EmailAddress,
+                ProfilePicUrl = value.ProfilePicUrl,
+                Region = value.Region,
+                PhoneNumber = value.PhoneNumber
+            };
+            _repo.Update(id, profile);
         }
 
         // DELETE api/<controller>/5

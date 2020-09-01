@@ -59,7 +59,16 @@ namespace Game_Buddy_Finder.DataManager
 
         public int Update(int id, Profile item)
         {
-            _context.Update(item);
+            Profile p = Get(id);
+
+            p.Email = item.Email;
+            p.FirstName = item.FirstName;
+            p.LastName = item.LastName;
+            p.PhoneNumber = item.PhoneNumber;
+            p.Region = item.Region;
+            p.ProfilePicUrl = item.ProfilePicUrl;
+
+            _context.SaveChanges();
             return id;
         }
     }
