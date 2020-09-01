@@ -13,7 +13,7 @@ export class MessageService {
   constructor(private httpClient: HttpClient) { }
 
   public getMessagesToUser(id) {
-    return this.httpClient.get(this.messagesUrl + 'to/' + id);
+    return this.httpClient.get(this.messagesUrl + '/to/' + id);
   }
 
   public sendMessage(message: Message) {
