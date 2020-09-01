@@ -3,17 +3,16 @@
       <h1>Edit Profile</h1>
       <hr>
       <div class="row">
-        <div class="col-md-3">
-          <div class="text-center">
-            <img src="{{Profile.profilePicUrl}}" class="img-circle">
-            <br><br>
-            <input type="text" class="form-control" placeholder="Image URL">
+        <form class="form-horizontal" role="form" id="edit-form" class="form" [formGroup]="editGroup">
+          <div class="col-md-3">
+            <div class="text-center">
+              <img src="{{Profile.profilePicUrl}}" class="img-circle">
+              <br><br>
+              <input type="text" class="form-control" placeholder="Image URL">
+            </div>
           </div>
-        </div>
-        <div class="col-md-9 personal-info">
-          <h3>Personal info</h3>
-
-          <form class="form-horizontal" role="form" id="edit-form" class="form" [formGroup]="editGroup">
+          <div class="col-md-9 personal-info">
+            <h3>Personal info</h3>
             <div class="form-group">
               <label class="col-lg-3 control-label">First name:</label>
               <div class="col-lg-8">
@@ -86,7 +85,7 @@
                 </div>
               </div>
             </div>
-          </form>
+        </form>
         </div>
       </div>
     </div>
