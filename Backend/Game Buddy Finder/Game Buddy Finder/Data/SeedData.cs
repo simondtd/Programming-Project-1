@@ -122,16 +122,6 @@ namespace Game_Buddy_Finder.Data
                 Console.WriteLine("Seeded Profiles");
             }
 
-            if (!context.Messages.Any())
-            {
-                context.Messages.AddRange(
-                    new Message
-                    {
-
-                    }
-                );
-                context.SaveChanges();
-            }
         }
     }
 }
