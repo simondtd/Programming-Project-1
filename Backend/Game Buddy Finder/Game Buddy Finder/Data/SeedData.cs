@@ -122,6 +122,30 @@ namespace Game_Buddy_Finder.Data
                 Console.WriteLine("Seeded Profiles");
             }
 
+            if (context.Messages.Any() == false)
+            {
+                context.Messages.AddRange(
+                    new Message
+                    {
+                        SendTime = DateTime.UtcNow,
+                        SenderId = 5,
+                        ReceiverId = 1,
+                        Subject = "Subject test, From Simon!",
+                        Content = "Hello Nicolas, From Simon :D"
+                    },
+                    new Message
+                    {
+                        SendTime = DateTime.UtcNow,
+                        SenderId = 1,
+                        ReceiverId = 5,
+                        Subject = "Subject test, From Nicolas!",
+                        Content = "Hello Simon, From Nicolas :D"
+                    }
+                );
+                Console.WriteLine("Seeded Messages");
+                context.SaveChanges();
+            }
+
         }
     }
 }

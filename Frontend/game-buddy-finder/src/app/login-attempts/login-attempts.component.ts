@@ -17,5 +17,4 @@ export class LoginAttemptsComponent implements OnInit {
       this.loginAttempts = data;
     })
   }
-
 }
