@@ -30,6 +30,11 @@ namespace Game_Buddy_Finder.DataManager
             return id;
         }
 
+        public IEnumerable<Message> GetMessagesToUser(int toId)
+        {
+            return _context.Messages.Where(x => x.ReceiverId == toId);
+        }
+
         public IEnumerable<Message> GetMessagesFromUser(int fromId, int toId)
         {
             return _context.Messages.Where(x => x.SenderId == fromId && x.ReceiverId == toId);
