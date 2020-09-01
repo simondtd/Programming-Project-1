@@ -16,6 +16,10 @@ export class MessageService {
     return this.httpClient.get(this.messagesUrl + '/to/' + id);
   }
 
+  public getMessagesFromUser(id) {
+    return this.httpClient.get(this.messagesUrl + '/from/' + id);
+  }
+
   public sendMessage(message: Message) {
     return this.httpClient.put<Message>(this.messagesUrl, message).subscribe(data => {
 

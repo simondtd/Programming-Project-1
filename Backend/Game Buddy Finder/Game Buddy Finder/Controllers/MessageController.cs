@@ -34,6 +34,12 @@ namespace Game_Buddy_Finder.Controllers
             return _repo.GetMessagesToUser(toId);
         }
 
+        [HttpGet("from/{fromId}")]
+        public IEnumerable<Message> GetMessagesFromUser(int fromId)
+        {
+            return _repo.GetMessagesFromUser(fromId);
+        }
+
         [HttpGet("from/{fromId}/to/{toId}")]
         public IEnumerable<Message> GetMessagesFromUser(int fromId, int toId)
         {
