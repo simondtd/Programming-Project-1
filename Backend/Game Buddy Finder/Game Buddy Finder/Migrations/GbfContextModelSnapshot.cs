@@ -34,8 +34,6 @@ namespace Game_Buddy_Finder.Migrations
 
                     b.HasKey("LoginAttemptId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("LoginAttempts");
                 });
 
@@ -73,8 +71,6 @@ namespace Game_Buddy_Finder.Migrations
 
                     b.HasKey("ProfileId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Profiles");
                 });
 
@@ -95,24 +91,6 @@ namespace Game_Buddy_Finder.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Game_Buddy_Finder.Models.LoginAttempt", b =>
-                {
-                    b.HasOne("Game_Buddy_Finder.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Game_Buddy_Finder.Models.Profile", b =>
-                {
-                    b.HasOne("Game_Buddy_Finder.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -12,7 +12,7 @@ namespace Game_Buddy_Finder.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LoginAttemptId { get; set; }
 
-        [ForeignKey("User")]
+        [Required]
         public int UserId { get; set; }
         
         [Required]
@@ -20,7 +20,5 @@ namespace Game_Buddy_Finder.Models
 
         [Required]
         public bool Successful { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

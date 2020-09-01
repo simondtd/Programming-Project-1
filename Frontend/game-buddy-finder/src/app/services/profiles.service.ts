@@ -62,6 +62,13 @@ export class ProfilesService {
     return true;
   }
 
+  public updateProfile(profile: Profile) {
+    this.router.navigate(['/profile']);
+    return this.httpClient.put<any>(this.profilesUrl + '/' + profile.ProfileId, profile).subscribe(data => {
+      this.postId = data.id
+    });
+  }
+
   public createProfile(profile: Profile) {
     this.router.navigate(['/login']);
     return this.httpClient.post<any>(this.profilesUrl, profile).subscribe(data => {

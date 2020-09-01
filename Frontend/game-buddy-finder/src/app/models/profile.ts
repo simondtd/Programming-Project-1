@@ -1,4 +1,5 @@
 export class Profile {
+    public ProfileId: number;
     public FirstName: string;
     public LastName: string;
     public UserName: string;
@@ -9,7 +10,8 @@ export class Profile {
     public ProfilePicUrl: string;
     public PhoneNumber: string;
 
-    public constructor(firstName, lastName, userName, passwordHash, rePasswordHash, email, region, profilePicUrl, phoneNumber) {
+    public constructor(profileId,firstName, lastName, userName, passwordHash, rePasswordHash, email, region, profilePicUrl, phoneNumber) {
+        this.ProfileId = profileId;
         this.FirstName = firstName;
         this.LastName = lastName;
         this.PasswordHash = passwordHash;

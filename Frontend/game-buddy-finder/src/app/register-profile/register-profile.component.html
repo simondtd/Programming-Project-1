@@ -10,107 +10,99 @@
     <div class="col-md-4 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
       <div id="login">
 
-        <div class="container">
-          <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
-              <div id="login-box" class="col-md-12">
-                <form id="login-form" class="form" ng-submit="register()" [formGroup]="registerGroup">
+        <form id="login-form" class="form" ng-submit="register()" [formGroup]="registerGroup">
                   <h4 class="card-title mt-3 text-center">Register</h4>
                   <p class="text-center">Register and join PlayWith</p>
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                      </div>
-                      <input name="" class="form-control" placeholder="First name" type="text" formControlName="firstname" required>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
+                    <input name="" class="form-control" placeholder="First name" type="text" formControlName="firstname" required>
+                  </div>
 
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                      </div>
-                      <input name="" class="form-control" placeholder="Last name" type="text" formControlName="lastname" required>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
+                    <input name="" class="form-control" placeholder="Last name" type="text" formControlName="lastname" required>
+                  </div>
 
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                      </div>
-                      <input name="" class="form-control" placeholder="Email address" type="email" formControlName="email" required>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
+                    <input name="" class="form-control" placeholder="Email address" type="email" formControlName="email" required>
+                  </div>
 
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                      </div>
-                      <input name="" class="form-control" placeholder="Username" type="text" formControlName="username" required>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
+                    <input name="" class="form-control" placeholder="Username" type="text" formControlName="username" required>
+                  </div>
 
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                      </div>
-                      <input class="form-control" placeholder="Create password" type="password"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$" formControlName="password" required>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
+                    <input class="form-control" placeholder="Create password" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$" formControlName="password" required>
+                  </div>
 
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                      </div>
-                      <input class="form-control" placeholder="Repeat password" type="password"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$" formControlName="repassword" required>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
+                    <input class="form-control" placeholder="Repeat password" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$" formControlName="repassword" required>
+                  </div>
+                  
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
+                    </div>
+                    <select class="form-control" formControlName="region" required>
+                      <option selected="">Region</option>
+                      <option value="Africa">Africa</option>
+                      <option value="Asia">Asia</option>
+                      <option value="Central America">Central America</option>
+                      <option value="Eastern Europe">Eastern Europe</option>
+                      <option value="European Union">European Union</option>
+                      <option value="Middle East">Middle East</option>
+                      <option value="North America">North America</option>
+                      <option value="Oceania South">Oceania South</option>
+                      <option value="America">America</option>
+                      <option value="The Caribbean">The Caribbean</option>
 
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
-                      </div>
-                      <select class="form-control" formControlName="region" required>
-                        <option value="Africa">Africa</option>
-                        <option value="Asia">Asia</option>
-                        <option value="Central America">Central America</option>
-                        <option value="Eastern Europe">Eastern Europe</option>
-                        <option value="European Union">European Union</option>
-                        <option value="Middle East">Middle East</option>
-                        <option value="North America">North America</option>
-                        <option value="Oceania South">Oceania South</option>
-                        <option value="America">America</option>
-                        <option value="The Caribbean">The Caribbean</option>
+                    </select>
+                  </div>
 
-                      </select>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                     </div>
+                    <input name="" class="form-control" placeholder="Phone number" type="text" pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$" formControlName="phone" required>
+                  </div>
 
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-                      </div>
-                      <!-- <select class="custom-select" style="max-width: 120px;" required>
-                            <option selected="">+61</option>
-                            <option value="1">+62</option>
-                            <option value="2">+63</option>
-                            <option value="3">+64</option>
-                          </select>-->
-                      <input name="" class="form-control" placeholder="Phone number" type="text" pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$" formControlName="phone" required>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-clipboard"></i> </span>
                     </div>
+                    <input class="form-control" placeholder="Profile Picture URL" type="text" formControlName="profilepicurl" required>
+                  </div>
 
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-clipboard"></i> </span>
-                      </div>
-                      <input class="form-control" placeholder="Profile Picture URL" type="text" formControlName="profilepicurl" required>
-                    </div>
-
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-primary btn-block" (click)="register()"> Register  </button>
-                    </div>
-                    <div class="form-group">
-                      <button class="btn btn-primary btn-block" routerLink="/login" routerLinkActive="active"> Login  </button>
-                    </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" (click)="register()"> Register  </button>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-block" routerLink="/login" routerLinkActive="active"> Login  </button>
+                  </div>
 
 
                 </form>
+      </div>
 
-              </div>
-            </div>
-          </div>
+      <div class="d-flex justify-content-between">
+        <div>
+          <a>Have an account? </a><a routerLink="/login" routerLinkActive="active">Login</a>
         </div>
       </div>
     </div>
