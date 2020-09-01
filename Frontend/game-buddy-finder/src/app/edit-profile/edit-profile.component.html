@@ -4,15 +4,15 @@
       <hr>
       <div class="row">
         <div class="col-md-3">
-          
+          <label class="col-lg-3 control-label">Picture:</label>
+          <img src="{{Profile.profilePicUrl}}" class="img-circle">
         </div>
         <div class="col-md-9 personal-info">
           <h3>Personal info</h3>
 
           <form class="form-horizontal" role="form" id="edit-form" class="form" [formGroup]="editGroup">
-            <div class="text-center">
-              <img src="{{Profile.profilePicUrl}}" class="img-circle">
-              <br><br>
+            <label class="col-lg-3 control-label">Image URL:</label>
+            <div class="col-lg-8">
               <input type="text" class="form-control" placeholder="Image URL" value="{{Profile.profilePicUrl}}" formControlName="profilepicurl">
             </div>
 
