@@ -7,16 +7,14 @@
         <table class="table table-responsive">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">Login Id</th>
-              <th scope="col">User Id</th>
               <th scope="col">Time</th>
+              <th scope="col">Successful?</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let loginAttempt of loginAttempts">
-              <td>{{loginAttempt.loginAttemptId}}</td>
-              <td>{{loginAttempt.userId}}</td>
               <td>{{loginAttempt.attemptTimeUtc}}</td>
+              <td>{{loginAttempt.successful}}</td>
             </tr>
           </tbody>
         </table>
@@ -25,5 +23,3 @@
     </div>
     <br><br><br>
 </body>
-
-
