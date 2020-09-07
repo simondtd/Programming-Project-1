@@ -16,6 +16,12 @@ export class MessagesService {
     return this.httpClient.get(this.messagesUrl + '/to/' + id);
   }
 
+  public validateMessage(message: Message) {
+    if (message.content == null || message.subject == null) return false;
+
+    return true;
+  }
+
   public getMessagesFromUser(id) {
     return this.httpClient.get(this.messagesUrl + '/from/' + id);
   }
