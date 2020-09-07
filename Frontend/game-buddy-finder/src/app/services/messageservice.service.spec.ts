@@ -8,7 +8,7 @@ describe('MessageserviceService', () => {
   let fixture: ComponentFixture<MessageService>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+    TestBed.configureTestingModule({});
       imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
       declarations: [ MessageService ]
     })
@@ -19,7 +19,7 @@ describe('MessageserviceService', () => {
     service = fixture.componentInstance;
     fixture.detectChanges();
     service = TestBed.inject(MessageService);
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MessageService);
