@@ -37,6 +37,26 @@ namespace Game_Buddy_Finder.Migrations
                     b.ToTable("Friends");
                 });
 
+            modelBuilder.Entity("Game_Buddy_Finder.Models.FriendRequest", b =>
+                {
+                    b.Property<int>("FriendRequestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("RequestTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FriendRequestId");
+
+                    b.ToTable("FriendRequests");
+                });
+
             modelBuilder.Entity("Game_Buddy_Finder.Models.LoginAttempt", b =>
                 {
                     b.Property<int>("LoginAttemptId")

@@ -185,6 +185,46 @@ namespace Game_Buddy_Finder.Data
                 context.SaveChanges();
             }
 
+            if (context.FriendRequests.Any() == false)
+            {
+                context.FriendRequests.AddRange(
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 1,
+                        RequestTime = DateTime.UtcNow
+                    },
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 2,
+                        RequestTime = DateTime.UtcNow
+                    },
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 3,
+                        RequestTime = DateTime.UtcNow
+                    },
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 4,
+                        RequestTime = DateTime.UtcNow
+                    },
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 6,
+                        RequestTime = DateTime.UtcNow
+                    }
+                    
+                );
+
+                Console.WriteLine("Seeded Friend Requests");
+                context.SaveChanges();
+            }
+
         }
     }
 }

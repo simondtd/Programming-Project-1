@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Game_Buddy_Finder.Migrations
 {
     [DbContext(typeof(GbfContext))]
-    [Migration("20200907230916_InitialCreate")]
+    [Migration("20200907231833_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,26 @@ namespace Game_Buddy_Finder.Migrations
                     b.HasKey("FriendId");
 
                     b.ToTable("Friends");
+                });
+
+            modelBuilder.Entity("Game_Buddy_Finder.Models.FriendRequest", b =>
+                {
+                    b.Property<int>("FriendRequestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("RequestTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FriendRequestId");
+
+                    b.ToTable("FriendRequests");
                 });
 
             modelBuilder.Entity("Game_Buddy_Finder.Models.LoginAttempt", b =>
