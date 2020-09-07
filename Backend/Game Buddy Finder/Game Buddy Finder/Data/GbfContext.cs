@@ -13,6 +13,7 @@ namespace Game_Buddy_Finder.Data
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Friend> Friends { get; set; }
+        public DbSet<FriendRequest> FriendRequests { get; set; }
 
         //Might use later to enforce rules
         protected override void OnModelCreating(ModelBuilder builder)
