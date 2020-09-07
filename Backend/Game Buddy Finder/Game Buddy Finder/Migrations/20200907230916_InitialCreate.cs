@@ -9,6 +9,21 @@ namespace Game_Buddy_Finder.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Friends",
+                columns: table => new
+                {
+                    FriendId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ConnectionTime = table.Column<DateTime>(nullable: false),
+                    UserId1 = table.Column<int>(nullable: false),
+                    UserId2 = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Friends", x => x.FriendId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LoginAttempts",
                 columns: table => new
                 {
@@ -76,6 +91,9 @@ namespace Game_Buddy_Finder.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Friends");
+
             migrationBuilder.DropTable(
                 name: "LoginAttempts");
 

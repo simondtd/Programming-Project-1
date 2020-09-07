@@ -17,6 +17,26 @@ namespace Game_Buddy_Finder.Migrations
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Game_Buddy_Finder.Models.Friend", b =>
+                {
+                    b.Property<int>("FriendId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ConnectionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserId1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId2")
+                        .HasColumnType("int");
+
+                    b.HasKey("FriendId");
+
+                    b.ToTable("Friends");
+                });
+
             modelBuilder.Entity("Game_Buddy_Finder.Models.LoginAttempt", b =>
                 {
                     b.Property<int>("LoginAttemptId")
