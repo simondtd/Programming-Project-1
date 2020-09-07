@@ -53,7 +53,6 @@ namespace Game_Buddy_Finder
             services.AddTransient<FriendManager>();
             services.AddTransient<FriendRequestManager>();
 
-
             services.AddControllers();
         }
 
