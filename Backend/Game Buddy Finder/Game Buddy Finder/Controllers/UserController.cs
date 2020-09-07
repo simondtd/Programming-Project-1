@@ -28,6 +28,12 @@ namespace Game_Buddy_Finder.Controllers
             return _repo.GetAll();
         }
 
+        [HttpGet("user/{username}")]
+        public IEnumerable<User> GetUsersByUsername(string username)
+        {
+            return _repo.GetUsersByUsername(username);
+        }
+
         [HttpGet("login/{username}/{password}")]
         public int Login(string username, string password)
         {

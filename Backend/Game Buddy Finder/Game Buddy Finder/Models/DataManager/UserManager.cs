@@ -58,6 +58,11 @@ namespace Game_Buddy_Finder.DataManager
             return _context.Users.Find(id);
         }
 
+        public IEnumerable<User> GetUsersByUsername(string username)
+        {
+            return _context.Users.Where(x => x.UserName.ToUpper().Equals(username.ToUpper()));
+        }
+
         public IEnumerable<User> GetAll()
         {
             return _context.Users.ToList();
