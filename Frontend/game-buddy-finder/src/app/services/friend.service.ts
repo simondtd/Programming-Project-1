@@ -11,8 +11,8 @@ export class FriendService {
   constructor(private httpClient: HttpClient) { }
 
   //Takes in UserID of the user to remove as friend
-  public removeFriend(userId) {
-    return this.httpClient.delete(this.friendsUrl + '/' + userId);
+  public removeFriend(friendId) {
+    return this.httpClient.delete(this.friendsUrl + '/' + friendId);
   }
 
   public getFriendsOfUser(id) {
