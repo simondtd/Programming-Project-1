@@ -40,6 +40,25 @@ namespace Game_Buddy_Finder.DataManager
             return _context.FriendRequests.Find(id);
         }
 
+        public int AcceptFriendRequest(int friendRequestId)
+        {
+            FriendRequest request = Get(friendRequestId);
+            Friend friend = new Friend {
+                UserId1 = request.SenderId,
+                UserId2 = request.ReceiverId,
+                ConnectionTime = DateTime.Now,
+            };
+            _context.Friends.Add(friend);
+            Delete(friendRequestId);
+            _context.SaveChanges();
+            return 1;
+        }
+
+        public int RejectFriendRequest(int friendRequestId)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<FriendRequest> GetAll()
         {
             return _context.FriendRequests.ToList();

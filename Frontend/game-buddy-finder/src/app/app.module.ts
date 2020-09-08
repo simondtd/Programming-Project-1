@@ -37,7 +37,6 @@ import { FriendRequestComponent } from './friend-request/friend-request.componen
     MessagePreviewComponent,
     EditProfileComponent,
     FriendRequestComponent,
-
   ],
   imports: [
     BrowserModule,

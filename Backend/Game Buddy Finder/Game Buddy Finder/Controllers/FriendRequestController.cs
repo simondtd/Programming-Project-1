@@ -34,6 +34,18 @@ namespace Game_Buddy_Finder.Controllers
             return _repo.GetFriendRequestsOfUser(userid);
         }
 
+        [HttpGet("accept/{friendRequestId}")]
+        public int AcceptFriendRequest(int friendRequestId)
+        {
+            return _repo.AcceptFriendRequest(friendRequestId);
+        }
+
+        [HttpGet("reject/{friendRequestId}")]
+        public int RejectFriendRequest(int friendRequestId)
+        {
+            return _repo.RejectFriendRequest(friendRequestId);
+        }
+
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public FriendRequest Get(int id)
