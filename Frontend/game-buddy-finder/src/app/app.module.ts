@@ -35,7 +35,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     SendMessageComponent,
     MessagePreviewComponent,
     EditProfileComponent,
-
   ],
   imports: [
     BrowserModule,
