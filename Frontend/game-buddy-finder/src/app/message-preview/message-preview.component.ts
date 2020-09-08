@@ -23,7 +23,7 @@ export class MessagePreviewComponent implements OnInit {
   ngOnInit(): void {
     if (this.user == null) {
       this.messagesService.getMessagesToUser(this.usersService.UserId).subscribe((data) => {
-        this.message = data[0];
+        this.message = this.messagesService.currentMessage;
         console.log(this.message);
 
         this.usersService.getUser(this.message.senderId).subscribe((data) => {
@@ -34,6 +34,9 @@ export class MessagePreviewComponent implements OnInit {
         })
       })
     }
+
+
+
   }
 
 }
