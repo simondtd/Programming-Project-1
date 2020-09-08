@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MessagesService } from '../services/message.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-inbox',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inbox.component.scss']
 })
 export class InboxComponent implements OnInit {
+  messages; 
 
-  constructor() { }
+  constructor(private messagesService: MessagesService, private usersService: UsersService) { }
 
   ngOnInit(): void {
+    this.messagesService.getLoginAttemptsOfUser(this.usersService.UserId).subscribe((data) => {
+    })
   }
 
 }
