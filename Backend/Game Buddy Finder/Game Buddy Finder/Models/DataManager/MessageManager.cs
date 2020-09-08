@@ -32,12 +32,24 @@ namespace Game_Buddy_Finder.DataManager
 
         public IEnumerable<Message> GetMessagesToUser(int toId)
         {
-            return _context.Messages.Where(x => x.ReceiverId == toId);
+            List<Message> messages = _context.Messages.Where(x => x.ReceiverId == toId).ToList();
+            foreach (Message message in messages)
+            {
+                message.SenderUsername = _context.Users.Where(x => x.UserId == message.SenderId).FirstOrDefault().UserName;
+                message.ReceiverUsername = _context.Users.Where(x => x.UserId == message.ReceiverId).FirstOrDefault().UserName;
+            }
+            return messages;
         }
 
         public IEnumerable<Message> GetMessagesFromUser(int fromId)
         {
-            return _context.Messages.Where(x => x.SenderId == fromId);
+            List<Message> messages = _context.Messages.Where(x => x.SenderId == fromId).ToList();
+            foreach (Message message in messages)
+            {
+                message.SenderUsername = _context.Users.Where(x => x.UserId == message.SenderId).FirstOrDefault().UserName;
+                message.ReceiverUsername = _context.Users.Where(x => x.UserId == message.ReceiverId).FirstOrDefault().UserName;
+            }
+            return messages;
         }
 
         public IEnumerable<Message> GetMessagesFromUser(int fromId, int toId)
