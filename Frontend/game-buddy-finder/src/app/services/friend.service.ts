@@ -15,7 +15,7 @@ export class FriendService {
     return this.httpClient.delete(this.friendsUrl + '/' + friendId);
   }
 
-  public getFriendsOfUser(id) {
-    return this.httpClient.get(this.friendsUrl + '/user/' + id)
+  public getFriendsOfUser(userId) {
+    return this.httpClient.get(this.friendsUrl + '/user/' + userId)
   }
 }
