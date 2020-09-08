@@ -19,6 +19,7 @@ import { InboxComponent } from './inbox/inbox.component';
 import { SendMessageComponent } from './send-message/send-message.component';
 import { MessagePreviewComponent } from './message-preview/message-preview.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { FriendRequestComponent } from './friend-request/friend-request.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     SendMessageComponent,
     MessagePreviewComponent,
     EditProfileComponent,
+    FriendRequestComponent,
 
   ],
   imports: [
