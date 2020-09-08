@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Game_Buddy_Finder.Migrations
 {
     [DbContext(typeof(GbfContext))]
-    [Migration("20200907231833_InitialCreate")]
+    [Migration("20200908050359_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
