@@ -31,6 +31,6 @@ public newMessage() {
   var subject = this.messageGroup.get('subject').value;
   var message = this.messageGroup.get('message').value;
 
-  var nMessage = new Message(0, reciever, subject, message);
+  this.messageService.sendMessage
 }
 }

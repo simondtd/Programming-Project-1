@@ -25,32 +25,13 @@
 
                 <div class="table-responsive">
                   <table class="table">
-                    <tbody>
+                    <tbody *ngFor="let message of messages">
                       <tr>
-                        <td class="name"><a href="#">Andi</a></td>
-                        <td class="subject"><a href="#">Hello There!! Wanna Pley??</a></td>
-                        <td class="time">08:30 PM</td>
+                        <td class="name"><a routerLink="/messagepreview" routerLinkActive="active">{{message.senderUsername}}</a></td>
+                        <td class="subject"><a routerLink="/messagepreview" routerLinkActive="active">{{message.subject}}</a></td>
+                        <td class="time">{{message.sendTime}}</td>
                       </tr>
-                      <tr>
-                        <td class="name"><a href="#">Simon</a></td>
-                        <td class="subject"><a href="#">Hey, Want to play COD?</a></td>
-                        <td class="time">09:40 AM</td>
-                      </tr>
-                      <tr>
-                        <td class="name"><a href="#">Nicolas</a></td>
-                        <td class="subject"><a href="#">Do you want to play with me?</a></td>
-                        <td class="time">12:30 PM</td>
-                      </tr>
-                      <tr>
-                        <td class="name"><a href="#">Adama</a></td>
-                        <td class="subject"><a href="#">Wow, That's cool!! i hope we can play together again</a></td>
-                        <td class="time">14:15 PM</td>
-                      </tr>
-                      <tr>
-                        <td class="name"><a href="#">Steven</a></td>
-                        <td class="subject"><a href="#">You are good player!!</a></td>
-                        <td class="time">08:30 PM</td>
-                      </tr>
+                      
                     </tbody>
                   </table>
                 </div>

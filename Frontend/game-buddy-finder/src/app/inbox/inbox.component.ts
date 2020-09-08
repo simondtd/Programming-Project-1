@@ -13,7 +13,8 @@ export class InboxComponent implements OnInit {
   constructor(private messagesService: MessagesService, private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.messagesService.getLoginAttemptsOfUser(this.usersService.UserId).subscribe((data) => {
+    this.messagesService.getMessagesToUser(this.usersService.UserId).subscribe((data) => {
+      this.messages = data;
     })
   }
 
