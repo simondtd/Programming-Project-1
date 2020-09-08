@@ -29,7 +29,7 @@ namespace Game_Buddy_Finder.Controllers
         }
 
         [HttpGet("user/{userid}")]
-        public IEnumerable<Friend> GetFriendsOfUser(int userid)
+        public IEnumerable<User> GetFriendsOfUser(int userid)
         {
             return _repo.GetFriendsOfUser(userid);
         }
