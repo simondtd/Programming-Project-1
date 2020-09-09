@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { FriendRequest } from '../models/friendrequest';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class FriendRequestService {
 
   public acceptFriendRequest(friendRequestid) {
     return this.httpClient.get(this.friendRequestUrl + '/accept/' + friendRequestid);
+  }
+
+  public sendFriendRequest(friendRequest: FriendRequest) {
+    return this.httpClient.post(this.friendRequestUrl, friendRequest);
   }
 
   public rejectFriendRequest(friendRequestid) {
