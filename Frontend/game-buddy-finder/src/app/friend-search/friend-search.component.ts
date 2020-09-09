@@ -32,10 +32,10 @@ export class FriendSearchComponent implements OnInit {
         this.profile = data;
         console.log(this.profile);
       })
-      this.friendService.getFriendsOfUser(this.usersService.UserId).subscribe((data) => {
+      this.friendService.getFriendsOfUser(this.usersService.searchUserId).subscribe((data) => {
         this.friends = data;
       });
-      this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
+      this.interestService.getInterestsOfUser(this.usersService.searchUserId).subscribe((data) => {
         this.interests = data;
       })
     }
