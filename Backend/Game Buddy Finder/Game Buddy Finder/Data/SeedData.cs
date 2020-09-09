@@ -227,38 +227,41 @@ namespace Game_Buddy_Finder.Data
 
             if (context.Interests.Any() == false)
             {
-                context.Interests.AddRange(
-                    new Interest
-                    {
-                        UserId = 1,
-                        Title = "League of Legends"
-                    },
-                    new Interest
-                    {
-                        UserId = 2,
-                        Title = "World of Warcraft"
-                    },
-                    new Interest
-                    {
-                        UserId = 3,
-                        Title = "Valorant"
-                    },
-                    new Interest
-                    {
-                        UserId = 4,
-                        Title = "Counterstrike: Global Offensive"
-                    },
-                    new Interest
-                    {
-                        UserId = 5,
-                        Title = "Star Citizen"
-                    },
-                    new Interest
-                    {
-                        UserId = 6,
-                        Title = "Elite: Dangerous"
-                    }
+                for(int i = 1; i <= 6; i++) {
+                    context.Interests.AddRange(
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "League of Legends"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "World of Warcraft"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "Valorant"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "Counterstrike: Global Offensive"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "Star Citizen"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "Elite: Dangerous"
+                        }
                 );
+                }
+
 
                 Console.WriteLine("Seeded Interests");
                 context.SaveChanges();

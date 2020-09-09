@@ -11,7 +11,7 @@
 
           <div class="span8">
             <hr />
-            <label>Likes To Play: </label><h6 style="display:inline">&nbsp;GAMES</h6>
+            <label>Likes To Play: </label><h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title + ", "}}</h6>
             <hr />
             <label>First Name: </label><h6 style="display:inline">&nbsp;{{ profile ? profile.firstName : ""}}</h6>
             <hr />
