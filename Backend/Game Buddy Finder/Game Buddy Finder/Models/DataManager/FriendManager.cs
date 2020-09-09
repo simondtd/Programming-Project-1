@@ -24,6 +24,12 @@ namespace Game_Buddy_Finder.DataManager
             return item.FriendId;
         }
 
+        public void RemoveFriend(int userId1, int userId2)
+        {
+            _context.Friends.Remove(_context.Friends.Where(x => (x.UserId1 == userId1 && x.UserId2 == userId2) || (x.UserId1 == userId2 && x.UserId2 == userId1)).FirstOrDefault());
+            _context.SaveChanges();
+        }
+
         public int Delete(int id)
         {
             _context.Friends.Remove(_context.Friends.Where(x => x.FriendId == id).FirstOrDefault());
