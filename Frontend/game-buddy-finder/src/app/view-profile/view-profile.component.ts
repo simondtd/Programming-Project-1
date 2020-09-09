@@ -32,4 +32,9 @@ export class ViewProfileComponent implements OnInit {
       });
     }
   }
+  public removeFriend(id,userName) {
+    if(confirm("Are you sure to delete "+userName)) {
+      this.friendService.removeFriend(id);
+    }
+  }
 }
