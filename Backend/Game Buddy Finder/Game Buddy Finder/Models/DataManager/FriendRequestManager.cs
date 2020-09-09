@@ -33,7 +33,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public IEnumerable<FriendRequest> GetFriendRequestsOfUser(int id)
         {
-            List<FriendRequest> friendRequests = _context.FriendRequests.Where(x => x.SenderId == id || x.ReceiverId == id).ToList();
+            List<FriendRequest> friendRequests = _context.FriendRequests.Where(x => x.ReceiverId == id).ToList();
 
             foreach (FriendRequest request in friendRequests)
             {
