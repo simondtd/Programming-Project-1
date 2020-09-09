@@ -12,13 +12,25 @@ export class FriendRequestComponent implements OnInit {
   constructor(private friendRequestService: FriendRequestService, private usersService: UsersService) { }
 
   public accept(id) {
-    this.friendRequestService.acceptFriendRequest(id)
+    this.friendRequestService.acceptFriendRequest(id).subscribe((data) => {
+      console.log(data);
+    })
     console.log(id)
+
+    this.friendRequestService.getFriendRequestsOfUser(this.usersService.UserId).subscribe((data) => {
+      this.friendRequests = data;
+    })
   }
 
   public decline(id) {
-    this.friendRequestService.rejectFriendRequest(id)
+    this.friendRequestService.rejectFriendRequest(id).subscribe((data) => {
+      console.log(data);
+    })
     console.log(id)
+
+    this.friendRequestService.getFriendRequestsOfUser(this.usersService.UserId).subscribe((data) => {
+      this.friendRequests = data;
+    })
   }
 
   ngOnInit(): void {

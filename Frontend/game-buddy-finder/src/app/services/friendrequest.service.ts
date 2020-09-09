@@ -10,7 +10,6 @@ export class FriendRequestService {
 
   constructor(private httpClient: HttpClient) { }
 
-  //Takes in UserID of the user to remove as friend
   public acceptFriendRequest(friendRequestid) {
     return this.httpClient.get(this.friendRequestUrl + '/accept/' + friendRequestid);
   }
