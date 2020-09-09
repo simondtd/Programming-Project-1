@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { ProfilesService } from '../services/profiles.service';
-import { User } from '../models/user'
-import { Profile } from '../models/profile'
-import { Subject } from 'rxjs';
+import { FriendService } from '../services/friend.service'
 
 @Component({
   selector: 'app-view-profile',
@@ -14,9 +12,9 @@ export class ViewProfileComponent implements OnInit {
 
   public user;
   public profile;
+  public friends;
 
-
-  constructor(private usersService: UsersService, private profilesService: ProfilesService) { }
+  constructor(private usersService: UsersService, private profilesService: ProfilesService, private friendService: FriendService) { }
 
   ngOnInit(): void {
     if (this.user == null) {
@@ -27,6 +25,11 @@ export class ViewProfileComponent implements OnInit {
         this.profile = data;
         console.log(this.profile);
       })
+
+      this.friendService.getFriendsOfUser(this.usersService.UserId).subscribe((data) => {
+        this.friends = data;
+        console.log(this.friends);
+      });
     }
   }
 }
