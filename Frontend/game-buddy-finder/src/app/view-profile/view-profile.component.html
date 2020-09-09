@@ -27,10 +27,10 @@
           </div>
           <div>
             <br>
-            <h2>Friend List</h2>
+            <h2>Friends</h2>
             <tbody>
               <tr *ngFor="let friend of friends">
-                <td class='container'>{{friend.userName}}<button type="button" class ='delete' (click)="removeFriend(id,userName)" href="#">Delete</button> </td> 
+                <td class='container'>{{friend.userName}}<button type="button" class ='delete' (click)="removeFriend(this.usersService.UserId,friend.userId, friend.userName)" href="#">Delete</button> </td> 
               </tr>
             </tbody>
           </div>

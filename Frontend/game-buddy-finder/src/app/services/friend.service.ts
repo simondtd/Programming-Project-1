@@ -10,9 +10,8 @@ export class FriendService {
 
   constructor(private httpClient: HttpClient) { }
 
-  
-  public removeFriend(friendId) {
-    return this.httpClient.delete(this.friendsUrl + '/' + friendId);
+  public removeFriend(userId1, userId2) {
+    return this.httpClient.delete(this.friendsUrl + '/' + userId1 + '/' + userId2);
   }
 
   public getFriendsOfUser(userId) {

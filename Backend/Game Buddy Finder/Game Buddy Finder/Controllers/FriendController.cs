@@ -28,6 +28,8 @@ namespace Game_Buddy_Finder.Controllers
             return _repo.GetAll();
         }
 
+
+
         [HttpGet("user/{userid}")]
         public IEnumerable<User> GetFriendsOfUser(int userid)
         {
@@ -43,16 +45,23 @@ namespace Game_Buddy_Finder.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]Friend value)
+        public void Post([FromBody] Friend value)
         {
             _repo.Add(value);
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Friend value)
+        public void Put(int id, [FromBody] Friend value)
         {
             _repo.Update(id, value);
+        }
+
+        // DELETE api/<controller>/5
+        [HttpDelete("{userId1}/{userId2}")]
+        public void Delete(int userId1, int userId2)
+        {
+            _repo.RemoveFriend(userId1, userId2);
         }
 
         // DELETE api/<controller>/5

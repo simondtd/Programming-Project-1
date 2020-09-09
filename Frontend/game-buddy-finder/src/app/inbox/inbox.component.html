@@ -9,27 +9,25 @@
             <div class="col-md-3">
               <h2 class="grid-title"><i class="fa fa-inbox"></i> INBOX</h2>
               <a class="btn btn-block btn-primary" data-toggle="modal" data-target="#compose-modal" routerLink="/sendmessage" routerLinkActive="active"><i class="fa fa-pencil"></i>&nbsp;&nbsp;NEW MESSAGE</a>
-
               <hr>
-
-              <div>
+              <!--<div>
                 <ul class="nav nav-pills nav-stacked">
                   <li><a href=""><i class="fa fa-inbox"></i> Inbox </a></li>
                   <li><a href=""><i class="fa fa-mail-forward"></i> Sent</a></li>
                 </ul>
-              </div>
+              </div>-->
             </div>
             <div class="col-md-9">
               <div class="row">
                 <div class="padding"></div>
-
                 <div class="table-responsive">
                   <table class="table">
                     <tbody *ngFor="let message of messages">
                       <tr>
-                        <td class="name"><a (click)="viewMessage(message)">{{message.senderUsername}}</a></td>
-                        <td class="subject"><a (click)="viewMessage(message)">{{message.subject}}</a></td>
-                        <td class="time">{{message.sendTime}}</td>
+                        <td class="name">{{message.senderUsername}}</td>
+                        <td class="subject">{{message.subject}}</td>
+
+                        <button type="submit" class="btn btn-secondary" (click)="viewMessage(message)">Read</button>
                       </tr>
                       
                     </tbody>

@@ -15,8 +15,8 @@
           <tbody>
             <tr *ngFor="let friendRequest of friendRequests">
               <td>{{friendRequest.senderUsername}}</td>
-              <td><button type="button" class="btn btn-success" (click)="accept(friendRequest.friendRequestId)">Accept</button></td>
-              <td><button type="button" class="btn btn-danger" (click)="decline(friendRequest.friendRequestId)">Decline</button></td>
+              <td><button type="button" class="btn btn-success" (click)="accept(friendRequest.friendRequestId)" routerLink="/home" routerLinkActive="active">Accept</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="decline(friendRequest.friendRequestId)" routerLink="/home" routerLinkActive="active">Decline</button></td>
             </tr>
           </tbody>
         </table>

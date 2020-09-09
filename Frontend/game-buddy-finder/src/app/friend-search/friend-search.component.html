@@ -1,0 +1,44 @@
+<body>
+
+  <div class="bg">
+    <div class="col-md-8 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
+      <div class="container-fluid well span6">
+        <div class="row-fluid">
+          <div class="span2" *ngIf="profile">
+
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <img src="{{profile.profilePicUrl}}">
+                <hr />
+                <h3 class="text-center">{{ user ? user.userName : ""}}</h3>
+              </div>
+              <div class="col-md-6">
+                <label>Likes To Play: </label><h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title + ", "}}</h6>
+                <hr />
+                <label>First Name: </label><h6 style="display:inline">&nbsp;{{ profile ? profile.firstName : ""}}</h6>
+                <hr />
+                <label>Last Name: </label><h6 style="display:inline">&nbsp;{{profile ? profile.lastName : ""}}</h6>
+                <hr />
+                <label>Email: </label><h6 style="display:inline">&nbsp;{{profile ? profile.email : ""}}</h6>
+                <hr />
+                <label>Region: </label><h6 style="display:inline">&nbsp;{{profile ? profile.region : ""}}</h6>
+                <hr />
+                <label>Phone Number: </label><h6 style="display:inline">&nbsp;{{profile ? profile.phoneNumber : ""}}</h6>
+                <hr />
+                <button type="button" class="btn btn-primary" (click)="addFriend(user.userId)">Add Friend</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+</body>

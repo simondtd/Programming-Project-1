@@ -20,6 +20,7 @@ import { SendMessageComponent } from './send-message/send-message.component';
 import { MessagePreviewComponent } from './message-preview/message-preview.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FriendRequestComponent } from './friend-request/friend-request.component';
+import { FriendSearchComponent } from './friend-search/friend-search.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FriendRequestComponent } from './friend-request/friend-request.componen
     MessagePreviewComponent,
     EditProfileComponent,
     FriendRequestComponent,
+    FriendSearchComponent,
   ],
   imports: [
     BrowserModule,
