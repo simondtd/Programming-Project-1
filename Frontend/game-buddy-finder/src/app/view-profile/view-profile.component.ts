@@ -19,7 +19,7 @@ export class ViewProfileComponent implements OnInit {
   public friends;
   public interests;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService, private friendService: FriendService, private interestService: InterestService) { }
+  constructor(public usersService: UsersService, private profilesService: ProfilesService, private friendService: FriendService, private interestService: InterestService) { }
 
   ngOnInit(): void {
     if (this.user == null) {
@@ -38,9 +38,9 @@ export class ViewProfileComponent implements OnInit {
       })
     }
   }
-  public removeFriend(id,userName) {
-    if(confirm("Are you sure to delete "+userName)) {
-      this.friendService.removeFriend(id);
+  public removeFriend(userId1,userId2, username) {
+    if(confirm("Are you sure to delete "+username)) {
+      this.friendService.removeFriend(userId1, userId2);
     }
   }
 }
