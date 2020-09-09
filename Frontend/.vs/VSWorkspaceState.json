@@ -5,12 +5,11 @@
     "\\game-buddy-finder\\src",
     "\\game-buddy-finder\\src\\app",
     "\\game-buddy-finder\\src\\app\\header",
-    "\\game-buddy-finder\\src\\app\\login-attempts",
+    "\\game-buddy-finder\\src\\app\\inbox",
     "\\game-buddy-finder\\src\\app\\message-preview",
-    "\\game-buddy-finder\\src\\app\\send-message",
-    "\\game-buddy-finder\\src\\app\\services",
-    "\\game-buddy-finder\\src\\app\\view-profile"
+    "\\game-buddy-finder\\src\\app\\models",
+    "\\game-buddy-finder\\src\\app\\services"
   ],
-  "SelectedNode": "\\game-buddy-finder\\src\\app\\send-message\\send-message.component.ts",
+  "SelectedNode": "\\game-buddy-finder\\src\\app\\header\\header.component.html",
   "PreviewInSolutionExplorer": false
 }

@@ -12,45 +12,45 @@ using Game_Buddy_Finder.Data;
 namespace Game_Buddy_Finder.Controllers
 {
     [Route("api/[controller]")]
-    public class FriendController : Controller
+    public class InterestController : Controller
     {
-        private readonly FriendManager _repo;
+        private readonly InterestManager _repo;
 
-        public FriendController(FriendManager repo)
+        public InterestController(InterestManager repo)
         {
             _repo = repo;
         }
 
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<Friend> Get()
+        public IEnumerable<Interest> Get()
         {
             return _repo.GetAll();
         }
 
         [HttpGet("user/{userid}")]
-        public IEnumerable<User> GetFriendsOfUser(int userid)
+        public IEnumerable<Interest> GetInterestsOfUser(int userid)
         {
-            return _repo.GetFriendsOfUser(userid);
+            return _repo.GetInterestsOfUser(userid);
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public Friend Get(int id)
+        public Interest Get(int id)
         {
             return _repo.Get(id);
         }
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]Friend value)
+        public void Post([FromBody]Interest value)
         {
             _repo.Add(value);
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Friend value)
+        public void Put(int id, [FromBody]Interest value)
         {
             _repo.Update(id, value);
         }

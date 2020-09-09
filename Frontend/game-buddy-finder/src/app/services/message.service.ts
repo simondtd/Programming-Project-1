@@ -10,6 +10,8 @@ export class MessagesService {
 
   private messagesUrl = environment.baseUrl + 'api/message';
 
+  public currentMessage;
+
   constructor(private httpClient: HttpClient) { }
 
   public getMessagesToUser(id) {
@@ -17,7 +19,7 @@ export class MessagesService {
   }
 
   public validateMessage(message: Message) {
-    if (message.content == null || message.subject == null) return false;
+    if (message.Content == null || message.Subject == null) return false;
 
     return true;
   }
@@ -27,7 +29,7 @@ export class MessagesService {
   }
 
   public sendMessage(message: Message) {
-    return this.httpClient.put<Message>(this.messagesUrl, message).subscribe(data => {
+    return this.httpClient.post<Message>(this.messagesUrl, message).subscribe(data => {
 
     });
   }
