@@ -30,9 +30,26 @@ namespace Game_Buddy_Finder.DataManager
             return id;
         }
 
-        public IEnumerable<Friend> GetFriendsOfUser(int id)
+        public IEnumerable<User> GetFriendsOfUser(int id)
         {
-            return _context.Friends.Where(x => x.UserId1 == id || x.UserId2 == id);
+            List<User> users = new List<User>();
+            List<Friend> friends = _context.Friends.Where(x => x.UserId1 == id || x.UserId2 == id).ToList();
+
+            foreach (Friend friend in friends)
+            {
+                if (users.Where(x => x.UserId == friend.UserId1).Any() == false)
+                {
+                    users.Add(_context.Users.Where(x => x.UserId == friend.UserId1).FirstOrDefault());
+                }
+
+                if (users.Where(x => x.UserId == friend.UserId2).Any() == false)
+                {
+                    users.Add(_context.Users.Where(x => x.UserId == friend.UserId2).FirstOrDefault());
+                }
+            }
+
+
+            return users;
         }
 
         public Friend Get(int id)

@@ -27,8 +27,8 @@
                   <table class="table">
                     <tbody *ngFor="let message of messages">
                       <tr>
-                        <td class="name"><a routerLink="/messagepreview" routerLinkActive="active">{{message.senderUsername}}</a></td>
-                        <td class="subject"><a routerLink="/messagepreview" routerLinkActive="active">{{message.subject}}</a></td>
+                        <td class="name"><a (click)="viewMessage(message)">{{message.senderUsername}}</a></td>
+                        <td class="subject"><a (click)="viewMessage(message)">{{message.subject}}</a></td>
                         <td class="time">{{message.sendTime}}</td>
                       </tr>
                       

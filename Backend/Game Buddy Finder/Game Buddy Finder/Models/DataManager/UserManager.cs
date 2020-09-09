@@ -33,7 +33,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public User Login(string username, string password)
         {
-            User user = _context.Users.Where(x => x.UserName.Equals(username)).FirstOrDefault();
+            User user = _context.Users.Where(x => x.UserName.ToLower().Equals(username.ToLower())).FirstOrDefault();
             if (user != null)
             {
                 bool correctPassword = user.PasswordHash.Equals(password);
