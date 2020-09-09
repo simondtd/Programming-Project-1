@@ -37,12 +37,14 @@ namespace Game_Buddy_Finder.Controllers
         [HttpGet("accept/{friendRequestId}")]
         public int AcceptFriendRequest(int friendRequestId)
         {
+            Console.WriteLine("Accepting...");
             return _repo.AcceptFriendRequest(friendRequestId);
         }
 
         [HttpGet("reject/{friendRequestId}")]
         public int RejectFriendRequest(int friendRequestId)
         {
+            Console.WriteLine("Rejecting...");
             return _repo.RejectFriendRequest(friendRequestId);
         }
 

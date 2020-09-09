@@ -11,7 +11,7 @@
 
           <div class="span8">
             <hr />
-            <label>Likes To Play: </label><h6 style="display:inline">&nbsp;GAMES</h6>
+            <label>Likes To Play: </label><h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title + ", "}}</h6>
             <hr />
             <label>First Name: </label><h6 style="display:inline">&nbsp;{{ profile ? profile.firstName : ""}}</h6>
             <hr />
@@ -24,6 +24,14 @@
             <label>Phone Number: </label><h6 style="display:inline">&nbsp;{{profile ? profile.phoneNumber : ""}}</h6>
             <hr />
             <button type="button" class="btn btn-secondary" routerLink="/editprofile">Edit Profile</button>
+          </div>
+          <div>
+            <h2>Friends</h2>
+            <tbody>
+              <tr *ngFor="let friend of friends">
+                <td>{{friend.userName}}</td>
+              </tr>
+            </tbody>
           </div>
         </div>
       </div>
