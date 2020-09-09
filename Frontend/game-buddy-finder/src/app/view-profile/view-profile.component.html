@@ -25,6 +25,14 @@
             <hr />
             <button type="button" class="btn btn-secondary" routerLink="/editprofile">Edit Profile</button>
           </div>
+          <div>
+            <h2>Friend List</h2>
+            <tbody>
+              <tr *ngFor="let friend of friends">
+                <td>{{friend.userName}}</td>
+              </tr>
+            </tbody>
+          </div>
         </div>
       </div>
     </div>
