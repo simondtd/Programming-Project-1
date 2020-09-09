@@ -13,6 +13,7 @@ import { Profile } from '../models/profile'
 export class UsersService {
   private usersUrl = environment.baseUrl + 'api/user';
   public UserId;
+  public searchUserId;
   public UserIDSubject: Subject<boolean> = new Subject<boolean>();
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -42,6 +43,14 @@ export class UsersService {
     this.UserId = null;
     this.UserIDSubject.next(null);
     this.router.navigate(['/login'])
+  }
+
+  public searchFriend(username) {
+    this.getUserByUsername(username).subscribe((data) => {
+      this.searchUserId == data[0].userId;
+      this.router.navigate(['/friendsearch'])
+      console.log(data);
+    })
   }
 }
 

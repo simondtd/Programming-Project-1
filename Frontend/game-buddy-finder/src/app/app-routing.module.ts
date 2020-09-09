@@ -12,6 +12,7 @@ import { SendMessageComponent } from './send-message/send-message.component';
 import { MessagePreviewComponent } from './message-preview/message-preview.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FriendRequestComponent } from './friend-request/friend-request.component';
+import { FriendSearchComponent } from './friend-search/friend-search.component';
 
 const routes: Routes = [
   { path: 'users', component: UsersComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'messagepreview', component: MessagePreviewComponent },
   { path: 'editprofile', component: EditProfileComponent },
   { path: 'friendrequest', component: FriendRequestComponent },
+  { path: 'friendsearch', component: FriendSearchComponent },
 ];
 
 @NgModule({
