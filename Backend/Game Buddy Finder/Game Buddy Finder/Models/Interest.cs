@@ -7,21 +7,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Game_Buddy_Finder.Models
 {
-    public class FriendRequest
+    public class Interest
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int FriendRequestId { get; set; }
+        public int InterestId { get; set; }
 
         [Required]
-        public DateTime RequestTime { get; set; }
+        public int UserId { get; set; }
 
         [Required]
-        public int SenderId { get; set; }
-
-        [Required]
-        public int ReceiverId { get; set; }
-
-        [NotMapped]
-        public string SenderUsername { get; set; }
+        public string Title { get; set; }
     }
 }

@@ -27,5 +27,11 @@ namespace Game_Buddy_Finder.Models
         [Required]
         public string Content { get; set; }
 
+        [NotMapped]
+        public string SenderUsername { get; set; }
+
+        [NotMapped]
+        public string ReceiverUsername { get; set; }
+
     }
 }

@@ -8,7 +8,7 @@
           <div class="row">
             <div class="col-md-3">
               <h2 class="grid-title"><i class="fa fa-inbox"></i> INBOX</h2>
-              <a class="btn btn-block btn-primary" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i>&nbsp;&nbsp;NEW MESSAGE</a>
+              <a class="btn btn-block btn-primary" data-toggle="modal" data-target="#compose-modal" routerLink="/sendmessage" routerLinkActive="active"><i class="fa fa-pencil"></i>&nbsp;&nbsp;NEW MESSAGE</a>
 
               <hr>
 
@@ -25,32 +25,13 @@
 
                 <div class="table-responsive">
                   <table class="table">
-                    <tbody>
+                    <tbody *ngFor="let message of messages">
                       <tr>
-                        <td class="name"><a href="#">Andi</a></td>
-                        <td class="subject"><a href="#">Hello There!! Wanna Pley??</a></td>
-                        <td class="time">08:30 PM</td>
+                        <td class="name"><a (click)="viewMessage(message)">{{message.senderUsername}}</a></td>
+                        <td class="subject"><a (click)="viewMessage(message)">{{message.subject}}</a></td>
+                        <td class="time">{{message.sendTime}}</td>
                       </tr>
-                      <tr>
-                        <td class="name"><a href="#">Simon</a></td>
-                        <td class="subject"><a href="#">Hey, Want to play COD?</a></td>
-                        <td class="time">09:40 AM</td>
-                      </tr>
-                      <tr>
-                        <td class="name"><a href="#">Nicolas</a></td>
-                        <td class="subject"><a href="#">Do you want to play with me?</a></td>
-                        <td class="time">12:30 PM</td>
-                      </tr>
-                      <tr>
-                        <td class="name"><a href="#">Adama</a></td>
-                        <td class="subject"><a href="#">Wow, That's cool!! i hope we can play together again</a></td>
-                        <td class="time">14:15 PM</td>
-                      </tr>
-                      <tr>
-                        <td class="name"><a href="#">Steven</a></td>
-                        <td class="subject"><a href="#">You are good player!!</a></td>
-                        <td class="time">08:30 PM</td>
-                      </tr>
+                      
                     </tbody>
                   </table>
                 </div>

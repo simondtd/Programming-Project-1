@@ -32,12 +32,39 @@ namespace Game_Buddy_Finder.DataManager
 
         public IEnumerable<FriendRequest> GetFriendRequestsOfUser(int id)
         {
-            return _context.FriendRequests.Where(x => x.SenderId == id || x.ReceiverId == id);
+            List<FriendRequest> friendRequests = _context.FriendRequests.Where(x => x.SenderId == id || x.ReceiverId == id).ToList();
+
+            foreach (FriendRequest request in friendRequests)
+            {
+                request.SenderUsername = _context.Users.Where(x => x.UserId == request.SenderId).FirstOrDefault().UserName;
+            }
+
+            return friendRequests;
         }
 
         public FriendRequest Get(int id)
         {
             return _context.FriendRequests.Find(id);
+        }
+
+        public int AcceptFriendRequest(int friendRequestId)
+        {
+            FriendRequest request = Get(friendRequestId);
+            Friend friend = new Friend
+            {
+                UserId1 = request.SenderId,
+                UserId2 = request.ReceiverId,
+                ConnectionTime = DateTime.Now,
+            };
+            _context.Friends.Add(friend);
+            Delete(friendRequestId);
+            _context.SaveChanges();
+            return 1;
+        }
+
+        public int RejectFriendRequest(int friendRequestId)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<FriendRequest> GetAll()
