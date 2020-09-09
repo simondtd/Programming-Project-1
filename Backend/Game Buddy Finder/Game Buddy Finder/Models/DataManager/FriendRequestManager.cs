@@ -27,12 +27,13 @@ namespace Game_Buddy_Finder.DataManager
         public int Delete(int id)
         {
             _context.FriendRequests.Remove(_context.FriendRequests.Where(x => x.FriendRequestId == id).FirstOrDefault());
+            _context.SaveChanges();
             return id;
         }
 
         public IEnumerable<FriendRequest> GetFriendRequestsOfUser(int id)
         {
-            List<FriendRequest> friendRequests = _context.FriendRequests.Where(x => x.SenderId == id || x.ReceiverId == id).ToList();
+            List<FriendRequest> friendRequests = _context.FriendRequests.Where(x => x.ReceiverId == id).ToList();
 
             foreach (FriendRequest request in friendRequests)
             {
@@ -59,12 +60,15 @@ namespace Game_Buddy_Finder.DataManager
             _context.Friends.Add(friend);
             Delete(friendRequestId);
             _context.SaveChanges();
+            Console.WriteLine("Accepted Request");
             return 1;
         }
 
         public int RejectFriendRequest(int friendRequestId)
         {
-            throw new NotImplementedException();
+            Delete(friendRequestId);
+            Console.WriteLine("Rejected Friend Request");
+            return 1;
         }
 
         public IEnumerable<FriendRequest> GetAll()
