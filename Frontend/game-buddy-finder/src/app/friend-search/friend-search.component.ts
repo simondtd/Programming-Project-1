@@ -15,10 +15,9 @@ export class FriendSearchComponent implements OnInit {
   public user;
   public profile;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService) { }
-
-  ngOnInit(): void {
+  constructor(private usersService: UsersService, private profilesService: ProfilesService) {
     if (this.user == null) {
+      console.log("USER: " + this.usersService.searchUserId)
       this.usersService.getUser(this.usersService.searchUserId).subscribe((data) => {
         this.user = data;
       })
@@ -27,6 +26,10 @@ export class FriendSearchComponent implements OnInit {
         console.log(this.profile);
       })
     }
+   }
+
+  ngOnInit(): void {
+
   }
 
 }
