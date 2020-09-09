@@ -19,32 +19,32 @@ namespace Game_Buddy_Finder.Data
                     new User
                     {
                         UserName = "Nicolas",
-                        PasswordHash = "secure hash"
+                        PasswordHash = "123"
                     },
                     new User
                     {
                         UserName = "Adama",
-                        PasswordHash = "secure hash"
+                        PasswordHash = "123"
                     },
                     new User
                     {
                         UserName = "Steven",
-                        PasswordHash = "secure hash"
+                        PasswordHash = "123"
                     },
                     new User
                     {
                         UserName = "Andi",
-                        PasswordHash = "secure hash"
+                        PasswordHash = "123"
                     },
                     new User
                     {
                         UserName = "Simon",
-                        PasswordHash = "secure hash"
+                        PasswordHash = "123"
                     },
                     new User
                     {
                         UserName = "Shaahin",
-                        PasswordHash = "secure hash"
+                        PasswordHash = "123"
                     }
                     );
 
@@ -143,6 +143,127 @@ namespace Game_Buddy_Finder.Data
                     }
                 );
                 Console.WriteLine("Seeded Messages");
+                context.SaveChanges();
+            }
+
+            if (context.Friends.Any() == false)
+            {
+                context.Friends.AddRange(
+                    new Friend
+                    {
+                        UserId1 = 5,
+                        UserId2 = 1,
+                        ConnectionTime = DateTime.UtcNow
+                    },
+                    new Friend
+                    {
+                        UserId1 = 5,
+                        UserId2 = 2,
+                        ConnectionTime = DateTime.UtcNow
+                    },
+                    new Friend
+                    {
+                        UserId1 = 5,
+                        UserId2 = 3,
+                        ConnectionTime = DateTime.UtcNow
+                    },
+                    new Friend
+                    {
+                        UserId1 = 5,
+                        UserId2 = 4,
+                        ConnectionTime = DateTime.UtcNow
+                    },
+                    new Friend
+                    {
+                        UserId1 = 5,
+                        UserId2 = 6,
+                        ConnectionTime = DateTime.UtcNow
+                    }
+                );
+
+                Console.WriteLine("Seeded Friends");
+                context.SaveChanges();
+            }
+
+            if (context.FriendRequests.Any() == false)
+            {
+                context.FriendRequests.AddRange(
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 1,
+                        RequestTime = DateTime.UtcNow
+                    },
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 2,
+                        RequestTime = DateTime.UtcNow
+                    },
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 3,
+                        RequestTime = DateTime.UtcNow
+                    },
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 4,
+                        RequestTime = DateTime.UtcNow
+                    },
+                    new FriendRequest
+                    {
+                        SenderId = 5,
+                        ReceiverId = 6,
+                        RequestTime = DateTime.UtcNow
+                    }
+
+                );
+
+                Console.WriteLine("Seeded Friend Requests");
+                context.SaveChanges();
+            }
+
+            if (context.Interests.Any() == false)
+            {
+                for(int i = 1; i <= 6; i++) {
+                    context.Interests.AddRange(
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "League of Legends"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "World of Warcraft"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "Valorant"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "Counterstrike: Global Offensive"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "Star Citizen"
+                        },
+                        new Interest
+                        {
+                            UserId = i,
+                            Title = "Elite: Dangerous"
+                        }
+                );
+                }
+
+
+                Console.WriteLine("Seeded Interests");
                 context.SaveChanges();
             }
 

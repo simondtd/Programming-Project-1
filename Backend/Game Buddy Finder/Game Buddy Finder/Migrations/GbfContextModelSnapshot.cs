@@ -17,6 +17,64 @@ namespace Game_Buddy_Finder.Migrations
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Game_Buddy_Finder.Models.Friend", b =>
+                {
+                    b.Property<int>("FriendId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ConnectionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("UserId1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId2")
+                        .HasColumnType("int");
+
+                    b.HasKey("FriendId");
+
+                    b.ToTable("Friends");
+                });
+
+            modelBuilder.Entity("Game_Buddy_Finder.Models.FriendRequest", b =>
+                {
+                    b.Property<int>("FriendRequestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("RequestTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FriendRequestId");
+
+                    b.ToTable("FriendRequests");
+                });
+
+            modelBuilder.Entity("Game_Buddy_Finder.Models.Interest", b =>
+                {
+                    b.Property<int>("InterestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("InterestId");
+
+                    b.ToTable("Interests");
+                });
+
             modelBuilder.Entity("Game_Buddy_Finder.Models.LoginAttempt", b =>
                 {
                     b.Property<int>("LoginAttemptId")

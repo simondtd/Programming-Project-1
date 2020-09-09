@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
-  <form id="message-form" class="form" ng-submit="" [formGroup]="">
+  <form id="message-form" class="form" ng-submit="newMessage()" [formGroup]="messageGroup">
     <div class="col-md-7 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
       <i class="fa fa-envelope"></i><h3 style="display:inline">&nbsp;Compose New Message</h3>
       <br />
@@ -15,30 +15,16 @@
       </div>
 
       <div class="form-row mb-3">
-        <label for="to" class="col-2 col-sm-1 col-form-label">Cc:</label>
-        <div class="col-10 col-sm-11">
-          <input type="email" class="form-control" id="cc" placeholder="Type email" formControlName="cc">
-        </div>
-      </div>
-
-      <div class="form-row mb-3">
-        <label for="to" class="col-2 col-sm-1 col-form-label">Bcc:</label>
-        <div class="col-10 col-sm-11">
-          <input type="email" class="form-control" id="bcc" placeholder="Type email" formControlName="bcc">
-        </div>
-      </div>
-
-      <div class="form-row mb-3">
         <label for="to" class="col-2 col-sm-1 col-form-label">Subject:</label>
         <div class="col-10 col-sm-11">
           <input type="text" class="form-control" id="to" placeholder="Type subject" formControlName="subject">
         </div>
       </div>
 
-      <textarea class="form-control" id="message" name="body" rows="12" placeholder="Type message" formControlName="message" required></textarea><br />
+      <textarea class="form-control" id="message" name="body" rows="12" placeholder="Type message" formControlName="content" required></textarea><br />
 
-      <button type="submit" class="btn btn-success"><i class="fa fa-envelope"></i>&nbsp;Send</button>
-      <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Discard</button>
+      <button type="submit" class="btn btn-success" (click)="newMessage()" routerLink="/inbox" routerLinkActive="active"><i class="fa fa-envelope"></i>&nbsp;Send</button>
+      <button type="submit" class="btn btn-danger" routerLink="/inbox" routerLinkActive="active"><i class="fa fa-trash"></i>&nbsp;Back</button>
     </div>
     </form>
 
