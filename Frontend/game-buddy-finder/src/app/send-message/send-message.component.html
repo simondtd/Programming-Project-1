@@ -23,8 +23,8 @@
 
       <textarea class="form-control" id="message" name="body" rows="12" placeholder="Type message" formControlName="content" required></textarea><br />
 
-      <button type="submit" class="btn btn-success" (click)="newMessage()"><i class="fa fa-envelope"></i>&nbsp;Send</button>
-      <button type="submit" class="btn btn-danger" routerLink="/inbox"><i class="fa fa-trash"></i>&nbsp;Back</button>
+      <button type="submit" class="btn btn-success" (click)="newMessage()" routerLink="/inbox" routerLinkActive="active"><i class="fa fa-envelope"></i>&nbsp;Send</button>
+      <button type="submit" class="btn btn-danger" routerLink="/inbox" routerLinkActive="active"><i class="fa fa-trash"></i>&nbsp;Back</button>
     </div>
     </form>
 
