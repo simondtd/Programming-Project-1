@@ -7,8 +7,9 @@ describe('FriendService', () => {
   let service: FriendService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule.withRoutes([])]
+    });
     service = TestBed.inject(FriendService);
   });
 
