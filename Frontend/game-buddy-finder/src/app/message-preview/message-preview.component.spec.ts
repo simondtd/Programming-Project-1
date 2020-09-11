@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 import { MessagePreviewComponent } from './message-preview.component';
 
 describe('MessagePreviewComponent', () => {
@@ -8,6 +9,7 @@ describe('MessagePreviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
       declarations: [ MessagePreviewComponent ]
     })
     .compileComponents();
