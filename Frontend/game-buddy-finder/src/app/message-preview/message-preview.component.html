@@ -13,7 +13,7 @@
     
 
 
-      <h5>From: {{user.userName}} <span style="color:grey">({{profile.email}})</span><span class="float-right">{{ message ? message.sendTime : ""}}</span></h5>
+      <h5>From: {{user?.userName}} <span style="color:grey">({{profile?.email}})</span><span class="float-right">{{ message ? message.sendTime : ""}}</span></h5>
 
       <div style="width: auto; padding: 10px; border: 1px solid black; margin: 1px;">{{ message ? message.content : ""}}</div>
     </div>
