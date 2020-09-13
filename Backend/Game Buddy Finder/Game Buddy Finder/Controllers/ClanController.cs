@@ -50,14 +50,14 @@ namespace Game_Buddy_Finder.Controllers
         }
 
         // POST api/<controller>
-        [HttpPost("add/{userId}/{clanId}")]
+        [HttpGet("add/{userId}/{clanId}")]
         public void AddUserToClan(int userId, int clanId)
         {
             _repo.AddUserToClan(userId, clanId);
         }
 
         // POST api/<controller>
-        [HttpDelete("delete/{userId}/{clanId}")]
+        [HttpGet("remove/{userId}/{clanId}")]
         public void RemoveUserFromClan(int userId, int clanId)
         {
             _repo.RemoveUserFromClan(userId, clanId);
