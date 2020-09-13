@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Clan } from '../models/clan';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,36 @@ export class ClanService {
 
   public getClansOfUser(userId) {
     return this.httpClient.get(this.clanUrl + '/user/' + userId);
+  }
+
+  public validateClan(clan: Clan) {
+    if (clan.OwnerUserId == null || clan.OwnerUserId == 0) {
+      return false;
+    }
+
+    if (clan.ClanDescription == null || clan.ClanDescription.length == 0) {
+      return false;
+    }
+
+    if (clan.ClanName == null || clan.ClanName.length == 0) {
+      return false;
+    }
+
+    return true;
+  }
+
+  public deleteClan(clanid) {
+    return this.httpClient.delete(this.clanUrl + '/' + clanid);
+  }
+
+  public createClan(clan: Clan) {
+    if (this.validateClan(clan)) {
+      return this.httpClient.post(this.clanUrl, clan);
+    }
+    else {
+      return null;
+    }
+
   }
 
   public getMembersInClan(clanId) {
