@@ -15,6 +15,8 @@ namespace Game_Buddy_Finder.Data
         public DbSet<Friend> Friends { get; set; }
         public DbSet<FriendRequest> FriendRequests { get; set; }
         public DbSet<Interest> Interests { get; set; }
+        public DbSet<Clan> Clans { get; set; }
+        public DbSet<ClanMembership> ClanMemberships { get; set; }
         //Might use later to enforce rules
         protected override void OnModelCreating(ModelBuilder builder)
         {

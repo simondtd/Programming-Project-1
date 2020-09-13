@@ -227,7 +227,8 @@ namespace Game_Buddy_Finder.Data
 
             if (context.Interests.Any() == false)
             {
-                for(int i = 1; i <= 6; i++) {
+                for (int i = 1; i <= 6; i++)
+                {
                     context.Interests.AddRange(
                         new Interest
                         {
@@ -264,6 +265,62 @@ namespace Game_Buddy_Finder.Data
 
 
                 Console.WriteLine("Seeded Interests");
+                context.SaveChanges();
+            }
+
+            if (context.Clans.Any() == false)
+            {
+                context.Clans.AddRange(
+                    new Clan
+                    {
+                        ClanId = 1,
+                        ClanName = "Admin Clan",
+                        ClanDescription = "Admins rise up",
+                        OwnerUserId = 5
+                    }
+
+                );
+
+                Console.WriteLine("Seeded Clans");
+                context.SaveChanges();
+            }
+
+            if (context.ClanMemberships.Any() == false)
+            {
+                context.ClanMemberships.AddRange(
+                    new ClanMembership
+                    {
+                        ClanId = 1,
+                        UserId = 1,
+                    },
+                    new ClanMembership
+                    {
+                        ClanId = 1,
+                        UserId = 2,
+                    },
+                    new ClanMembership
+                    {
+                        ClanId = 1,
+                        UserId = 3,
+                    },
+                    new ClanMembership
+                    {
+                        ClanId = 1,
+                        UserId = 4,
+                    },
+                    new ClanMembership
+                    {
+                        ClanId = 1,
+                        UserId = 5,
+                    },
+                    new ClanMembership
+                    {
+                        ClanId = 1,
+                        UserId = 6,
+                    }
+                );
+
+                Console.WriteLine("Seeded Clan Memberships");
                 context.SaveChanges();
             }
 
