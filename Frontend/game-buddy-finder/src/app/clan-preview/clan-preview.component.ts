@@ -12,28 +12,23 @@ export class ClanPreviewComponent implements OnInit {
 
   public clan;
   public user;
+  public profile;
 
   constructor(private usersService: UsersService, private profilesService: ProfilesService, private clansService: ClanService) { }
 
   ngOnInit(): void {
     if (this.user == null) {
-      this.clansService.getClan(this.usersService.UserId).subscribe((data) => {
+      this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
         this.user = data;
       })
-    }
-/*    if (this.user == null) {
-      this.messagesService.getMessagesToUser(this.usersService.UserId).subscribe((data) => {
-        this.message = this.messagesService.currentMessage;
-        console.log(this.message);
-
-        this.usersService.getUser(this.message.senderId).subscribe((data) => {
-          this.user = data;
-        })
-        this.profilesService.getProfileOfUser(this.message.senderId).subscribe((data) => {
-          this.profile = data;
-        })
+      this.clansService.getClan(this.usersService.UserId).subscribe((data) => {
+        this.clan = data;
+        console.log(this.usersService.UserId);
       })
-    }*/
+      this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {/*this.clanService.OwnerUserId*/
+        this.profile = data;
+      })
+    }
   }
 
 }
