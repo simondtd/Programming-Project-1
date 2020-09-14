@@ -15,6 +15,10 @@ export class ClanService {
     return this.httpClient.get(this.clanUrl + '/user/' + userId);
   }
 
+  public getClan(id) {
+    return this.httpClient.get<Clan>(this.clanUrl + '/' + id);
+  }
+
   public validateClan(clan: Clan) {
     if (clan.OwnerUserId == null || clan.OwnerUserId == 0) {
       return false;

@@ -21,6 +21,7 @@ import { MessagePreviewComponent } from './message-preview/message-preview.compo
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FriendRequestComponent } from './friend-request/friend-request.component';
 import { FriendSearchComponent } from './friend-search/friend-search.component';
+import { ClanPreviewComponent } from './clan-preview/clan-preview.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FriendSearchComponent } from './friend-search/friend-search.component';
     EditProfileComponent,
     FriendRequestComponent,
     FriendSearchComponent,
+    ClanPreviewComponent,
   ],
   imports: [
     BrowserModule,
