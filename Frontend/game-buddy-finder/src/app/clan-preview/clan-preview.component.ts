@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
-import { ProfilesService } from '../services/profiles.service';
 import { ClanService } from '../services/clan.service';
 
 @Component({
@@ -12,23 +11,27 @@ export class ClanPreviewComponent implements OnInit {
 
   public clan;
   public user;
-  public profile;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService, private clansService: ClanService) { }
+  constructor(private usersService: UsersService, private clansService: ClanService) { }
 
   ngOnInit(): void {
     if (this.user == null) {
-      this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
-        this.user = data;
-      })
       this.clansService.getClan(this.usersService.UserId).subscribe((data) => {
         this.clan = data;
         console.log(this.usersService.UserId);
+        console.log(data);
       })
-      this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {/*this.clanService.OwnerUserId*/
-        this.profile = data;
+      this.usersService.getUser(this.usersService.UserId).subscribe((data) => {/*this.clanService.OwnerUserId*/
+        this.user = data;
+        console.log(data);
       })
     }
   }
 
+  public join(userId, clanId) {
+    this.clansService.addUserToClan(userId, clanId).subscribe((data) => {
+      console.log(data);
+    })
+    console.log(userId, clanId)
+  }
 }
