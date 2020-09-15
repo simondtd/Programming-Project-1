@@ -8,12 +8,8 @@ describe('FriendService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-<<<<<<< Updated upstream
-      imports: [HttpClientModule, RouterTestingModule.withRoutes([])]
-=======
       imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
       declarations: [ FriendService ]
->>>>>>> Stashed changes
     });
     service = TestBed.inject(FriendService);
   });

@@ -3,11 +3,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { HeaderComponent } from './header.component';
-<<<<<<< Updated upstream
-import { FormBuilder } from '@angular/forms';
-=======
 import { FormBuilder} from '@angular/forms'
->>>>>>> Stashed changes
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
