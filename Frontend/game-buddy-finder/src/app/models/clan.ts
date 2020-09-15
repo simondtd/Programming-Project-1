@@ -3,7 +3,8 @@ export class Clan {
     public OwnerUserId: number;
     public ClanName: string;
     public ClanDescription: string;
-    constructor(ownerUserId: number, clanName: string, clanDescription: string) {
+  constructor(ClanId: number, ownerUserId: number, clanName: string, clanDescription: string) {
+        this.ClanId = ClanId;
         this.OwnerUserId = ownerUserId;
         this.ClanName = clanName;
         this.ClanDescription = clanDescription;
