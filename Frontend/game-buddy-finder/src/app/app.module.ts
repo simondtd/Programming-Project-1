@@ -21,7 +21,7 @@ import { MessagePreviewComponent } from './message-preview/message-preview.compo
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FriendRequestComponent } from './friend-request/friend-request.component';
 import { FriendSearchComponent } from './friend-search/friend-search.component';
-import { ViewClanComponent } from './view-clan/view-clan.component';
+import { ClanPreviewComponent } from './clan-preview/clan-preview.component';
 import { CreateClanComponent } from './create-clan/create-clan.component';
 
 @NgModule({
@@ -41,8 +41,9 @@ import { CreateClanComponent } from './create-clan/create-clan.component';
     EditProfileComponent,
     FriendRequestComponent,
     FriendSearchComponent,
-    ViewClanComponent,
+    ClanPreviewComponent,
     CreateClanComponent,
+
   ],
   imports: [
     BrowserModule,

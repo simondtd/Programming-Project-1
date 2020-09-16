@@ -15,6 +15,10 @@ export class ClanService {
     return this.httpClient.get(this.clanUrl + '/user/' + userId);
   }
 
+  public getClan(id) { /*clan id*/
+    return this.httpClient.get<Clan>(this.clanUrl + '/' + id);
+  }
+
   public validateClan(clan: Clan) {
     if (clan.OwnerUserId == null || clan.OwnerUserId == 0) {
       return false;
@@ -26,6 +30,14 @@ export class ClanService {
 
     if (clan.ClanName == null || clan.ClanName.length == 0) {
       return false;
+    }
+
+    if (clan.ClanRegion == null || clan.ClanRegion.length == 0) {
+      return false;
+    }
+
+    if (clan.ClanProfilePicUrl == null || clan.ClanProfilePicUrl.length == 0) {
+      clan.ClanProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
     }
 
     return true;
