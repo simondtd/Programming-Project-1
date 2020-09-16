@@ -37,7 +37,9 @@ export class CreateClanComponent implements OnInit {
     console.log(clanname);
     console.log(clandescription);
 
+
     var clan = new Clan(this.usersService.UserId, clanname, clandescription, clanpictureurl, clanregion); 
+
 
     if (this.clansService.validateClan(clan)) {
       this.clansService.createClan(clan);

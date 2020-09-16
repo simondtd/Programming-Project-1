@@ -1,22 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FriendSearchComponent } from './friend-search.component';
 import { HttpClientModule } from '@angular/common/http';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ViewClanComponent } from './view-clan.component';
 
-describe('FriendSearchComponent', () => {
-  let component: FriendSearchComponent;
-  let fixture: ComponentFixture<FriendSearchComponent>;
+describe('ViewClanComponent', () => {
+  let component: ViewClanComponent;
+  let fixture: ComponentFixture<ViewClanComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
-      declarations: [ FriendSearchComponent ]
+      declarations: [ ViewClanComponent ]
+
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FriendSearchComponent);
+    fixture = TestBed.createComponent(ViewClanComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

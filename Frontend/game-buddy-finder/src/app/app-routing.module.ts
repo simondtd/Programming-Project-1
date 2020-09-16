@@ -14,6 +14,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FriendRequestComponent } from './friend-request/friend-request.component';
 import { FriendSearchComponent } from './friend-search/friend-search.component';
 import { ClanPreviewComponent } from './clan-preview/clan-preview.component';
+import { ViewClanComponent } from './view-clan/view-clan.component';
 import { CreateClanComponent } from './create-clan/create-clan.component';
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'friendrequest', component: FriendRequestComponent },
   { path: 'friendsearch', component: FriendSearchComponent },
   { path: 'clanpreview', component: ClanPreviewComponent },
+  { path: 'viewclan', component: ViewClanComponent },
   { path: 'createclan', component: CreateClanComponent },
 ];
 
