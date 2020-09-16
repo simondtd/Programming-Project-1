@@ -15,11 +15,10 @@ export class ViewClanComponent implements OnInit {
   constructor(private clansService: ClanService, public usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.clansService.getClansOfUser(this.usersService.UserId).subscribe((data) => {
+    this.clansService.getClans().subscribe((data) => {
       this.clanView = data;
       console.log(data);
     })
   }
-
 
 }

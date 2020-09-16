@@ -70,4 +70,8 @@ export class ClanService {
   public removeUserFromClan(userId, clanId) {
     return this.httpClient.get(this.clanUrl + '/remove/' + userId + '/' + clanId);
   }
+
+  public getClans() {
+    return this.httpClient.get(this.clanUrl);
+  }
 }

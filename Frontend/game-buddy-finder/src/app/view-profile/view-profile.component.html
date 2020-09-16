@@ -30,7 +30,14 @@
             <h2>Friends</h2>
             <tbody>
               <tr *ngFor="let friend of friends">
-                <td class='container'>{{friend.userName}}<button type="button" class ='delete' (click)="removeFriend(this.usersService.UserId,friend.userId, friend.userName)" href="#">Delete</button> </td> 
+                <td class='container'>{{friend.userName}}<button type="button" class='delete' (click)="removeFriend(this.usersService.UserId,friend.userId, friend.userName)" href="#">Delete</button> </td>
+              </tr>
+            </tbody>
+            <h2>Clans</h2>
+            <tbody>
+              <tr *ngFor="let clan of clanView">
+                <td>{{ clan.clanName }}</td>
+                <td>{{ clan.clanRegion }}</td>
               </tr>
             </tbody>
           </div>
