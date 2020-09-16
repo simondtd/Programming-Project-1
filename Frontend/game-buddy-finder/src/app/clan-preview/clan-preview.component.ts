@@ -16,8 +16,8 @@ export class ClanPreviewComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.user == null) {
-      this.clansService.getClan(1).subscribe((data) => { /*replace 1 with clan id*/
-        this.clan = data;
+      this.clansService.getClan(this.usersService.UserId).subscribe((data) => { /*replace 1 with clan id*/
+        this.clan = this.clansService.currentClan;
         console.log(this.usersService.UserId);
         console.log(data);
       })
