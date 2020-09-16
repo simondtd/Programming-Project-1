@@ -1,7 +1,7 @@
 import { async,ComponentFixture,TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { ClanService } from './clan.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ClanService', () => {
   let service: ClanService;
@@ -16,7 +16,10 @@ describe('ClanService', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClanService);
+    TestBed.configureTestingModule({
+    imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
+    declarations: [ClanService],  
+    });
     service = TestBed.inject(ClanService);
     fixture.detectChanges();
   });

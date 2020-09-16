@@ -17,7 +17,9 @@ export class ViewClanComponent implements OnInit {
   ngOnInit(): void {
     this.clansService.getClansOfUser(this.usersService.UserId).subscribe((data) => {
       this.clanView = data;
+      console.log(this.clanView);
     })
   }
+
 
 }

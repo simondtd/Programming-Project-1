@@ -10,7 +10,7 @@ describe('FriendrequestService', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
-      declarations: [ FriendRequestService ]
+      declarations: [FriendRequestService],
     })
     .compileComponents();
   }));
