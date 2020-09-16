@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClanService } from '../services/clan.service';
 import { UsersService } from '../services/users.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-view-clan',
@@ -10,16 +11,19 @@ import { UsersService } from '../services/users.service';
 
 export class ViewClanComponent implements OnInit {
 
-  public clanView;
+  clanView;
   
-  constructor(private clansService: ClanService, public usersService: UsersService) { }
+  constructor(private clansService: ClanService, private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
-    this.clansService.getClansOfUser(this.usersService.UserId).subscribe((data) => {
+    this.clansService.getClans().subscribe((data) => {
       this.clanView = data;
       console.log(data);
     })
   }
-
+  public viewClan(clan) {
+    this.clansService.currentClan = clan;
+    this.router.navigate(['/clanpreview'])
+  }
 
 }

@@ -3,6 +3,7 @@ import { UsersService } from '../services/users.service';
 import { ProfilesService } from '../services/profiles.service';
 import { FriendService } from '../services/friend.service'
 import { InterestService } from '../services/interest.service';
+import { ClanService } from '../services/clan.service';
 import { User } from '../models/user'
 import { Profile } from '../models/profile'
 import { Subject } from 'rxjs';
@@ -18,8 +19,9 @@ export class ViewProfileComponent implements OnInit {
   public profile;
   public friends;
   public interests;
+  public clanView;
 
-  constructor(public usersService: UsersService, private profilesService: ProfilesService, private friendService: FriendService, private interestService: InterestService) { }
+  constructor(public usersService: UsersService, private clansService: ClanService, private profilesService: ProfilesService, private friendService: FriendService, private interestService: InterestService) { }
 
   ngOnInit(): void {
     if (this.user == null) {
@@ -35,6 +37,10 @@ export class ViewProfileComponent implements OnInit {
       });
       this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
         this.interests = data;
+      })
+      this.clansService.getClansOfUser(this.usersService.UserId).subscribe((data) => {
+        this.clanView = data;
+        console.log(data);
       })
     }
   }

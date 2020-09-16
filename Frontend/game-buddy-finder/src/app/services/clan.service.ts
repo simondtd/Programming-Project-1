@@ -9,6 +9,8 @@ import { Clan } from '../models/clan';
 export class ClanService {
   private clanUrl = environment.baseUrl + 'api/clan';
 
+  public currentClan;
+
   constructor(private httpClient: HttpClient) { }
 
   public getClansOfUser(userId) {
@@ -73,5 +75,9 @@ export class ClanService {
 
   public removeUserFromClan(userId, clanId) {
     return this.httpClient.get(this.clanUrl + '/remove/' + userId + '/' + clanId);
+  }
+
+  public getClans() {
+    return this.httpClient.get(this.clanUrl);
   }
 }
