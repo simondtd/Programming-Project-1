@@ -9,20 +9,12 @@ describe('ClanService', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
-      declarations: [ClanService]
+      imports: [HttpClientModule, RouterTestingModule.withRoutes([])]
     })
     .compileComponents();
-  }));
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-    imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
-    declarations: [ClanService],  
-    });
     service = TestBed.inject(ClanService);
-    fixture.detectChanges();
-  });
+  }));
 
   it('should be created', () => {
     expect(service).toBeTruthy();
