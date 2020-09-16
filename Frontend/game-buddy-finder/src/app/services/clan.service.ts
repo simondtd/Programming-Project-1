@@ -17,10 +17,6 @@ export class ClanService {
     return this.httpClient.get(this.clanUrl + '/user/' + userId);
   }
 
-  public getClans() {
-    return this.httpClient.get(this.clanUrl);
-  }
-
   public getClan(id) { /*clan id*/
     return this.httpClient.get<Clan>(this.clanUrl + '/' + id);
   }

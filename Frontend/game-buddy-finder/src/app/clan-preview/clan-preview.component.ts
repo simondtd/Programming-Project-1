@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { ClanService } from '../services/clan.service';
+import { variable } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-clan-preview',
@@ -10,25 +11,43 @@ import { ClanService } from '../services/clan.service';
 export class ClanPreviewComponent implements OnInit {
 
   public clan;
-  public user;
+  public members;
+  public isMember;
+  public isOwner;
+  public userId;
 
   constructor(private usersService: UsersService, private clansService: ClanService) { }
 
   ngOnInit(): void {
-    if (this.user == null) {
-      this.clansService.getClan(this.usersService.UserId).subscribe((data) => { /*replace 1 with clan id*/
-        this.clan = this.clansService.currentClan;
-        console.log(this.usersService.UserId);
-        console.log(data);
-      })
-      this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
-        this.user = data;
-        console.log(data);
+    if (this.usersService.UserId != null) {
+
+      this.userId = this.usersService.UserId;
+      this.clan = this.clansService.currentClan;
+      this.isOwner = (this.userId == this.clan.ownerUserId);
+
+      this.clansService.getMembersInClan(this.clan.clanId).subscribe((data) => {
+        this.members = data;
+
+        for (var i = 0; i < this.members.length; i++) {
+          var member = this.members[i];
+
+          console.log(member);
+
+          if (member.userId == this.usersService.UserId) {
+            this.isMember = true;
+          }
+        }
+
       })
     }
   }
 
-  public join(userId, clanId) {
+  public deleteClan(clanId) {
+    this.clansService.deleteClan(clanId).subscribe((data) => {});
+  }
+
+  public join(clanId) {
+    var userId = this.usersService.UserId;
     this.clansService.addUserToClan(userId, clanId).subscribe((data) => {
       console.log(data);
     })

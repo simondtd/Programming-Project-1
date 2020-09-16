@@ -9,9 +9,7 @@
     <li class="nav-item" *ngIf="!loggedIn">
       <a class="nav-link" routerLink="/login" routerLinkActive="active">Log In</a>
     </li>
-    <li class="nav-item" *ngIf="loggedIn">
-      <a class="nav-link" (click)="logout()">Log out</a>
-    </li>
+
     <li class="nav-item" *ngIf="loggedIn">
       <a class="nav-link" routerLink="/loginattempts" routerLinkActive="active">Login Attempts</a>
     </li>
@@ -21,21 +19,11 @@
     <li class="nav-item" *ngIf="loggedIn">
       <a class="nav-link" routerLink="/inbox" routerLinkActive="active">Inbox</a>
     </li>
-    <!--<li class="nav-item" *ngIf="loggedIn">
-    <a class="nav-link" routerLink="/messagepreview" routerLinkActive="active">Message Preview</a>
-  </li>-->
     <li class="nav-item" *ngIf="loggedIn">
       <a class="nav-link" routerLink="/friendrequest" routerLinkActive="active">Friend Request</a>
     </li>
     <li class="nav-item" *ngIf="loggedIn">
-      <a class="nav-link" routerLink="/clanpreview" routerLinkActive="active">Clan Preview</a>
-    </li>
-    <li class="nav-item" *ngIf="loggedIn">
-      <a class="nav-link" routerLink="/createclan" routerLinkActive="active">Create Clan</a>
-    </li>
-
-    <li class="nav-item" *ngIf="loggedIn">
-      <a class="nav-link" routerLink="/viewclan" routerLinkActive="active">View Clan</a>
+      <a class="nav-link" routerLink="/viewclan" routerLinkActive="active">Clans</a>
     </li>
 
     <form id="login-form" class="form" ng-submit="search()" [formGroup]="friendSearchGroup">
@@ -43,12 +31,11 @@
         <input class="form-control" type="text" placeholder="Search" aria-label="Search" formControlName="username">
         <button type="button" *ngIf="loggedIn" class="btn btn-primary" (click)="search()">Search</button>
       </li>
-
     </form>
 
-    <!--<li class="nav-item" *ngIf="loggedIn">
-    <a class="nav-link" routerLink="/friendsearch" routerLinkActive="active">Friend Search Result</a>
-  </li>-->
+    <li class="nav-item" *ngIf="loggedIn">
+      <a class="nav-link" (click)="logout()">Log out</a>
+    </li>
   </ul>
 
 </nav>

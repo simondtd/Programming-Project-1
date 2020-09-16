@@ -16,12 +16,34 @@
         <h3>Description</h3>
         <div id="box">{{ clan ? clan.clanDescription : ""}}</div>
         <br />
-        <h3>Numbers of Members</h3>
-        <div id="box">YES</div>
+        <h3>Members: {{members.length}}</h3>
+        <div id="box">
+
+          <div *ngFor="let member of members">
+            {{member.userName}}
+          </div>
+
+          <!--<table class="table table-responsive">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Username</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let member of members">
+                <td>{{member.userName}}</td>
+              </tr>
+            </tbody>
+          </table>-->
+
+        </div>
         <br />
       </div>
-      <div class="col text-center">
-        <button type="button" class="btn btn-primary " (click)="join(user.userId, clan.clanId)" >Join</button>
+      <div class="col text-center" *ngIf="!isMember">
+        <button type="button" class="btn btn-primary " (click)="join(clan.clanId)" >Join</button>
+      </div>
+      <div class="col text-center" *ngIf="isOwner">
+        <button type="button" class="btn btn-danger " (click)="deleteClan(clan.clanId)" >Delete</button>
       </div>
 
     </div>

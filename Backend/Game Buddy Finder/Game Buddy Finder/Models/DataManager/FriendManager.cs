@@ -54,6 +54,9 @@ namespace Game_Buddy_Finder.DataManager
                 }
             }
 
+            for(int i = users.Count - 1; i >= 0; i--) {
+                if (users[i].UserId == id) users.RemoveAt(i);
+            }
 
             return users;
         }

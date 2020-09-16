@@ -68,9 +68,9 @@ namespace Game_Buddy_Finder.Controllers
         public void Post([FromBody] Clan value)
         {
             var clans = Get().ToList();
-            if (!clans.Exists(x => x.ClanName == value.ClanName))
+            if (!clans.Exists(x => x.ClanName == value.ClanName)) {
                 _repo.Add(value);
-
+            }
         }
 
         // PUT api/<controller>/5

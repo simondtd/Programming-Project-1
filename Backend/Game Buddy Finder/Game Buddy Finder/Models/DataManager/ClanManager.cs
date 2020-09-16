@@ -18,15 +18,26 @@ namespace Game_Buddy_Finder.DataManager
 
         public int Add(Clan item)
         {
-            _context.Clans.Add(item);
-            _context.SaveChanges();
+            var clans = GetAll().ToList();
+
+            if (!clans.Exists(x => x.ClanName == item.ClanName))
+            {
+                var clan = _context.Clans.Add(item);
+                _context.SaveChanges();
+
+                AddUserToClan(clan.Entity.OwnerUserId, clan.Entity.ClanId);
+            }
+
             return item.ClanId;
         }
 
         public int Delete(int id)
         {
             //TODO: Delete all clan memberships of that clan
+            _context.ClanMemberships.RemoveRange(_context.ClanMemberships.Where(x => x.ClanId == id));
             _context.Clans.Remove(_context.Clans.Where(x => x.ClanId == id).FirstOrDefault());
+            
+            _context.SaveChanges();
             return id;
         }
 
