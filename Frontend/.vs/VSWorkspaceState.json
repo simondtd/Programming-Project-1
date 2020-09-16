@@ -4,12 +4,11 @@
     "\\game-buddy-finder",
     "\\game-buddy-finder\\src",
     "\\game-buddy-finder\\src\\app",
-    "\\game-buddy-finder\\src\\app\\header",
-    "\\game-buddy-finder\\src\\app\\inbox",
-    "\\game-buddy-finder\\src\\app\\message-preview",
     "\\game-buddy-finder\\src\\app\\models",
-    "\\game-buddy-finder\\src\\app\\services"
+    "\\game-buddy-finder\\src\\app\\register-profile",
+    "\\game-buddy-finder\\src\\app\\services",
+    "\\game-buddy-finder\\src\\app\\view-profile"
   ],
-  "SelectedNode": "\\game-buddy-finder\\src\\app\\header\\header.component.html",
+  "SelectedNode": "\\game-buddy-finder\\src\\app\\models\\interest.ts",
   "PreviewInSolutionExplorer": false
 }
