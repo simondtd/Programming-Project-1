@@ -37,7 +37,9 @@ export class ClanService {
 
   public createClan(clan: Clan) {
     if (this.validateClan(clan)) {
-      return this.httpClient.post(this.clanUrl, clan);
+      return this.httpClient.post<any>(this.clanUrl, clan).subscribe((data) => {
+        
+      });
     }
     else {
       return null;

@@ -275,10 +275,11 @@ namespace Game_Buddy_Finder.Data
                     {
                         ClanId = 1,
                         ClanName = "Admin Clan",
+                        ClanRegion = "Oceania",
+                        ClanProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
                         ClanDescription = "Admins rise up",
                         OwnerUserId = 5
                     }
-
                 );
 
                 Console.WriteLine("Seeded Clans");

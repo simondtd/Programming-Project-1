@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Game_Buddy_Finder.Migrations
 {
     [DbContext(typeof(GbfContext))]
-    [Migration("20200908050359_InitialCreate")]
+    [Migration("20200916041417_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,6 +18,53 @@ namespace Game_Buddy_Finder.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("Game_Buddy_Finder.Models.Clan", b =>
+                {
+                    b.Property<int>("ClanId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClanDescription")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ClanName")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ClanProfilePicUrl")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("ClanRegion")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("OwnerUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClanId");
+
+                    b.ToTable("Clans");
+                });
+
+            modelBuilder.Entity("Game_Buddy_Finder.Models.ClanMembership", b =>
+                {
+                    b.Property<int>("ClanMembershipId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ClanId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClanMembershipId");
+
+                    b.ToTable("ClanMemberships");
+                });
 
             modelBuilder.Entity("Game_Buddy_Finder.Models.Friend", b =>
                 {
@@ -57,6 +104,24 @@ namespace Game_Buddy_Finder.Migrations
                     b.HasKey("FriendRequestId");
 
                     b.ToTable("FriendRequests");
+                });
+
+            modelBuilder.Entity("Game_Buddy_Finder.Models.Interest", b =>
+                {
+                    b.Property<int>("InterestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("InterestId");
+
+                    b.ToTable("Interests");
                 });
 
             modelBuilder.Entity("Game_Buddy_Finder.Models.LoginAttempt", b =>

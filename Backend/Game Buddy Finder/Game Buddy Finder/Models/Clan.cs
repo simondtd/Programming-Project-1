@@ -19,6 +19,12 @@ namespace Game_Buddy_Finder.Models
         public string ClanName { get; set; }
 
         [Required]
+        public string ClanProfilePicUrl { get; set; }
+
+        [Required]
+        public string ClanRegion { get; set; }
+
+        [Required]
         public string ClanDescription { get; set; }
 
         [NotMapped]

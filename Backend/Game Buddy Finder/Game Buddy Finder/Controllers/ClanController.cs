@@ -67,6 +67,7 @@ namespace Game_Buddy_Finder.Controllers
         [HttpPost]
         public void Post([FromBody] Clan value)
         {
+            Console.WriteLine(value);
             _repo.Add(value);
         }
 
