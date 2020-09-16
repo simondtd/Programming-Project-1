@@ -16,7 +16,7 @@ export class ViewClanComponent implements OnInit {
   constructor(private clansService: ClanService, private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
-    this.clansService.getClansOfUser(this.usersService.UserId).subscribe((data) => {
+    this.clansService.getClans().subscribe((data) => {
       this.clanView = data;
       console.log(data);
     })
@@ -25,6 +25,5 @@ export class ViewClanComponent implements OnInit {
     this.clansService.currentClan = clan;
     this.router.navigate(['/clanpreview'])
   }
-
 
 }
