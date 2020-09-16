@@ -1,0 +1,27 @@
+
+<body>
+  <div class="col-md-3 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
+    <div class="row justify-content-center">
+      <div class="">
+        <table class="table table-responsive">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Clan Name</th>
+              <th scope="col">Region</th>
+              <th scope="col">View Clan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let clan of clanView">
+              <td>{{ clanView.clanName }}</td>
+              <td>Australia</td>
+              <td><button type="button" class="btn btn-success">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button type="button" class="btn btn-success" text-align="center">Create Clan</button>
+    </div>
+  </div>
+  <br><br><br>
+</body>
