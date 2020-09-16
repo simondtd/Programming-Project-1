@@ -33,6 +33,9 @@
     <li class="nav-item" *ngIf="loggedIn">
       <a class="nav-link" routerLink="/createclan" routerLinkActive="active">Create Clan</a>
     </li>
+    <li class="nav-item" *ngIf="loggedIn">
+      <a class="nav-link" routerLink="/viewclan" routerLinkActive="active">View Clan</a>
+    </li>
 
     <form id="login-form" class="form" ng-submit="search()" [formGroup]="friendSearchGroup">
       <li class="nav-item" *ngIf="loggedIn">

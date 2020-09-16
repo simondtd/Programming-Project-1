@@ -11,6 +11,7 @@ import { UsersService } from '../services/users.service';
 export class ViewClanComponent implements OnInit {
 
   public clanView;
+  public view;
   
   constructor(private clansService: ClanService, public usersService: UsersService) { }
 

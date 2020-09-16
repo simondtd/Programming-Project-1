@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'friendsearch', component: FriendSearchComponent },
   { path: 'clanpreview', component: ClanPreviewComponent },
   { path: 'createclan', component: CreateClanComponent },
+  { path: 'viewclan', component: ViewClanComponent },
 ];
 
 @NgModule({
