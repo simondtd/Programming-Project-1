@@ -9,8 +9,9 @@ describe('FriendService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
-      declarations: [ FriendService ]
-    });
+    })
+    .compileComponents();
+
     service = TestBed.inject(FriendService);
   });
 
