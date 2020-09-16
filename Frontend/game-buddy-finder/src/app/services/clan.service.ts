@@ -9,6 +9,8 @@ import { Clan } from '../models/clan';
 export class ClanService {
   private clanUrl = environment.baseUrl + 'api/clan';
 
+  public currentClan;
+
   constructor(private httpClient: HttpClient) { }
 
   public getClansOfUser(userId) {

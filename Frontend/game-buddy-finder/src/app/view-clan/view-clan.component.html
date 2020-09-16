@@ -11,11 +11,11 @@
               <th scope="col">View Clan</th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor="let clan of clanView">
+          <tbody *ngFor="let clan of clanView">
+            <tr>
               <td>{{ clan.clanName }}</td>
               <td>{{ clan.clanRegion }}</td>
-              <td><button type="button" class="btn btn-success" routerLink="/clanpreview" routerLinkActive="active">View</button></td>
+              <td><button type="button" class="btn btn-success" (click)="viewClan(clan)">View</button></td>
             </tr>
           </tbody>
         </table>
