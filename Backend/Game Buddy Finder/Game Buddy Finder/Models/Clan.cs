@@ -28,6 +28,6 @@ namespace Game_Buddy_Finder.Models
         public string ClanDescription { get; set; }
 
         [NotMapped]
-        public User Owner { get; set; }
+        public string Owner { get; set; }
     }
 }

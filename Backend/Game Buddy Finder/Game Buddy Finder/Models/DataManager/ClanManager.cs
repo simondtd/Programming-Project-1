@@ -48,7 +48,9 @@ namespace Game_Buddy_Finder.DataManager
 
         public Clan Get(int id)
         {
-            return _context.Clans.Find(id);
+            Clan clan = _context.Clans.Find(id);
+            clan.Owner = _context.Users.Where(x => x.UserId == clan.OwnerUserId).FirstOrDefault().UserName;
+            return clan;
         }
 
         public IEnumerable<Clan> GetClansOfUser(int userId)
@@ -60,6 +62,11 @@ namespace Game_Buddy_Finder.DataManager
             foreach (var membership in memberships)
             {
                 clans.Add(_context.Clans.Where(x => x.ClanId == membership.ClanId).FirstOrDefault());
+            }
+
+            foreach (var clan in clans)
+            {
+                clan.Owner = _context.Users.Where(x => x.UserId == clan.OwnerUserId).FirstOrDefault().UserName;
             }
 
             return clans;
@@ -81,7 +88,14 @@ namespace Game_Buddy_Finder.DataManager
 
         public IEnumerable<Clan> GetAll()
         {
-            return _context.Clans.ToList();
+            var clans = _context.Clans.ToList();
+
+            foreach (var clan in clans)
+            {
+                clan.Owner = _context.Users.Where(x => x.UserId == clan.OwnerUserId).FirstOrDefault().UserName;
+            }
+
+            return clans;
         }
 
         public int Update(int id, Clan item)
