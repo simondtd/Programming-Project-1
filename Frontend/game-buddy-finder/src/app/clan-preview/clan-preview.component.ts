@@ -21,7 +21,7 @@ export class ClanPreviewComponent implements OnInit {
         console.log(this.usersService.UserId);
         console.log(data);
       })
-      this.usersService.getUser(this.usersService.UserId).subscribe((data) => {/*this.clanService.OwnerUserId*/
+      this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
         this.user = data;
         console.log(data);
       })
@@ -34,4 +34,5 @@ export class ClanPreviewComponent implements OnInit {
     })
     console.log(userId, clanId)
   }
+
 }
