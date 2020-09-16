@@ -9,6 +9,37 @@ namespace Game_Buddy_Finder.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "ClanMemberships",
+                columns: table => new
+                {
+                    ClanMembershipId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    ClanId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClanMemberships", x => x.ClanMembershipId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Clans",
+                columns: table => new
+                {
+                    ClanId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    OwnerUserId = table.Column<int>(nullable: false),
+                    ClanName = table.Column<string>(nullable: false),
+                    ClanProfilePicUrl = table.Column<string>(nullable: false),
+                    ClanRegion = table.Column<string>(nullable: false),
+                    ClanDescription = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clans", x => x.ClanId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FriendRequests",
                 columns: table => new
                 {
@@ -36,6 +67,20 @@ namespace Game_Buddy_Finder.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Friends", x => x.FriendId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Interests",
+                columns: table => new
+                {
+                    InterestId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<int>(nullable: false),
+                    Title = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Interests", x => x.InterestId);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,10 +152,19 @@ namespace Game_Buddy_Finder.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "ClanMemberships");
+
+            migrationBuilder.DropTable(
+                name: "Clans");
+
+            migrationBuilder.DropTable(
                 name: "FriendRequests");
 
             migrationBuilder.DropTable(
                 name: "Friends");
+
+            migrationBuilder.DropTable(
+                name: "Interests");
 
             migrationBuilder.DropTable(
                 name: "LoginAttempts");
