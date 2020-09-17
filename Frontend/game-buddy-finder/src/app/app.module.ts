@@ -24,6 +24,7 @@ import { FriendSearchComponent } from './friend-search/friend-search.component';
 import { ClanPreviewComponent } from './clan-preview/clan-preview.component';
 import { ViewClanComponent } from './view-clan/view-clan.component';
 import { CreateClanComponent } from './create-clan/create-clan.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CreateClanComponent } from './create-clan/create-clan.component';
     ClanPreviewComponent,
     ViewClanComponent,
     CreateClanComponent,
+    ChatComponent,
 
   ],
   imports: [

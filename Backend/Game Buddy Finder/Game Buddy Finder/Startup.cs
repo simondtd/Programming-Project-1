@@ -55,6 +55,8 @@ namespace Game_Buddy_Finder
             services.AddTransient<InterestManager>();
             services.AddTransient<ClanManager>();
 
+            services.AddSignalR();
+
             services.AddControllers();
         }
 
@@ -75,6 +77,7 @@ namespace Game_Buddy_Finder
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<ChatHub>("/chatHub");
                 endpoints.MapControllers();
             });
         }
