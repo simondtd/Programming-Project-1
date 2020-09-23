@@ -50,6 +50,50 @@ namespace Game_Buddy_Finder.DataManager
             return posts;
         }
 
+        public IEnumerable<Post> GetPostsForUser(int userId)
+        {
+            //Getting the users friends
+            List<User> users = new List<User>();
+            List<Friend> friends = _context.Friends.Where(x => x.UserId1 == userId || x.UserId2 == userId).ToList();
+
+            foreach (Friend friend in friends)
+            {
+                if (users.Where(x => x.UserId == friend.UserId1).Any() == false)
+                {
+                    users.Add(_context.Users.Where(x => x.UserId == friend.UserId1).FirstOrDefault());
+                }
+
+                if (users.Where(x => x.UserId == friend.UserId2).Any() == false)
+                {
+                    users.Add(_context.Users.Where(x => x.UserId == friend.UserId2).FirstOrDefault());
+                }
+            }
+
+            for (int i = users.Count - 1; i >= 0; i--)
+            {
+                if (users[i].UserId == userId) users.RemoveAt(i);
+            }
+
+
+
+            List<Post> posts = new List<Post>();
+
+            foreach (var post in GetAll())
+            {
+                bool isFriend = (users.Where(x => x.UserId == post.PosterUserId).Count() != 0);
+
+                if (isFriend)
+                {
+                    post.Poster = _context.Users.Find(post.PosterUserId);
+                    post.Comments = _context.Comments.Where(x => x.PostId == post.PostId).OrderByDescending(x => x.PostTime).ToList();
+                    posts.Add(post);
+                }
+
+            }
+
+            return posts;
+        }
+
         public int Delete(int id)
         {
             _context.Comments.RemoveRange(_context.Comments.Where(x => x.CommentId == id).ToList());
@@ -71,7 +115,7 @@ namespace Game_Buddy_Finder.DataManager
         public IEnumerable<Post> GetAll()
         {
             var posts = _context.Posts.ToList();
-            
+
 
             foreach (var post in posts)
             {
