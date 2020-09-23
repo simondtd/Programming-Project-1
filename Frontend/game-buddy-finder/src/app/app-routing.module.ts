@@ -16,7 +16,8 @@ import { FriendSearchComponent } from './friend-search/friend-search.component';
 import { ClanPreviewComponent } from './clan-preview/clan-preview.component';
 import { ViewClanComponent } from './view-clan/view-clan.component';
 import { CreateClanComponent } from './create-clan/create-clan.component';
-import {ChatComponent } from './chat/chat.component';
+import { ChatComponent } from './chat/chat.component';
+import { CommentComponent } from './comment/comment.component';
 
 const routes: Routes = [
   { path: 'users', component: UsersComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'viewclan', component: ViewClanComponent },
   { path: 'createclan', component: CreateClanComponent },
   { path: 'chat', component: ChatComponent },
+  { path: 'comment', component: CommentComponent },
 ];
 
 @NgModule({
