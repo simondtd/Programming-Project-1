@@ -3,14 +3,16 @@ using System;
 using Game_Buddy_Finder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Game_Buddy_Finder.Migrations
 {
     [DbContext(typeof(GbfContext))]
-    partial class GbfContextModelSnapshot : ModelSnapshot
+    [Migration("20200923011253_PostUpdate")]
+    partial class PostUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,30 +64,6 @@ namespace Game_Buddy_Finder.Migrations
                     b.HasKey("ClanMembershipId");
 
                     b.ToTable("ClanMemberships");
-                });
-
-            modelBuilder.Entity("Game_Buddy_Finder.Models.Comment", b =>
-                {
-                    b.Property<int>("CommentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PostTime")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("PosterUserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CommentId");
-
-                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Game_Buddy_Finder.Models.Friend", b =>

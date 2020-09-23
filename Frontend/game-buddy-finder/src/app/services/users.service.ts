@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { User } from '../models/user'
 import { Profile } from '../models/profile'
@@ -13,6 +13,8 @@ import { Profile } from '../models/profile'
 export class UsersService {
   private usersUrl = environment.baseUrl + 'api/user';
   public UserId;
+
+  public CurrentUser: User;
 
   public searchUserId;
 
@@ -36,9 +38,14 @@ export class UsersService {
   }
 
   public authorizeLogin(userId) {
-    this.UserId = userId;
-    this.UserIDSubject.next(userId);
-    this.router.navigate(['/home'])
+
+    this.getUser(userId).subscribe((data) => {
+      this.UserId = userId;
+      this.UserIDSubject.next(userId);
+      this.CurrentUser = data;
+      this.router.navigate(['/home'])
+    });
+
   }
 
   public logout() {

@@ -325,6 +325,51 @@ namespace Game_Buddy_Finder.Data
                 context.SaveChanges();
             }
 
+            if (context.Posts.Any() == false)
+            {
+                context.Posts.AddRange(
+                    new Post
+                    {
+                        PosterUserId = 1,
+                        PostTime = DateTime.Now,
+                        Content = "Hello Post from Nicolas!"
+                    },
+                    new Post
+                    {
+                        PosterUserId = 2,
+                        PostTime = DateTime.Now,
+                        Content = "Hello Post from Adama!"
+                    },
+                    new Post
+                    {
+                        PosterUserId = 3,
+                        PostTime = DateTime.Now,
+                        Content = "Hello Post from Steven!"
+                    },
+                    new Post
+                    {
+                        PosterUserId = 4,
+                        PostTime = DateTime.Now,
+                        Content = "Hello Post from Andi!"
+                    },
+                    new Post
+                    {
+                        PosterUserId = 5,
+                        PostTime = DateTime.Now,
+                        Content = "Hello Post from Simon!"
+                    },
+                    new Post
+                    {
+                        PosterUserId = 6,
+                        PostTime = DateTime.Now,
+                        Content = "Hello Post from Shaahin!"
+                    }
+                );
+
+                Console.WriteLine("Seeded Posts");
+                context.SaveChanges();
+            };
+
         }
     }
 }
