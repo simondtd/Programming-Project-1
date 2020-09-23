@@ -15,16 +15,16 @@
 </div> -->
 
 
-<div class="col-sm-8 my-auto" style="width: 50%;">
+<div class="col-sm-8 my-auto" style="width: 50%; border-radius: 25px;">
 
     <div class="panel-heading top-bar">
         <h3 style="color: black;"> {{this.clansService.currentClan.clanName}}</h3>
     </div>
-    <div class="panel-body msg_container_base">
+    <div class="panel-body msg_container_base" style="border-radius: 15px;">
         <div class="row msg_container base_receive">
             <div class="col-md-10 col-xs-10">
                 <div *ngFor="let message of Messages">
-                    <div class="messages msg_receive">
+                    <div class="messages msg_receive" style="border-radius: 25px;">
                         <p>{{message}}</p>
                     </div>
                     <br>
@@ -36,7 +36,7 @@
 
     <div class="panel-footer">
         <form ng-submit="sendMessage()" [formGroup]="chatGroup">
-            <div class="input-group">
+            <div class="input-group" style="border-radius: 15px;">
                 <input id="btn-input" class="form-control input-sm chat_input"
                 autocomplete="off" placeholder="Write your message here..." formControlName="message"/>
                 <span class="input-group-btn">
