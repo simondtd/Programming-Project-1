@@ -48,17 +48,42 @@ export class PostService {
 
   //Validating to make sure its ... valid
   public validatePost(post: Post) {
-    return false;
+    if (post.posterUserId == null) {
+      return false;
+    }
+
+    if (post.content == null) {
+      return false;
+    }
+
+    return true;
   }
 
   public validateComment(comment: Comment) {
-    return false;
+    if (comment.postId == null) {
+      return false;
+    }
+
+    if (comment.posterUserId == null) {
+      return false;
+    }
+
+    if (comment.content == null) {
+      return false;
+    }
+
+    return true;
   }
 
   //Sending a post to the backend
   public createPost(post: Post) {
     if (this.validatePost(post)) {
-      return this.httpClient.post(this.postUrl, post);
+      return this.httpClient.post(this.postUrl, post).subscribe((data) => {
+        
+      });;
+    }
+    else {
+      return null;
     }
   }
 
