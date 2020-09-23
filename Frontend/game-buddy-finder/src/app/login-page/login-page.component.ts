@@ -29,10 +29,6 @@ export class LoginPageComponent implements OnInit {
     //Get username and Password from logingroup
     var username = this.loginGroup.get('username').value;
     var password = this.loginGroup.get('password').value;
-    
-    //Debug to check, NOT SECURE
-    console.log(username);
-    console.log(password);
 
     //Get the user id
     this.usersService.login(username, password).subscribe((userId) => {
