@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { ProfilesService } from '../services/profiles.service';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,8 +11,9 @@ import { ProfilesService } from '../services/profiles.service';
 export class HomePageComponent implements OnInit {
   public user;
   public profile;
+  public post;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService) {
+  constructor(private usersService: UsersService, private profilesService: ProfilesService, private postService: PostService) {
     console.log(this.usersService.UserId)
    }
 
@@ -21,6 +23,10 @@ export class HomePageComponent implements OnInit {
     })
     this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
       this.profile = data;
+    })
+    this.postService.getPosts().subscribe((data) => {
+      this.post = data;
+      console.log(data);
     })
   }
 

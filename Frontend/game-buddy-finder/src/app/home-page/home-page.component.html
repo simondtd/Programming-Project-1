@@ -52,7 +52,9 @@
           </div>
         </div>
       </div>
-      <div class="card gedf-card">
+
+
+      <div *ngFor="let post of posts" class="card gedf-card">  <!--*ngFor="let friendRequest of friendRequests" -->
         <div class="card-header">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex justify-content-between align-items-center">
@@ -66,17 +68,21 @@
             </div>
           </div>
 
-        </div>
-        <div class="card-body">
-          <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
-          <p class="card-text">
-            Hello there!!
-          </p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-        </div>
+            </div>
+            <div class="card-body">
+              <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+              <p class="card-text">
+                {{ post.content }}
+              </p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+            </div>
       </div>
+
+
+
+
     </div>
   </div>
 </div>
