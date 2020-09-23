@@ -11,7 +11,7 @@ import { PostService } from '../services/post.service';
 export class HomePageComponent implements OnInit {
   public user;
   public profile;
-  public post;
+  public posts;
 
   constructor(private usersService: UsersService, private profilesService: ProfilesService, private postService: PostService) {
     console.log(this.usersService.UserId)
@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit {
       this.profile = data;
     })
     this.postService.getPosts().subscribe((data) => {
-      this.post = data;
+      this.posts = data;
       console.log(data);
     })
   }
