@@ -27,7 +27,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   public Messages: Array<string>;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService, private clansService: ClanService, private formBuilder: FormBuilder) {
+  constructor(private usersService: UsersService, private profilesService: ProfilesService, public clansService: ClanService, private formBuilder: FormBuilder) {
     this.chatGroup = new FormGroup({
       message: new FormControl(),
     });

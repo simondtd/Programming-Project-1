@@ -37,6 +37,10 @@ namespace Game_Buddy_Finder
                 ConnectedUsers.Add(connectionId, username);
                 Clans.Add(connectionId, clanId.ToString());
                 await Groups.AddToGroupAsync(Context.ConnectionId, clanId.ToString());
+
+                var packet = $"{username} has joined the chat";
+
+                await Clients.OthersInGroup(clanId.ToString()).SendAsync("ReceiveMessage", packet);
             }
             else
             {
