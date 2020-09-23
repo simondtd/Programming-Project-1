@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { ProfilesService } from '../services/profiles.service';
 import { PostService } from '../services/post.service';
+import { FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { Post } from '../models/post';
 
 @Component({
   selector: 'app-home-page',
@@ -9,12 +13,16 @@ import { PostService } from '../services/post.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+  public postGroup: FormGroup;
   public user;
   public profile;
   public posts;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService, private postService: PostService) {
+  constructor(private usersService: UsersService, private profilesService: ProfilesService, private postService: PostService, private formBuilder: FormBuilder) {
     console.log(this.usersService.UserId)
+    this.postGroup = new FormGroup({
+      post: new FormControl()
+    });
    }
 
   ngOnInit(): void {
@@ -28,5 +36,11 @@ export class HomePageComponent implements OnInit {
       this.posts = data;
       console.log(data);
     })
+  }
+  public new() {
+    var content = this.postGroup.get('post').value;
+    console.log(post);
+    var post = new Post(this.usersService.UserId, content);  
+    this.postService.createPost(post);
   }
 }

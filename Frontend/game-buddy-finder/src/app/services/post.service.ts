@@ -78,7 +78,12 @@ export class PostService {
   //Sending a post to the backend
   public createPost(post: Post) {
     if (this.validatePost(post)) {
-      return this.httpClient.post(this.postUrl, post);
+      return this.httpClient.post(this.postUrl, post).subscribe((data) => {
+        
+      });;
+    }
+    else {
+      return null;
     }
   }
 
