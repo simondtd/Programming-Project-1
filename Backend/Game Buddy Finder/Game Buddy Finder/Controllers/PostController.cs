@@ -33,6 +33,12 @@ namespace Game_Buddy_Finder.Controllers
             return _repo.GetPostsByUser(userid);
         }
 
+        [HttpGet("for/{userid}")]
+        public IEnumerable<Post> GetPostsForUser(int userid)
+        {
+            return _repo.GetPostsForUser(userid);
+        }
+
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public Post Get(int id)
