@@ -7,9 +7,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Game_Buddy_Finder.Models
 {
-    public class Post
+    public class Comment
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int CommentId { get; set; }
+
+        [Required]
         public int PostId { get; set; }
 
         [Required]
@@ -23,8 +26,5 @@ namespace Game_Buddy_Finder.Models
 
         [NotMapped]
         public User Poster { get; set; }
-
-        [NotMapped]
-        public List<Comment> Comments { get; set; }
     }
 }
