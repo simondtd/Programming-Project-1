@@ -18,7 +18,7 @@ export class ChatComponent implements OnInit {
   connection: SignalR.HubConnection;
   connectionUrl = environment.baseUrl + "chatHub";
 
-  public Messages: Array<ChatMessage>;
+  public Messages: Array<string>;
 
   constructor(private usersService: UsersService, private profilesService: ProfilesService) { }
 
@@ -27,24 +27,24 @@ export class ChatComponent implements OnInit {
       .withUrl(this.connectionUrl)
       .build();
 
-    this.Messages = new Array<ChatMessage>();
+    this.Messages = new Array<string>();
 
-    this.connection.on('ReceiveMessage', (user, msg) => {
-      var message = new ChatMessage(user, msg);
-      console.log(message);
-      
-      this.Messages.push(message);
+    this.connection.on('ReceiveMessage', this.receiveMessage.bind(this));
+    this.connection.on('Init', () => {
+      var user = this.usersService.CurrentUser;
+      console.log(user);
+      this.connection.invoke("JoinChat", 1, user.userName);
     });
-
-    this.connection.start();
-
     
+    this.connection.start();
+  }
+
+  public receiveMessage(message) {
+    this.Messages.push(message);
   }
 
   public sendTestMessage() {
-    var user = this.usersService.CurrentUser.userName;
     var message = "HEY TEST";
-
-    this.connection.invoke('SendMessage', user, message);
+    this.connection.invoke('SendMessage', message);
   }
 }
