@@ -28,7 +28,7 @@ namespace Game_Buddy_Finder.Controllers
         }
 
         [HttpGet("user/{userid}")]
-        public IEnumerable<Post> GetFriendsOfUser(int userid)
+        public IEnumerable<Post> GetPostsByUser(int userid)
         {
             return _repo.GetPostsByUser(userid);
         }
@@ -47,6 +47,13 @@ namespace Game_Buddy_Finder.Controllers
             _repo.Add(value);
         }
 
+        // POST: api/Users
+        [HttpPost("comment")]
+        public void PostComment([FromBody] Comment value)
+        {
+            _repo.AddComment(value);
+        }
+
         // PUT: api/Users/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Post value)
@@ -59,6 +66,13 @@ namespace Game_Buddy_Finder.Controllers
         public void Delete(int id)
         {
             _repo.Delete(id);
+        }
+
+                // DELETE: api/ApiWithActions/5
+        [HttpDelete("comment")]
+        public void DeleteComment(int id)
+        {
+            _repo.RemoveComment(id);
         }
     }
 }

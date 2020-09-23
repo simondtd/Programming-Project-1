@@ -25,6 +25,18 @@ namespace Game_Buddy_Finder.DataManager
             return 1;
         }
 
+        public void AddComment(Comment comment)
+        {
+            _context.Comments.Add(comment);
+            _context.SaveChanges();
+        }
+
+        public void RemoveComment(int commentId)
+        {
+            _context.Comments.Remove(_context.Comments.Where(x => x.CommentId == commentId).FirstOrDefault());
+            _context.SaveChanges();
+        }
+
         public IEnumerable<Post> GetPostsByUser(int userId)
         {
             var posts = _context.Posts.Where(x => x.PosterUserId == userId).ToList();
@@ -32,6 +44,7 @@ namespace Game_Buddy_Finder.DataManager
             foreach (var post in posts)
             {
                 post.Poster = _context.Users.Find(post.PosterUserId);
+                post.Comments = _context.Comments.Where(x => x.PostId == post.PostId).OrderByDescending(x => x.PostTime).ToList();
             }
 
             return posts;
@@ -39,7 +52,10 @@ namespace Game_Buddy_Finder.DataManager
 
         public int Delete(int id)
         {
+            _context.Comments.RemoveRange(_context.Comments.Where(x => x.CommentId == id).ToList());
             _context.Remove(_context.Users.Find(id));
+
+            _context.SaveChanges();
             return 1;
         }
 
@@ -47,6 +63,7 @@ namespace Game_Buddy_Finder.DataManager
         {
             var post = _context.Posts.Find(id);
             post.Poster = _context.Users.Find(post.PosterUserId);
+            post.Comments = _context.Comments.Where(x => x.PostId == id).OrderByDescending(x => x.PostTime).ToList();
             return post;
         }
 
@@ -54,10 +71,12 @@ namespace Game_Buddy_Finder.DataManager
         public IEnumerable<Post> GetAll()
         {
             var posts = _context.Posts.ToList();
+            
 
             foreach (var post in posts)
             {
                 post.Poster = _context.Users.Find(post.PosterUserId);
+                post.Comments = _context.Comments.Where(x => x.PostId == post.PostId).OrderByDescending(x => x.PostTime).ToList();
             }
 
             return posts;
