@@ -38,7 +38,7 @@ export class PostService {
   //Adding a comment to a piost
   public addComment(comment: Comment) {
     if (this.validateComment(comment)) {
-      return this.httpClient.post(this.postUrl + '/comment/', comment);
+      return this.httpClient.post(this.postUrl + '/comment/', comment).subscribe((data) => {});
     }
   }
 
