@@ -4,7 +4,7 @@ export class Comment {
     postId: number;
     posterUserId: number;
     content: string;
-    postTime: VarDate;          //Server Generated
+    postTime;          //Server Generated
     Poster: User;               //Server Generated
 
     public constructor(postId: number, posterUserId: number, content: string) {

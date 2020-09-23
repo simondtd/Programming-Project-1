@@ -11,6 +11,7 @@ import { Post } from '../models/post'
 })
 export class PostService {
   private postUrl = environment.baseUrl + 'api/post';
+  public CurrentPost;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
@@ -37,7 +38,7 @@ export class PostService {
   //Adding a comment to a piost
   public addComment(comment: Comment) {
     if (this.validateComment(comment)) {
-      return this.httpClient.post(this.postUrl + '/comment/', comment);
+      return this.httpClient.post(this.postUrl + '/comment/', comment).subscribe((data) => {});
     }
   }
 
@@ -48,17 +49,42 @@ export class PostService {
 
   //Validating to make sure its ... valid
   public validatePost(post: Post) {
-    return false;
+    if (post.posterUserId == null) {
+      return false;
+    }
+
+    if (post.content == null) {
+      return false;
+    }
+
+    return true;
   }
 
   public validateComment(comment: Comment) {
-    return false;
+    if (comment.postId == null) {
+      return false;
+    }
+
+    if (comment.posterUserId == null) {
+      return false;
+    }
+
+    if (comment.content == null) {
+      return false;
+    }
+
+    return true;
   }
 
   //Sending a post to the backend
   public createPost(post: Post) {
     if (this.validatePost(post)) {
-      return this.httpClient.post(this.postUrl, post);
+      return this.httpClient.post(this.postUrl, post).subscribe((data) => {
+        
+      });;
+    }
+    else {
+      return null;
     }
   }
 

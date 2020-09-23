@@ -20,6 +20,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public int Add(Post item)
         {
+            item.PostTime = DateTime.Now;
             _context.Posts.Add(item);
             _context.SaveChanges();
             return 1;
@@ -27,6 +28,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public void AddComment(Comment comment)
         {
+            comment.PostTime = DateTime.Now;
             _context.Comments.Add(comment);
             _context.SaveChanges();
         }
@@ -43,7 +45,8 @@ namespace Game_Buddy_Finder.DataManager
 
             foreach (var post in posts)
             {
-                post.Poster = _context.Users.Find(post.PosterUserId);
+                post.PosterUser = _context.Users.Find(post.PosterUserId);
+                post.PosterProfile = _context.Profiles.Where(x => x.UserId == post.PosterUserId).FirstOrDefault();
                 post.Comments = _context.Comments.Where(x => x.PostId == post.PostId).OrderByDescending(x => x.PostTime).ToList();
             }
 
@@ -84,7 +87,8 @@ namespace Game_Buddy_Finder.DataManager
 
                 if (isFriend)
                 {
-                    post.Poster = _context.Users.Find(post.PosterUserId);
+                    post.PosterUser = _context.Users.Find(post.PosterUserId);
+                    post.PosterProfile = _context.Profiles.Where(x => x.UserId == post.PosterUserId).FirstOrDefault();
                     post.Comments = _context.Comments.Where(x => x.PostId == post.PostId).OrderByDescending(x => x.PostTime).ToList();
                     posts.Add(post);
                 }
@@ -106,7 +110,8 @@ namespace Game_Buddy_Finder.DataManager
         public Post Get(int id)
         {
             var post = _context.Posts.Find(id);
-            post.Poster = _context.Users.Find(post.PosterUserId);
+            post.PosterUser = _context.Users.Find(post.PosterUserId);
+            post.PosterProfile = _context.Profiles.Where(x => x.UserId == post.PosterUserId).FirstOrDefault();
             post.Comments = _context.Comments.Where(x => x.PostId == id).OrderByDescending(x => x.PostTime).ToList();
             return post;
         }
@@ -119,7 +124,8 @@ namespace Game_Buddy_Finder.DataManager
 
             foreach (var post in posts)
             {
-                post.Poster = _context.Users.Find(post.PosterUserId);
+                post.PosterUser = _context.Users.Find(post.PosterUserId);
+                post.PosterProfile = _context.Profiles.Where(x => x.UserId == post.PosterUserId).FirstOrDefault();
                 post.Comments = _context.Comments.Where(x => x.PostId == post.PostId).OrderByDescending(x => x.PostTime).ToList();
             }
 

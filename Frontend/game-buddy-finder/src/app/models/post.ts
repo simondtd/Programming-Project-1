@@ -5,7 +5,7 @@ export class Post {
     postId: number;                 //Server Generated
     posterUserId: number;
     content: string;
-    postTime: VarDate;              //Server Generated
+    postTime;              //Server Generated
     Poster: User;                   //Server Generated
 
     Comments: Comment[];
