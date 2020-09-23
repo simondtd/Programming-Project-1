@@ -14,7 +14,7 @@ import { ProfilesService } from '../services/profiles.service';
 })
 export class CommentComponent implements OnInit {
   public commentGroup: FormGroup;
-  public comment;
+  public comments;
   public user;
  
   constructor(private usersService: UsersService, private profilesService: ProfilesService, public postService: PostService, private formBuilder: FormBuilder) {
@@ -28,16 +28,15 @@ export class CommentComponent implements OnInit {
       this.user = data;
     })
     this.postService.getPost(this.usersService.UserId).subscribe((data) => {
-      this.comment = data;
+      this.comments = data;
       console.log(data);
     })
   }
 
   public newComment() {
     var content = this.commentGroup.get('comment').value;
-    
     var comment = new Comment(this.postService.CurrentPost.postId, this.usersService.UserId, content);
-    console.log(comment.postId);
+    console.log(comment);
     this.postService.addComment(comment);
     this.commentGroup.reset();
   }

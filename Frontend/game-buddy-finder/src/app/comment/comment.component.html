@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="mr-2">
-                  <img class="rounded-circle" width="45" src="https://images-platform.99static.com//fg0J0q4EZcumZ5FuwMY1z9ZZfLw=/431x0:1552x1116/fit-in/500x500/99designs-contests-attachments/114/114898/attachment_114898323" alt=""> <!--picture-->
+                  <img class="rounded-circle" width="45" src="{{ postService.CurrentPost.posterProfile.profilePicUrl}}" alt=""> <!--picture-->
                 </div>
                 <div class="ml-2">
                   <div class="h5 m-0">{{postService.CurrentPost.posterUser.userName}}</div>
@@ -21,7 +21,7 @@
           <div class="card-body">
             <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
             <p class="card-text">
-              Hello there!!
+              {{postService.CurrentPost.content}}
             </p>
           </div>
           <form class="form-horizontal card-header" role="form" ng-submit="newComment()"  [formGroup]="commentGroup">
@@ -38,18 +38,18 @@
           </form>
         </div>
     </div>
-      <div class="comment-tabs">
+      <div class="comment-tabs" *ngFor="let comment of comments">
         <div class="tab-content">
           <div class="tab-pane active" id="comments-logout">
             <ul class="media-list">
               <li class="media">
                 <a class="pull-left" href="#">
-                  <img class="media-object img-circle" src="https://coursereport-s3-production.global.ssl.fastly.net/rich/rich_files/rich_files/5036/s300/vanilla-coding-logo.png" alt="profile">
+                  <img class="media-object img-circle" src="{{ comment.posterProfile.profilePicUrl}}" alt="profile">
                 </a>
                 <div class="media-body" *ngFor="let com of comment">
                   <div class="well well-lg">
-                    <h4 class="media-heading reviews">{{ com.postId }}</h4>
-                    <p class="media-commnet">{{ com.content }}</p>
+                    <h4 class="media-heading reviews">{{ comment.comments.posterUserId}}</h4>
+                    <p class="media-commnet">{{ comment.comments.content }}</p>
                   </div>
                 </div>
               </li>
