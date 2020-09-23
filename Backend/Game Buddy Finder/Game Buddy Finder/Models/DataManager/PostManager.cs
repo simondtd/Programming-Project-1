@@ -20,6 +20,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public int Add(Post item)
         {
+            item.PostTime = DateTime.Now;
             _context.Posts.Add(item);
             _context.SaveChanges();
             return 1;
@@ -27,6 +28,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public void AddComment(Comment comment)
         {
+            comment.PostTime = DateTime.Now;
             _context.Comments.Add(comment);
             _context.SaveChanges();
         }
