@@ -33,6 +33,7 @@ export class CommentComponent implements OnInit {
     })
   }
 
+
   public newComment() {
     var content = this.commentGroup.get('comment').value;
     var comment = new Comment(this.postService.CurrentPost.postId, this.usersService.UserId, content);

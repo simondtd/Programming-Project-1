@@ -39,6 +39,23 @@ export class HomePageComponent implements OnInit {
     })
   }
 
+  
+  public getCommentsString(post) {
+    var string = "";
+
+    if (post.comments.length == 0) {
+      string = "No Comments"; 
+    }
+    else if (post.comments.length == 1) {
+      string = "1 Comment";
+    }
+    else{
+      string = post.comments.length + " Comments";
+    }
+
+    return string;
+  }
+
   public comment(post) {
     this.postService.CurrentPost = post;
     this.router.navigate(['/comment'])
