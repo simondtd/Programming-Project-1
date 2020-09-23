@@ -22,7 +22,10 @@ namespace Game_Buddy_Finder.Models
         public DateTime PostTime { get; set; }
 
         [NotMapped]
-        public User Poster { get; set; }
+        public User PosterUser { get; set; }
+
+        [NotMapped]
+        public Profile PosterProfile { get; set; }
 
         [NotMapped]
         public List<Comment> Comments { get; set; }
