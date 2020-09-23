@@ -26,6 +26,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   public chatGroup: FormGroup;
 
   public Messages: Array<string>;
+  public OnlineUsers: Array<string>;
 
   constructor(private usersService: UsersService, private profilesService: ProfilesService, public clansService: ClanService, private formBuilder: FormBuilder) {
     this.chatGroup = new FormGroup({
@@ -39,6 +40,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       .build();
 
     this.Messages = new Array<string>();
+    this.OnlineUsers = new Array<string>();
 
     this.connection.on('ReceiveMessage', this.receiveMessage.bind(this));
     this.connection.on('Init', () => {
@@ -52,6 +54,18 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.connection.stop();
+  }
+
+  public addConnection(username) {
+    this.OnlineUsers.push(username);
+  }
+
+  public removeConnection(username) {
+    var index = this.OnlineUsers.findIndex(x => x == username);
+
+    if (index != -1) {
+      this.OnlineUsers.splice(index,1);
+    }
   }
 
   public receiveMessage(message) {

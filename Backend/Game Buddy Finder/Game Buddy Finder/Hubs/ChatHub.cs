@@ -36,9 +36,19 @@ namespace Game_Buddy_Finder
             {
                 ConnectedUsers.Add(connectionId, username);
                 Clans.Add(connectionId, clanId.ToString());
+                await Clients.Group(clanId.ToString()).SendAsync("addConnection", username);
                 await Groups.AddToGroupAsync(Context.ConnectionId, clanId.ToString());
 
                 var packet = $"{username} has joined the chat";
+                foreach(KeyValuePair<string,string> pair in ConnectedUsers) {
+                    var conId = pair.Key;
+                    var name = pair.Value;
+                    var clan = Clans[conId];
+
+                    if (clan.Equals(clanId)) {
+                        await Clients.Caller.SendAsync("addConnection", name);
+                    }
+                }
 
                 await Clients.OthersInGroup(clanId.ToString()).SendAsync("ReceiveMessage", packet);
             }
@@ -59,11 +69,14 @@ namespace Game_Buddy_Finder
         {
             var connectionId = Context.ConnectionId;
             if (ConnectedUsers.ContainsKey(connectionId))
-            {
+            {   
+
+
                 var clanId = Clans[connectionId];
                 var userName = ConnectedUsers[Context.ConnectionId];
                 Console.WriteLine($"User {userName} left");
                 var packet = $"{userName} has left the chat";
+                await Clients.Group(clanId.ToString()).SendAsync("removeConnection", userName);
 
                 await Clients.OthersInGroup(clanId).SendAsync("ReceiveMessage", packet);
 
