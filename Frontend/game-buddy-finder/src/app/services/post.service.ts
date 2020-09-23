@@ -48,11 +48,31 @@ export class PostService {
 
   //Validating to make sure its ... valid
   public validatePost(post: Post) {
-    return false;
+    if (post.posterUserId == null) {
+      return false;
+    }
+
+    if (post.content == null) {
+      return false;
+    }
+
+    return true;
   }
 
   public validateComment(comment: Comment) {
-    return false;
+    if (comment.postId == null) {
+      return false;
+    }
+
+    if (comment.posterUserId == null) {
+      return false;
+    }
+
+    if (comment.content == null) {
+      return false;
+    }
+
+    return true;
   }
 
   //Sending a post to the backend
