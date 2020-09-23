@@ -54,15 +54,15 @@
       </div>
 
 
-      <div *ngFor="let post of posts" class="card gedf-card">  <!--*ngFor="let friendRequest of friendRequests" -->
+      <div *ngFor="let post of posts" class="card gedf-card"> 
         <div class="card-header">
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex justify-content-between align-items-center">
               <div class="mr-2">
-                <img class="rounded-circle" width="45" src="{{profile?.profilePicUrl}}" alt="">
+                <img class="rounded-circle" width="45" src="{{ post.posterProfile.profilePicUrl }}" alt=""> 
               </div>
               <div class="ml-2">
-                <div class="h5 m-0">{{ post.poster.userName }}</div>
+                <div class="h5 m-0">{{ post.posterUser.userName }}</div>
                 <!--<div class="h7 text-muted"></div> should be full name-->
               </div>
             </div>
