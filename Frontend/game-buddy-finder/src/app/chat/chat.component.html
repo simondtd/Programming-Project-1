@@ -1,25 +1,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <div class="col-md-8 my-auto">
+<div class="col-md-8 my-auto">
 
-  <div class="panel-heading top-bar">
-      <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> CLAN NAME</h3>
-  </div>
-  <div class="panel-body msg_container_base">
-      <div class="row msg_container base_receive">
-          <div class="col-md-10 col-xs-10">
-              <div class="messages msg_receive">
-                  <p>MESSAGE</p>
-                  <time>NAME</time>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="panel-footer">
-      <div class="input-group">
-          <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
-          <span class="input-group-btn">
-          <button type="button" class="btn btn-primary btn-sm" id="btn-chat" (click)="sendTestMessage()"><i class="fa fa-send fa-1x" aria-hidden="true"></i></button>
-          </span>
+    <div class="panel-heading top-bar">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> CLAN NAME</h3>
+    </div>
+    <div class="panel-body msg_container_base">
+        <div class="row msg_container base_receive">
+            <div class="col-md-10 col-xs-10">
+                <div *ngFor="let message of Messages" class="messages msg_receive">
+                    <p>{{message}}</p>
+                    <!--<time>NAME</time>-->
+                </div>
+            </div>
         </div>
+    </div>
+
+    <div class="panel-footer">
+        <form ng-submit="sendMessage()" [formGroup]="chatGroup">
+            <div class="input-group">
+                <input id="btn-input" class="form-control input-sm chat_input"
+                autocomplete="off" placeholder="Write your message here..." formControlName="message"/>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary btn-sm" id="btn-chat" (click)="sendMessage()"><i
+                            class="fa fa-send fa-1x" aria-hidden="true"></i></button>
+                </span>
+            </div>
+        </form>
     </div>

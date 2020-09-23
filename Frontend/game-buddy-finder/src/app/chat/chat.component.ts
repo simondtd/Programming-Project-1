@@ -7,6 +7,11 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 import { UsersService } from '../services/users.service';
 import { ProfilesService } from '../services/profiles.service';
+import { ClanService } from '../services/clan.service';
+
+import { FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-chat',
@@ -18,9 +23,15 @@ export class ChatComponent implements OnInit {
   connection: SignalR.HubConnection;
   connectionUrl = environment.baseUrl + "chatHub";
 
+  public chatGroup: FormGroup;
+
   public Messages: Array<string>;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService) { }
+  constructor(private usersService: UsersService, private profilesService: ProfilesService, private clansService: ClanService, private formBuilder: FormBuilder) {
+    this.chatGroup = new FormGroup({
+      message: new FormControl(),
+    });
+  }
 
   ngOnInit(): void {
     this.connection = new SignalR.HubConnectionBuilder()
@@ -33,9 +44,9 @@ export class ChatComponent implements OnInit {
     this.connection.on('Init', () => {
       var user = this.usersService.CurrentUser;
       console.log(user);
-      this.connection.invoke("JoinChat", 1, user.userName);
+      this.connection.invoke("JoinChat", this.clansService.currentClan.clanId, user.userName);
     });
-    
+
     this.connection.start();
   }
 
@@ -43,8 +54,9 @@ export class ChatComponent implements OnInit {
     this.Messages.push(message);
   }
 
-  public sendTestMessage() {
-    var message = "HEY TEST";
+  public sendMessage() {
+    var message = this.chatGroup.get('message').value;
     this.connection.invoke('SendMessage', message);
+    this.chatGroup.reset();
   }
 }

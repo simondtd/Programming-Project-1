@@ -42,6 +42,10 @@ export class ClanPreviewComponent implements OnInit {
     }
   }
 
+  public chatWithClan(clanId) {
+    
+  }
+
   public deleteClan(clanId) {
     this.clansService.deleteClan(clanId).subscribe((data) => {});
   }

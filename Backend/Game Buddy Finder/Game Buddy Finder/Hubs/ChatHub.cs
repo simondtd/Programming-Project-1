@@ -25,7 +25,7 @@ namespace Game_Buddy_Finder
 
             Console.WriteLine(packet);
 
-            await Clients.OthersInGroup(clanId).SendAsync("ReceiveMessage", packet);
+            await Clients.Group(clanId).SendAsync("ReceiveMessage", packet);
         }
 
         public async Task JoinChat(int clanId, string username)
