@@ -37,7 +37,7 @@ body {
   overflow-x:hidden;
 }
 .top-bar {
-  background: #666;
+  background: rgb(255, 255, 255);
   color: white;
   padding: 10px;
   position: relative;
@@ -61,5 +61,5 @@ body {
 }
 .messages > time {
   font-size: 11px;
-  color: #ccc;
+  color: rgb(255, 255, 255);
 }
