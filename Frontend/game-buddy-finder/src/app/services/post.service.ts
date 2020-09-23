@@ -35,27 +35,35 @@ export class PostService {
   }
 
   //Adding a comment to a piost
-  public addCommentToPost(comment: Comment, postId: number) {
-
+  public addComment(comment: Comment) {
+    if (this.validateComment(comment)) {
+      return this.httpClient.post(this.postUrl + '/comment/', comment);
+    }
   }
 
   //Deleting a post
   public deletePost(postId: number) {
-
+    return this.httpClient.delete(this.postUrl + '/' + postId);
   }
 
   //Validating to make sure its ... valid
   public validatePost(post: Post) {
+    return false;
+  }
 
+  public validateComment(comment: Comment) {
+    return false;
   }
 
   //Sending a post to the backend
   public createPost(post: Post) {
-
+    if (this.validatePost(post)) {
+      return this.httpClient.post(this.postUrl, post);
+    }
   }
 
   //Deleting a comment
   public deleteComment(commentId: number) {
-
+    return this.httpClient.delete(this.postUrl + '/comment/' + commentId);
   }
 }
