@@ -42,5 +42,6 @@ export class HomePageComponent implements OnInit {
     console.log(post);
     var post = new Post(this.usersService.UserId, content);  
     this.postService.createPost(post);
+    this.postGroup.reset();
   }
 }
