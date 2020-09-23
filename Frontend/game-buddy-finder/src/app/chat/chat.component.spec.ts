@@ -1,4 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ChatComponent } from './chat.component';
 
@@ -8,7 +11,9 @@ describe('ChatComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatComponent ]
+      imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
+      declarations: [ ChatComponent ],
+      providers: [FormBuilder]
     })
     .compileComponents();
   }));
