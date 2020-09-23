@@ -6,6 +6,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Post } from '../models/post';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-home-page',
@@ -18,7 +19,7 @@ export class HomePageComponent implements OnInit {
   public profile;
   public posts;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService, private postService: PostService, private formBuilder: FormBuilder) {
+  constructor(private usersService: UsersService, private profilesService: ProfilesService, private postService: PostService, private formBuilder: FormBuilder, private router: Router) {
     console.log(this.usersService.UserId)
     this.postGroup = new FormGroup({
       post: new FormControl()
@@ -37,7 +38,12 @@ export class HomePageComponent implements OnInit {
       console.log(data);
     })
   }
-  public new() {
+
+  public comment(post) {
+    this.postService.CurrentPost = post;
+    this.router.navigate(['/comment'])
+  }
+  public newPost() {
     var content = this.postGroup.get('post').value;
     console.log(post);
     var post = new Post(this.usersService.UserId, content);  

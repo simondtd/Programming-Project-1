@@ -11,6 +11,7 @@ import { Post } from '../models/post'
 })
 export class PostService {
   private postUrl = environment.baseUrl + 'api/post';
+  public CurrentPost;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 

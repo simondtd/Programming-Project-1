@@ -17,7 +17,7 @@ export class CommentComponent implements OnInit {
   public comment;
   public user;
  
-  constructor(private usersService: UsersService, private profilesService: ProfilesService, private postService: PostService, private formBuilder: FormBuilder) {
+  constructor(private usersService: UsersService, private profilesService: ProfilesService, public postService: PostService, private formBuilder: FormBuilder) {
     this.commentGroup = new FormGroup({
       comment: new FormControl()
     });
@@ -36,7 +36,7 @@ export class CommentComponent implements OnInit {
   public newComment() {
     var content = this.commentGroup.get('comment').value;
     
-    var comment = new Comment(comment.postId, this.usersService.UserId, content);
+    var comment = new Comment(this.postService.CurrentPost.postId, this.usersService.UserId, content);
     console.log(comment.postId);
     this.postService.addComment(comment);
     this.commentGroup.reset();

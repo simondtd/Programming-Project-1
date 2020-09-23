@@ -12,7 +12,7 @@
                   <img class="rounded-circle" width="45" src="https://images-platform.99static.com//fg0J0q4EZcumZ5FuwMY1z9ZZfLw=/431x0:1552x1116/fit-in/500x500/99designs-contests-attachments/114/114898/attachment_114898323" alt=""> <!--picture-->
                 </div>
                 <div class="ml-2">
-                  <div class="h5 m-0">Someone</div>
+                  <div class="h5 m-0">{{postService.CurrentPost.posterUser.userName}}</div>
                   <!--<div class="h7 text-muted"></div> should be full name-->
                 </div>
               </div>
@@ -24,7 +24,7 @@
               Hello there!!
             </p>
           </div>
-          <form class="form-horizontal card-header" role="form" ng-submit="newComment()" [formGroup]="commentGroup">
+          <form class="form-horizontal card-header" role="form" ng-submit="newComment()"  [formGroup]="commentGroup">
             <div class="form-group">
               <div class="col-sm-5">
                 <textarea class="form-control" rows="2" style="width: 890px;" formControlName="comment"></textarea>
