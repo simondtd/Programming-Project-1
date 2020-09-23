@@ -38,7 +38,7 @@
           </form>
         </div>
     </div>
-      <div class="comment-tabs" *ngFor="let comment of comments">
+      <div class="comment-tabs" *ngFor="let comment of postService.CurrentPost.comments">
         <div class="tab-content">
           <div class="tab-pane active" id="comments-logout">
             <ul class="media-list">
