@@ -32,7 +32,6 @@ public newMessage() {
   var content = this.messageGroup.get('content').value;
 
 
-
     this.usersService.getUserByUsername(reciever).subscribe((data) => {
     var receiverId = data[0].userId
 
