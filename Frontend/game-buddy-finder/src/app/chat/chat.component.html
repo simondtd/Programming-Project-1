@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-sm-2">
 <div class="panel-heading top-bar">
         <h3 class="panel-title">Online</h3>
@@ -12,10 +12,10 @@
        </tr>
    </tbody>
 </table>
-</div>
+</div> -->
 
 
-<div class="col-sm-8 my-auto">
+<div class="col-sm-8 my-auto" style="width: 50%;">
 
     <div class="panel-heading top-bar">
         <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> {{this.clansService.currentClan.clanName}}</h3>
@@ -26,7 +26,6 @@
                 <div *ngFor="let message of Messages">
                     <div class="messages msg_receive">
                         <p>{{message}}</p>
-                        
                     </div>
                     <br>
                 </div>

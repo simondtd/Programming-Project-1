@@ -74,6 +74,9 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   public sendMessage() {
     var message = this.chatGroup.get('message').value;
+    if (message == null || message.length == 0) {
+      return;
+    }
     this.connection.invoke('SendMessage', message);
     this.chatGroup.reset();
   }
