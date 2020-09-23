@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as SignalR from '@aspnet/signalr';
 import { env } from 'process';
 import { ChatMessage } from '../models/chatmessage';
@@ -18,7 +18,7 @@ import { FormControl } from '@angular/forms';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
 
   connection: SignalR.HubConnection;
   connectionUrl = environment.baseUrl + "chatHub";
@@ -27,7 +27,7 @@ export class ChatComponent implements OnInit {
 
   public Messages: Array<string>;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService, private clansService: ClanService, private formBuilder: FormBuilder) {
+  constructor(private usersService: UsersService, private profilesService: ProfilesService, public clansService: ClanService, private formBuilder: FormBuilder) {
     this.chatGroup = new FormGroup({
       message: new FormControl(),
     });
@@ -48,6 +48,10 @@ export class ChatComponent implements OnInit {
     });
 
     this.connection.start();
+  }
+
+  ngOnDestroy(): void {
+    this.connection.stop();
   }
 
   public receiveMessage(message) {

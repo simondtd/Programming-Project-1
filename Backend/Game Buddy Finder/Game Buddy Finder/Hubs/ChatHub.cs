@@ -37,6 +37,10 @@ namespace Game_Buddy_Finder
                 ConnectedUsers.Add(connectionId, username);
                 Clans.Add(connectionId, clanId.ToString());
                 await Groups.AddToGroupAsync(Context.ConnectionId, clanId.ToString());
+
+                var packet = $"{username} has joined the chat";
+
+                await Clients.OthersInGroup(clanId.ToString()).SendAsync("ReceiveMessage", packet);
             }
             else
             {
@@ -45,7 +49,8 @@ namespace Game_Buddy_Finder
             }
         }
 
-        public override async Task OnConnectedAsync() {
+        public override async Task OnConnectedAsync()
+        {
             await Clients.User(Context.UserIdentifier).SendAsync("Init");
             Console.WriteLine(Context.ConnectionId);
         }
@@ -55,20 +60,22 @@ namespace Game_Buddy_Finder
             var connectionId = Context.ConnectionId;
             if (ConnectedUsers.ContainsKey(connectionId))
             {
-                ConnectedUsers.Remove(connectionId);
-                Clans.Remove(connectionId);
                 var clanId = Clans[connectionId];
                 var userName = ConnectedUsers[Context.ConnectionId];
-
+                Console.WriteLine($"User {userName} left");
                 var packet = $"{userName} has left the chat";
-                
+
                 await Clients.OthersInGroup(clanId).SendAsync("ReceiveMessage", packet);
+
+
+                ConnectedUsers.Remove(connectionId);
+                Clans.Remove(connectionId);
 
                 await Groups.RemoveFromGroupAsync(Context.ConnectionId, clanId);
             }
             else
             {
-                Console.WriteLine("User already added, not supposed to happen");
+                Console.WriteLine("User Wasnt added, not supposed to happen");
                 return;
             }
 
