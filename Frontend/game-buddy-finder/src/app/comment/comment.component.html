@@ -46,10 +46,10 @@
                 <a class="pull-left" href="#">
                   <img class="media-object img-circle" src="{{ comment.posterProfile.profilePicUrl}}" alt="profile">
                 </a>
-                <div class="media-body" *ngFor="let com of comment">
+                <div class="media-body">
                   <div class="well well-lg">
-                    <h4 class="media-heading reviews">{{ comment.comments.posterUserId}}</h4>
-                    <p class="media-commnet">{{ comment.comments.content }}</p>
+                    <h4 class="media-heading reviews">{{ comment.posterUser.userName}}</h4>
+                    <p class="media-commnet">{{ comment.content }}</p>
                   </div>
                 </div>
               </li>
