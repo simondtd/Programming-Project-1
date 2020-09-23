@@ -25,6 +25,18 @@ namespace Game_Buddy_Finder.DataManager
             return 1;
         }
 
+        public IEnumerable<Post> GetPostsByUser(int userId)
+        {
+            var posts = _context.Posts.Where(x => x.PosterUserId == userId).ToList();
+
+            foreach (var post in posts)
+            {
+                post.Poster = _context.Users.Find(post.PosterUserId);
+            }
+
+            return posts;
+        }
+
         public int Delete(int id)
         {
             _context.Remove(_context.Users.Find(id));
@@ -43,7 +55,8 @@ namespace Game_Buddy_Finder.DataManager
         {
             var posts = _context.Posts.ToList();
 
-            foreach(var post in posts) {
+            foreach (var post in posts)
+            {
                 post.Poster = _context.Users.Find(post.PosterUserId);
             }
 
