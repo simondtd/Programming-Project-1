@@ -17,18 +17,15 @@ describe('ClanService', () => {
     service = TestBed.inject(ClanService);
   }));
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 
   it('Clan should be valid', () => {
-    let clan = new Clan(0, "Simon", "clan cool", "Simoncool", "Oceania");
-      expect(service.validateClan(clan)).toBeFalse();
+    let clan = new Clan(1, "Simon", "clan cool", "Simoncool", "Oceania");
+      expect(service.validateClan(clan)).toBeTrue();
   });
 
-  it('Clan name should be valid', () => {
-    let clan = new Clan(1, "Steven", "", "", "China");
-      expect(service.validateClan(clan)).toBeTrue();
+  it('Clan name should not be valid', () => {
+    let clan = new Clan(null, null, null, null, null);
+      expect(service.validateClan(clan)).toBeFalse();
   });
 
 

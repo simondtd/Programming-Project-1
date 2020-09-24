@@ -24,7 +24,7 @@ describe('ChatComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('SendMessage', () => {
     expect(component).toBeTruthy();
   });
 });

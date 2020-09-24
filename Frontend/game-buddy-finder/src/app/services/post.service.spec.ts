@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Post } from '../models/post';
-
+import { Comment } from '../models/comment';
 import { PostService } from './post.service';
 
 describe('PostService', () => {
@@ -30,10 +30,13 @@ describe('PostService', () => {
   });
 
   it('Comment should be valid', () => {
-    let comment = new Comment(1);
-    expect(service.validateComment(comment.)).toBeTrue();
+    let comment = new Comment(1,1,"Hello");
+    expect(service.validateComment(comment)).toBeTrue();
   });
 
-
+  it('Comment should not be valid', () => {
+    let comment = new Comment(null,null,null);
+    expect(service.validateComment(comment)).toBeFalse();
+  });
 
 });
