@@ -41,4 +41,12 @@ export class CommentComponent implements OnInit {
     this.postService.addComment(comment);
     this.commentGroup.reset();
   }
+
+  public delete(commentId) {
+    this.postService.deleteComment(commentId);
+    console.log(commentId);
+
+    this.postService.getPosts().subscribe((data) => {
+    })
+  }
 }

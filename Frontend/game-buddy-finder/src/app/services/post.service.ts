@@ -44,7 +44,7 @@ export class PostService {
 
   //Deleting a post
   public deletePost(postId: number) {
-    return this.httpClient.delete(this.postUrl + '/' + postId);
+    return this.httpClient.delete(this.postUrl + '/' + postId).subscribe((data) => {});
   }
 
   //Validating to make sure its ... valid

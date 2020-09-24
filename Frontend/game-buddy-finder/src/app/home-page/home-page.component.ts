@@ -68,13 +68,4 @@ export class HomePageComponent implements OnInit {
     this.postService.createPost(post);
     this.postGroup.reset();
   }
-
-  public delete(commentId) {
-    this.postService.deleteComment(commentId);
-    console.log(commentId);
-
-    this.postService.getPosts().subscribe((data) => {
-      this.posts = data;
-    })
-  }
 }
