@@ -75,7 +75,7 @@ namespace Game_Buddy_Finder.Controllers
         }
 
                 // DELETE: api/ApiWithActions/5
-        [HttpDelete("comment")]
+        [HttpDelete("comment/{id}")]
         public void DeleteComment(int id)
         {
             _repo.RemoveComment(id);
