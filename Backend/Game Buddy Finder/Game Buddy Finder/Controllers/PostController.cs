@@ -78,6 +78,7 @@ namespace Game_Buddy_Finder.Controllers
         [HttpDelete("comment")]
         public void DeleteComment(int id)
         {
+            Console.WriteLine(id);
             _repo.RemoveComment(id);
         }
     }
