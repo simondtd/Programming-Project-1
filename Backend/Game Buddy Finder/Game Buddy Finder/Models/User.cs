@@ -18,5 +18,13 @@ namespace Game_Buddy_Finder.Models
 
         [Required]
         public string PasswordHash { get; set; }
+
+        public UserType UserType { get; set; }
+    }
+
+    public enum UserType
+    {
+        Regular = 0,
+        Admin = 1,
     }
 }
