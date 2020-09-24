@@ -60,12 +60,18 @@ export class HomePageComponent implements OnInit {
     this.postService.CurrentPost = post;
     this.router.navigate(['/comment'])
   }
-
   public newPost() {
     var content = this.postGroup.get('post').value;
     console.log(post);
     var post = new Post(this.usersService.UserId, content);  
     this.postService.createPost(post);
     this.postGroup.reset();
+  }
+
+  public deletePosts(postId) {
+    this.postService.deletePost(postId);
+    console.log(postId);
+    this.postService.getPosts().subscribe((data) => {
+    });
   }
 }
