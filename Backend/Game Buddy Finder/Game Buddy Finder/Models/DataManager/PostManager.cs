@@ -112,7 +112,7 @@ namespace Game_Buddy_Finder.DataManager
         public int Delete(int id)
         {
             _context.Comments.RemoveRange(_context.Comments.Where(x => x.CommentId == id).ToList());
-            _context.Remove(_context.Users.Find(id));
+            _context.Remove(_context.Posts.Find(id));
 
             _context.SaveChanges();
             return 1;
