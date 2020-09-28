@@ -29,4 +29,12 @@ describe('ProfilesService', () => {
     let profile = new Profile(2, "Steven", "Lee", "StevenL", "cc", "cc", "steven@gmail.com", "Indonesia", "", "1");
     expect(service.validateUser(profile)).toBeTrue();
   });
+  it('Profile should not be valid, passwords not equal', () => {
+    let profile = new Profile(15661, "Steven", "Lee", "StevenL", "cc", "cc", "steven@gmail.com", "Indonesia", "", "1");
+    expect(service.validateUser(profile)).toBeFalse();
+  });
+  it('Profile should not be valid, username is 0', () => {
+    let profile = new Profile(2, null, "Lee", "StevenL", "cc", "cc", "steven@gmail.com", "Indonesia", "", "1");
+    expect(service.validateUser(profile)).toBeFalse();
+  });
 });
