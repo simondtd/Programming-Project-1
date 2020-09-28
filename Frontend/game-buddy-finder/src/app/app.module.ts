@@ -26,6 +26,7 @@ import { ViewClanComponent } from './view-clan/view-clan.component';
 import { CreateClanComponent } from './create-clan/create-clan.component';
 import { ChatComponent } from './chat/chat.component';
 import { CommentComponent } from './comment/comment.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CommentComponent } from './comment/comment.component';
     ViewClanComponent,
     CreateClanComponent,
     ChatComponent,
-    CommentComponent
+    CommentComponent,
+    AdminComponent
 
   ],
   imports: [
