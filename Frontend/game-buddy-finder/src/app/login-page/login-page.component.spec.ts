@@ -5,6 +5,7 @@ import { LoginPageComponent } from './login-page.component';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { UsersService } from '../services/users.service';
 
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
@@ -24,7 +25,8 @@ describe('LoginPageComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+
+  it('Login should be valid', () => {
     expect(component).toBeTruthy();
   });
 });
