@@ -32,7 +32,6 @@ describe('HomePageComponent', () => {
 
   it('should check id and comment is zero', () => {
     let post = new Post(null,null);
-    post.comments = new Array<Comment>(0); //Set comment length to 0
     expect(component.getCommentsString(post)).toBeFalse;
   });
 
