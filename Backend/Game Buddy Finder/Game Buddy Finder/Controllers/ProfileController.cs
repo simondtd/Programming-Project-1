@@ -44,11 +44,11 @@ namespace Game_Buddy_Finder.Controllers
         [HttpPost]
         public void Post([FromBody] RegisterModel value)
         {
-            Console.WriteLine(value.PhoneNumber);
             User user = new User()
             {
                 UserName = value.UserName,
-                PasswordHash = value.PasswordHash
+                PasswordHash = value.PasswordHash,
+                UserType = UserType.Regular
             };
             
             int uid = _repo.AddUser(user);

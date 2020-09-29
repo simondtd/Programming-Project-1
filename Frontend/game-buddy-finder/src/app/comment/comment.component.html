@@ -50,6 +50,7 @@
                   <div class="well well-lg">
                     <h4 class="media-heading reviews">{{ comment?.posterUser.userName}}</h4>
                     <p class="media-commnet">{{ comment.content }}</p>
+                    <button type="button" class="btn btn-danger" (click)="delete(comment.commentId)" *ngIf="comment.posterUserId == usersService.UserId">Delete</button>
                   </div>
                 </div>
               </li>

@@ -52,10 +52,11 @@
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex justify-content-between align-items-center">
               <div class="mr-2">
-                <img class="rounded-circle" width="45" src="{{ post.posterProfile.profilePicUrl }}" alt=""> 
+                <img class="rounded-circle" width="45" src="{{ post.posterProfile.profilePicUrl }}" alt="">
               </div>
               <div class="ml-2">
                 <div class="h5 m-0">{{ post.posterUser.userName }}</div>
+                <button type="button" class="btn btn-danger"  (click)="deletePosts(post.postId)" *ngIf="post.posterUserId == usersService.UserId">Delete</button>
                 <!--<div class="h7 text-muted"></div> should be full name-->
               </div>
             </div>
@@ -69,8 +70,9 @@
               </p>
             </div>
             <div class="card-footer" (click)="comment(post)">
-              <a class="card-link"><i class="fa fa-comment"></i> Comment</a>
+              <a class="card-link"><i class="fa fa-comment"></i>{{getCommentsString(post)}}</a>
             </div>
+            
       </div>
 
     </div>

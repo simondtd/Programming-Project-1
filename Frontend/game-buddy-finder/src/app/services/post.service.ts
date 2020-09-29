@@ -38,13 +38,13 @@ export class PostService {
   //Adding a comment to a piost
   public addComment(comment: Comment) {
     if (this.validateComment(comment)) {
-      return this.httpClient.post(this.postUrl + '/comment/', comment);
+      return this.httpClient.post(this.postUrl + '/comment/', comment).subscribe((data) => {});
     }
   }
 
   //Deleting a post
   public deletePost(postId: number) {
-    return this.httpClient.delete(this.postUrl + '/' + postId);
+    return this.httpClient.delete(this.postUrl + '/' + postId).subscribe((data) => {});
   }
 
   //Validating to make sure its ... valid
@@ -90,6 +90,6 @@ export class PostService {
 
   //Deleting a comment
   public deleteComment(commentId: number) {
-    return this.httpClient.delete(this.postUrl + '/comment/' + commentId);
+    return this.httpClient.delete(this.postUrl + '/comment/' + commentId).subscribe((data) => {});
   }
 }

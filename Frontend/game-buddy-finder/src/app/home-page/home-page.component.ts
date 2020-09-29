@@ -39,6 +39,23 @@ export class HomePageComponent implements OnInit {
     })
   }
 
+  
+  public getCommentsString(post) {
+    var string = "";
+
+    if (post.comments.length == 0) {
+      string = "No Comments"; 
+    }
+    else if (post.comments.length == 1) {
+      string = "1 Comment";
+    }
+    else{
+      string = post.comments.length + " Comments";
+    }
+
+    return string;
+  }
+
   public comment(post) {
     this.postService.CurrentPost = post;
     this.router.navigate(['/comment'])
@@ -49,5 +66,12 @@ export class HomePageComponent implements OnInit {
     var post = new Post(this.usersService.UserId, content);  
     this.postService.createPost(post);
     this.postGroup.reset();
+  }
+
+  public deletePosts(postId) {
+    this.postService.deletePost(postId);
+    console.log(postId);
+    this.postService.getPosts().subscribe((data) => {
+    });
   }
 }

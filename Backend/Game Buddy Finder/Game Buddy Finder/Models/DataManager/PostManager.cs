@@ -52,7 +52,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public IEnumerable<Post> GetPostsByUser(int userId)
         {
-            var posts = _context.Posts.Where(x => x.PosterUserId == userId).ToList();
+            var posts = _context.Posts.Where(x => x.PosterUserId == userId).OrderByDescending(x => x.PostTime).ToList();
 
             foreach (var post in posts)
             {
@@ -112,7 +112,7 @@ namespace Game_Buddy_Finder.DataManager
         public int Delete(int id)
         {
             _context.Comments.RemoveRange(_context.Comments.Where(x => x.CommentId == id).ToList());
-            _context.Remove(_context.Users.Find(id));
+            _context.Remove(_context.Posts.Find(id));
 
             _context.SaveChanges();
             return 1;
@@ -130,7 +130,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public IEnumerable<Post> GetAll()
         {
-            var posts = _context.Posts.ToList();
+            var posts = _context.Posts.OrderByDescending(x => x.PostTime).ToList();
 
 
             foreach (var post in posts)

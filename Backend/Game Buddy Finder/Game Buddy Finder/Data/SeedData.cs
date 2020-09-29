@@ -19,32 +19,38 @@ namespace Game_Buddy_Finder.Data
                     new User
                     {
                         UserName = "Nicolas",
-                        PasswordHash = "123"
+                        PasswordHash = "123",
+                        UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Adama",
-                        PasswordHash = "123"
+                        PasswordHash = "123",
+                        UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Steven",
-                        PasswordHash = "123"
+                        PasswordHash = "123",
+                        UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Andi",
-                        PasswordHash = "123"
+                        PasswordHash = "123",
+                        UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Simon",
-                        PasswordHash = "123"
+                        PasswordHash = "123",
+                        UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Shaahin",
-                        PasswordHash = "123"
+                        PasswordHash = "123",
+                        UserType = UserType.Admin,
                     }
                     );
 
