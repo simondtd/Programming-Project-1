@@ -27,4 +27,8 @@ export class AdminComponent implements OnInit {
     this.clansService.currentClan = clan;
     this.router.navigate(['/clanpreview'])
   }
+  public viewUser(users) {
+    this.usersService.CurrentUser = users;
+    this.router.navigate(['/profile'])
+  }
 }

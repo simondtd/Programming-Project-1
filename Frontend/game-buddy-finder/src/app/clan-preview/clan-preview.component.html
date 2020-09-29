@@ -24,26 +24,29 @@
           </div>
 
           <!--<table class="table table-responsive">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">Username</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let member of members">
-                <td>{{member.userName}}</td>
-              </tr>
-            </tbody>
-          </table>-->
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let member of members">
+            <td>{{member.userName}}</td>
+          </tr>
+        </tbody>
+      </table>-->
 
         </div>
         <br />
       </div>
-      <div class="col text-center" *ngIf="!isMember">
-        <button type="button" class="btn btn-primary " (click)="join(clan.clanId)" >Join</button>
+      <div class="col text-center" *ngIf="!isMember && usersService.CurrentUser.userType == 1">
+        <button type="button" class="btn btn-primary " (click)="join(clan.clanId)">Join</button>
       </div>
       <div class="col text-center" *ngIf="isOwner">
-        <button type="button" class="btn btn-danger " (click)="deleteClan(clan.clanId)" >Delete</button>
+        <button type="button" class="btn btn-danger " (click)="deleteClan(clan.clanId)">Delete</button>
+      </div>
+      <div class="col text-center" *ngIf="usersService.CurrentUser.userType == 1">
+        <button type="button" class="btn btn-danger " (click)="deleteClan(clan.clanId)">Delete</button>
       </div>
       <div class="col text-center">
         <button type="button" class="btn btn-secondary" routerLink="/chat" routerLinkActive="active">Chat</button>

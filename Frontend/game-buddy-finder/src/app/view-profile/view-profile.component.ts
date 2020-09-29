@@ -25,6 +25,7 @@ export class ViewProfileComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.user == null) {
+      this.user = this.usersService.currentUser;
       this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
         this.user = data;
       })
@@ -42,6 +43,9 @@ export class ViewProfileComponent implements OnInit {
         this.clanView = data;
         console.log(data);
       })
+    }
+    if (this.user != null) {
+      this.user = this.usersService.currentUser;
     }
   }
   public removeFriend(userId1, userId2, username) {
