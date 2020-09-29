@@ -80,7 +80,7 @@ export class PostService {
   public createPost(post: Post) {
     if (this.validatePost(post)) {
       return this.httpClient.post(this.postUrl, post).subscribe((data) => {
-        
+        this.router.navigate(['/home'])
       });;
     }
     else {
