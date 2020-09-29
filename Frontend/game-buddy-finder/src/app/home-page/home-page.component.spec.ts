@@ -27,7 +27,8 @@ describe('HomePageComponent', () => {
 
   it('should create comment post', () => {
     let post = new Post(1,"Hello there");
-    expect(component.getCommentsString(post)).toBeTrue();
+    post.comments = new Array<Comment>();
+    expect(component.getCommentsString(post)).toBeTrue;
   });
 
   it('should check id and comment is zero', () => {
@@ -38,11 +39,13 @@ describe('HomePageComponent', () => {
 
   it('should check length of comments equal to zero', () => {
     let post = new Post(1,null);
+    post.comments = new Array<Comment>(0); //Set comment length to 0
     expect(component.getCommentsString(post)).toEqual("No Comments");
   });
 
   it('should check length of comments equal to one', () => {
     let post = new Post(1,"a");
-    expect(component.getCommentsString(post)).toEqual("1 Comments");
+    post.comments = new Array<Comment>(1); //Set comment length to 1
+    expect(component.getCommentsString(post)).toEqual("1 Comment");
   });
 });
