@@ -51,10 +51,9 @@ export class FriendSearchComponent implements OnInit {
   }
 
   public deleteUser(userId) {
-    this.usersService.deleteUser(userId);
+    this.usersService.deleteUsers(userId);
     console.log(userId);
     this.usersService.getUsers().subscribe((data) => {
     });
   }
-
 }
