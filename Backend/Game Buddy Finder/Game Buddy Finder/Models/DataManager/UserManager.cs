@@ -28,6 +28,7 @@ namespace Game_Buddy_Finder.DataManager
         public int Delete(int id)
         {
             _context.Remove(_context.Users.Find(id));
+            _context.SaveChanges();
             return 1;
         }
 
