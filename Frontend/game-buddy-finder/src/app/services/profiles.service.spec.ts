@@ -61,12 +61,12 @@ describe('ProfilesService', () => {
     let profile = new Profile(1, "Adama", "Fofana", "AdamaF", "123", "123", "adama@gmail.com", null, "", "1");
     expect(service.validateUser(profile)).toBeFalse();
   });
-  it('Profile should not be valid, Profile URL is 0', () => {
+  it('Profile should be valid, even though profile pic URL is null', () => {
     let profile = new Profile(1, "Adama", "Fofana", "AdamaF", "123", "123", "adama@gmail.com", "Oceania", null, "1");
-    expect(service.validateUser(profile)).toBeFalse();
+    expect(service.validateUser(profile)).toBeTrue();
   });
-  it('Profile should not be valid, Mobile Number is 0', () => {
+  it('Profile should be valid, event though mobile Number is 0', () => {
     let profile = new Profile(1, "Adama", "Fofana", "AdamaF", "123", "123", "adama@gmail.com", "Oceania", "", null);
-    expect(service.validateUser(profile)).toBeFalse();
+    expect(service.validateUser(profile)).toBeTrue();
   });
 });
