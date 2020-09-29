@@ -27,13 +27,14 @@ describe('HomePageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
   it('should check length of comments equal to zero', () => {
     let post = new Post(null,null);
-    expect(HomePageComponent.getCommentsString(post)).toBeTrue();
-    });
-    
-    it('should check length of comments equal to one', () => {
+    expect(HomePageComponent).toBeFalse
+  });
+
+  it('should check length of comments equal to one', () => {
     let post = new Post(1,"Cool Post");
-    expect(HomePageComponent.getCommentsString(post)).toBeTrue();
-    });
+    expect(HomePageComponent).toBeTrue;
+  });
 });
