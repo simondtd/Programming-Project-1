@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomePageComponent } from './home-page.component';
 import { FormBuilder } from '@angular/forms';
+import { Post } from '../models/post';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -26,4 +27,13 @@ describe('HomePageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should check length of comments equal to zero', () => {
+    let post = new Post(null,null);
+    expect(HomePageComponent.getCommentsString(post)).toBeTrue();
+    });
+    
+    it('should check length of comments equal to one', () => {
+    let post = new Post(1,"Cool Post");
+    expect(HomePageComponent.getCommentsString(post)).toBeTrue();
+    });
 });
