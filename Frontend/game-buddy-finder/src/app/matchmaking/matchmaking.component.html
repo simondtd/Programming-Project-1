@@ -1,1 +1,24 @@
-<p>matchmaking works!</p>
+<body>
+    <div class="col-md-6 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
+      <div class="row justify-content-center">
+        <div class="">
+          <table class="table table-responsive">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Matches List</th>
+                <th scope="col">&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let match of matches">
+                <td>{{match.userName}}</td>
+                <td><button type="button" class="btn btn-success" (click)="addFriend(match.userId)" routerLink="/home" routerLinkActive="active">Add Friend</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+  </body>
+  
