@@ -21,9 +21,7 @@ export class HeaderComponent {
 
   @Input() title: string;
 
-
-
-  constructor(private usersService: UsersService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(public usersService: UsersService, private router: Router, private formBuilder: FormBuilder) {
     usersService.UserIDSubject.subscribe((data) => {
       this.loggedIn = usersService.UserId;
     })
