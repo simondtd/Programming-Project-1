@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HomePageComponent } from './home-page.component';
 import { FormBuilder } from '@angular/forms';
 import { Post } from '../models/post';
+import { Comment } from '../models/comment';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
