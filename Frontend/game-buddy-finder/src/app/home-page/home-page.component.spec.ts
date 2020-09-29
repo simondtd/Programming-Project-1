@@ -27,7 +27,7 @@ describe('HomePageComponent', () => {
 
   it('should create comment post', () => {
     let post = new Post(1,"Hello there");
-    expect(component.getCommentsString).toBeTrue();
+    expect(component.getCommentsString(post)).toBeTrue();
   });
 
   it('should check id and comment is zero', () => {
