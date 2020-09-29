@@ -62,5 +62,8 @@ export class UsersService {
       this.router.navigate(['/friendsearch'])
     })
   }
+  public deleteUser(userId: number) {
+    return this.httpClient.delete(this.usersUrl + '/' + userId).subscribe((data) => { });
+  }
 }
 
