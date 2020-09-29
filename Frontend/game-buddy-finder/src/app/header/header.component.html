@@ -25,6 +25,9 @@
     <li class="nav-item" *ngIf="loggedIn">
       <a class="nav-link" routerLink="/viewclan" routerLinkActive="active">Clans</a>
     </li>
+    <li class="nav-item" *ngIf="loggedIn">
+      <a class="nav-link" routerLink="/matchmaking" routerLinkActive="active">Matchmaking</a>
+    </li>
 
     <form id="login-form" class="form" ng-submit="search()" [formGroup]="friendSearchGroup">
       <li class="nav-item" *ngIf="loggedIn">
