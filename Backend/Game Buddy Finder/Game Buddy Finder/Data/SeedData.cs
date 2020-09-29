@@ -51,6 +51,18 @@ namespace Game_Buddy_Finder.Data
                         UserName = "Shaahin",
                         PasswordHash = "123",
                         UserType = UserType.Admin,
+                    },
+                    new User
+                    {
+                        UserName = "Test User 1",
+                        PasswordHash = "123",
+                        UserType = UserType.Regular,
+                    },
+                    new User
+                    {
+                        UserName = "Test User 2",
+                        PasswordHash = "123",
+                        UserType = UserType.Regular,
                     }
                     );
 
@@ -119,6 +131,26 @@ namespace Game_Buddy_Finder.Data
                         LastName = "Madani",
                         Region = "Oceania",
                         Email = "Shaahin.Madani@gmail.com",
+                        ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                        PhoneNumber = "12345678"
+                    },
+                    new Profile()
+                    {
+                        UserId = 7,
+                        FirstName = "Test",
+                        LastName = "User One",
+                        Region = "Oceania",
+                        Email = "Test.User1@gmail.com",
+                        ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
+                        PhoneNumber = "12345678"
+                    },
+                    new Profile()
+                    {
+                        UserId = 8,
+                        FirstName = "Test",
+                        LastName = "User Two",
+                        Region = "Oceania",
+                        Email = "Test.User2@gmail.com",
                         ProfilePicUrl = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
                         PhoneNumber = "12345678"
                     }
@@ -268,6 +300,38 @@ namespace Game_Buddy_Finder.Data
                         }
                 );
                 }
+                context.Interests.AddRange(
+                        new Interest
+                        {
+                            UserId = 7,
+                            Title = "League of Legends"
+                        },
+                        new Interest
+                        {
+                            UserId = 7,
+                            Title = "World of Warcraft"
+                        },
+                        new Interest
+                        {
+                            UserId = 8,
+                            Title = "Valorant"
+                        },
+                        new Interest
+                        {
+                            UserId = 8,
+                            Title = "Counterstrike: Global Offensive"
+                        },
+                        new Interest
+                        {
+                            UserId = 8,
+                            Title = "Star Citizen"
+                        },
+                        new Interest
+                        {
+                            UserId = 8,
+                            Title = "Elite: Dangerous"
+                        }
+                );
 
 
                 Console.WriteLine("Seeded Interests");
