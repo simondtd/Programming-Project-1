@@ -36,6 +36,44 @@ namespace Game_Buddy_Finder.DataManager
             return id;
         }
 
+        public IEnumerable<User> GetMatchesOfUser(int userId)
+        {
+            var matches = new[] { new { user = new User(), matches = 0 } }.ToList();
+            matches.Clear();
+
+            var users = _context.Users.ToArray();
+            var user = _context.Users.Where(x => x.UserId == userId);
+            var userInterests = _context.Interests.Where(x => x.UserId == userId).ToList();
+
+            foreach (var u in users)
+            {
+                if (u.UserId == userId)
+                    continue;
+
+                List<Interest> interests = _context.Interests.Where(x => x.UserId == u.UserId).ToList();
+
+                var numMatches = 0;
+                foreach (var interest in interests)
+                {
+                    if (userInterests.Find(x => x.Title.Equals(interest.Title)) != null)
+                        numMatches++;
+                }
+
+                matches.Add(new { user = u, matches = numMatches });
+            }
+
+            var matchList = new List<User>();
+
+            matches.OrderBy(x => x.matches);
+
+            foreach(var m in matches) {
+                Console.WriteLine($"User: {m.user.UserName}, Matches: {m.matches}");
+                matchList.Add(m.user);
+            }
+
+            return matchList;
+        }
+
         public IEnumerable<User> GetFriendsOfUser(int id)
         {
             List<User> users = new List<User>();
@@ -54,7 +92,8 @@ namespace Game_Buddy_Finder.DataManager
                 }
             }
 
-            for(int i = users.Count - 1; i >= 0; i--) {
+            for (int i = users.Count - 1; i >= 0; i--)
+            {
                 if (users[i].UserId == id) users.RemoveAt(i);
             }
 
