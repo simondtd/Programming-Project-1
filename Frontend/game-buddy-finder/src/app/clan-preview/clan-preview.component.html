@@ -6,17 +6,17 @@
     <h1 style="color:white">PlayWith</h1>
     <div class="col-md-5 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
       <div class="text-center">
-        <img src="{{clan.clanProfilePicUrl}}">
-        <h1>{{clan.clanName}}</h1>
+        <img src="{{clan?.clanProfilePicUrl}}">
+        <h1>{{clan?.clanName}}</h1>
 
         <br /><br /><br />
         <h3>Leader</h3>
-        <div id="box">{{clan.owner}}</div>
+        <div id="box">{{clan?.owner}}</div>
         <br />
         <h3>Description</h3>
         <div id="box">{{ clan ? clan.clanDescription : ""}}</div>
         <br />
-        <h3>Members: {{members.length}}</h3>
+        <h3>Members: {{members?.length}}</h3>
         <div id="box">
 
           <div *ngFor="let member of members">

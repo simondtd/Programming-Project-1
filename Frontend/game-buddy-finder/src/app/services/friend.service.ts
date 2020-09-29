@@ -14,6 +14,11 @@ export class FriendService {
     return this.httpClient.delete(this.friendsUrl + '/' + userId1 + '/' + userId2);
   }
 
+  //Returns a list of matching users based on interests
+  public getMatchesOfUser(userId) {
+    return this.httpClient.get(this.friendsUrl + '/matches/' + userId)
+  }
+
   public getFriendsOfUser(userId) {
     return this.httpClient.get(this.friendsUrl + '/user/' + userId)
   }

@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomePageComponent } from './home-page.component';
+import { FormBuilder } from '@angular/forms';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -11,7 +12,8 @@ describe('HomePageComponent', () => {
   beforeEach((() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
-      declarations: [ HomePageComponent ]
+      declarations: [ HomePageComponent ],
+      providers : [FormBuilder]
     })
     .compileComponents();
 
