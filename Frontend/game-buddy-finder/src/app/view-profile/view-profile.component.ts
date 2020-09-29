@@ -44,9 +44,6 @@ export class ViewProfileComponent implements OnInit {
         console.log(data);
       })
     }
-    if (this.user != null) {
-      this.user = this.usersService.currentUser;
-    }
   }
   public removeFriend(userId1, userId2, username) {
     if (confirm("Are you sure to delete " + username)) {

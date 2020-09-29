@@ -28,7 +28,7 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['/clanpreview'])
   }
   public viewUser(users) {
-    this.usersService.UserView = users;
-    this.router.navigate(['/profile'])
+    this.usersService.searchFriend(users.userName);
+    console.log(users.userName);
   }
 }
