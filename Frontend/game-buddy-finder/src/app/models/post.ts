@@ -8,7 +8,7 @@ export class Post {
     postTime;              //Server Generated
     Poster: User;                   //Server Generated
 
-    Comments: Comment[];
+    comments: Array<Comment>;
 
     public constructor(posterUserId: number, content: string) {
         this.posterUserId = posterUserId;
