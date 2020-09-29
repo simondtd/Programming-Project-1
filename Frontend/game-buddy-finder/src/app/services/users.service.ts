@@ -16,6 +16,8 @@ export class UsersService {
 
   public CurrentUser: User;
 
+  public UserView;
+
   public searchUserId;
 
   public UserIDSubject: Subject<boolean> = new Subject<boolean>();

@@ -25,7 +25,7 @@ export class ViewProfileComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.user == null) {
-      this.user = this.usersService.currentUser;
+      this.user = this.usersService.UserView;
       this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
         this.user = data;
       })
