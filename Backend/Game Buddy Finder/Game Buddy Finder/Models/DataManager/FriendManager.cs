@@ -47,7 +47,7 @@ namespace Game_Buddy_Finder.DataManager
 
             foreach (var u in users)
             {
-                if (u.UserId == userId)
+                if (u.UserId == userId || (_context.Friends.Where(x => (x.UserId1 == u.UserId && x.UserId2 == userId) || (x.UserId2 == u.UserId && x.UserId1 == userId)).Count() > 0))
                     continue;
 
                 List<Interest> interests = _context.Interests.Where(x => x.UserId == u.UserId).ToList();
@@ -58,8 +58,11 @@ namespace Game_Buddy_Finder.DataManager
                     if (userInterests.Find(x => x.Title.Equals(interest.Title)) != null)
                         numMatches++;
                 }
-
-                matches.Add(new { user = u, matches = numMatches });
+                Console.WriteLine($"User: {u.UserName}, Matches: {numMatches}");
+                if (numMatches > 0) {
+                    matches.Add(new { user = u, matches = numMatches });
+                }
+                
             }
 
             var matchList = new List<User>();
