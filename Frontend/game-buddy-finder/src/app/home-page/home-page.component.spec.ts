@@ -24,17 +24,23 @@ describe('HomePageComponent', () => {
   }));
 
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create comment post', () => {
+    let post = new Post(1,"Hello there");
+    expect(component.getCommentsString).toBeTrue();
+  });
+
+  it('should check id and comment is zero', () => {
+    let post = new Post(null,null);
+    expect(component.getCommentsString(post)).toBeFalse;
   });
 
   it('should check length of comments equal to zero', () => {
-    let post = new Post(null,null);
-    expect(HomePageComponent).toBeFalse
+    let post = new Post(1,null);
+    expect(component.getCommentsString(post)).toEqual("No Comments");
   });
 
   it('should check length of comments equal to one', () => {
-    let post = new Post(1,"Cool Post");
-    expect(HomePageComponent).toBeTrue;
+    let post = new Post(1,"a");
+    expect(component.getCommentsString(post)).toEqual("1 Comments");
   });
 });
