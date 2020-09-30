@@ -32,6 +32,12 @@ describe('HomePageComponent', () => {
 
   it('should check length of comments equal to one', () => {
     let post = new Post(1,"a");
+    post.comments = new Array<Comment>(1); //Set comment length to 1
+    expect(component.getCommentsString(post)).toEqual("1 Comment");
+  });
+
+  it('should check length of comments equal to one', () => {
+    let post = new Post(1,"a");
     post.comments = new Array<Comment>(2); //Set comment length to 1
     expect(component.getCommentsString(post)).toEqual("2 Comments");
   });
