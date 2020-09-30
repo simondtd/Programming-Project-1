@@ -24,19 +24,6 @@ describe('HomePageComponent', () => {
     fixture.detectChanges();
   }));
 
-
-  it('should create comment post', () => {
-    let post = new Post(1,"Hello there");
-    post.comments = new Array<Comment>();
-    expect(component.getCommentsString(post)).toBeTrue;
-  });
-
-  it('should check id and comment is zero', () => {
-    let post = new Post(null,null);
-    post.comments = new Array<Comment>(0); //Set comment length to 0
-    expect(component.getCommentsString(post)).toBeFalse;
-  });
-
   it('should check length of comments equal to zero', () => {
     let post = new Post(1,null);
     post.comments = new Array<Comment>(0); //Set comment length to 0
@@ -45,7 +32,8 @@ describe('HomePageComponent', () => {
 
   it('should check length of comments equal to one', () => {
     let post = new Post(1,"a");
-    post.comments = new Array<Comment>(1); //Set comment length to 1
-    expect(component.getCommentsString(post)).toEqual("1 Comment");
+    post.comments = new Array<Comment>(2); //Set comment length to 1
+    expect(component.getCommentsString(post)).toEqual("2 Comments");
   });
+
 });
