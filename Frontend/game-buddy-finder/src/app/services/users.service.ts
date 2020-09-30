@@ -16,6 +16,8 @@ export class UsersService {
 
   public CurrentUser: User;
 
+  public UserView;
+
   public searchUserId;
 
   public UserIDSubject: Subject<boolean> = new Subject<boolean>();
@@ -59,6 +61,9 @@ export class UsersService {
       this.searchUserId = data[0].userId;
       this.router.navigate(['/friendsearch'])
     })
+  }
+  public deleteUsers(userId: number) {
+    return this.httpClient.delete(this.usersUrl + '/' + userId).subscribe((data) => { });
   }
 }
 

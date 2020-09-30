@@ -28,12 +28,16 @@ namespace Game_Buddy_Finder.Controllers
             return _repo.GetAll();
         }
 
-
-
         [HttpGet("user/{userid}")]
         public IEnumerable<User> GetFriendsOfUser(int userid)
         {
             return _repo.GetFriendsOfUser(userid);
+        }
+
+        [HttpGet("matches/{userid}")]
+        public IEnumerable<User> GetMatchesOfUser(int userid)
+        {
+            return _repo.GetMatchesOfUser(userid);
         }
 
         // GET api/<controller>/5

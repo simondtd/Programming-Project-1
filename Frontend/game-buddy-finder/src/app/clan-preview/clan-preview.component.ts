@@ -16,8 +16,8 @@ export class ClanPreviewComponent implements OnInit {
   public isOwner;
   public userId;
 
-  constructor(private usersService: UsersService, private clansService: ClanService) { }
-
+  constructor( public usersService: UsersService, private clansService: ClanService) { }
+ 
   ngOnInit(): void {
     if (this.usersService.UserId != null) {
 
