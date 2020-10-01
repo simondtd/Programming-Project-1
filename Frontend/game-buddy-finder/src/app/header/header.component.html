@@ -33,7 +33,7 @@
     </li>
 
     <form id="login-form" class="form" ng-submit="search()" [formGroup]="friendSearchGroup">
-      <li class="nav-item" *ngIf="loggedIn">
+      <li class="nav-item form-inline" *ngIf="loggedIn">
         <input class="form-control" type="text" placeholder="Search" aria-label="Search" formControlName="username">
         <button type="button" *ngIf="loggedIn" class="btn btn-primary" (click)="search()">Search</button>
       </li>
