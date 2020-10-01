@@ -42,10 +42,7 @@
       <div class="col text-center" *ngIf="!isMember && usersService.CurrentUser?.userType == 1">
         <button type="button" class="btn btn-primary " (click)="join(clan.clanId)">Join</button>
       </div>
-      <div class="col text-center" *ngIf="isOwner">
-        <button type="button" class="btn btn-danger " (click)="deleteClan(clan.clanId)">Delete</button>
-      </div>
-      <div class="col text-center" *ngIf="usersService.CurrentUser?.userType == 1">
+      <div class="col text-center" *ngIf="isOwner || usersService.CurrentUser?.userType == 1">
         <button type="button" class="btn btn-danger " (click)="deleteClan(clan.clanId)">Delete</button>
       </div>
       <div class="col text-center">
