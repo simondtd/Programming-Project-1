@@ -13,9 +13,7 @@ export class FriendRequestComponent implements OnInit {
 
   public accept(id) {
     this.friendRequestService.acceptFriendRequest(id).subscribe((data) => {
-      console.log(data);
     })
-    console.log(id)
 
     this.friendRequestService.getFriendRequestsOfUser(this.usersService.UserId).subscribe((data) => {
       this.friendRequests = data;
@@ -24,9 +22,7 @@ export class FriendRequestComponent implements OnInit {
 
   public decline(id) {
     this.friendRequestService.rejectFriendRequest(id).subscribe((data) => {
-      console.log(data);
     })
-    console.log(id)
 
     this.friendRequestService.getFriendRequestsOfUser(this.usersService.UserId).subscribe((data) => {
       this.friendRequests = data;

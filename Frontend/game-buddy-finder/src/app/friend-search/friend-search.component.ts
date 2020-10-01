@@ -24,13 +24,11 @@ export class FriendSearchComponent implements OnInit {
 
   constructor(private usersService: UsersService, private profilesService: ProfilesService, private interestService: InterestService, private friendService: FriendService, private friendRequestService: FriendRequestService) {
     if (this.user == null) {
-      console.log("USER: " + this.usersService.searchUserId)
       this.usersService.getUser(this.usersService.searchUserId).subscribe((data) => {
         this.user = data;
       })
       this.profilesService.getProfileOfUser(this.usersService.searchUserId).subscribe((data) => {
         this.profile = data;
-        console.log(this.profile);
       })
       this.friendService.getFriendsOfUser(this.usersService.searchUserId).subscribe((data) => {
         this.friends = data;
@@ -52,7 +50,6 @@ export class FriendSearchComponent implements OnInit {
 
   public deleteUser(userId) {
     this.usersService.deleteUsers(userId);
-    console.log(userId);
     this.usersService.getUsers().subscribe((data) => {
     });
   }

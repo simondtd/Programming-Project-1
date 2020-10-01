@@ -41,13 +41,11 @@ export class ViewProfileComponent implements OnInit {
       })
       this.clansService.getClansOfUser(this.usersService.UserId).subscribe((data) => {
         this.clanView = data;
-        console.log(data);
       })
     }
   }
   public removeFriend(userId1, userId2, username) {
     if (confirm("Are you sure to delete " + username)) {
-      console.log(username);
       this.friendService.removeFriend(userId1, userId2).subscribe((data) => {
         
       })
