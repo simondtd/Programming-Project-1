@@ -56,7 +56,7 @@
               </div>
               <div class="ml-2">
                 <div class="h5 m-0">{{ post.posterUser.userName }}</div>
-                <button type="button" class="btn btn-danger"  (click)="deletePosts(post.postId)" *ngIf="post.posterUserId == usersService.UserId">Delete</button>
+                <button type="button" class="btn btn-danger"  (click)="deletePosts(post.postId)" *ngIf="usersService.CurrentUser.userType == 1 || post.posterUserId == usersService.UserId">Delete</button>
                 <!--<div class="h7 text-muted"></div> should be full name-->
               </div>
             </div>
