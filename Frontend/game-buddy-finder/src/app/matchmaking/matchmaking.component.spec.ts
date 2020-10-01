@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { MatchmakingComponent } from './matchmaking.component';
 
@@ -8,6 +10,7 @@ describe('MatchmakingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientModule, RouterTestingModule.withRoutes([])],
       declarations: [ MatchmakingComponent ]
     })
     .compileComponents();
