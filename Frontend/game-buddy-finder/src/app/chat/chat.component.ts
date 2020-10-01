@@ -45,7 +45,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.connection.on('ReceiveMessage', this.receiveMessage.bind(this));
     this.connection.on('Init', () => {
       var user = this.usersService.CurrentUser;
-      console.log(user);
       this.connection.invoke("JoinChat", this.clansService.currentClan.clanId, user.userName);
     });
 

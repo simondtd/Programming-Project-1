@@ -31,8 +31,6 @@ export class ClanPreviewComponent implements OnInit {
         for (var i = 0; i < this.members.length; i++) {
           var member = this.members[i];
 
-          console.log(member);
-
           if (member.userId == this.usersService.UserId) {
             this.isMember = true;
           }
@@ -53,9 +51,7 @@ export class ClanPreviewComponent implements OnInit {
   public join(clanId) {
     var userId = this.usersService.UserId;
     this.clansService.addUserToClan(userId, clanId).subscribe((data) => {
-      console.log(data);
     })
-    console.log(userId, clanId)
   }
 
 }

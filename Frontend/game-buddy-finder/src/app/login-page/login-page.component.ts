@@ -33,15 +33,11 @@ export class LoginPageComponent implements OnInit {
     //Get the user id
     this.usersService.login(username, password).subscribe((userId) => {
       
-      //PRint out for debug purposes
-      console.log(userId);
-      
       //Get the user with that id
       this.usersService.getUser(userId).subscribe((user) => {
         
         //Check if user exists
         if (user != null) {
-            console.log(user)
             this.usersService.authorizeLogin(userId)
         }
         //Display error popup

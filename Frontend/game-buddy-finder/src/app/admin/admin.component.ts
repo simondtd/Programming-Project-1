@@ -17,10 +17,8 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {
     this.clansService.getClans().subscribe((data) => {
       this.clanView = data;
-      console.log(data);
     })
     this.usersService.getUsers().subscribe((data) => {
-      this.users = data;
     })
   }
   public viewClan(clan) {
@@ -29,6 +27,5 @@ export class AdminComponent implements OnInit {
   }
   public viewUser(users) {
     this.usersService.searchFriend(users.userName);
-    console.log(users.userName);
   }
 }

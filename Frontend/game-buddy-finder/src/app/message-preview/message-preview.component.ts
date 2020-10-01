@@ -24,7 +24,6 @@ export class MessagePreviewComponent implements OnInit {
     if (this.user == null) {
       this.messagesService.getMessagesToUser(this.usersService.UserId).subscribe((data) => {
         this.message = this.messagesService.currentMessage;
-        console.log(this.message);
 
         this.usersService.getUser(this.message.senderId).subscribe((data) => {
           this.user = data;

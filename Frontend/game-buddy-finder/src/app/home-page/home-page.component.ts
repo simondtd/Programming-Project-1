@@ -20,7 +20,6 @@ export class HomePageComponent implements OnInit {
   public posts;
 
   constructor(private usersService: UsersService, private profilesService: ProfilesService, private postService: PostService, private formBuilder: FormBuilder, private router: Router) {
-    console.log(this.usersService.UserId)
     this.postGroup = new FormGroup({
       post: new FormControl()
     });
@@ -35,7 +34,6 @@ export class HomePageComponent implements OnInit {
     })
     this.postService.getPosts().subscribe((data) => {
       this.posts = data;
-      console.log(data);
     })
   }
 
@@ -62,7 +60,6 @@ export class HomePageComponent implements OnInit {
   }
   public newPost() {
     var content = this.postGroup.get('post').value;
-    console.log(post);
     var post = new Post(this.usersService.UserId, content);  
     this.postService.createPost(post);
     this.postGroup.reset();
@@ -70,7 +67,6 @@ export class HomePageComponent implements OnInit {
 
   public deletePosts(postId) {
     this.postService.deletePost(postId);
-    console.log(postId);
     this.postService.getPosts().subscribe((data) => {
     });
   }

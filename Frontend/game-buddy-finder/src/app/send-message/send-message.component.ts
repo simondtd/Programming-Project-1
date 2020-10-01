@@ -35,14 +35,7 @@ public newMessage() {
     this.usersService.getUserByUsername(reciever).subscribe((data) => {
     var receiverId = data[0].userId
 
-    console.log(receiverId);
-
     var senderId = this.usersService.UserId;
-
-      console.log(senderId);
-
-      console.log(subject);
-      console.log(content);
 
     var message = new Message(senderId, receiverId, subject, content);
     this.messageService.sendMessage(message);
