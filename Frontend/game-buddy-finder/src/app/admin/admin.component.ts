@@ -19,6 +19,7 @@ export class AdminComponent implements OnInit {
       this.clanView = data;
     })
     this.usersService.getUsers().subscribe((data) => {
+      this.users = data;
     })
   }
   public viewClan(clan) {
