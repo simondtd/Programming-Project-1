@@ -43,7 +43,7 @@
     </form>
 
     <li class="nav-item" *ngIf="loggedIn">
-      <a class="nav-link" style="color: red;" (click)="logout()">Log out</a>
+      <button type="button" *ngIf="loggedIn" class="btn btn-danger" (click)="logout()">Log out</button>
     </li>
   </ul>
 
