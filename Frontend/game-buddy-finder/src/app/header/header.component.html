@@ -41,10 +41,10 @@
         <button type="button" *ngIf="loggedIn" class="btn btn-primary" (click)="search()">Search</button>
       </li>
     </form>
-
+  </ul>
+  <ul class="navbar-nav ml-auto">
     <li class="nav-item" *ngIf="loggedIn">
       <button type="button" *ngIf="loggedIn" class="btn btn-danger" (click)="logout()">Log out</button>
     </li>
   </ul>
-
 </nav>
