@@ -78,7 +78,7 @@ export class ViewProfileComponent implements OnInit {
           content += message.content + "\n";
         }
       }
-      content += "\n";
+      content += "-------------\n";
     }
     let docDefinition = {
       header: 'C#Corner PDF Header',
