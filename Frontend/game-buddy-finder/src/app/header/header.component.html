@@ -42,9 +42,7 @@
       </li>
     </form>
   </ul>
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item" *ngIf="loggedIn">
-      <button type="button" *ngIf="loggedIn" class="btn btn-danger" (click)="logout()">Log out</button>
-    </li>
-  </ul>
+  <div *ngIf="loggedIn">
+      <button type="button" *ngIf="loggedIn" class="btn btn-danger" style="float:right" (click)="logout()">Log out</button>
+  </div>
 </nav>
