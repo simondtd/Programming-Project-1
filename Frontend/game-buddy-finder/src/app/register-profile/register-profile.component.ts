@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Profile } from '../models/profile';
+import { md5 } from '../Helper/md5';
 
 
 @Component({
@@ -44,12 +45,15 @@ export class RegisterProfileComponent implements OnInit {
     var region = this.registerGroup.get('region').value;
     var phone = this.registerGroup.get('phone').value;
     var profilepicurl = this.registerGroup.get('profilepicurl').value;
-
-    var profile = new Profile(0, firstname, lastname, username, password, repassword, email, region, profilepicurl, phone);
+    var hash = md5(password);
+    var rehash = md5(repassword);
+    var profile = new Profile(0, firstname, lastname, username, hash, rehash, email, region, profilepicurl, phone);
 
     if (this.profilesService.validateUser(profile)) {
       this.profilesService.createProfile(profile);
     }
 
+   
   }
+
 }
