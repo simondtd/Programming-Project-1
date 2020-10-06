@@ -81,11 +81,11 @@ export class ViewProfileComponent implements OnInit {
       content += "-------------\n";
     }
     let docDefinition = {
-      header: 'C#Corner PDF Header',
+      header: 'PlayWith Admin -  User Log',
       content: content
     };
 
-    pdfMake.createPdf(docDefinition).download();
+    pdfMake.createPdf(docDefinition).download("User Log.pdf");
   }
   public removeFriend(userId1, userId2, username) {
     if (confirm("Are you sure to delete " + username)) {
