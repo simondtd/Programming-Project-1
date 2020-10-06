@@ -19,49 +19,49 @@ namespace Game_Buddy_Finder.Data
                     new User
                     {
                         UserName = "Nicolas",
-                        PasswordHash = "123",
+                        PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Adama",
-                        PasswordHash = "123",
+                        PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Steven",
-                        PasswordHash = "123",
+                        PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Andi",
-                        PasswordHash = "123",
+                        PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Simon",
-                        PasswordHash = "123",
+                        PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Shaahin",
-                        PasswordHash = "123",
+                        PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                     },
                     new User
                     {
                         UserName = "Test User 1",
-                        PasswordHash = "123",
+                        PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Regular,
                     },
                     new User
                     {
                         UserName = "Test User 2",
-                        PasswordHash = "123",
+                        PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Regular,
                     }
                     );
