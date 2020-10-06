@@ -27,6 +27,7 @@ namespace Game_Buddy_Finder.DataManager
         public int Delete(int id)
         {
             _context.Interests.Remove(_context.Interests.Where(x => x.InterestId == id).FirstOrDefault());
+            _context.SaveChanges();
             return id;
         }
 
