@@ -19,7 +19,7 @@ export class MessagesService {
   }
 
   public getMessages(){
-    return this.httpClient.get(this.messagesUrl);
+    return this.httpClient.get<Message[]>(this.messagesUrl);
   }
 
   public validateMessage(message: Message) {

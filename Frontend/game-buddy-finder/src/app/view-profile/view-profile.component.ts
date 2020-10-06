@@ -6,10 +6,11 @@ import { InterestService } from '../services/interest.service';
 import { ClanService } from '../services/clan.service';
 import { MessagesService } from '../services/message.service';
 import { User } from '../models/user'
+import { Message } from '../models/message'
 import { Profile } from '../models/profile'
 import { Subject } from 'rxjs';
-import  pdfMake  from "pdfmake/build/pdfmake";
-import  pdfFonts  from "pdfmake/build/vfs_fonts";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 
 @Component({
   selector: 'app-view-profile',
@@ -24,8 +25,8 @@ export class ViewProfileComponent implements OnInit {
   public interests;
   public clanView;
 
-  public users = null;
-  public messages = null;
+  public users = Array<User>();
+  public messages = Array<Message>();
 
   constructor(public usersService: UsersService, private clansService: ClanService, private messageService: MessagesService, private profilesService: ProfilesService, private friendService: FriendService, private interestService: InterestService) { }
 
@@ -61,11 +62,29 @@ export class ViewProfileComponent implements OnInit {
   }
   public generatePdf() {
     (window as any).pdfMake.vfs = pdfFonts.pdfMake.vfs;
-    let docDefinition = {  
-      header: 'C#Corner PDF Header',  
-      content: 'Sample PDF generated with Angular and PDFMake for C#Corner Blog'  
-    };  
-   
+    var content = "";
+
+    for (var user of this.users) {
+      content += "USERNAME: " + user.userName + "\n";
+      content += "CREATION TIME: " + user.creationTime + "\n\n";
+
+      content += "SENT MESSAGES: \n\n"
+
+      for (var message of this.messages) {
+        if (message.senderId == user.userId) {
+          content += "TO: " + message.receiverUsername + "\n";
+          content += "DATE: " + message.sendTime + "\n";
+          content += "CONTENT:\n";
+          content += message.content + "\n";
+        }
+      }
+      content += "\n";
+    }
+    let docDefinition = {
+      header: 'C#Corner PDF Header',
+      content: content
+    };
+
     pdfMake.createPdf(docDefinition).download();
   }
   public removeFriend(userId1, userId2, username) {

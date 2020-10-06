@@ -24,7 +24,7 @@ export class UsersService {
   constructor(private httpClient: HttpClient, private router: Router) { }
 
   public getUsers() {
-    return this.httpClient.get(this.usersUrl);
+    return this.httpClient.get<User[]>(this.usersUrl);
   }
 
   public getUser(id) {
