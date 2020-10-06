@@ -19,8 +19,11 @@ export class InterestService {
     if (interest.UserId == null || (interest.Title == null || interest.Title.length == 0)) {
       return false;
     }
-
     return true;
+  }
+
+  public removeInterest(interestId) {
+    return this.httpClient.delete(this.interestUrl + "/" + interestId).subscribe((data) => {});
   }
 
   public addInterest(interest: Interest) {

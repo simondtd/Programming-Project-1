@@ -7,6 +7,8 @@ import { ClanService } from '../services/clan.service';
 import { User } from '../models/user'
 import { Profile } from '../models/profile'
 import { Subject } from 'rxjs';
+import {pdfMake} from "pdfmake/build/pdfmake";  
+import {pdfFonts} from "pdfmake/build/vfs_fonts";  
 
 @Component({
   selector: 'app-view-profile',
