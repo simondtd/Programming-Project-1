@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
   public users = Array<User>();
   public messages = Array<Message>();
 
-  constructor(private messageService: MessagesService,private clansService: ClanService, public usersService: UsersService, private router: Router, private friendService: FriendService) { }
+  constructor(private messageService: MessagesService, private clansService: ClanService, public usersService: UsersService, private router: Router, private friendService: FriendService) { }
 
   ngOnInit(): void {
     if (this.usersService.CurrentUser.userType == 1) {
@@ -47,6 +47,14 @@ export class AdminComponent implements OnInit {
       this.messages = data;
     })
   }
+  public viewUser(user) {
+    this.usersService.searchFriend(user.userName);
+  }
+  public viewClan(clan) {
+    this.clansService.currentClan = clan;
+    this.router.navigate(['/clanpreview']);
+  }
+
   public generatePdf() {
     (window as any).pdfMake.vfs = pdfFonts.pdfMake.vfs;
     var content = "";
