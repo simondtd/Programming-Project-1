@@ -28,7 +28,7 @@ export class InterestService {
 
   public addInterest(interest: Interest) {
     if (this.validateInterest(interest)) {
-      return this.httpClient.post(this.interestUrl, interest);
+      return this.httpClient.post(this.interestUrl, interest).subscribe((data) => {});
     }
     else {
       return null;

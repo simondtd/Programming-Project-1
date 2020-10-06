@@ -64,6 +64,19 @@
                 </select>
               </div>
             </div>
+            
+            <div class="form-group">
+              <label class="col-md-3 control-label">Likes To Play:</label>
+              <div class="col-md-8">
+                <h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title}} <button class="btn btn-danger float-right" (click)="deleteInterest(interest.interestId)"> Delete  </button><hr/></h6>
+                <br>
+                <h6>Add Interest:</h6>
+                <input class="form-control" type="text" formControlName="interest"><br>
+                <button class="btn btn-secondary btn-block" (click)="addInterest()"> Add  </button><br><br>
+              </div>
+            </div>
+
+
             <div class="form-group">
               <label class="col-md-3 control-label"></label>
               <div class="col-md-8">
