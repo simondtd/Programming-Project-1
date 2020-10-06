@@ -6,6 +6,8 @@ import { FormControl } from '@angular/forms';
 import { Profile } from '../models/profile';
 import { UsersService } from '../services/users.service';
 import { Router } from '@angular/router';
+import { InterestService } from '../services/interest.service';
+import { Interest } from '../models/interest';
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,8 +18,9 @@ export class EditProfileComponent implements OnInit {
   public editGroup: FormGroup;
   public Profile;
   public User;
+  public interests;
 
-  constructor(private router: Router, private profilesService: ProfilesService, private formBuilder: FormBuilder, private usersService: UsersService) {
+  constructor(private router: Router, private profilesService: ProfilesService, private formBuilder: FormBuilder, private usersService: UsersService, private interestService: InterestService) {
 
     this.editGroup = new FormGroup({
       firstname: new FormControl(),
@@ -28,13 +31,18 @@ export class EditProfileComponent implements OnInit {
       repassword: new FormControl(),
       region: new FormControl(),
       phone: new FormControl(),
-      profilepicurl: new FormControl()
+      profilepicurl: new FormControl(),
+      interest: new FormControl()
     });
 
     this.usersService.getUser(usersService.UserId).subscribe((data) => {
       this.User = data;
       this.editGroup.get('username').setValue(this.User.userName);
     });
+
+    this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
+      this.interests = data;
+    })
 
     this.profilesService.getProfileOfUser(usersService.UserId).subscribe((data) => {
       this.Profile = data;
@@ -67,5 +75,17 @@ export class EditProfileComponent implements OnInit {
       this.profilesService.updateProfile(profile);
       this.router.navigate(['/profile']);
     }
+  }
+
+  public addInterest(){
+    var interest = this.editGroup.get('interest').value;
+    var add = new Interest(this.usersService.UserId, interest);
+    this.interestService.addInterest(add);
+  }
+
+  public deleteInterest(interestId){
+    this.interestService.removeInterest(interestId);
+    this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
+    });
   }
 }
