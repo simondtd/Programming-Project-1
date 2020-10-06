@@ -2,7 +2,6 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<button *ngIf = "users.length > 0 && messages.length > 0" type="button" class="btn btn-secondary" (click)="generatePdf()">Generate PDF</button> 
 
 <div class="row">
   <div class="col">
@@ -65,7 +64,7 @@
           <tbody>
             <tr>
               <td>File</td>
-              <td><button *ngIf="users != null && messages != null && usersService.CurrentUser.userType == 1" type="button" class="btn btn-secondary" (click)="generatePdf()">Generate PDF</button></td>
+              <td><button *ngIf="users.length > 0 && messages.length > 0" type="button" class="btn btn-secondary" (click)="generatePdf()">Generate PDF</button> </td>
             </tr>
           </tbody>
         </table>
