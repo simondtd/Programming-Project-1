@@ -23,7 +23,7 @@ export class MessagesService {
   }
 
   public validateMessage(message: Message) {
-    if (message.Content == null || message.Subject == null) return false;
+    if (message.content == null || message.subject == null) return false;
 
     return true;
   }
