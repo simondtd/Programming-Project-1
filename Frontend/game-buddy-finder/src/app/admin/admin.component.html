@@ -10,12 +10,14 @@
           <thead>
             <tr>
               <th scope="col">Name</th>
+              <th scope="col">Created</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody *ngFor="let user of users">
             <tr>
               <td>{{ user.userName }}</td>
+              <td>{{ user.creationTime }}</td>
               <td><button type="button" class="btn btn-success" (click)="viewUser(user)">View</button></td>
             </tr>
           </tbody>
@@ -23,27 +25,47 @@
       </div>
     </div>
   </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">PlayWith Clan</h5>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Clan</th>
-                <th scope="col">Region</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let clan of clanView">
-              <tr>
-                <td>{{ clan.clanName }}</td>
-                <td>{{ clan.clanRegion }}</td>
-                <td><button type="button" class="btn btn-success" (click)="viewClan(clan)">View</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">PlayWith Clan</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Clan</th>
+              <th scope="col">Region</th>
+              <th scope="col">View</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let clan of clanView">
+            <tr>
+              <td>{{ clan.clanName }}</td>
+              <td>{{ clan.clanRegion }}</td>
+              <td><button type="button" class="btn btn-success" (click)="viewClan(clan)">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Informations</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Users PDF</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>File</td>
+              <td><button *ngIf="users != null && messages != null && usersService.CurrentUser.userType == 1" type="button" class="btn btn-secondary" (click)="generatePdf()">Generate PDF</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
