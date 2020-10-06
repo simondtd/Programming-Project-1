@@ -21,48 +21,56 @@ namespace Game_Buddy_Finder.Data
                         UserName = "Nicolas",
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
+                        CreationTime = DateTime.Now,
                     },
                     new User
                     {
                         UserName = "Adama",
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
+                        CreationTime = DateTime.Now,
                     },
                     new User
                     {
                         UserName = "Steven",
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
+                        CreationTime = DateTime.Now,
                     },
                     new User
                     {
                         UserName = "Andi",
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
+                        CreationTime = DateTime.Now,
                     },
                     new User
                     {
                         UserName = "Simon",
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
+                        CreationTime = DateTime.Now,
                     },
                     new User
                     {
                         UserName = "Shaahin",
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
+                        CreationTime = DateTime.Now,
                     },
                     new User
                     {
                         UserName = "Test User 1",
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Regular,
+                        CreationTime = DateTime.Now,
                     },
                     new User
                     {
                         UserName = "Test User 2",
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Regular,
+                        CreationTime = DateTime.Now,
                     }
                     );
 
