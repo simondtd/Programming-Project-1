@@ -67,7 +67,7 @@ namespace Game_Buddy_Finder.DataManager
 
             var matchList = new List<User>();
 
-            matches.OrderBy(x => x.matches);
+            matches.OrderByDescending(x => x.matches);
 
             foreach(var m in matches) {
                 Console.WriteLine($"User: {m.user.UserName}, Matches: {m.matches}");

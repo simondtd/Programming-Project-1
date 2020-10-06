@@ -48,7 +48,8 @@ namespace Game_Buddy_Finder.Controllers
             {
                 UserName = value.UserName,
                 PasswordHash = value.PasswordHash,
-                UserType = UserType.Regular
+                UserType = UserType.Regular,
+                CreationTime = DateTime.Now,
             };
             
             int uid = _repo.AddUser(user);

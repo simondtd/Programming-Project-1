@@ -64,7 +64,13 @@ namespace Game_Buddy_Finder.DataManager
 
         public IEnumerable<Message> GetAll()
         {
-            return _context.Messages.ToList();
+            var messages = _context.Messages.ToList();
+            foreach (Message message in messages)
+            {
+                message.SenderUsername = _context.Users.Where(x => x.UserId == message.SenderId).FirstOrDefault().UserName;
+                message.ReceiverUsername = _context.Users.Where(x => x.UserId == message.ReceiverId).FirstOrDefault().UserName;
+            }
+            return messages;
         }
 
         public int Update(int id, Message item)

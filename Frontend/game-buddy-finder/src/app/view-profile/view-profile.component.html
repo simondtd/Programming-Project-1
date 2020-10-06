@@ -24,6 +24,7 @@
             <label>Phone Number: </label><h6 style="display:inline">&nbsp;{{profile ? profile.phoneNumber : ""}}</h6>
             <hr />
             <button type="button" class="btn btn-secondary" routerLink="/editprofile">Edit Profile</button>
+            <button *ngIf = "users != null && messages != null && usersService.CurrentUser.userType == 1" type="button" class="btn btn-secondary" (click)="generatePdf()">Generate PDF</button> 
           </div>
           <div>
             <br>

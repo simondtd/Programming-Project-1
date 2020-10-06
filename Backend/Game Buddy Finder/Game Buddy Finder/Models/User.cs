@@ -19,6 +19,8 @@ namespace Game_Buddy_Finder.Models
         [Required]
         public string PasswordHash { get; set; }
 
+        public DateTime CreationTime { get; set; }
+
         public UserType UserType { get; set; }
     }
 

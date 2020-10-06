@@ -23,6 +23,10 @@ export class MatchmakingComponent implements OnInit {
     })
   }
 
+  public viewProfile(userId) {
+    
+  }
+
   public addFriend(receiverId) {
     var friendrequest = new FriendRequest(this.usersService.UserId, receiverId);
     this.friendRequestService.sendFriendRequest(friendrequest);

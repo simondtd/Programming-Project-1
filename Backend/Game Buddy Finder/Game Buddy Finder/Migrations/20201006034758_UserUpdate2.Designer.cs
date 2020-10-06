@@ -3,14 +3,16 @@ using System;
 using Game_Buddy_Finder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Game_Buddy_Finder.Migrations
 {
     [DbContext(typeof(GbfContext))]
-    partial class GbfContextModelSnapshot : ModelSnapshot
+    [Migration("20201006034758_UserUpdate2")]
+    partial class UserUpdate2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
