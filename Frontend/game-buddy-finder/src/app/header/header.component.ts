@@ -36,5 +36,6 @@ export class HeaderComponent {
   public search() {
     var username = this.friendSearchGroup.get('username').value;
     this.usersService.searchFriend(username);
+    this.friendSearchGroup.reset();
   }
 }
