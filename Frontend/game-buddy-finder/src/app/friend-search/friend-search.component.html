@@ -31,7 +31,7 @@
                 </div>
 
                 <div *ngIf="isfriend">
-                  <button type="button" class="btn btn-secondary col text-center" (click)="removeFriend(this.usersService.UserId, friends.userId, friends.userName)">Remove Friend</button>
+                  <button type="button" class="btn btn-secondary col text-center" (click)="removeFriend(this.usersService.UserId, user.userId, user.userName)">Remove Friend</button>
                   </div>
 
                 <div *ngIf="usersService.CurrentUser.userType == 1 && user.userType == 0">

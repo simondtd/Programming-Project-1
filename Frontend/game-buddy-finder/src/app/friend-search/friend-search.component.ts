@@ -53,11 +53,13 @@ export class FriendSearchComponent implements OnInit {
 
   public addFriend(receiverId) {
     var friendrequest = new FriendRequest(this.usersService.UserId, receiverId);
-    this.friendRequestService.sendFriendRequest(friendrequest);
+    this.friendRequestService.sendFriendRequest(friendrequest).add(data => {
+      window.alert("Sent " + this.user.userName + " a friend request");
+    })
   }
 
   public removeFriend(userId1, userId2, username) {
-    if (confirm("Are you sure to delete " + username)) {
+    if (confirm("Are you sure to remove " + username + " as a friend?")) {
       this.friendService.removeFriend(userId1, userId2).subscribe((data) => {
       })
     }
