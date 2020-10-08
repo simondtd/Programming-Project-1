@@ -25,5 +25,9 @@ namespace Game_Buddy_Finder.Models
         public string PhoneNumber { get; set; }
 
         public string ProfilePicUrl { get; set; }
+
+        public string SecretQuestion { get; set; }
+
+        public string SecretAnswer { get; set; }
     }
 }

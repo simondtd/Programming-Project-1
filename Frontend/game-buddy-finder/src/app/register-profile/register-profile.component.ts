@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Profile } from '../models/profile';
-import {Router} from '@angular/router'
+import { Router } from '@angular/router'
 import { md5 } from '../Helper/md5';
 
 
@@ -17,7 +17,7 @@ export class RegisterProfileComponent implements OnInit {
   public registerGroup: FormGroup;
 
 
-  constructor(private router: Router,private profilesService: ProfilesService, private formBuilder: FormBuilder) {
+  constructor(private router: Router, private profilesService: ProfilesService, private formBuilder: FormBuilder) {
     this.registerGroup = new FormGroup({
       firstname: new FormControl(),
       lastname: new FormControl(),
@@ -48,9 +48,11 @@ export class RegisterProfileComponent implements OnInit {
     var region = this.registerGroup.get('region').value;
     var phone = this.registerGroup.get('phone').value;
     var profilepicurl = this.registerGroup.get('profilepicurl').value;
+    var secretQuestion = this.registerGroup.get('secretQuestion').value;
+    var secretAnswer = this.registerGroup.get('secretAnswer').value;
     var hash = md5(password);
     var rehash = md5(repassword);
-    var profile = new Profile(0, firstname, lastname, username, hash, rehash, email, region, profilepicurl, phone);
+    var profile = new Profile(0, firstname, lastname, username, hash, rehash, email, region, profilepicurl, phone, secretQuestion, secretAnswer);
 
     if (this.profilesService.validateUser(profile)) {
       this.profilesService.createProfile(profile).subscribe(data => {
@@ -61,6 +63,9 @@ export class RegisterProfileComponent implements OnInit {
           this.router.navigate(['/login']);
         }
       })
+    }
+    else {
+      window.alert("Some inputfields are invalid");
     }
   }
 }

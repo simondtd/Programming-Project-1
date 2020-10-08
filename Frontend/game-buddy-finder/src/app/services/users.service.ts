@@ -36,7 +36,15 @@ export class UsersService {
   }
 
   public login(username, password) {
-    return this.httpClient.get(this.usersUrl + '/login' + '/' + username + '/' + password)
+    return this.httpClient.get(this.usersUrl + '/login/' + username + '/' + password)
+  }
+
+  public resetPassword(username, secretQuestion, secretAnswer, newPassword) {
+    console.log(username);
+    console.log(secretQuestion);
+    console.log(secretAnswer);
+    console.log(newPassword);
+    return this.httpClient.get(this.usersUrl + '/reset/' + username + '/' + secretQuestion + '/' + secretAnswer + '/' + newPassword);
   }
 
   public authorizeLogin(userId) {

@@ -69,7 +69,7 @@ export class EditProfileComponent implements OnInit {
     var phone = this.editGroup.get('phone').value;
     var profilepicurl = this.editGroup.get('profilepicurl').value;
 
-    var profile = new Profile(this.Profile.profileId, firstname, lastname, username, "", "", email, region, profilepicurl, phone);
+    var profile = new Profile(this.Profile.profileId, firstname, lastname, username, "", "", email, region, profilepicurl, phone, "", "");
 
     if (this.profilesService.validateUser(profile)) {
       this.profilesService.updateProfile(profile);
