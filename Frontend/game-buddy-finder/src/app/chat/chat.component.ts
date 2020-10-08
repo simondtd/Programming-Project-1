@@ -61,14 +61,13 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   public removeConnection(username) {
     var index = this.OnlineUsers.findIndex(x => x == username);
-
     if (index != -1) {
       this.OnlineUsers.splice(index,1);
     }
   }
 
   public receiveMessage(message) {
-    this.Messages.push(message);
+    this.Messages.unshift(message);
   }
 
   public sendMessage() {

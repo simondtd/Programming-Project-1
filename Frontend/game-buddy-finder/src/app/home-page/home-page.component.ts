@@ -37,7 +37,6 @@ export class HomePageComponent implements OnInit {
     })
   }
 
-  
   public getCommentsString(post) {
     var string = "";
 
@@ -70,8 +69,10 @@ export class HomePageComponent implements OnInit {
   }
 
   public deletePosts(postId) {
-    this.postService.deletePost(postId);
-    this.postService.getPosts().subscribe((data) => {
-    });
+    this.postService.deletePost(postId).add((data) => {
+      this.postService.getPosts().subscribe((data) => {
+        this.posts = data;
+      })
+    })
   }
 }

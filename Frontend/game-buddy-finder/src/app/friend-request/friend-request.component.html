@@ -1,6 +1,5 @@
 
 <body>
-  <h1>Friend Request</h1>
   <div class="col-md-6 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
     <div class="row justify-content-center">
       <div class="">
@@ -15,8 +14,8 @@
           <tbody>
             <tr *ngFor="let friendRequest of friendRequests">
               <td>{{friendRequest.senderUsername}}</td>
-              <td><button type="button" class="btn btn-success" (click)="accept(friendRequest.friendRequestId)" routerLink="/home" routerLinkActive="active">Accept</button></td>
-              <td><button type="button" class="btn btn-danger" (click)="decline(friendRequest.friendRequestId)" routerLink="/home" routerLinkActive="active">Decline</button></td>
+              <td><button type="button" class="btn btn-success" (click)="accept(friendRequest.friendRequestId)">Accept</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="decline(friendRequest.friendRequestId)">Decline</button></td>
             </tr>
           </tbody>
         </table>

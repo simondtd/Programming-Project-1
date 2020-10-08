@@ -6,6 +6,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Clan } from '../models/clan';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-clan',
@@ -15,7 +16,7 @@ import { Clan } from '../models/clan';
 export class CreateClanComponent implements OnInit {
   public clanGroup: FormGroup;
 
-  constructor(private profilesService: ProfilesService, private formBuilder: FormBuilder, private clansService: ClanService, private usersService: UsersService) {
+  constructor(private router: Router,private profilesService: ProfilesService, private formBuilder: FormBuilder, private clansService: ClanService, private usersService: UsersService) {
     this.clanGroup = new FormGroup({
       clanname: new FormControl(),
       clanregion: new FormControl(),
@@ -36,7 +37,9 @@ export class CreateClanComponent implements OnInit {
     var clan = new Clan(this.usersService.UserId, clanname, clandescription, clanpictureurl, clanregion); 
 
     if (this.clansService.validateClan(clan)) {
-      this.clansService.createClan(clan);
+      this.clansService.createClan(clan).add(data => {
+        this.router.navigate(['/viewclan']);
+      })
     }
 
   }

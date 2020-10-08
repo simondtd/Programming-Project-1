@@ -19,7 +19,6 @@ export class FriendRequestService {
   public sendFriendRequest(friendRequest: FriendRequest) {
     return this.httpClient.post(this.friendRequestUrl, friendRequest).subscribe((data)=> {
       console.log(data);
-      this.router.navigate(['/home'])
     })
   }
 
