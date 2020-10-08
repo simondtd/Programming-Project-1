@@ -25,7 +25,11 @@
                 <hr />
                 <label>Phone Number: </label><h6 style="display:inline">&nbsp;{{profile ? profile.phoneNumber : ""}}</h6>
                 <hr />
+
+                <div *ngIf="usersService.CurrentUser.userId != user.userId">
                 <button type="button" class="btn btn-primary col text-center" (click)="addFriend(user.userId)">Add Friend</button>
+                </div>
+
                 <div *ngIf="usersService.CurrentUser.userType == 1 && user.userType == 0">
                   <button type="button" class="btn btn-danger col text-center" (click)="deleteUser(user.userId)" >Delete</button>
                 </div>
