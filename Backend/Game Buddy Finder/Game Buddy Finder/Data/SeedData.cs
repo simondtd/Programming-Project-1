@@ -22,7 +22,7 @@ namespace Game_Buddy_Finder.Data
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                         CreationTime = DateTime.Now,
-                        SecretQuestion = "Who is your favourite dog?",
+                        SecretQuestion = "Whoisyourfavouritedog",
                         SecretAnswer = "Walter"
                     },
                     new User
@@ -31,7 +31,7 @@ namespace Game_Buddy_Finder.Data
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                         CreationTime = DateTime.Now,
-                        SecretQuestion = "Who is your favourite dog?",
+                        SecretQuestion = "Whoisyourfavouritedog",
                         SecretAnswer = "Walter"
                     },
                     new User
@@ -40,7 +40,7 @@ namespace Game_Buddy_Finder.Data
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                         CreationTime = DateTime.Now,
-                        SecretQuestion = "Who is your favourite dog?",
+                        SecretQuestion = "Whoisyourfavouritedog",
                         SecretAnswer = "Walter"
                     },
                     new User
@@ -49,7 +49,7 @@ namespace Game_Buddy_Finder.Data
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                         CreationTime = DateTime.Now,
-                        SecretQuestion = "Who is your favourite dog?",
+                        SecretQuestion = "Whoisyourfavouritedog",
                         SecretAnswer = "Walter"
                     },
                     new User
@@ -58,7 +58,7 @@ namespace Game_Buddy_Finder.Data
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                         CreationTime = DateTime.Now,
-                        SecretQuestion = "Who is your favourite dog?",
+                        SecretQuestion = "Whoisyourfavouritedog",
                         SecretAnswer = "Walter"
                     },
                     new User
@@ -67,7 +67,7 @@ namespace Game_Buddy_Finder.Data
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Admin,
                         CreationTime = DateTime.Now,
-                        SecretQuestion = "Who is your favourite dog?",
+                        SecretQuestion = "Whoisyourfavouritedog",
                         SecretAnswer = "Walter"
                     },
                     new User
@@ -76,7 +76,7 @@ namespace Game_Buddy_Finder.Data
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Regular,
                         CreationTime = DateTime.Now,
-                        SecretQuestion = "Who is your favourite dog?",
+                        SecretQuestion = "Whoisyourfavouritedog",
                         SecretAnswer = "Walter"
                     },
                     new User
@@ -85,7 +85,7 @@ namespace Game_Buddy_Finder.Data
                         PasswordHash = "202cb962ac59075b964b07152d234b70",
                         UserType = UserType.Regular,
                         CreationTime = DateTime.Now,
-                        SecretQuestion = "Who is your favourite dog?",
+                        SecretQuestion = "Whoisyourfavouritedog",
                         SecretAnswer = "Walter"
                     }
                     );
