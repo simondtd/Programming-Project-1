@@ -54,7 +54,6 @@ export class RegisterProfileComponent implements OnInit {
 
     if (this.profilesService.validateUser(profile)) {
       this.profilesService.createProfile(profile).subscribe(data => {
-        console.log(data);
         if (data == 0) {
           window.alert("Username is taken!");
         }
@@ -63,8 +62,5 @@ export class RegisterProfileComponent implements OnInit {
         }
       })
     }
-
-
   }
-
 }

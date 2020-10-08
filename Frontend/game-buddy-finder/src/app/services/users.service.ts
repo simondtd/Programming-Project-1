@@ -58,8 +58,15 @@ export class UsersService {
 
   public searchFriend(username) {
     this.getUserByUsername(username).subscribe((data) => {
-      this.searchUserId = data[0].userId;
-      this.router.navigate(['/friendsearch'])
+
+      if ((data as any).length == 0) {
+        window.alert("User not found");
+      }
+      else {
+        this.searchUserId = data[0].userId;
+        this.router.navigate(['/friendsearch']);
+      }
+
     })
   }
   public deleteUsers(userId: number) {
