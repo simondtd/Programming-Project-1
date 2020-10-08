@@ -42,7 +42,7 @@ namespace Game_Buddy_Finder.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody] RegisterModel value)
+        public int Post([FromBody] RegisterModel value)
         {
             User user = new User()
             {
@@ -68,6 +68,8 @@ namespace Game_Buddy_Finder.Controllers
 
                 _repo.Add(profile);
             }
+
+            return uid;
         }
 
         // PUT api/<controller>/5

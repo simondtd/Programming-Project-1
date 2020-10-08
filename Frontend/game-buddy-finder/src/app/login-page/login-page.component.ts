@@ -34,6 +34,10 @@ export class LoginPageComponent implements OnInit {
     //Get the user id
     this.usersService.login(username, hash).subscribe((userId) => {
       
+      if (userId == 0) {
+        //Invalid login details.
+        window.alert("Invalid Login Details");
+      }
       //Get the user with that id
       this.usersService.getUser(userId).subscribe((user) => {
         

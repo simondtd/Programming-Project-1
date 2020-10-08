@@ -70,9 +70,6 @@ export class ProfilesService {
   }
 
   public createProfile(profile: Profile) {
-    this.router.navigate(['/login']);
-    return this.httpClient.post<any>(this.profilesUrl, profile).subscribe(data => {
-      this.postId = data.id
-    });
+    return this.httpClient.post<any>(this.profilesUrl, profile)
   }
 }

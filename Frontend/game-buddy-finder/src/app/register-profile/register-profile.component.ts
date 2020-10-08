@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Profile } from '../models/profile';
+import {Router} from '@angular/router'
 import { md5 } from '../Helper/md5';
 
 
@@ -16,7 +17,7 @@ export class RegisterProfileComponent implements OnInit {
   public registerGroup: FormGroup;
 
 
-  constructor(private profilesService: ProfilesService, private formBuilder: FormBuilder) {
+  constructor(private router: Router,private profilesService: ProfilesService, private formBuilder: FormBuilder) {
     this.registerGroup = new FormGroup({
       firstname: new FormControl(),
       lastname: new FormControl(),
@@ -52,10 +53,18 @@ export class RegisterProfileComponent implements OnInit {
     var profile = new Profile(0, firstname, lastname, username, hash, rehash, email, region, profilepicurl, phone);
 
     if (this.profilesService.validateUser(profile)) {
-      this.profilesService.createProfile(profile);
+      this.profilesService.createProfile(profile).subscribe(data => {
+        console.log(data);
+        if (data == 0) {
+          window.alert("Username is taken!");
+        }
+        else {
+          this.router.navigate(['/login']);
+        }
+      })
     }
 
-   
+
   }
 
 }
