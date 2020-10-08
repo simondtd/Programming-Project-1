@@ -26,9 +26,13 @@
                 <label>Phone Number: </label><h6 style="display:inline">&nbsp;{{profile ? profile.phoneNumber : ""}}</h6>
                 <hr />
 
-                <div *ngIf="usersService.CurrentUser.userId != user.userId">
+                <div *ngIf="usersService.CurrentUser.userId != user.userId && !isfriend">
                 <button type="button" class="btn btn-primary col text-center" (click)="addFriend(user.userId)">Add Friend</button>
                 </div>
+
+                <div *ngIf="isfriend">
+                  <button type="button" class="btn btn-secondary col text-center" (click)="removeFriend(this.usersService.UserId, friends.userId, friends.userName)">Remove Friend</button>
+                  </div>
 
                 <div *ngIf="usersService.CurrentUser.userType == 1 && user.userType == 0">
                   <button type="button" class="btn btn-danger col text-center" (click)="deleteUser(user.userId)" >Delete</button>
