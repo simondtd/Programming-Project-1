@@ -43,6 +43,10 @@
     </form>
   </ul>
   <div *ngIf="loggedIn">
-      <button type="button" *ngIf="loggedIn" class="btn btn-danger" style="float:right" (click)="logout()">Log out</button>
+    <button type="button" *ngIf="loggedIn" class="btn btn-danger" style="float:right" (click)="logout()">Log out</button>
   </div>
+
+  <!--<div class="nav-item" *ngIf="loggedIn">
+    <img src="{{ profile.profilePicUrl }}">
+  </div>-->
 </nav>
