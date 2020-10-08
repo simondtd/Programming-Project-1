@@ -31,6 +31,7 @@ export class ViewProfileComponent implements OnInit {
   constructor(public usersService: UsersService, private clansService: ClanService, private messageService: MessagesService, private profilesService: ProfilesService, private friendService: FriendService, private interestService: InterestService) { }
 
   ngOnInit(): void {
+    document.body.classList.add('bg');
     if (this.user == null) {
       this.user = this.usersService.UserView;
       this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
