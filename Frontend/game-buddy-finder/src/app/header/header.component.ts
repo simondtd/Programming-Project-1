@@ -17,11 +17,12 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   private mySubscription: any;
   public loggedIn;
+  public profile;
   public friendSearchGroup: FormGroup;
 
   @Input() title: string;
 
-  constructor(public usersService: UsersService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(public usersService: UsersService, private router: Router, private formBuilder: FormBuilder, private profilesService: ProfilesService) {
     usersService.UserIDSubject.subscribe((data) => {
       this.loggedIn = usersService.UserId;
     })
@@ -30,6 +31,11 @@ export class HeaderComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
+      this.profile = data;
+    })
+  }
   public logout() {
     this.usersService.logout();
   }
