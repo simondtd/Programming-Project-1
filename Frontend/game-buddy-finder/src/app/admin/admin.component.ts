@@ -62,17 +62,30 @@ export class AdminComponent implements OnInit {
     for (var user of this.users) {
       content += "USERNAME: " + user.userName + "\n";
       content += "CREATION TIME: " + user.creationTime + "\n\n";
-
-      content += "SENT MESSAGES: \n\n"
-
+      var hasMessages = false;
       for (var message of this.messages) {
         if (message.senderId == user.userId) {
-          content += "TO: " + message.receiverUsername + "\n";
-          content += "DATE: " + message.sendTime + "\n";
-          content += "CONTENT:\n";
-          content += message.content + "\n";
+          hasMessages = true;
         }
       }
+
+      if (hasMessages) {
+        content += "SENT MESSAGES: \n\n"
+        for (var message of this.messages) {
+          if (message.senderId == user.userId) {
+            content += "TO: " + message.receiverUsername + "\n";
+            content += "DATE: " + message.sendTime + "\n";
+            content += "CONTENT:\n";
+            content += message.content + "\n";
+          }
+        }
+      }
+      else {
+        content += "NO MESSAGES: \n\n"
+      }
+
+
+
       content += "-------------\n";
     }
     let docDefinition = {
