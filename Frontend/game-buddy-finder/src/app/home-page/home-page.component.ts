@@ -61,7 +61,11 @@ export class HomePageComponent implements OnInit {
   public newPost() {
     var content = this.postGroup.get('post').value;
     var post = new Post(this.usersService.UserId, content);  
-    this.postService.createPost(post);
+    this.postService.createPost(post).subscribe((data) => {
+      this.postService.getPosts().subscribe((data) => {
+        this.posts = data;
+      })
+    })
     this.postGroup.reset();
   }
 
