@@ -34,7 +34,8 @@ export class HeaderComponent {
   ngOnInit(): void {
     this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
       this.profile = data;
-    })
+      console.log(this.profile);
+    });
   }
   public logout() {
     this.usersService.logout();
