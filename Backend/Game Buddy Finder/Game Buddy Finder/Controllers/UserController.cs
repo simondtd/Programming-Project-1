@@ -51,7 +51,6 @@ namespace Game_Buddy_Finder.Controllers
 
         [HttpGet("reset/{username}/{secretQuestion}/{secretAnswer}/{newPassword}")]
         public int ResetPassword(string username, string secretQuestion, string secretAnswer, string newPassword) {
-            Console.WriteLine(username);
             return _repo.ResetPassword(username, secretQuestion, secretAnswer, newPassword);
         }
 
