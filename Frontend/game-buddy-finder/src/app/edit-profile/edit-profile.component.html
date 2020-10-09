@@ -1,11 +1,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
   <div class="bg">
-    <div class="col-md-4 offset-md-3 mainContainer" style="top: 80px;">
+    <div class="col-md-4 offset-md-3 mainContainer" style="top: 80px; margin-left: auto; margin-right: auto;" >
+
       <div id="login">
 
         <form id="login-form" class="form" ng-submit="edit()" [formGroup]="editGroup">
           <h3>Edit Profile</h3>
+          <hr>
 
           <h5>First Name</h5>
           <div class="form-group input-group">
@@ -81,14 +83,13 @@
           <hr>
 
           <h5>Interests</h5>
-          <hr>
           <br>
 
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <div>
-                <h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title}} <button
-                    class="btn btn-danger float-right" (click)="deleteInterest(interest.interestId)"> Delete </button>
+                <h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title}}
+                  <button class="btn btn-danger float-right" (click)="deleteInterest(interest.interestId)"> Delete </button>
                   <hr />
                 </h6>
               </div>

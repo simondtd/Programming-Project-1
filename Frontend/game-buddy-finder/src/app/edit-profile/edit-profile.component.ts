@@ -72,8 +72,8 @@ export class EditProfileComponent implements OnInit {
 
     if (this.profilesService.validateUpdateUser(profile)) {
       this.profilesService.updateProfile(profile).subscribe((data) => {
-        console.log(data);
         this.updateData();
+        this.router.navigate(['/profile']);
       })
     }
   }
