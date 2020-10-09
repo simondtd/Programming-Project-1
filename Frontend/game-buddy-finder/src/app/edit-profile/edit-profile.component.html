@@ -1,97 +1,133 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+<html>
+
+<body>
   <div class="bg">
-    <div class="col-md-7 offset-md-8" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
-      <h1>Edit Profile</h1>
-      <hr>
-      <div class="row">
+    <div class="col-md-4 offset-md-3 mainContainer" style="top: 80px;">
+      <div id="login">
 
-        <div class="col-md-3">
-          <img src="{{Profile?.profilePicUrl}}" class="img-circle">
-        </div>
-        <div class="col-md-9 personal-info">
-          <h3>Personal info</h3>
+        <form id="login-form" class="form" ng-submit="edit()" [formGroup]="editGroup">
+          <h3> Edit Profile</h3>
+          <h5>Username</h5>
 
-          <form class="form-horizontal" role="form" id="edit-form" class="form" [formGroup]="editGroup">
-            <label class="col-lg-3 control-label">Image URL:</label>
-            <div class="col-lg-8">
-              <input type="text" class="form-control" placeholder="Image URL" value="{{Profile?.profilePicUrl}}" formControlName="profilepicurl">
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
             </div>
+            <input name="" class="form-control" placeholder="Username" type="text" formControlName="username"
+              value="{{User?.userName}}" required>
+          </div>
 
-            <div class="form-group">
-              <label class="col-lg-3 control-label">First name:</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{Profile?.firstName}}" formControlName="firstname">
-              </div>
+          <h5>First Name</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
             </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Last name:</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{Profile?.lastName}}" formControlName="lastname">
-              </div>
+            <input name="" class="form-control" placeholder="First name" type="text" formControlName="firstname"
+              required value="{{Profile?.firstName}}">
+          </div>
+          
+          <h5>Last Name</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
             </div>
-            <div class="form-group">
-              <label class="col-lg-3 control-label">Email:</label>
-              <div class="col-lg-8">
-                <input class="form-control" type="text" value="{{Profile?.email}}" formControlName="email">
-              </div>
+            <input name="" value="{{Profile?.lastName}}" class="form-control" placeholder="Last name" type="text"
+              formControlName="lastname" required>
+          </div>
+          
+          <h5>Email</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
             </div>
-            <div class="form-group">
-              <label class="col-md-3 control-label">Username:</label>
-              <div class="col-md-8">
-                <input class="form-control" type="text" value="{{User?.userName}}" formControlName="username">
-              </div>
+            <input name="" class="form-control" value="{{Profile?.email}}" placeholder="Email address" type="email"
+              formControlName="email" required>
+          </div>
+          
+          <h5>Phone</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
             </div>
-            <div class="form-group">
-              <label class="col-md-3 control-label">Phone Number:</label>
-              <div class="col-md-8">
-                <input class="form-control" type="text" value="{{User?.phoneNumber}}" formControlName="phone">
-              </div>
+            <input name="" class="form-control" placeholder="Phone number" type="text"
+              pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$"
+              formControlName="phone" required value="{{Profile?.phoneNumber}}">
+          </div>
+          
+          <h5>Region</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
             </div>
-            <div class="form-group">
-              <label class="col-md-3 control-label">Region:</label>
-              <div class="col-md-8">
-                <select class="form-control" formControlName="region" required value="{{Profile?.region}}">
-                  <option value="Africa">Africa</option>
-                  <option value="Asia">Asia</option>
-                  <option value="Central America">Central America</option>
-                  <option value="Eastern Europe">Eastern Europe</option>
-                  <option value="European Union">European Union</option>
-                  <option value="Middle East">Middle East</option>
-                  <option value="North America">North America</option>
-                  <option value="Oceania South">Oceania South</option>
-                  <option value="America">America</option>
-                  <option value="The Caribbean">The Caribbean</option>
-                </select>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label class="col-md-3 control-label">Likes To Play:</label>
-              <div class="col-md-8">
-                <h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title}} <button class="btn btn-danger float-right" (click)="deleteInterest(interest.interestId)"> Delete  </button><hr/></h6>
-                <br>
-                <h6>Add Interest:</h6>
-                <input class="form-control" type="text" formControlName="interest"><br>
-                <button class="btn btn-secondary btn-block" (click)="addInterest()"> Add  </button><br><br>
-              </div>
-            </div>
+            <select value="{{Profile?.region}}" class="form-control" formControlName="region" required>
 
+              <option selected="" disabled>Select Region</option>
+              <option value="Africa">Africa</option>
+              <option value="Asia">Asia</option>
+              <option value="Central America">Central America</option>
+              <option value="Eastern Europe">Eastern Europe</option>
+              <option value="European Union">European Union</option>
+              <option value="Middle East">Middle East</option>
+              <option value="North America">North America</option>
+              <option value="Oceania South">Oceania South</option>
+              <option value="America">America</option>
+              <option value="The Caribbean">The Caribbean</option>
 
-            <div class="form-group">
-              <label class="col-md-3 control-label"></label>
-              <div class="col-md-8">
-                <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-block" (click)="edit()"> Confirm  </button>
-                </div>
-                <span></span>
-                <div class="form-group">
-                  <button class="btn btn-danger btn-block" routerLink="/profile" routerLinkActive="active"> Cancel  </button>
-                </div>
-              </div>
+            </select>
+          </div>
+
+          <hr>
+
+          <h5>Profile Picture</h5>
+
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-clipboard"></i> </span>
             </div>
+            <input class="form-control" value="{{Profile?.profilePicUrl}}" placeholder="Profile Picture URL" type="text"
+              formControlName="profilepicurl" required>
+          </div>
+
+          <hr>
+
+          <h5>Interests</h5>
+          <hr>
+          <br>
+
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <div>
+                <h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title}} <button
+                    class="btn btn-danger float-right" (click)="deleteInterest(interest.interestId)"> Delete </button>
+                  <hr />
+                </h6>
+              </div>
+              <br>
+            </div>
+          </div>
+
+          <h5>Add Interest</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+            </div><input class="form-control" type="text" formControlName="interest">
+            <button class="btn btn-secondary btn-block" (click)="addInterest()"> Add </button><br><br>
+          </div>
+
+          <hr>
+          <br>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" (click)="edit()"> Edit </button>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-danger btn-block" routerLink="/profile" routerLinkActive="active"> Cancel </button>
+          </div>
         </form>
-        </div>
       </div>
     </div>
-    <br>
   </div>
-  <hr>
+</body>
+</html>
