@@ -15,7 +15,7 @@ import { FriendRequestService } from '../services/friendrequest.service'
 export class MatchmakingComponent implements OnInit {
   public matches;
 
-  constructor(private profilesService: ProfilesService,private friendsService: FriendService, private usersService: UsersService, private friendRequestService: FriendRequestService) {  }
+  constructor(private profilesService: ProfilesService, private friendsService: FriendService, private usersService: UsersService, private friendRequestService: FriendRequestService) { }
 
   ngOnInit(): void {
     this.friendsService.getMatchesOfUser(this.usersService.UserId).subscribe((data) => {
@@ -23,8 +23,8 @@ export class MatchmakingComponent implements OnInit {
     })
   }
 
-  public viewProfile(userId) {
-    
+  public viewProfile(user) {
+    this.usersService.searchFriend(user.userName);
   }
 
   public addFriend(receiverId) {
