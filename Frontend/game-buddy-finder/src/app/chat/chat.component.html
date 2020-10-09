@@ -52,9 +52,10 @@
           class="write_msg"
           placeholder="Type a message"
           name="newMessage"
+          autocomplete="off"
           formControlName="message"
         />
-        <button class="msg_send_btn" type="button">
+        <button class="msg_send_btn" type="button" (click)="sendMessage()">
           <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
         </button>
       </form>
