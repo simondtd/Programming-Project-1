@@ -18,6 +18,7 @@ export class HeaderComponent {
   private mySubscription: any;
   public loggedIn;
   public profile;
+  public user;
   public friendSearchGroup: FormGroup;
 
   @Input() title: string;
@@ -25,6 +26,10 @@ export class HeaderComponent {
   constructor(public usersService: UsersService, private router: Router, private formBuilder: FormBuilder, public profilesService: ProfilesService) {
     usersService.UserIDSubject.subscribe((data) => {
       this.loggedIn = usersService.UserId;
+
+      this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
+        this.user = data;
+      });
 
       this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
         this.profile = data;

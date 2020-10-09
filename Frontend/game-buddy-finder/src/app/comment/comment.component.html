@@ -1,6 +1,6 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <div class="container">
   <div class="row">
@@ -15,7 +15,6 @@
                 </div>
                 <div class="ml-2">
                   <div class="h5 m-0">{{postService.CurrentPost?.posterUser.userName}}</div>
-                  <!--<div class="h7 text-muted"></div> should be full name-->
                 </div>
               </div>
             </div>
@@ -26,7 +25,7 @@
               {{postService.CurrentPost?.content}}
             </p>
           </div>
-          <form class="form-horizontal card-header" role="form" ng-submit="newComment()"  [formGroup]="commentGroup">
+          <form class="form-horizontal" role="form" ng-submit="newComment()" [formGroup]="commentGroup">
             <div class="form-group">
               <div class="col-sm-5">
                 <textarea class="form-control" rows="2" style="width: 890px;" formControlName="comment"></textarea>
@@ -34,25 +33,25 @@
             </div>
             <div class="form-group">
               <div class="col-sm-5">
-                <button class="btn btn-success btn-circle text-uppercase" (click)="newComment()" routerLink="/comment" routerLinkActive="active" type="submit" style="width: 900px; border-radius: 15px;"><span class="glyphicon glyphicon-send"></span>&nbsp;Comment</button>
+                <button class="btn btn-success btn-circle text-uppercase" (click)="newComment()" routerLink="/comment" routerLinkActive="active" type="submit" style="width: 890px; border-radius: 15px;"><span class="glyphicon glyphicon-send"></span>&nbsp;Comment</button>
               </div>
             </div>
           </form>
         </div>
-    </div>
-      <div class="comment-tabs" *ngFor="let comment of postService.CurrentPost?.comments">
+      </div>
+      <div style="white-space: nowrap;"class="comment-tabs" *ngFor="let comment of postService.CurrentPost?.comments">
         <div class="tab-content">
-          <div class="tab-pane active" id="comments-logout">
+          <div class="tab-pane active">
             <ul class="media-list">
               <li class="media">
                 <a class="pull-left" href="#">
-                  <img class="media-object img-circle" src="{{ comment?.posterProfile.profilePicUrl}}" alt="profile">
+                  <img class="rounded-circle" width="75" src="{{ comment?.posterProfile.profilePicUrl}}">
                 </a>
                 <div class="media-body">
                   <div class="well well-lg">
                     <h4 class="media-heading reviews">{{ comment?.posterUser.userName}}</h4>
                     <p class="media-commnet">{{ comment.content }}</p>
-                    <button type="button" class="btn btn-danger" (click)="delete(comment.commentId)" *ngIf="comment.posterUserId == usersService.UserId">Delete</button>
+                    <button style="float: right;" type="button" class="btn btn-danger" (click)="delete(comment.commentId)" *ngIf="comment.posterUserId == usersService.UserId">Delete</button>
                   </div>
                 </div>
               </li>
@@ -61,31 +60,5 @@
         </div>
       </div>
     </div>
-    <div class="panel-body">
-        <ul class="media-list">
-            <li class="media">
-                <div class="media-left">
-                    <img src="http://placehold.it/60x60" class="img-circle">
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        Mauris Eu
-                        <br>
-                        <small>
-                            commented on <a href="#">Post Title</a>
-                        </small>
-                    </h4>
-                    <p>
-                        Vivamus pulvinar mauris eu placerat blandit. In euismod tellus vel ex vestibulum congue...
-                    </p>
-                </div>
-            </li>
-            <li class="media">
-                <div class="media-left">
-                    <img src="http://placehold.it/60x60" class="img-circle">
-                </div>
-            </li>
-          </ul>
-    </div>
   </div>
-  </div>
+</div>

@@ -41,12 +41,11 @@
         <button type="submit" *ngIf="loggedIn" class="btn btn-primary" (click)="search()">Search</button>
       </li>
     </form>
+    <li *ngIf="loggedIn">
+      <a routerLink="/profile" routerLinkActive="active" style="color: white; margin-left: 160px;">{{ this.user?.userName }} <img class="rounded-circle" width="45" routerLink="/profile" routerLinkActive="active" src="{{ this.profile?.profilePicUrl }}"></a>
+    </li>
   </ul>
   <div *ngIf="loggedIn">
     <button type="button" *ngIf="loggedIn" class="btn btn-danger" style="float:right" (click)="logout()">Log out</button>
-  </div>
-
-  <div class="nav-item" *ngIf="loggedIn">
-    <img src="{{ this.profile?.profilePicUrl }}">
   </div>
 </nav>
