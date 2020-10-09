@@ -25,7 +25,7 @@ namespace Game_Buddy_Finder
 
             Console.WriteLine(packet);
 
-            await Clients.Group(clanId).SendAsync("ReceiveMessage", packet);
+            await Clients.Group(clanId).SendAsync("ReceiveMessage", packet, userName);
         }
 
         public async Task JoinChat(int clanId, string username)
@@ -50,7 +50,7 @@ namespace Game_Buddy_Finder
                     }
                 }
 
-                await Clients.OthersInGroup(clanId.ToString()).SendAsync("ReceiveMessage", packet);
+                await Clients.OthersInGroup(clanId.ToString()).SendAsync("ReceiveMessage", packet, username);
             }
             else
             {
@@ -78,7 +78,7 @@ namespace Game_Buddy_Finder
                 var packet = $"{userName} has left the chat";
                 await Clients.Group(clanId.ToString()).SendAsync("removeConnection", userName);
 
-                await Clients.OthersInGroup(clanId).SendAsync("ReceiveMessage", packet);
+                await Clients.OthersInGroup(clanId).SendAsync("ReceiveMessage", packet, userName);
 
 
                 ConnectedUsers.Remove(connectionId);

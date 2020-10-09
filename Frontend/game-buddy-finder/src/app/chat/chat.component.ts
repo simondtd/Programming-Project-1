@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewChecked } from '@angular/core';
 import * as SignalR from '@aspnet/signalr';
 import { env } from 'process';
 import { ChatMessage } from '../models/chatmessage';
@@ -18,17 +18,17 @@ import { FormControl } from '@angular/forms';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, OnDestroy {
+export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked  {
 
   connection: SignalR.HubConnection;
   connectionUrl = environment.baseUrl + "chatHub";
 
   public chatGroup: FormGroup;
 
-  public Messages: Array<string>;
+  public Messages: Array<ChatMessage>;
   public OnlineUsers: Array<string>;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService, public clansService: ClanService, private formBuilder: FormBuilder) {
+  constructor(public usersService: UsersService, private profilesService: ProfilesService, public clansService: ClanService, private formBuilder: FormBuilder) {
     this.chatGroup = new FormGroup({
       message: new FormControl(),
     });
@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       .withUrl(this.connectionUrl)
       .build();
 
-    this.Messages = new Array<string>();
+    this.Messages = new Array<ChatMessage>();
     this.OnlineUsers = new Array<string>();
 
     this.connection.on('ReceiveMessage', this.receiveMessage.bind(this));
@@ -55,6 +55,11 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.connection.stop();
   }
 
+  ngAfterViewChecked() {         
+    var container = document.getElementById("chatLog");           
+    container.scrollTop = container.scrollHeight;
+  } 
+
   public addConnection(username) {
     this.OnlineUsers.push(username);
   }
@@ -66,8 +71,9 @@ export class ChatComponent implements OnInit, OnDestroy {
     }
   }
 
-  public receiveMessage(message) {
-    this.Messages.unshift(message);
+  public receiveMessage(message, sender) {
+    var msg = new ChatMessage(sender, message);
+    this.Messages = [...this.Messages, msg];
   }
 
   public sendMessage() {
