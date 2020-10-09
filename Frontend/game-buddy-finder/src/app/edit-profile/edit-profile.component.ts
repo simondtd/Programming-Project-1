@@ -25,14 +25,20 @@ export class EditProfileComponent implements OnInit {
       firstname: new FormControl(),
       lastname: new FormControl(),
       email: new FormControl(),
-      username: new FormControl(),
       region: new FormControl(),
       phone: new FormControl(),
       profilepicurl: new FormControl(),
       interest: new FormControl()
     });
 
-    this.usersService.getUser(usersService.UserId).subscribe((data) => {
+    this.updateData();
+  }
+
+  ngOnInit(): void {
+  }
+
+  public updateData() {
+    this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
       this.User = data;
     });
 
@@ -40,34 +46,34 @@ export class EditProfileComponent implements OnInit {
       this.interests = data;
     })
 
-    this.profilesService.getProfileOfUser(usersService.UserId).subscribe((data) => {
+    this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
       this.Profile = data;
+      this.editGroup.get('firstname').setValue(this.Profile.firstName);
+      this.editGroup.get('lastname').setValue(this.Profile.lastName);
+      this.editGroup.get('email').setValue(this.Profile.email);
+      this.editGroup.get('region').setValue(this.Profile.region);
+      this.editGroup.get('phone').setValue(this.Profile.phoneNumber);
+      this.editGroup.get('profilepicurl').setValue(this.Profile.profilePicUrl);
     });
   }
 
-  ngOnInit(): void {
-  }
-
   public edit() {
-    console.log(this.editGroup);
     //Get username and Password from logingroup
     var firstname = this.editGroup.get('firstname').value;
     var lastname = this.editGroup.get('lastname').value;
     var email = this.editGroup.get('email').value;
-    var username = this.editGroup.get('username').value;
     var region = this.editGroup.get('region').value;
     var phone = this.editGroup.get('phone').value;
     var profilepicurl = this.editGroup.get('profilepicurl').value;
 
-    console.log(lastname + " " + firstname + " " + email + " " + region);
-
-    var profile = new Profile(this.Profile.profileId, firstname, lastname, username, "", "", email, region, profilepicurl, phone, "", "");
+    var profile = new Profile(this.Profile.profileId, firstname, lastname, "username", "", "", email, region, profilepicurl, phone, "", "");
 
     console.log(profile);
 
     if (this.profilesService.validateUpdateUser(profile)) {
       this.profilesService.updateProfile(profile).subscribe((data) => {
-        this.router.navigate(['/profile']);
+        console.log(data);
+        this.updateData();
       })
     }
   }

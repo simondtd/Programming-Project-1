@@ -1,23 +1,10 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-
-<html>
-
-<body>
   <div class="bg">
     <div class="col-md-4 offset-md-3 mainContainer" style="top: 80px;">
       <div id="login">
 
         <form id="login-form" class="form" ng-submit="edit()" [formGroup]="editGroup">
           <h3>Edit Profile</h3>
-          <h5>Username</h5>
-
-          <div class="form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-            </div>
-            <input name="" class="form-control" placeholder="Username" type="text" formControlName="username"
-               required>
-          </div>
 
           <h5>First Name</h5>
           <div class="form-group input-group">
@@ -25,7 +12,7 @@
               <span class="input-group-text"> <i class="fa fa-user"></i> </span>
             </div>
             <input name="" class="form-control" placeholder="First name" type="text" formControlName="firstname"
-              required value="{{Profile?.firstName}}">
+              required>
           </div>
           
           <h5>Last Name</h5>
@@ -33,7 +20,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-user"></i> </span>
             </div>
-            <input name="" value="{{Profile?.lastName}}" class="form-control" placeholder="Last name" type="text"
+            <input name="" class="form-control" placeholder="Last name" type="text"
               formControlName="lastname" required>
           </div>
           
@@ -42,7 +29,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
             </div>
-            <input name="" class="form-control" value="{{Profile?.email}}" placeholder="Email address" type="email"
+            <input name="" class="form-control" placeholder="Email address" type="email"
               formControlName="email" required>
           </div>
           
@@ -53,7 +40,7 @@
             </div>
             <input name="" class="form-control" placeholder="Phone number" type="text"
               pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$"
-              formControlName="phone" required value="{{Profile?.phoneNumber}}">
+              formControlName="phone" required>
           </div>
           
           <h5>Region</h5>
@@ -61,7 +48,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
             </div>
-            <select value="{{Profile?.region}}" class="form-control" formControlName="region" required>
+            <select class="form-control" formControlName="region" required>
 
               <option selected="" disabled>Select Region</option>
               <option value="Africa">Africa</option>
@@ -86,7 +73,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-clipboard"></i> </span>
             </div>
-            <input class="form-control" value="{{Profile?.profilePicUrl}}" placeholder="Profile Picture URL" type="text"
+            <input class="form-control" placeholder="Profile Picture URL" type="text"
               formControlName="profilepicurl" required>
           </div>
 
@@ -111,8 +98,8 @@
           <h5>Add Interest</h5>
           <div class="form-group input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-            </div><input class="form-control" type="text" formControlName="interest">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div><input class="form-control" type="text" placeholder="Interest Name..." formControlName="interest">
             <button class="btn btn-secondary btn-block" (click)="addInterest()"> Add </button><br><br>
           </div>
 
@@ -129,5 +116,3 @@
       </div>
     </div>
   </div>
-</body>
-</html>
