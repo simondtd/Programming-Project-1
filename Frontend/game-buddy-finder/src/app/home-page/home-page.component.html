@@ -47,6 +47,8 @@
     </form>
 
 
+      <div *ngIf ="posts == undefined"> <img src='../../assets/loading.gif' class="loadingImage"></div>
+
       <div *ngFor="let post of posts" class="card gedf-card"> 
         <div class="card-header">
           <div class="d-flex justify-content-between align-items-center">

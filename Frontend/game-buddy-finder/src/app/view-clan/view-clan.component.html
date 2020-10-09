@@ -1,6 +1,7 @@
 
 <body>
-  <div class="col-md-3 offset-md-3 mainContainer" style="top: 80px">
+  <div *ngIf = "clanView == undefined"> <img src='../../assets/loading.gif' class="loadingImage"></div>
+  <div *ngIf = "clanView != undefined" class="col-md-3 offset-md-3 mainContainer" style="top: 80px">
     <div class="row justify-content-center">
       <div class="">
         <table class="table table-responsive">

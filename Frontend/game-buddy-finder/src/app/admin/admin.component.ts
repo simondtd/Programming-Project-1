@@ -84,8 +84,6 @@ export class AdminComponent implements OnInit {
         content += "NO MESSAGES: \n\n"
       }
 
-
-
       content += "-------------\n";
     }
     let docDefinition = {

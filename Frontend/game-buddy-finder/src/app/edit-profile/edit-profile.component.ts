@@ -21,30 +21,32 @@ export class EditProfileComponent implements OnInit {
   public interests;
 
   constructor(private router: Router, private profilesService: ProfilesService, private formBuilder: FormBuilder, private usersService: UsersService, private interestService: InterestService) {
-
     this.editGroup = new FormGroup({
       firstname: new FormControl(),
       lastname: new FormControl(),
       email: new FormControl(),
-      username: new FormControl(),
-      password: new FormControl(),
-      repassword: new FormControl(),
       region: new FormControl(),
       phone: new FormControl(),
       profilepicurl: new FormControl(),
       interest: new FormControl()
     });
 
-    this.usersService.getUser(usersService.UserId).subscribe((data) => {
+    this.updateData();
+  }
+
+  ngOnInit(): void {
+  }
+
+  public updateData() {
+    this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
       this.User = data;
-      this.editGroup.get('username').setValue(this.User.userName);
     });
 
     this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
       this.interests = data;
     })
 
-    this.profilesService.getProfileOfUser(usersService.UserId).subscribe((data) => {
+    this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
       this.Profile = data;
       this.editGroup.get('firstname').setValue(this.Profile.firstName);
       this.editGroup.get('lastname').setValue(this.Profile.lastName);
@@ -52,11 +54,7 @@ export class EditProfileComponent implements OnInit {
       this.editGroup.get('region').setValue(this.Profile.region);
       this.editGroup.get('phone').setValue(this.Profile.phoneNumber);
       this.editGroup.get('profilepicurl').setValue(this.Profile.profilePicUrl);
-
     });
-  }
-
-  ngOnInit(): void {
   }
 
   public edit() {
@@ -64,20 +62,23 @@ export class EditProfileComponent implements OnInit {
     var firstname = this.editGroup.get('firstname').value;
     var lastname = this.editGroup.get('lastname').value;
     var email = this.editGroup.get('email').value;
-    var username = this.editGroup.get('username').value;
     var region = this.editGroup.get('region').value;
     var phone = this.editGroup.get('phone').value;
     var profilepicurl = this.editGroup.get('profilepicurl').value;
 
-    var profile = new Profile(this.Profile.profileId, firstname, lastname, username, "", "", email, region, profilepicurl, phone, "", "");
+    var profile = new Profile(this.Profile.profileId, firstname, lastname, "username", "", "", email, region, profilepicurl, phone, "", "");
 
-    if (this.profilesService.validateUser(profile)) {
-      this.profilesService.updateProfile(profile);
-      this.router.navigate(['/profile']);
+    console.log(profile);
+
+    if (this.profilesService.validateUpdateUser(profile)) {
+      this.profilesService.updateProfile(profile).subscribe((data) => {
+        console.log(data);
+        this.updateData();
+      })
     }
   }
 
-  public addInterest(){
+  public addInterest() {
     var interest = this.editGroup.get('interest').value;
     var add = new Interest(this.usersService.UserId, interest);
     this.editGroup.reset("interest");
@@ -88,11 +89,12 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
-  public deleteInterest(interestId){
+  public deleteInterest(interestId) {
     this.interestService.removeInterest(interestId).add(data => {
       this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
         this.interests = data;
       })
     })
   }
+
 }

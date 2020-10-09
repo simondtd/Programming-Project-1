@@ -1,24 +1,25 @@
 <body>
-    <div class="col-md-3 offset-md-3 mainContainer" style="top: 80px;">
-      <div class="row justify-content-center">
-        <div class="">
-          <table class="table table-responsive">
-            <thead class="">
-              <tr>
-                <th scope="col">Matches List</th>
-                <th scope="col">&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let match of matches">
-                <td>{{match.userName}}</td>
-                <td><button type="button" class="btn btn-success" (click)="addFriend(match.userId)" routerLink="/home" routerLinkActive="active">Add Friend</button></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <div *ngIf="matches == undefined"> <img src='../../assets/loading.gif' class="loadingImage"></div>
+  <div *ngIf="matches != undefined" class="col-md-3 offset-md-3 mainContainer" style="top: 80px;">
+    <div class="row justify-content-center">
+      <div class="">
+        <table class="table table-responsive">
+          <thead class="">
+            <tr>
+              <th scope="col">Matched Users</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let match of matches">
+              <td>{{match.userName}}</td>
+              <td><button type="button" class="btn btn-success" (click)="viewProfile(match)" routerLink="/home"
+                  routerLinkActive="active">View</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <br><br><br>
-  </body>
-  
+  </div>
+  <br><br><br>
+</body>
