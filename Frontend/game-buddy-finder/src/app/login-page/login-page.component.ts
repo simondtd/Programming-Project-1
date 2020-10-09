@@ -33,7 +33,6 @@ export class LoginPageComponent implements OnInit {
     var hash = md5(password);
     //Get the user id
     this.usersService.login(username, hash).subscribe((userId) => {
-      
       if (userId == 0) {
         //Invalid login details.
         window.alert("Invalid Login Details");

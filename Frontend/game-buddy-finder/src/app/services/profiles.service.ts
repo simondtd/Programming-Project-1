@@ -18,7 +18,7 @@ const httpOptions = {
 })
 export class ProfilesService {
   private profilesUrl = environment.baseUrl + 'api/profile';
-
+  public Profile: Profile;
   private postId;
   constructor(private httpClient: HttpClient, private router: Router) { }
 

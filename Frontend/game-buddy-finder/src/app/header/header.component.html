@@ -47,6 +47,6 @@
   </div>
 
   <div class="nav-item" *ngIf="loggedIn">
-    <img src="{{ profile.profilePicUrl }}">
+    <img src="{{ this.profile?.profilePicUrl }}">
   </div>
 </nav>

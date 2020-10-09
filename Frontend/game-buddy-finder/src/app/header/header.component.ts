@@ -22,9 +22,13 @@ export class HeaderComponent {
 
   @Input() title: string;
 
-  constructor(public usersService: UsersService, private router: Router, private formBuilder: FormBuilder, private profilesService: ProfilesService) {
+  constructor(public usersService: UsersService, private router: Router, private formBuilder: FormBuilder, public profilesService: ProfilesService) {
     usersService.UserIDSubject.subscribe((data) => {
       this.loggedIn = usersService.UserId;
+
+      this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
+        this.profile = data;
+      });
     })
     this.friendSearchGroup = new FormGroup({
       username: new FormControl(),
@@ -32,10 +36,7 @@ export class HeaderComponent {
   }
 
   ngOnInit(): void {
-    this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
-      this.profile = data;
-      console.log(this.profile);
-    });
+
   }
   public logout() {
     this.usersService.logout();

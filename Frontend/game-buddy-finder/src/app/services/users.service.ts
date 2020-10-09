@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { User } from '../models/user'
 import { Profile } from '../models/profile'
+import { ProfilesService } from '../services/profiles.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class UsersService {
   public searchUserId;
 
   public UserIDSubject: Subject<boolean> = new Subject<boolean>();
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  constructor(private httpClient: HttpClient, private router: Router, private profileService: ProfilesService) { }
 
   public getUsers() {
     return this.httpClient.get<User[]>(this.usersUrl);
@@ -54,6 +55,10 @@ export class UsersService {
       this.UserIDSubject.next(userId);
       this.CurrentUser = data;
       this.router.navigate(['/home'])
+
+      this.profileService.getProfileOfUser(userId).subscribe(data => {
+        this.profileService.Profile = data;
+      })
     });
 
   }
