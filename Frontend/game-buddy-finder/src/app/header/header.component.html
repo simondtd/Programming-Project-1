@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky">
   <div *ngIf="loggedIn">
-    <img src="../../assets/logo.png" alt="Logo" height="80">
+    <img src="../../assets/logo.png" alt="Logo" height="80" routerLink="/home" routerLinkActive="active">
   </div>
   <ul class="navbar-nav mx-auto">
     <li class="nav-item" *ngIf="loggedIn">
@@ -38,7 +38,7 @@
     <form id="login-form" class="form" ng-submit="search()" [formGroup]="friendSearchGroup">
       <li class="nav-item form-inline" *ngIf="loggedIn">
         <input class="form-control" type="text" placeholder="Search" aria-label="Search" formControlName="username">
-        <button type="button" *ngIf="loggedIn" class="btn btn-primary" (click)="search()">Search</button>
+        <button type="submit" *ngIf="loggedIn" class="btn btn-primary" (click)="search()">Search</button>
       </li>
     </form>
   </ul>

@@ -31,6 +31,7 @@ export class ViewProfileComponent implements OnInit {
   constructor(public usersService: UsersService, private clansService: ClanService, private messageService: MessagesService, private profilesService: ProfilesService, private friendService: FriendService, private interestService: InterestService) { }
 
   ngOnInit(): void {
+    document.body.classList.add('bg');
     if (this.user == null) {
       this.user = this.usersService.UserView;
       this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
@@ -54,7 +55,9 @@ export class ViewProfileComponent implements OnInit {
   public removeFriend(userId1, userId2, username) {
     if (confirm("Are you sure to delete " + username)) {
       this.friendService.removeFriend(userId1, userId2).subscribe((data) => {
-
+        this.friendService.getFriendsOfUser(this.usersService.UserId).subscribe((data) => {
+          this.friends = data;
+        });
       })
     }
   }

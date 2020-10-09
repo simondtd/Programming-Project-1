@@ -42,16 +42,19 @@ namespace Game_Buddy_Finder.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody] RegisterModel value)
+        public int Post([FromBody] RegisterModel value)
         {
+            Console.WriteLine(value.SecretAnswer + " " + value.SecretQuestion);
             User user = new User()
             {
                 UserName = value.UserName,
                 PasswordHash = value.PasswordHash,
                 UserType = UserType.Regular,
                 CreationTime = DateTime.Now,
+                SecretQuestion = value.SecretQuestion,
+                SecretAnswer = value.SecretAnswer
             };
-            
+
             int uid = _repo.AddUser(user);
             if (uid > 0)
             {
@@ -63,11 +66,13 @@ namespace Game_Buddy_Finder.Controllers
                     Email = value.EmailAddress,
                     Region = value.Region,
                     PhoneNumber = value.PhoneNumber,
-                    ProfilePicUrl = value.ProfilePicUrl
+                    ProfilePicUrl = value.ProfilePicUrl,
                 };
 
                 _repo.Add(profile);
             }
+
+            return uid;
         }
 
         // PUT api/<controller>/5
@@ -75,7 +80,8 @@ namespace Game_Buddy_Finder.Controllers
         public void Put(int id, [FromBody] RegisterModel value)
         {
             Console.WriteLine(value.FirstName);
-            Profile profile = new Profile{
+            Profile profile = new Profile
+            {
                 ProfileId = id,
                 FirstName = value.FirstName,
                 LastName = value.LastName,

@@ -4,31 +4,47 @@ img {
   length: 100px;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
 }
 
+.mainContainer {
+  max-width: 50%;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  //box-shadow: 10px 10px 5px #888;
+  background-clip: padding-box;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
 .bg {
-  background-image: url("../../assets/bg.png");
-  height: 100%;
+  //background-image: url("../../assets/bg.png");
+  min-height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: pink;
+  //background-color: pink;
 }
 
 label {
   font-weight: bold;
 }
 
-.container{
-  height:50px;
+.container {
+  height: 50px;
   cursor: pointer;
   margin-bottom: 40px;
 }
 
-.delete{
+.delete {
   display: none;
   color: black;
   background-color: crimson;

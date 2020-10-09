@@ -49,6 +49,11 @@ namespace Game_Buddy_Finder.Controllers
             return _repo.Get(id);
         }
 
+        [HttpGet("reset/{username}/{secretQuestion}/{secretAnswer}/{newPassword}")]
+        public int ResetPassword(string username, string secretQuestion, string secretAnswer, string newPassword) {
+            return _repo.ResetPassword(username, secretQuestion, secretAnswer, newPassword);
+        }
+
         // POST: api/Users
         [HttpPost]
         public void Post([FromBody] User value)

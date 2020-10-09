@@ -15,7 +15,6 @@ import { ProfilesService } from '../services/profiles.service';
 export class CommentComponent implements OnInit {
   public commentGroup: FormGroup;
   public comments;
-  public user;
  
   constructor(private usersService: UsersService, private profilesService: ProfilesService, public postService: PostService, private formBuilder: FormBuilder) {
     this.commentGroup = new FormGroup({
@@ -24,25 +23,25 @@ export class CommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
-      this.user = data;
-    })
-    this.postService.getPost(this.usersService.UserId).subscribe((data) => {
-      this.comments = data;
-    })
   }
 
 
   public newComment() {
     var content = this.commentGroup.get('comment').value;
     var comment = new Comment(this.postService.CurrentPost.postId, this.usersService.UserId, content);
-    this.postService.addComment(comment);
+    this.postService.addComment(comment).subscribe((data) => {
+      this.postService.getPost(this.postService.CurrentPost.postId).subscribe((data) => {
+        this.postService.CurrentPost = data;
+      })
+    })
     this.commentGroup.reset();
   }
 
   public delete(commentId) {
-    this.postService.deleteComment(commentId);
-    this.postService.getPosts().subscribe((data) => {
+    this.postService.deleteComment(commentId).add((data) => {
+      this.postService.getPost(this.postService.CurrentPost.postId).subscribe((data) => {
+        this.postService.CurrentPost = data;
+      })
     })
   }
 }

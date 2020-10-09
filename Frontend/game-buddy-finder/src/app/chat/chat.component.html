@@ -14,14 +14,59 @@
 </table>
 </div> -->
 
+<br>
+<h3>Chatting with: {{this.clansService.currentClan?.clanName}}</h3>
+<hr>
+<div class="mesgs">
+    <div class="msg_history center" id="chatLog">
+      <li class="message" *ngFor="let message of Messages">
+        <div
+          *ngIf="
+            message.User != usersService.CurrentUser.userName
+            then incoming_msg;
+            else outgoing_msg
+          "
+        ></div>
+        <ng-template #incoming_msg>
+          <div class="incoming_msg">
+            <div class="received_msg">
+              <div class="received_withd_msg">
+                <p>{{ message.Message }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #outgoing_msg>
+          <div class="outgoing_msg">
+            <div class="sent_msg">
+              <p>{{ message.Message }}</p>
+            </div>
+          </div>
+        </ng-template>
+      </li>
+    </div>
+    <div class="type_msg">
+      <form class="input_msg_write" (ngSubmit)="sendMessage()" [formGroup]="chatGroup">
+        <input
+          type="text"
+          class="write_msg"
+          placeholder="Type a message"
+          name="newMessage"
+          formControlName="message"
+        />
+        <button class="msg_send_btn" type="button">
+          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
 
-<div class="col-sm-8 my-auto" style="width: 50%; border-radius: 25px;">
+<!--<div class="col-sm-8 my-auto" style="width: 50%; border-radius: 25px;">
 
     <div class="panel-heading top-bar">
         <h3 style="color: black;"> {{this.clansService.currentClan?.clanName}}</h3>
     </div>
     <div class="panel-body msg_container_base" style="border-radius: 15px;">
-        <div class="row msg_container base_receive">
+        <div class="row msg_container base_receive" >
             <div class="col-md-10 col-xs-10">
                 <div *ngFor="let message of Messages">
                     <div class="messages msg_receive" style="border-radius: 25px;">
@@ -45,4 +90,4 @@
                 </span>
             </div>
         </form>
-    </div>
+    </div>-->

@@ -36,7 +36,15 @@ export class UsersService {
   }
 
   public login(username, password) {
-    return this.httpClient.get(this.usersUrl + '/login' + '/' + username + '/' + password)
+    return this.httpClient.get(this.usersUrl + '/login/' + username + '/' + password)
+  }
+
+  public resetPassword(username, secretQuestion, secretAnswer, newPassword) {
+    console.log(username);
+    console.log(secretQuestion);
+    console.log(secretAnswer);
+    console.log(newPassword);
+    return this.httpClient.get(this.usersUrl + '/reset/' + username + '/' + secretQuestion + '/' + secretAnswer + '/' + newPassword);
   }
 
   public authorizeLogin(userId) {
@@ -58,8 +66,15 @@ export class UsersService {
 
   public searchFriend(username) {
     this.getUserByUsername(username).subscribe((data) => {
-      this.searchUserId = data[0].userId;
-      this.router.navigate(['/friendsearch'])
+
+      if ((data as any).length == 0) {
+        window.alert("User not found");
+      }
+      else {
+        this.searchUserId = data[0].userId;
+        this.router.navigate(['/friendsearch']);
+      }
+
     })
   }
   public deleteUsers(userId: number) {

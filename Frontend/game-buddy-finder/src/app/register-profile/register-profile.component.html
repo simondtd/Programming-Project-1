@@ -1,18 +1,24 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 <html>
-<title>Login Game Buddy Finder</title>
 
 <body>
   <div class="bg">
-    <h1 class="text-center text-white pt-5">PlayWith</h1><br>
-
-    <div class="col-md-4 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
+    <div class="col-md-4 offset-md-3 mainContainer" style="top: 80px;">
       <div id="login">
 
         <form id="login-form" class="form" ng-submit="register()" [formGroup]="registerGroup">
+          <img src="../../assets/logo-black.png" alt="Logo" width="350" class="center">
                   <h4 class="card-title mt-3 text-center">Register</h4>
-                  <p class="text-center">Register and join PlayWith</p>
+                  <h5>Basic Information</h5>
+
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="" class="form-control" placeholder="Username" type="text" formControlName="username" required>
+                  </div>
+
                   <div class="form-group input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -36,31 +42,18 @@
 
                   <div class="form-group input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                      <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="Username" type="text" formControlName="username" required>
+                    <input name="" class="form-control" placeholder="Phone number" type="text" pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$" formControlName="phone" required>
                   </div>
 
-                  <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input class="form-control" placeholder="Create password" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$" formControlName="password" required>
-                  </div>
-
-                  <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input class="form-control" placeholder="Repeat password" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$" formControlName="repassword" required>
-                  </div>
-                  
                   <div class="form-group input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
                     </div>
                     <select class="form-control" formControlName="region" required>
-                      <option selected="">Region</option>
+
+                      <option selected="" disabled>Select Region</option>
                       <option value="Africa">Africa</option>
                       <option value="Asia">Asia</option>
                       <option value="Central America">Central America</option>
@@ -75,12 +68,51 @@
                     </select>
                   </div>
 
+                  <hr>
+                  
+                  <h5>Password</h5>
+
                   <div class="form-group input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="Phone number" type="text" pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$" formControlName="phone" required>
+                    <input class="form-control" placeholder="Create password" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$" formControlName="password" required>
                   </div>
+
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" placeholder="Repeat password" type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$" formControlName="repassword" required>
+                  </div>
+
+                  <hr>
+
+                  <hr>
+                  <h5>Secret Question (Used to reset password)</h5>
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
+                    </div>
+                    <select class="form-control" formControlName="secretQuestion" required>
+                      <option selected="" disabled>Select Question</option>
+                      <option value="Whoisyourfavouritedog">Who is your favourite dog?</option>
+                      <option value="Whoisyourfavouritecat">Who is your favourite cat?</option>
+                      <option value="Whatisyourfavouritegame">What is your favourite game?</option>
+
+                    </select>
+                  </div>
+
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    <input name="" class="form-control" placeholder="..." type="text" formControlName="secretAnswer" required>
+                  </div>
+
+                  <hr>
+
+                  <h5>Profile Picture</h5>
 
                   <div class="form-group input-group">
                     <div class="input-group-prepend">

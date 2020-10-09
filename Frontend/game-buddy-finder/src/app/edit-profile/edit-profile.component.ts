@@ -69,7 +69,7 @@ export class EditProfileComponent implements OnInit {
     var phone = this.editGroup.get('phone').value;
     var profilepicurl = this.editGroup.get('profilepicurl').value;
 
-    var profile = new Profile(this.Profile.profileId, firstname, lastname, username, "", "", email, region, profilepicurl, phone);
+    var profile = new Profile(this.Profile.profileId, firstname, lastname, username, "", "", email, region, profilepicurl, phone, "", "");
 
     if (this.profilesService.validateUser(profile)) {
       this.profilesService.updateProfile(profile);
@@ -80,12 +80,19 @@ export class EditProfileComponent implements OnInit {
   public addInterest(){
     var interest = this.editGroup.get('interest').value;
     var add = new Interest(this.usersService.UserId, interest);
-    this.interestService.addInterest(add);
+    this.editGroup.reset("interest");
+    this.interestService.addInterest(add).add(data => {
+      this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
+        this.interests = data;
+      })
+    });
   }
 
   public deleteInterest(interestId){
-    this.interestService.removeInterest(interestId);
-    this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
-    });
+    this.interestService.removeInterest(interestId).add(data => {
+      this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
+        this.interests = data;
+      })
+    })
   }
 }

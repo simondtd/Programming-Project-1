@@ -54,6 +54,20 @@ namespace Game_Buddy_Finder.DataManager
             return user;
         }
 
+        public int ResetPassword(string username, string secretQuestion, string secretAnswer, string newPassword)
+        {
+            var user = _context.Users.Where(x => x.UserName.Equals(username) && x.SecretQuestion.Equals(secretQuestion) && x.SecretAnswer.Equals(secretAnswer)).FirstOrDefault();
+            var i = 0;
+            if (user != null)
+            {
+                user.PasswordHash = newPassword;
+                _context.SaveChanges();
+                i = 1;
+            }
+
+            return i;
+        }
+
         public User Get(int id)
         {
             return _context.Users.Find(id);

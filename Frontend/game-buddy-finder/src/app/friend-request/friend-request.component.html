@@ -1,11 +1,14 @@
+<div *ngIf="friendRequests != null && friendRequests.length == 0" class="center">
+  <h2 style="text-align: center;">No Friend Requests :(</h2>
+</div>
 
 <body>
-  <h1>Friend Request</h1>
-  <div class="col-md-6 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
+  <div *ngIf="friendRequests != null && friendRequests.length > 0" class="col-md-3 offset-md-3 mainContainer"
+    style="top: 80px;">
     <div class="row justify-content-center">
       <div class="">
         <table class="table table-responsive">
-          <thead class="thead-dark">
+          <thead class="">
             <tr>
               <th scope="col">Friend Request List</th>
               <th scope="col">&nbsp;</th>
@@ -15,8 +18,10 @@
           <tbody>
             <tr *ngFor="let friendRequest of friendRequests">
               <td>{{friendRequest.senderUsername}}</td>
-              <td><button type="button" class="btn btn-success" (click)="accept(friendRequest.friendRequestId)" routerLink="/home" routerLinkActive="active">Accept</button></td>
-              <td><button type="button" class="btn btn-danger" (click)="decline(friendRequest.friendRequestId)" routerLink="/home" routerLinkActive="active">Decline</button></td>
+              <td><button type="button" class="btn btn-success"
+                  (click)="accept(friendRequest.friendRequestId)">Accept</button></td>
+              <td><button type="button" class="btn btn-danger"
+                  (click)="decline(friendRequest.friendRequestId)">Decline</button></td>
             </tr>
           </tbody>
         </table>

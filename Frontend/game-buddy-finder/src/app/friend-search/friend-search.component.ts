@@ -21,6 +21,7 @@ export class FriendSearchComponent implements OnInit {
   public profile;
   public friends;
   public interests;
+  public isfriend;
 
   constructor(private usersService: UsersService, private profilesService: ProfilesService, private interestService: InterestService, private friendService: FriendService, private friendRequestService: FriendRequestService) {
     if (this.user == null) {
@@ -32,12 +33,19 @@ export class FriendSearchComponent implements OnInit {
       })
       this.friendService.getFriendsOfUser(this.usersService.searchUserId).subscribe((data) => {
         this.friends = data;
+        for (var i = 0; i < this.friends.length; i++) {
+          var f = this.friends[i];
+
+          if (f.userId == this.usersService.UserId) {
+            this.isfriend = true;
+          }
+        }
       });
       this.interestService.getInterestsOfUser(this.usersService.searchUserId).subscribe((data) => {
         this.interests = data;
       })
     }
-   }
+  }
 
   ngOnInit(): void {
 
@@ -45,7 +53,16 @@ export class FriendSearchComponent implements OnInit {
 
   public addFriend(receiverId) {
     var friendrequest = new FriendRequest(this.usersService.UserId, receiverId);
-    this.friendRequestService.sendFriendRequest(friendrequest);
+    this.friendRequestService.sendFriendRequest(friendrequest).add(data => {
+      window.alert("Sent " + this.user.userName + " a friend request");
+    })
+  }
+
+  public removeFriend(userId1, userId2, username) {
+    if (confirm("Are you sure to remove " + username + " as a friend?")) {
+      this.friendService.removeFriend(userId1, userId2).subscribe((data) => {
+      })
+    }
   }
 
   public deleteUser(userId) {
