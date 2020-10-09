@@ -20,9 +20,11 @@ body {
       margin-bottom: 2.77rem;
     }
   }
+
+* {
+	box-sizing: border-box;
+}
   
-
-
 .col-md-2, .col-md-10{
     padding:0;
 }
