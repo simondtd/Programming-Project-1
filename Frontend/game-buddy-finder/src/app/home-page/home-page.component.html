@@ -16,8 +16,9 @@
   <div class="row">
     <div class="col-md-3">
       <div class="card">
-        <div class="card-body">
-          <div class="h5">{{ user ? user.userName : ""}}</div>
+        <div class="card-body form-inline">
+          <img class="rounded-circle" width="45" src="{{ this.profile?.profilePicUrl }}">
+          <div class="h5" style="margin-left: 10px;">{{ user ? user.userName : ""}}</div>
         </div>
       </div>
     </div>
@@ -56,9 +57,9 @@
               <div class="mr-2">
                 <img class="rounded-circle" width="45" src="{{ post.posterProfile.profilePicUrl }}" alt="">
               </div>
-              <div class="ml-2">
+              <div class="ml-2 form-inline">
                 <div class="h5 m-0">{{ post.posterUser.userName }}</div>
-                <button type="button" class="btn btn-danger"  (click)="deletePosts(post.postId)" *ngIf="usersService.CurrentUser.userType == 1 || post.posterUserId == usersService.UserId">Delete</button>
+                <button style="position: absolute; right: 0; margin-right:10px;" type="button" class="btn btn-danger"  (click)="deletePosts(post.postId)" *ngIf="usersService.CurrentUser.userType == 1 || post.posterUserId == usersService.UserId">Delete</button>
               </div>
             </div>
           </div>
