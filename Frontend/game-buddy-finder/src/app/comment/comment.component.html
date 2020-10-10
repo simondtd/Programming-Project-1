@@ -3,8 +3,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <div class="container">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
+  <div class="row" style="margin-top: 50px;">
+    <div class="col-sm-10 col-sm-offset-1" style="margin-left: 100px;">
       <div class="page-header">
         <div class="card gedf-card">
           <div class="card-header">
@@ -39,7 +39,8 @@
           </form>
         </div>
       </div>
-      <div style="white-space: nowrap;"class="comment-tabs" *ngFor="let comment of postService.CurrentPost?.comments">
+      <div style="white-space: nowrap;" class="comment-tabs" *ngFor="let comment of postService.CurrentPost?.comments">
+        <hr>
         <div class="tab-content">
           <div class="tab-pane active">
             <ul class="media-list">
@@ -51,7 +52,7 @@
                   <div class="well well-lg">
                     <h4 class="media-heading reviews">{{ comment?.posterUser.userName}}</h4>
                     <p class="media-commnet">{{ comment.content }}</p>
-                    <button style="float: right;" type="button" class="btn btn-danger" (click)="delete(comment.commentId)" *ngIf="comment.posterUserId == usersService.UserId">Delete</button>
+                    <button style="float: right;" type="button" class="btn btn-danger" (click)="delete(comment.commentId)" *ngIf="comment.posterUserId == usersService.UserId || usersService.CurrentUser.userType == 1">Delete</button>
                   </div>
                 </div>
               </li>
