@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
     this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
       this.profile = data;
     })
-    this.postService.getPosts().subscribe((data) => {
+    this.postService.getPostsForUser(this.usersService.UserId).subscribe((data) => {
       this.posts = data;
     })
   }

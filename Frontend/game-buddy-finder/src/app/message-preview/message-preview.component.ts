@@ -6,6 +6,7 @@ import { User } from '../models/user'
 import { Profile } from '../models/profile'
 import { Message } from '../models/message'
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-message-preview',
@@ -18,7 +19,7 @@ export class MessagePreviewComponent implements OnInit {
   public profile;
   public message;
 
-  constructor(private usersService: UsersService, private profilesService: ProfilesService, private messagesService: MessagesService) { }
+  constructor(private usersService: UsersService, private router: Router, private profilesService: ProfilesService, private messagesService: MessagesService) { }
 
   ngOnInit(): void {
     if (this.user == null) {
@@ -33,9 +34,12 @@ export class MessagePreviewComponent implements OnInit {
         })
       })
     }
+  }
 
+  public reply(sender) {
+    this.messagesService.ReplyUser = sender;
 
-
+    this.router.navigate(['/sendmessage']);
   }
 
 }

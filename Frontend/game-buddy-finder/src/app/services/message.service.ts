@@ -12,6 +12,8 @@ export class MessagesService {
 
   public currentMessage;
 
+  public ReplyUser: string;
+
   constructor(private httpClient: HttpClient) { }
 
   public getMessagesToUser(id) {

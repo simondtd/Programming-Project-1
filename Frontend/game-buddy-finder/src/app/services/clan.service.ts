@@ -8,13 +8,19 @@ import { Clan } from '../models/clan';
 })
 export class ClanService {
   private clanUrl = environment.baseUrl + 'api/clan';
-
   public currentClan;
+
+  public UserClans = Array<Clan>();
 
   constructor(private httpClient: HttpClient) { }
 
   public getClansOfUser(userId) {
-    return this.httpClient.get(this.clanUrl + '/user/' + userId);
+    var obs = this.httpClient.get<Clan[]>(this.clanUrl + '/user/' + userId);
+
+    obs.subscribe(data => {
+      this.UserClans = data;
+    })
+    return obs;
   }
 
   public getClan(id) { /*clan id*/
@@ -50,14 +56,14 @@ export class ClanService {
   }
 
   public createClan(clan: Clan) {
+    
+    var obs = null;
     if (this.validateClan(clan)) {
-      return this.httpClient.post<any>(this.clanUrl, clan).subscribe((data) => {
-        
-      });
+      obs = this.httpClient.post<any>(this.clanUrl, clan);
+
+      obs.subscribe(data => {});
     }
-    else {
-      return null;
-    }
+    return obs;
 
   }
 
