@@ -96,7 +96,7 @@ namespace Game_Buddy_Finder.DataManager
             {
                 bool isFriend = (users.Where(x => x.UserId == post.PosterUserId).Count() != 0);
 
-                if (isFriend)
+                if (isFriend || post.PosterUserId == userId)
                 {
                     post.PosterUser = _context.Users.Find(post.PosterUserId);
                     post.PosterProfile = _context.Profiles.Where(x => x.UserId == post.PosterUserId).FirstOrDefault();
