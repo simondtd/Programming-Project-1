@@ -19,7 +19,9 @@ export class SendMessageComponent implements OnInit {
       reciever: new FormControl(),
       subject: new FormControl(),
       content: new FormControl()
-    }); 
+    });
+
+    this.messageGroup.get('reciever').setValue(this.messageService.ReplyUser);
   }
 
   ngOnInit(): void {
