@@ -1,11 +1,10 @@
 <div *ngIf="message != null && user != null">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<div class="bg">
+<div>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
   <form id="message-form" class="form">
-    <h1 style="color:white">PlayWith</h1>
     <div class="col-md-5 offset-md-3 mainContainer" style="top: 80px; margin-left: auto; margin-right: auto;" >
       <button type="submit" class="btn btn-dark" routerLink="/inbox"><i class="fa fa-inbox"></i>&nbsp;Back</button>
       <button class="btn btn-danger float-right" (click)="reply(user.userName)"><i class="fa fa-edit"></i>&nbsp;Reply </button><br /><br />
