@@ -50,6 +50,11 @@ export class RegisterProfileComponent implements OnInit {
     var profilepicurl = this.registerGroup.get('profilepicurl').value;
     var secretQuestion = this.registerGroup.get('secretQuestion').value;
     var secretAnswer = this.registerGroup.get('secretAnswer').value;
+    
+    if (password == null || repassword == null) {
+      window.alert("Invalid Password(s)");
+      return;
+    }
     var hash = md5(password);
     var rehash = md5(repassword);
     var profile = new Profile(0, firstname, lastname, username, hash, rehash, email, region, profilepicurl, phone, secretQuestion, secretAnswer);
