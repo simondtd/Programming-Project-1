@@ -20,9 +20,11 @@ body {
       margin-bottom: 2.77rem;
     }
   }
+
+* {
+	box-sizing: border-box;
+}
   
-
-
 .col-md-2, .col-md-10{
     padding:0;
 }
@@ -233,9 +235,11 @@ img {
 
 .mesgs {
 	background-color: #e5e5e5;
-	float: left;
+	float: center;
 	padding: 30px 15px 0 25px;
 	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .sent_msg p {

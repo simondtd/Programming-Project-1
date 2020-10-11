@@ -33,3 +33,12 @@ body, html {
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+	box-sizing: border-box;
+}
