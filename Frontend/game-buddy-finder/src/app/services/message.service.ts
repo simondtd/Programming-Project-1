@@ -35,9 +35,7 @@ export class MessagesService {
   }
 
   public sendMessage(message: Message) {
-    return this.httpClient.post<Message>(this.messagesUrl, message).subscribe(data => {
-
-    });
+    return this.httpClient.post<Message>(this.messagesUrl, message);
   }
 
   public getMessage(id) {

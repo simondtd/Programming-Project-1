@@ -82,11 +82,18 @@ export class EditProfileComponent implements OnInit {
     var interest = this.editGroup.get('interest').value;
     var add = new Interest(this.usersService.UserId, interest);
     this.editGroup.reset("interest");
-    this.interestService.addInterest(add).add(data => {
-      this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
-        this.interests = data;
-      })
-    });
+
+    if (this.interestService.validateInterest(add)) {
+      this.interestService.addInterest(add).add(data => {
+        this.interestService.getInterestsOfUser(this.usersService.UserId).subscribe((data) => {
+          this.interests = data;
+        })
+      });
+    }
+    else {
+      window.alert("Invalid Input");
+    }
+
   }
 
   public deleteInterest(interestId) {
