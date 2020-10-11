@@ -68,8 +68,6 @@ export class EditProfileComponent implements OnInit {
 
     var profile = new Profile(this.Profile.profileId, firstname, lastname, "username", "", "", email, region, profilepicurl, phone, "", "");
 
-    console.log(profile);
-
     if (this.profilesService.validateUpdateUser(profile)) {
       this.profilesService.updateProfile(profile).subscribe((data) => {
         this.updateData();

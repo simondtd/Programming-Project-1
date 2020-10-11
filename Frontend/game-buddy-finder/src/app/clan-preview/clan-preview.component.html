@@ -1,11 +1,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="bg">
+
+  <div *ngIf ="members == undefined"> <img src='../../assets/loading.gif' class="loadingImage"></div>
+
+  <div *ngIf ="members != undefined" class="col-md-8 offset-md-3 mainContainer" style="top: 0.97rem;">
+    <div class="container-fluid well span6">
+      <div class="row-fluid">
+        <div class="span2" *ngIf="clan">
+
+          <div class="text-center">
+            <img src="{{clan?.clanProfilePicUrl}}">
+            <h3>{{clan?.clanName}}</h3>
+          </div>
+          <hr>
+
+          <div class="span8">
+            <h2>Leader </h2><hr><h6 style="display:inline">&nbsp;{{clan?.owner}}</h6>
+            <br>
+            <br>
+            <button *ngIf="!isMember && usersService.CurrentUser?.userType == 1" type="button" class="btn btn-primary float-left" (click)="join(clan.clanId)">Join</button>
+            <button *ngIf="isOwner || usersService.CurrentUser?.userType == 1" type="button" class="btn btn-danger float-right" (click)="deleteClan(clan.clanId)">Delete</button>
+            <button *ngIf="isMember" type="button" class="btn btn-secondary float-center" routerLink="/chat" routerLinkActive="active">Chat</button>
+          </div>
+          <div>
+            <br><br><br>
+            <h2>Members ({{members?.length}})</h2>
+            <hr>
+            <tbody>
+              <tr *ngFor="let member of members">
+                <a routerLink="" (click)="viewFriend(member)">{{ member.userName }}<br><br></a>
+              </tr>
+            </tbody> 
+          </div><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="bg">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
 
   <form id="message-form" class="form">
-    <h1 style="color:white">PlayWith</h1>
-    <div class="col-md-5 offset-md-3" style="margin: auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888">
+    <div class="col-md-5 offset-md-3 mainContainer" style="top: 0.97rem;">
       <div class="text-center">
         <img src="{{clan?.clanProfilePicUrl}}">
         <h1>{{clan?.clanName}}</h1>
@@ -35,7 +75,7 @@
             <td>{{member.userName}}</td>
           </tr>
         </tbody>
-      </table>-->
+      </table>
 
         </div>
         <br />
@@ -52,4 +92,4 @@
     </div>
   </form>
 
-</div>
+</div>-->

@@ -16,8 +16,10 @@ export class UsersService {
   public UserId;
 
   public CurrentUser: User;
-
   public UserView;
+
+  public SearchUser;
+  public SearchUserSubject: Subject<any> = new Subject<any>();
 
   public searchUserId;
 
@@ -41,10 +43,7 @@ export class UsersService {
   }
 
   public resetPassword(username, secretQuestion, secretAnswer, newPassword) {
-    console.log(username);
-    console.log(secretQuestion);
-    console.log(secretAnswer);
-    console.log(newPassword);
+
     return this.httpClient.get(this.usersUrl + '/reset/' + username + '/' + secretQuestion + '/' + secretAnswer + '/' + newPassword);
   }
 
@@ -77,6 +76,7 @@ export class UsersService {
       }
       else {
         this.searchUserId = data[0].userId;
+        this.SearchUserSubject.next(this.searchUserId);
         this.router.navigate(['/friendsearch']);
       }
 

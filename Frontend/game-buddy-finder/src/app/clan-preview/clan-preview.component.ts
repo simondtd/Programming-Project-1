@@ -44,6 +44,10 @@ export class ClanPreviewComponent implements OnInit {
     
   }
 
+  public viewFriend(friend) {
+    this.usersService.searchFriend(friend.userName);
+  }
+
   public deleteClan(clanId) {
     this.clansService.deleteClan(clanId).subscribe((data) => {});
   }

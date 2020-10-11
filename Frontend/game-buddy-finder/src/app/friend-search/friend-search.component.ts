@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { ProfilesService } from '../services/profiles.service';
 import { FriendService } from '../services/friend.service';
@@ -15,7 +15,7 @@ import { Subject } from 'rxjs';
   templateUrl: './friend-search.component.html',
   styleUrls: ['./friend-search.component.scss']
 })
-export class FriendSearchComponent implements OnInit {
+export class FriendSearchComponent implements OnInit, OnDestroy {
 
   public user;
   public profile;
@@ -24,27 +24,34 @@ export class FriendSearchComponent implements OnInit {
   public isfriend;
 
   constructor(private usersService: UsersService, private profilesService: ProfilesService, private interestService: InterestService, private friendService: FriendService, private friendRequestService: FriendRequestService) {
-    if (this.user == null) {
-      this.usersService.getUser(this.usersService.searchUserId).subscribe((data) => {
-        this.user = data;
-      })
-      this.profilesService.getProfileOfUser(this.usersService.searchUserId).subscribe((data) => {
-        this.profile = data;
-      })
-      this.friendService.getFriendsOfUser(this.usersService.searchUserId).subscribe((data) => {
-        this.friends = data;
-        for (var i = 0; i < this.friends.length; i++) {
-          var f = this.friends[i];
+    this.usersService.SearchUserSubject.subscribe(this.updateData.bind(this));
+    this.updateData();
+  }
 
-          if (f.userId == this.usersService.UserId) {
-            this.isfriend = true;
-          }
+  public updateData() {
+    this.usersService.getUser(this.usersService.searchUserId).subscribe((data) => {
+      this.user = data;
+    })
+    this.profilesService.getProfileOfUser(this.usersService.searchUserId).subscribe((data) => {
+      this.profile = data;
+    })
+    this.friendService.getFriendsOfUser(this.usersService.searchUserId).subscribe((data) => {
+      this.friends = data;
+      for (var i = 0; i < this.friends.length; i++) {
+        var f = this.friends[i];
+
+        if (f.userId == this.usersService.UserId) {
+          this.isfriend = true;
         }
-      });
-      this.interestService.getInterestsOfUser(this.usersService.searchUserId).subscribe((data) => {
-        this.interests = data;
-      })
-    }
+      }
+    });
+    this.interestService.getInterestsOfUser(this.usersService.searchUserId).subscribe((data) => {
+      this.interests = data;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.usersService.SearchUserSubject.unsubscribe();
   }
 
   ngOnInit(): void {
