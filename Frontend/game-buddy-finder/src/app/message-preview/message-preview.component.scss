@@ -1,0 +1,22 @@
+.bg {
+  background-image: url("../../assets/bg.png");
+  min-height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: pink;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+h5{
+  font-size: 3.5vw;
+}
+
+@media screen and (min-width: 700px) {
+  h5 {
+    font-size: 1vw;
+  }
+}

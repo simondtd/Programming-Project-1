@@ -1,10 +1,16 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky">
   <div *ngIf="loggedIn">
     <img src="../../assets/logo.png" alt="Logo" height="80" routerLink="/home" routerLinkActive="active">
   </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
   <ul class="navbar-nav mx-auto">
     <li class="nav-item" *ngIf="loggedIn">
       <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+      <span class="sr-only">(current)</span>
     </li>
     <li class="nav-item" *ngIf="!loggedIn">
       <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
@@ -45,4 +51,5 @@
   <div *ngIf="loggedIn">
     <button type="button" *ngIf="loggedIn" class="btn btn-danger" style="float:right" (click)="logout()">Log out</button>
   </div>
+</div>
 </nav>
