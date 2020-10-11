@@ -24,16 +24,17 @@
             <hr />
             <label>Phone Number: </label><h6 style="display:inline">&nbsp;{{profile ? profile.phoneNumber : ""}}</h6>
             <hr />
-            <button type="button" class="btn btn-secondary" routerLink="/editprofile">Edit Profile</button>
+            <button type="button" class="btn btn-warning float-left" routerLink="/friendrequest" routerLinkActive="active">Friend Request</button>
+            <button type="button" class="btn btn-secondary float-right" routerLink="/editprofile">Edit Profile</button>
           </div>
           <div>
-            <br>
+            <br><br><hr>
             <h2>Friends</h2>
             <tbody>
               <tr *ngFor="let friend of friends">
                 <td class='container'>{{friend.userName}}<button type="button" class='delete' (click)="removeFriend(this.usersService.UserId,friend.userId, friend.userName)" href="#">Delete</button> </td>
               </tr>
-            </tbody>
+            </tbody><hr>
             <h2>Clans</h2>
             <tbody>
               <tr *ngFor="let clan of clanView">
@@ -41,7 +42,8 @@
                 <td>{{ clan.clanRegion }}</td>
               </tr>
             </tbody>
-          </div>
+          </div><br><hr>
+          <button type="button" class="btn btn-info" routerLink="/loginattempts" routerLinkActive="active">Login Attempts</button>
         </div>
       </div>
     </div>
