@@ -15,7 +15,7 @@ import { Subject } from 'rxjs';
   templateUrl: './friend-search.component.html',
   styleUrls: ['./friend-search.component.scss']
 })
-export class FriendSearchComponent implements OnInit, OnDestroy {
+export class FriendSearchComponent {
 
   public user;
   public profile;
@@ -23,8 +23,12 @@ export class FriendSearchComponent implements OnInit, OnDestroy {
   public interests;
   public isfriend;
 
+  private SearchSubscription;
+
   constructor(private usersService: UsersService, private profilesService: ProfilesService, private interestService: InterestService, private friendService: FriendService, private friendRequestService: FriendRequestService) {
-    this.usersService.SearchUserSubject.subscribe(this.updateData.bind(this));
+    this.SearchSubscription = this.usersService.SearchUserSubject.subscribe((data) => {
+      this.updateData();
+    });
     this.updateData();
   }
 
@@ -48,14 +52,6 @@ export class FriendSearchComponent implements OnInit, OnDestroy {
     this.interestService.getInterestsOfUser(this.usersService.searchUserId).subscribe((data) => {
       this.interests = data;
     })
-  }
-
-  ngOnDestroy(): void {
-    this.usersService.SearchUserSubject.unsubscribe();
-  }
-
-  ngOnInit(): void {
-
   }
 
   public addFriend(receiverId) {
