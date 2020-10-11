@@ -38,14 +38,14 @@
       </div>
       <div style="white-space: nowrap;" class="comment-tabs" *ngFor="let comment of postService.CurrentPost?.comments">
         <hr>
-        <div class="tab-content">
+        <div class="tab-content" style="max-width: 100%;">
           <div class="tab-pane active">
             <ul class="media-list">
-              <li class="media">
+              <li class="media" >
                 <a class="pull-left">
                   <img (click)="viewProfile(comment?.posterUser.userName)" class="rounded-circle" width="75" src="{{ comment?.posterProfile.profilePicUrl}}">
                 </a>
-                <div class="media-body">
+                <div class="media-body" >
                   <div class="well well-lg">
                     <h4 class="media-heading reviews">{{ comment?.posterUser.userName}}</h4>
                     <p class="media-commnet ">{{ comment.content }}</p>
