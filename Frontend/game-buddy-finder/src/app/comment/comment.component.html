@@ -42,8 +42,8 @@
           <div class="tab-pane active">
             <ul class="media-list">
               <li class="media">
-                <a class="pull-left" href="#">
-                  <img class="rounded-circle" width="75" src="{{ comment?.posterProfile.profilePicUrl}}">
+                <a class="pull-left">
+                  <img (click)="viewProfile(comment?.posterUser.userName)" class="rounded-circle" width="75" src="{{ comment?.posterProfile.profilePicUrl}}">
                 </a>
                 <div class="media-body">
                   <div class="well well-lg">

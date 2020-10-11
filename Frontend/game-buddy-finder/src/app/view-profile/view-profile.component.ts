@@ -9,6 +9,7 @@ import { User } from '../models/user'
 import { Message } from '../models/message'
 import { Profile } from '../models/profile'
 import { Subject } from 'rxjs';
+import {Router} from '@angular/router';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 
@@ -28,7 +29,7 @@ export class ViewProfileComponent implements OnInit {
   public users = Array<User>();
   public messages = Array<Message>();
 
-  constructor(public usersService: UsersService, private clansService: ClanService, private messageService: MessagesService, private profilesService: ProfilesService, private friendService: FriendService, private interestService: InterestService) { }
+  constructor(private router: Router, public usersService: UsersService, private clansService: ClanService, private messageService: MessagesService, private profilesService: ProfilesService, private friendService: FriendService, private interestService: InterestService) { }
 
   ngOnInit(): void {
     document.body.classList.add('bg');
@@ -60,5 +61,14 @@ export class ViewProfileComponent implements OnInit {
         });
       })
     }
+  }
+
+  public viewFriend(friend) {
+    this.usersService.searchFriend(friend.userName);
+  }
+
+  public viewClan(clan) {
+    this.clansService.currentClan = clan;
+    this.router.navigate(['/clanpreview'])
   }
 }

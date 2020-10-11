@@ -9,40 +9,48 @@
             <img src="{{profile.profilePicUrl}}">
             <h3>{{ user ? user.userName : ""}}</h3>
           </div>
+          <hr>
 
           <div class="span8">
-            <hr />
             <label>Likes To Play: </label><h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title + ", "}}</h6>
-            <hr />
+            <br>
+            <br>
             <label>First Name: </label><h6 style="display:inline">&nbsp;{{ profile ? profile.firstName : ""}}</h6>
-            <hr />
+            <br>
+            <br>
             <label>Last Name: </label><h6 style="display:inline">&nbsp;{{profile ? profile.lastName : ""}}</h6>
-            <hr />
+            <br>
+            <br>
             <label>Email: </label><h6 style="display:inline">&nbsp;{{profile ? profile.email : ""}}</h6>
-            <hr />
+            <br>
+            <br>
             <label>Region: </label><h6 style="display:inline">&nbsp;{{profile ? profile.region : ""}}</h6>
-            <hr />
+            <br>
+            <br>
             <label>Phone Number: </label><h6 style="display:inline">&nbsp;{{profile ? profile.phoneNumber : ""}}</h6>
-            <hr />
-            <button type="button" class="btn btn-warning float-left" routerLink="/friendrequest" routerLinkActive="active">Friend Request</button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-warning float-left" routerLink="/friendrequest" routerLinkActive="active">Friend Requests</button>
             <button type="button" class="btn btn-secondary float-right" routerLink="/editprofile">Edit Profile</button>
           </div>
           <div>
-            <br><br><hr>
+            <br><br><br>
             <h2>Friends</h2>
+            <hr>
             <tbody>
               <tr *ngFor="let friend of friends">
-                <td class='container'>{{friend.userName}}<button type="button" class='delete' (click)="removeFriend(this.usersService.UserId,friend.userId, friend.userName)" href="#">Delete</button> </td>
+                <a routerLink="" (click)="viewFriend(friend)">{{ friend.userName }}<br><br></a>
               </tr>
-            </tbody><hr>
+            </tbody> 
+            <br>
             <h2>Clans</h2>
+            <hr>
             <tbody>
               <tr *ngFor="let clan of clanView">
-                <td>{{ clan.clanName }} - </td>
-                <td>{{ clan.clanRegion }}</td>
+                <a routerLink="" (click)="viewClan(clan)">{{ clan.clanName }}<br><br></a>
               </tr>
             </tbody>
-          </div><br><hr>
+          </div><br>
           <button type="button" class="btn btn-info" routerLink="/loginattempts" routerLinkActive="active">Login Attempts</button>
         </div>
       </div>
