@@ -6,6 +6,7 @@ using Moq;
 using Xunit;
 using Game_Buddy_Finder.Models;
 using Game_Buddy_Finder.Controllers;
+using Game_Buddy_Finder.DataManager;
 using Game_Buddy_Finder.Models.Repository;
 
 namespace Game_Buddy_Finder.Tests
@@ -15,14 +16,13 @@ namespace Game_Buddy_Finder.Tests
         [Fact]
         public void User_Test_01()
         {
-            var mockRepo = new Mock<IDataRepository<User, int>>();
+            Console.WriteLine("HEY");
+            var mockRepo = new Mock<ITestRepository>();
             mockRepo.Setup(repo => repo.GetAll())
                 .Returns(new List<User>());
 
-            //var controller = new UserController(mockRepo.Object);
-            Assert.Equal(true, true);
+            var controller = new TestController(mockRepo.Object);
+            Assert.Equal(controller.Get().Count(), 0);
         }
-
-
     }
 }
