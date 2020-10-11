@@ -9,9 +9,9 @@ import { Router } from '@angular/router'
   styleUrls: ['./inbox.component.scss']
 })
 export class InboxComponent implements OnInit {
-  messages; 
+  messages;
 
-  constructor(private messagesService: MessagesService, private usersService: UsersService, private router:Router) { }
+  constructor(private messagesService: MessagesService, private usersService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
     this.messagesService.getMessagesToUser(this.usersService.UserId).subscribe((data) => {
@@ -19,9 +19,17 @@ export class InboxComponent implements OnInit {
     })
   }
 
+  public deleteMessage(message) {
+    this.messagesService.deleteMessage(message.messageId).subscribe(data => {
+      this.messagesService.getMessagesToUser(this.usersService.UserId).subscribe((data) => {
+        this.messages = data;
+      })
+    })
+  }
+
   public viewMessage(message) {
     this.messagesService.currentMessage = message;
     this.router.navigate(['/messagepreview'])
   }
-  
+
 }

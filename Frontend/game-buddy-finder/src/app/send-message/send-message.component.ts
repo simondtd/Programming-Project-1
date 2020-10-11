@@ -5,6 +5,7 @@ import { FormGroup } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Message } from '../models/message';
 import { UsersService } from '../services/users.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-send-message',
@@ -14,7 +15,7 @@ import { UsersService } from '../services/users.service';
 export class SendMessageComponent implements OnInit {
   public messageGroup: FormGroup;
 
-  constructor(private messageService: MessagesService, private formBuilder: FormBuilder, private usersService: UsersService) {
+  constructor(private router: Router, private messageService: MessagesService, private formBuilder: FormBuilder, private usersService: UsersService) {
     this.messageGroup = new FormGroup({
       reciever: new FormControl(),
       subject: new FormControl(),
@@ -28,19 +29,26 @@ export class SendMessageComponent implements OnInit {
   }
 
 
-public newMessage() { 
-  var reciever = this.messageGroup.get('reciever').value;
-  var subject = this.messageGroup.get('subject').value;
-  var content = this.messageGroup.get('content').value;
-
+  public newMessage() {
+    var reciever = this.messageGroup.get('reciever').value;
+    var subject = this.messageGroup.get('subject').value;
+    var content = this.messageGroup.get('content').value;
 
     this.usersService.getUserByUsername(reciever).subscribe((data) => {
-    var receiverId = data[0].userId
+      var receiverId = data[0].userId
 
-    var senderId = this.usersService.UserId;
+      var senderId = this.usersService.UserId;
 
-    var message = new Message(senderId, receiverId, subject, content);
-    this.messageService.sendMessage(message);
-  });
-}
+      var message = new Message(senderId, receiverId, subject, content);
+      if (this.messageService.validateMessage(message)) {
+        this.messageService.sendMessage(message).subscribe(data => {
+          this.router.navigate(['/inbox']);
+        });
+      }
+      else {
+        window.alert("Invalid Input");
+      }
+
+    });
+  }
 }

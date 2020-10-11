@@ -20,7 +20,7 @@ export class MessagesService {
     return this.httpClient.get(this.messagesUrl + '/to/' + id);
   }
 
-  public getMessages(){
+  public getMessages() {
     return this.httpClient.get<Message[]>(this.messagesUrl);
   }
 
@@ -30,14 +30,16 @@ export class MessagesService {
     return true;
   }
 
+  public deleteMessage(id) {
+    return this.httpClient.delete(this.messagesUrl + '/' + id);
+  }
+
   public getMessagesFromUser(id) {
     return this.httpClient.get(this.messagesUrl + '/from/' + id);
   }
 
   public sendMessage(message: Message) {
-    return this.httpClient.post<Message>(this.messagesUrl, message).subscribe(data => {
-
-    });
+    return this.httpClient.post<Message>(this.messagesUrl, message);
   }
 
   public getMessage(id) {
