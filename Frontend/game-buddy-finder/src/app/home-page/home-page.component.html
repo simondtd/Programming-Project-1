@@ -47,7 +47,7 @@
           <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex justify-content-between align-items-center">
               <div class="mr-2">
-                <img class="rounded-circle" width="45" src="{{ post.posterProfile.profilePicUrl }}" alt="">
+                <img (click)="viewProfile(post.posterUser.userName)" class="rounded-circle" width="45" src="{{ post.posterProfile.profilePicUrl }}" alt="">
               </div>
               <div class="ml-2 form-inline">
                 <div class="h5 m-0">{{ post.posterUser.userName }}</div>

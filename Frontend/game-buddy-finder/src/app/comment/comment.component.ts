@@ -44,4 +44,8 @@ export class CommentComponent implements OnInit {
       })
     })
   }
+
+  public viewProfile(username) {
+    this.usersService.searchFriend(username);
+  }
 }

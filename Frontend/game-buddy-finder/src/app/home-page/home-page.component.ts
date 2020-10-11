@@ -53,6 +53,10 @@ export class HomePageComponent implements OnInit {
     return string;
   }
 
+  public viewProfile(username) {
+    this.usersService.searchFriend(username);
+  }
+
   public comment(post) {
     this.postService.CurrentPost = post;
     this.router.navigate(['/comment'])
