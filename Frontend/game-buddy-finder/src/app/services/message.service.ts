@@ -20,7 +20,7 @@ export class MessagesService {
     return this.httpClient.get(this.messagesUrl + '/to/' + id);
   }
 
-  public getMessages(){
+  public getMessages() {
     return this.httpClient.get<Message[]>(this.messagesUrl);
   }
 
@@ -28,6 +28,10 @@ export class MessagesService {
     if (message.content == null || message.subject == null) return false;
 
     return true;
+  }
+
+  public deleteMessage(id) {
+    return this.httpClient.delete(this.messagesUrl + '/' + id);
   }
 
   public getMessagesFromUser(id) {
