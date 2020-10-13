@@ -7,13 +7,17 @@ import { Clan } from '../models/clan';
   providedIn: 'root'
 })
 export class ClanService {
+  //The clan API Url
   private clanUrl = environment.baseUrl + 'api/clan';
+  //The current clan displayed in the clan previewpage
   public currentClan;
 
+  //Clans the current user is in
   public UserClans = Array<Clan>();
 
   constructor(private httpClient: HttpClient) { }
 
+  //Returns all clans the user is a member of
   public getClansOfUser(userId) {
     var obs = this.httpClient.get<Clan[]>(this.clanUrl + '/user/' + userId);
 
@@ -23,10 +27,12 @@ export class ClanService {
     return obs;
   }
 
+  //Gets a clan with the specified id
   public getClan(id) { /*clan id*/
     return this.httpClient.get<Clan>(this.clanUrl + '/' + id);
   }
 
+  // Validates the clan based on its varaibles
   public validateClan(clan: Clan) {
     if (clan.OwnerUserId == null || clan.OwnerUserId == 0) {
       return false;
@@ -51,10 +57,12 @@ export class ClanService {
     return true;
   }
 
+  //Deletes a clan with the specified id
   public deleteClan(clanid) {
     return this.httpClient.delete(this.clanUrl + '/' + clanid);
   }
 
+  //Validates then posts the clan to the backend api
   public createClan(clan: Clan) {
     
     var obs = null;
@@ -67,18 +75,22 @@ export class ClanService {
 
   }
 
+  //Returns a list of all members in the clan specified by its id
   public getMembersInClan(clanId) {
     return this.httpClient.get(this.clanUrl + '/clan/' + clanId);
   }
 
+  //Adding a user to a clan, use userId and clanId
   public addUserToClan(userId, clanId) {
     return this.httpClient.get(this.clanUrl + '/add/' + userId + '/' + clanId);
   }
 
+  //removes a user from a clan, use userId and clanId
   public removeUserFromClan(userId, clanId) {
     return this.httpClient.get(this.clanUrl + '/remove/' + userId + '/' + clanId);
   }
 
+  //Gets all clans
   public getClans() {
     return this.httpClient.get(this.clanUrl);
   }
