@@ -35,13 +35,13 @@ export class ViewProfileComponent implements OnInit {
     document.body.classList.add('bg');
     if (this.user == null) {
       this.user = this.usersService.UserView;
+      // by subscribing a data, it updates the data of the specified variables
       this.usersService.getUser(this.usersService.UserId).subscribe((data) => {
         this.user = data;
       })
       this.profilesService.getProfileOfUser(this.usersService.UserId).subscribe((data) => {
         this.profile = data;
       })
-
       this.friendService.getFriendsOfUser(this.usersService.UserId).subscribe((data) => {
         this.friends = data;
       });
@@ -53,7 +53,9 @@ export class ViewProfileComponent implements OnInit {
       })
     }
   }
+  // remove a friend of a user
   public removeFriend(userId1, userId2, username) {
+    // if the button is clicked, a popup will show
     if (confirm("Are you sure to delete " + username)) {
       this.friendService.removeFriend(userId1, userId2).subscribe((data) => {
         this.friendService.getFriendsOfUser(this.usersService.UserId).subscribe((data) => {
@@ -63,10 +65,12 @@ export class ViewProfileComponent implements OnInit {
     }
   }
 
+  // view the friends of a user and if clicked, it will preview the profile of their friend
   public viewFriend(friend) {
     this.usersService.searchFriend(friend.userName);
   }
 
+  // view clan function for the joinned clan of a user and linking to clan preview to see the detailed information about the clan
   public viewClan(clan) {
     this.clansService.currentClan = clan;
     this.router.navigate(['/clanpreview'])

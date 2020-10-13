@@ -24,6 +24,7 @@ export class HeaderComponent {
   @Input() title: string;
 
   constructor(public usersService: UsersService, private router: Router, private formBuilder: FormBuilder, public profilesService: ProfilesService) {
+    // by subscribing a data, it updates the data of the specified variables
     usersService.UserIDSubject.subscribe((data) => {
       this.loggedIn = usersService.UserId;
 
@@ -35,6 +36,7 @@ export class HeaderComponent {
         this.profile = data;
       });
     })
+    // a formgroup for friendsearch to connect the html input to the component.ts
     this.friendSearchGroup = new FormGroup({
       username: new FormControl(),
     });
@@ -43,10 +45,14 @@ export class HeaderComponent {
   ngOnInit(): void {
 
   }
+
+  // function to logout of the user by the user service 
   public logout() {
     this.usersService.logout();
   }
+  // function to search for a friend by using their username
   public search() {
+    // the variable username will get the inputed username from the html file
     var username = this.friendSearchGroup.get('username').value;
     this.usersService.searchFriend(username);
     this.friendSearchGroup.reset();

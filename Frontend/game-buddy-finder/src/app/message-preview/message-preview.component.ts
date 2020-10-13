@@ -23,9 +23,9 @@ export class MessagePreviewComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.user == null) {
+      // by subscribing a data, it updates the data of the specified variables
       this.messagesService.getMessagesToUser(this.usersService.UserId).subscribe((data) => {
         this.message = this.messagesService.currentMessage;
-
         this.usersService.getUser(this.message.senderId).subscribe((data) => {
           this.user = data;
         })
@@ -36,9 +36,11 @@ export class MessagePreviewComponent implements OnInit {
     }
   }
 
+  // a function to reply a message 
   public reply(sender) {
+    // to keep the username of the sender 
     this.messagesService.ReplyUser = sender;
-
+    // redirects the user to /sendmessage
     this.router.navigate(['/sendmessage']);
   }
 

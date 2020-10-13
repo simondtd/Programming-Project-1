@@ -7,30 +7,39 @@
 
           <div class="text-center">
             <img src="{{profile.profilePicUrl}}">
+            <!-- displaying the username of the user variable in component.ts -->
             <h3>{{ user ? user.userName : ""}}</h3>
           </div>
           <hr>
 
           <div class="span8">
+            <!-- displaying the title of the interest variable in component.ts -->
             <label>Likes To Play: </label><h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title + ", "}}</h6>
             <br>
             <br>
+            <!-- displaying the firstname of the profile variable in component.ts -->
             <label>First Name: </label><h6 style="display:inline">&nbsp;{{ profile ? profile.firstName : ""}}</h6>
             <br>
             <br>
+            <!-- displaying the lastName of the profile variable in component.ts -->
             <label>Last Name: </label><h6 style="display:inline">&nbsp;{{profile ? profile.lastName : ""}}</h6>
             <br>
             <br>
+            <!-- displaying the email of the profile variable in component.ts -->
             <label>Email: </label><h6 style="display:inline">&nbsp;{{profile ? profile.email : ""}}</h6>
             <br>
             <br>
+            <!-- displaying the region of the profile variable in component.ts -->
             <label>Region: </label><h6 style="display:inline">&nbsp;{{profile ? profile.region : ""}}</h6>
             <br>
             <br>
+            <!-- displaying the phoneNumber of the profile variable in component.ts -->
             <label>Phone Number: </label><h6 style="display:inline">&nbsp;{{profile ? profile.phoneNumber : ""}}</h6>
             <br>
             <br>
+            <!-- redirects to /friendrequest page if the button is clicked -->
             <button type="button" class="btn btn-warning float-left" routerLink="/friendrequest" routerLinkActive="active">Friend Requests</button>
+            <!-- redirects to /editprofile page if the button is clicked -->
             <button type="button" class="btn btn-secondary float-right" routerLink="/editprofile">Edit Profile</button>
           </div>
           <div>
@@ -38,7 +47,9 @@
             <h2>Friends</h2>
             <hr>
             <tbody>
+              <!-- Loop through the friends array and displaying the data one by one -->
               <tr *ngFor="let friend of friends">
+                <!-- executes the function viewFriend in the component.ts -->
                 <a routerLink="" (click)="viewFriend(friend)">{{ friend.userName }}<br><br></a>
               </tr>
             </tbody> 
@@ -46,11 +57,14 @@
             <h2>Clans</h2>
             <hr>
             <tbody>
+              <!-- Loop through the clanView array and displaying the data one by one -->
               <tr *ngFor="let clan of clanView">
+                <!-- executes the function viewClan in the component.ts -->
                 <a routerLink="" (click)="viewClan(clan)">{{ clan.clanName }}<br><br></a>
               </tr>
             </tbody>
           </div><br>
+          <!-- redirects to /loginattempts page if the button is clicked -->
           <button type="button" class="btn btn-info" routerLink="/loginattempts" routerLinkActive="active">Login Attempts</button>
         </div>
       </div>

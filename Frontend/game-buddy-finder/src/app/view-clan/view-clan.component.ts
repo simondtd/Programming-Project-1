@@ -20,6 +20,7 @@ export class ViewClanComponent implements OnInit {
       this.clanView = data;
     })
   }
+  // a function to view the detailed information for viewing the clan details
   public viewClan(clan) {
     this.clansService.currentClan = clan;
     this.router.navigate(['/clanpreview'])

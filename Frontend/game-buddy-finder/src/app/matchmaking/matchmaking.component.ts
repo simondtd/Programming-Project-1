@@ -23,11 +23,14 @@ export class MatchmakingComponent implements OnInit {
     })
   }
 
+  // a function to view a profile of the matched user 
   public viewProfile(user) {
     this.usersService.searchFriend(user.userName);
   }
 
+  // a function used to send a new friend request 
   public addFriend(receiverId) {
+    // sends a new friend request with the required parameters stated in the models
     var friendrequest = new FriendRequest(this.usersService.UserId, receiverId);
     this.friendRequestService.sendFriendRequest(friendrequest);
   }
