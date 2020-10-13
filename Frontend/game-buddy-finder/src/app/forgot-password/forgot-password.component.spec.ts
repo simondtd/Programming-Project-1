@@ -25,4 +25,25 @@ describe('ForgotPasswordComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Secret question should be valid', () => {
+    let SecretQuestion = ("What is your pet name?");
+    expect(component.reset()).toBeTrue(); 
+  });
+
+  it('Secret question should not be valid', () => {
+    let SecretQuestion = ("0011000");
+    expect(component.reset()).toBeFalse(); 
+  });
+
+  it('Secret answer should be valid', () => {
+    let SecretAnswer = ("Sky");
+    expect(component.reset()).toBeTrue(); 
+  });
+
+  it('Secret question should not be valid', () => {
+    let SecretQuestion = ("696969");
+    expect(component.reset()).toBeFalse(); 
+  });
+  
 });
