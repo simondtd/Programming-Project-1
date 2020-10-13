@@ -27,7 +27,9 @@ export class CreateClanComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  //this function for creating new clans
+  //and there are 4 value to fill in
+  //which are clan name, clan region, clan description, and clan picture url
   public create() {
     var clanname = this.clanGroup.get('clanname').value;
     var clanregion = this.clanGroup.get('clanregion').value;
@@ -36,6 +38,8 @@ export class CreateClanComponent implements OnInit {
 
     var clan = new Clan(this.usersService.UserId, clanname, clandescription, clanpictureurl, clanregion); 
 
+    //this condition, if the user click the button
+    //it will create the clan and direct to viewclan
     if (this.clansService.validateClan(clan)) {
       this.clansService.createClan(clan).add(data => {
         this.router.navigate(['/viewclan']);

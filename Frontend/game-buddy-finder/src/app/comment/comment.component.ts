@@ -13,6 +13,7 @@ import { ProfilesService } from '../services/profiles.service';
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent implements OnInit {
+  //public variable
   public commentGroup: FormGroup;
   public comments;
  
@@ -25,7 +26,7 @@ export class CommentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  //this function for adding comment when the user click comment button
   public newComment() {
     var content = this.commentGroup.get('comment').value;
     var comment = new Comment(this.postService.CurrentPost.postId, this.usersService.UserId, content);
@@ -36,7 +37,7 @@ export class CommentComponent implements OnInit {
     })
     this.commentGroup.reset();
   }
-
+  //this function for deleting the comment when te user click delete button
   public delete(commentId) {
     this.postService.deleteComment(commentId).add((data) => {
       this.postService.getPost(this.postService.CurrentPost.postId).subscribe((data) => {
@@ -44,7 +45,7 @@ export class CommentComponent implements OnInit {
       })
     })
   }
-
+  //this function for viewing the username
   public viewProfile(username) {
     this.usersService.searchFriend(username);
   }
