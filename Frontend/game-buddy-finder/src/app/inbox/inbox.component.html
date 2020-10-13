@@ -1,0 +1,38 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div *ngIf = "messages == undefined"> <img src='../../assets/loading.gif' class="loadingImage"></div>
+<div *ngIf = "messages != undefined" class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="grid email" style="top: 0.97rem;">
+        <div class="grid-body">
+          <div class="row">
+            <div class="col-md-3">
+              <h2 class="grid-title"><i class="fa fa-inbox"></i> INBOX</h2>
+              <a class="btn btn-block btn-primary" data-toggle="modal" data-target="#compose-modal" routerLink="/sendmessage" routerLinkActive="active"><i class="fa fa-pencil"></i>&nbsp;&nbsp;NEW MESSAGE</a>
+              <hr>
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <div class="padding"></div>
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody *ngFor="let message of messages">
+                      <tr>
+                        <td class="name">{{message.senderUsername}}</td>
+                        <td class="subject">{{message.subject}}</td>
+
+                        <button type="submit" class="btn btn-secondary" (click)="viewMessage(message)">Read</button>
+                        &nbsp;
+                        <button type="submit" class="btn btn-danger" (click)="deleteMessage(message)">Delete</button>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+     </div>
+  </div>
+</div>

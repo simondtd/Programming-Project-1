@@ -1,6 +1,28 @@
-<h1>Login Attempts</h1>
-<div *ngFor="let loginAttempt of loginAttempts">
-    <h2>Login Id: {{loginAttempt.loginAttemptId}}</h2>
-    <h3>User Id: {{loginAttempt.userId}}</h3>
-    <h3>Time : {{loginAttempt.attemptTimeUtc}}</h3>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+  <div *ngIf = "loginAttempts == undefined"> <img src='../../assets/loading.gif' class="loadingImage"></div>
+  <div *ngIf = "loginAttempts != undefined" class="container-fluid gedf-wrapper">
+    <div class="row center">
+      <div class="col-md-3 center">
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-responsive">
+              <thead class="">
+                <tr>
+                  <th scope="col">Time</th>
+                  <th scope="col">Successful?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let loginAttempt of loginAttempts">
+                  <td>{{loginAttempt.attemptTimeUtc}}</td>
+                  <td>{{loginAttempt.successful}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</body>

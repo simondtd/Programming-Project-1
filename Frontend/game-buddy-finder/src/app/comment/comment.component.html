@@ -1,0 +1,62 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="container">
+  <div class="row" style="margin-top: 0.97rem;">
+    <div class="col-sm-10 col-sm-offset-1" style="margin-left: auto; margin-right: auto; top: 80px;">
+      <div class="page-header">
+        <div class="card gedf-card">
+          <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="mr-2">
+                  <img class="rounded-circle" width="45" src="{{ postService.CurrentPost?.posterProfile.profilePicUrl}}" alt=""> <!--picture-->
+                </div>
+                <div class="ml-2">
+                  <div class="h5 m-0">{{postService.CurrentPost?.posterUser.userName}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{postService.CurrentPost?.postTime}}</div>
+            <p class="card-text">
+              {{postService.CurrentPost?.content}}
+            </p>
+          </div>
+          <form class="form-horizontal" role="form" ng-submit="newComment()" [formGroup]="commentGroup">
+            <div class="form-group">
+              <div class="col-xl">
+                <textarea class="form-control" rows="2" style="max-width: 100%;" formControlName="comment"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xl">
+                <button class="btn btn-success btn-circle text-uppercase" (click)="newComment()" routerLink="/comment" routerLinkActive="active" type="button" style="width: 100%; border-radius: 15px;">&nbsp;Comment</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div style="white-space: nowrap;" class="comment-tabs" *ngFor="let comment of postService.CurrentPost?.comments">
+        <hr>
+        <div class="tab-content" style="max-width: 100%;">
+          <div class="tab-pane active">
+            <ul class="media-list">
+              <li class="media" >
+                <a class="pull-left">
+                  <img (click)="viewProfile(comment?.posterUser.userName)" class="rounded-circle" width="75" src="{{ comment?.posterProfile.profilePicUrl}}">
+                </a>
+                <div class="media-body" >
+                  <div class="well well-lg">
+                    <h4 class="media-heading reviews">{{ comment?.posterUser.userName}}</h4>
+                    <p class="media-commnet ">{{ comment.content }}</p>
+                    <button style="float: right;" type="button" class="btn btn-danger media-object" (click)="delete(comment.commentId)" *ngIf="comment.posterUserId == usersService.UserId || usersService.CurrentUser.userType == 1">Delete</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

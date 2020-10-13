@@ -10,9 +10,10 @@
   },
   "profiles": {
     "Development": {
-      "commandName": "IISExpress",
+      "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/user",
+      "applicationUrl": "http://*:44316",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +21,7 @@
     "Production": {
       "commandName": "Project",
       "launchBrowser": false,
-      "launchUrl": "api/users",
+      "launchUrl": "api/user",
       "applicationUrl": "http://*:8081",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production"

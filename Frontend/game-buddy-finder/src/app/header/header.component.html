@@ -1,3 +1,48 @@
-<div style="background-color: #ccc">
-    <h1>{{title}} <a routerLink="/users" routerLinkActive="active"> Users</a> <a routerLink="/loginattempts" routerLinkActive="active"> Logins</a></h1>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky">
+  <div *ngIf="loggedIn">
+    <img src="../../assets/logo.png" alt="Logo" height="80" routerLink="/home" routerLinkActive="active">
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+  <ul class="navbar-nav mx-auto">
+    <li class="nav-item" *ngIf="loggedIn">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+      <span class="sr-only">(current)</span>
+    </li>
+    <li class="nav-item" *ngIf="!loggedIn">
+      <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+    </li>
+    <li class="nav-item" *ngIf="!loggedIn">
+      <a class="nav-link" routerLink="/login" routerLinkActive="active">Log In</a>
+    </li>
+    <li class="nav-item" *ngIf="loggedIn">
+      <a class="nav-link" routerLink="/inbox" routerLinkActive="active">Inbox</a>
+    </li>
+    <li class="nav-item" *ngIf="loggedIn">
+      <a class="nav-link" routerLink="/viewclan" routerLinkActive="active">Clans</a>
+    </li>
+    <li class="nav-item" *ngIf="loggedIn">
+      <a class="nav-link" routerLink="/matchmaking" routerLinkActive="active">Match</a>
+    </li>
+    <li class="nav-item" *ngIf="loggedIn && usersService.CurrentUser.userType == 1">
+      <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+    </li>
+
+    <form id="login-form" class="form" ng-submit="search()" [formGroup]="friendSearchGroup">
+      <li class="nav-item form-inline" *ngIf="loggedIn">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search" formControlName="username">
+        <button type="submit" *ngIf="loggedIn" class="btn btn-primary" (click)="search()">Search</button>
+      </li>
+    </form>
+  </ul>
+  <li *ngIf="loggedIn">
+    <a routerLink="/profile" routerLinkActive="active" style="color: white; margin-right: 20px;">{{ this.user?.userName }} <img class="rounded-circle" width="45" routerLink="/profile" routerLinkActive="active" src="{{ this.profile?.profilePicUrl }}"></a>
+  </li>
+  <div *ngIf="loggedIn">
+    <button type="button" *ngIf="loggedIn" class="btn btn-danger" style="float:right" (click)="logout()">Log out</button>
+  </div>
 </div>
+</nav>

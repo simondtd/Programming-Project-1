@@ -46,10 +46,21 @@ namespace Game_Buddy_Finder
             services.AddDbContext<GbfContext>(options =>
                  options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
+            //Adds all the managers
             services.AddTransient<UserManager>();
+            services.AddTransient<ProfileManager>();
             services.AddTransient<LoginAttemptManager>();
+            services.AddTransient<MessageManager>();
+            services.AddTransient<FriendManager>();
+            services.AddTransient<FriendRequestManager>();
+            services.AddTransient<InterestManager>();
+            services.AddTransient<ClanManager>();
+            services.AddTransient<PostManager>();
+            
+            //Adds SignalR for real-time connections
+            services.AddSignalR();
 
-
+            //Adds all the controllers
             services.AddControllers();
         }
 
@@ -69,7 +80,9 @@ namespace Game_Buddy_Finder
             //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
-            {
+            {   
+                //Adds cntrollers and hubs to the endpoint
+                endpoints.MapHub<ChatHub>("/chatHub");
                 endpoints.MapControllers();
             });
         }

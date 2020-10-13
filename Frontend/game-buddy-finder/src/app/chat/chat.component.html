@@ -1,0 +1,47 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<br>
+<h3 style="text-align:center">Chatting with: {{this.clansService.currentClan?.clanName}}</h3>
+<div class="mesgs mainContainer">
+    <div class="msg_history center" id="chatLog">
+      <li class="message" *ngFor="let message of Messages">
+        <div
+          *ngIf="
+            message.User != usersService.CurrentUser.userName
+            then incoming_msg;
+            else outgoing_msg
+          "
+        ></div>
+        <ng-template #incoming_msg>
+          <div class="incoming_msg">
+            <div class="received_msg">
+              <div class="received_withd_msg">
+                <p>{{ message.Message }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #outgoing_msg>
+          <div class="outgoing_msg">
+            <div class="sent_msg">
+              <p>{{ message.Message }}</p>
+            </div>
+          </div>
+        </ng-template>
+      </li>
+    </div>
+    <div class="type_msg">
+      <form class="input_msg_write" (ngSubmit)="sendMessage()" [formGroup]="chatGroup">
+        <input
+          type="text"
+          class="write_msg"
+          placeholder="Type a message"
+          name="newMessage"
+          autocomplete="off"
+          formControlName="message"
+        />
+        <button class="msg_send_btn" type="button" (click)="sendMessage()">
+          <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>

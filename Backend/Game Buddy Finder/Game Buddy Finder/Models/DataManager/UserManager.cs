@@ -28,12 +28,13 @@ namespace Game_Buddy_Finder.DataManager
         public int Delete(int id)
         {
             _context.Remove(_context.Users.Find(id));
+            _context.SaveChanges();
             return 1;
         }
 
         public User Login(string username, string password)
         {
-            User user = _context.Users.Where(x => x.UserName.Equals(username)).FirstOrDefault();
+            User user = _context.Users.Where(x => x.UserName.ToLower().Equals(username.ToLower())).FirstOrDefault();
             if (user != null)
             {
                 bool correctPassword = user.PasswordHash.Equals(password);
@@ -41,9 +42,11 @@ namespace Game_Buddy_Finder.DataManager
                 {
                     AttemptTimeUtc = DateTime.UtcNow,
                     Successful = correctPassword,
+                    UserId = user.UserId,
                 };
 
                 _context.LoginAttempts.Add(attempt);
+                _context.SaveChanges();
 
                 if (!correctPassword) user = null;
             }
@@ -51,9 +54,28 @@ namespace Game_Buddy_Finder.DataManager
             return user;
         }
 
+        public int ResetPassword(string username, string secretQuestion, string secretAnswer, string newPassword)
+        {
+            var user = _context.Users.Where(x => x.UserName.Equals(username) && x.SecretQuestion.Equals(secretQuestion) && x.SecretAnswer.Equals(secretAnswer)).FirstOrDefault();
+            var i = 0;
+            if (user != null)
+            {
+                user.PasswordHash = newPassword;
+                _context.SaveChanges();
+                i = 1;
+            }
+
+            return i;
+        }
+
         public User Get(int id)
         {
             return _context.Users.Find(id);
+        }
+
+        public IEnumerable<User> GetUsersByUsername(string username)
+        {
+            return _context.Users.Where(x => x.UserName.ToUpper().Equals(username.ToUpper()));
         }
 
         public IEnumerable<User> GetAll()

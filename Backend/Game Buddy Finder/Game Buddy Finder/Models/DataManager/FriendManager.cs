@@ -1,0 +1,130 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Game_Buddy_Finder.Data;
+using Game_Buddy_Finder.Models;
+using Game_Buddy_Finder.Models.Repository;
+
+namespace Game_Buddy_Finder.DataManager
+{
+    public class FriendManager : IDataRepository<Friend, int>
+    {
+        private readonly GbfContext _context;
+
+        public FriendManager(GbfContext context)
+        {
+            _context = context;
+        }
+
+        //Adds a friend item to the database
+        public int Add(Friend item)
+        {
+            _context.Friends.Add(item);
+            Console.WriteLine("Adding new login attempt");
+            _context.SaveChanges();
+            return item.FriendId;
+        }
+
+        //Removes a friend relationship between the specified users
+        public void RemoveFriend(int userId1, int userId2)
+        {
+            _context.Friends.Remove(_context.Friends.Where(x => (x.UserId1 == userId1 && x.UserId2 == userId2) || (x.UserId1 == userId2 && x.UserId2 == userId1)).FirstOrDefault());
+            _context.SaveChanges();
+        }
+
+        //Deletes a friend relationshipw ith the specified id
+        public int Delete(int id)
+        {
+            _context.Friends.Remove(_context.Friends.Where(x => x.FriendId == id).FirstOrDefault());
+            return id;
+        }
+
+        //returns the matches for a user
+        public IEnumerable<User> GetMatchesOfUser(int userId)
+        {   
+            //creating new array of user and matches, sets the list type
+            var matches = new[] { new { user = new User(), matches = 0 } }.ToList();
+            //clears it so its empty
+            matches.Clear();
+
+            var users = _context.Users.ToArray();
+            var user = _context.Users.Where(x => x.UserId == userId);
+            var userInterests = _context.Interests.Where(x => x.UserId == userId).ToList();
+
+            //Loops through all users, sees how many common interests there are
+            foreach (var u in users)
+            {
+                if (u.UserId == userId || (_context.Friends.Where(x => (x.UserId1 == u.UserId && x.UserId2 == userId) || (x.UserId2 == u.UserId && x.UserId1 == userId)).Count() > 0))
+                    continue;
+
+                List<Interest> interests = _context.Interests.Where(x => x.UserId == u.UserId).ToList();
+
+                var numMatches = 0;
+                foreach (var interest in interests)
+                {
+                    if (userInterests.Find(x => x.Title.Equals(interest.Title)) != null)
+                        numMatches++;
+                }
+                Console.WriteLine($"User: {u.UserName}, Matches: {numMatches}");
+                if (numMatches > 0) {
+                    matches.Add(new { user = u, matches = numMatches });
+                }
+                
+            }
+
+            var matchList = new List<User>();
+
+            //Sorts the list
+            matches.OrderByDescending(x => x.matches);
+
+            foreach(var m in matches) {
+                matchList.Add(m.user);
+            }
+
+            return matchList;
+        }
+
+        //gets a list of users who are friends with the user with the specified id
+        public IEnumerable<User> GetFriendsOfUser(int id)
+        {
+            List<User> users = new List<User>();
+            List<Friend> friends = _context.Friends.Where(x => x.UserId1 == id || x.UserId2 == id).ToList();
+
+            foreach (Friend friend in friends)
+            {
+                if (users.Where(x => x.UserId == friend.UserId1).Any() == false)
+                {
+                    users.Add(_context.Users.Where(x => x.UserId == friend.UserId1).FirstOrDefault());
+                }
+
+                if (users.Where(x => x.UserId == friend.UserId2).Any() == false)
+                {
+                    users.Add(_context.Users.Where(x => x.UserId == friend.UserId2).FirstOrDefault());
+                }
+            }
+
+            //Cannot be friend with self
+            for (int i = users.Count - 1; i >= 0; i--)
+            {
+                if (users[i].UserId == id) users.RemoveAt(i);
+            }
+
+            return users;
+        }
+
+        public Friend Get(int id)
+        {
+            return _context.Friends.Find(id);
+        }
+
+        public IEnumerable<Friend> GetAll()
+        {
+            return _context.Friends.ToList();
+        }
+
+        public int Update(int id, Friend item)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

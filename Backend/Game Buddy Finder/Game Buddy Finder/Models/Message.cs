@@ -15,17 +15,23 @@ namespace Game_Buddy_Finder.Models
         [Required]
         public DateTime SendTime { get; set; }
 
-        [Required, ForeignKey("Sender")]
+        [Required]
         public int SenderId { get; set; }
 
-        [Required, ForeignKey("Receiver")]
+        [Required]
         public int ReceiverId { get; set; }
+
+        [Required]
+        public string Subject { get; set; }
 
         [Required]
         public string Content { get; set; }
 
-        public virtual User Sender { get; set; }
+        [NotMapped]
+        public string SenderUsername { get; set; }
 
-        public virtual User Receiver { get; set; }
+        [NotMapped]
+        public string ReceiverUsername { get; set; }
+
     }
 }

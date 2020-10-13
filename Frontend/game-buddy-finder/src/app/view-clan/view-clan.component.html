@@ -1,0 +1,28 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+  <div *ngIf = "clanView == undefined"> <img src='../../assets/loading.gif' class="loadingImage"></div>
+  <div *ngIf = "clanView != undefined" class="col-md-3 offset-md-3 mainContainer" style="top: 0.97rem">
+    <div class="row justify-content-center">
+      <div class="">
+        <table class="table table-responsive">
+          <thead class="">
+            <tr>
+              <th scope="col">Clan Name</th>
+              <th scope="col">Region</th>
+              <th scope="col">View Clan</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let clan of clanView">
+            <tr>
+              <td>{{ clan.clanName }}</td>
+              <td>{{ clan.clanRegion }}</td>
+              <td><button type="button" class="btn btn-success" (click)="viewClan(clan)">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button type="button" class="btn btn-success" text-align="center" routerLink="/createclan" routerLinkActive="active">Create Clan</button>
+  </div>
+  <br><br><br>
+</body>

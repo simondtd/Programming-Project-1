@@ -1,0 +1,120 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <div class="bg">
+    <div class="col-md-4 offset-md-3 mainContainer" style="top: 0.97rem; margin-left: auto; margin-right: auto;" >
+
+      <div id="login">
+
+        <form id="login-form" class="form" ng-submit="edit()" [formGroup]="editGroup">
+          <h3>Edit Profile</h3>
+          <hr>
+
+          <h5>First Name</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input name="" class="form-control" placeholder="First name" type="text" formControlName="firstname"
+              required>
+          </div>
+          
+          <h5>Last Name</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input name="" class="form-control" placeholder="Last name" type="text"
+              formControlName="lastname" required>
+          </div>
+          
+          <h5>Email</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input name="" class="form-control" placeholder="Email address" type="email"
+              formControlName="email" required>
+          </div>
+          
+          <h5>Phone</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+            </div>
+            <input name="" class="form-control" placeholder="Phone number" type="text"
+              pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$"
+              formControlName="phone" required>
+          </div>
+          
+          <h5>Region</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
+            </div>
+            <select class="form-control" formControlName="region" required>
+
+              <option selected="" disabled>Select Region</option>
+              <option value="Africa">Africa</option>
+              <option value="Asia">Asia</option>
+              <option value="Central America">Central America</option>
+              <option value="Eastern Europe">Eastern Europe</option>
+              <option value="European Union">European Union</option>
+              <option value="Middle East">Middle East</option>
+              <option value="North America">North America</option>
+              <option value="Oceania South">Oceania South</option>
+              <option value="America">America</option>
+              <option value="The Caribbean">The Caribbean</option>
+
+            </select>
+          </div>
+
+          <hr>
+
+          <h5>Profile Picture</h5>
+
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-clipboard"></i> </span>
+            </div>
+            <input class="form-control" placeholder="Profile Picture URL" type="text"
+              formControlName="profilepicurl" required>
+          </div>
+
+          <hr>
+
+          <h5>Interests</h5>
+          <br>
+
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <div>
+                <h6 style="display:inline" *ngFor="let interest of interests">&nbsp;{{interest.title}}
+                  <button class="btn btn-danger float-right" (click)="deleteInterest(interest.interestId)"> Delete </button>
+                  <hr />
+                </h6>
+              </div>
+              <br>
+            </div>
+          </div>
+
+          <h5>Add Interest</h5>
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div><input class="form-control" type="text" placeholder="Interest Name..." formControlName="interest">
+            <button class="btn btn-secondary btn-block" (click)="addInterest()"> Add </button><br><br>
+          </div>
+
+          <hr>
+          <br>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" (click)="edit()"> Edit </button>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-danger btn-block" routerLink="/profile" routerLinkActive="active"> Cancel </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
