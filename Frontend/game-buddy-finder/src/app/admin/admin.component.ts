@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     // condition if the current user with type 1
-    if (this.usersService.CurrentUser.userType == 1) {
+    if (this.usersService.CurrentUser && this.usersService.CurrentUser.userType == 1) {
       // this is for getting all the users
       this.usersService.getUsers().subscribe(data => {
         this.users = data;
