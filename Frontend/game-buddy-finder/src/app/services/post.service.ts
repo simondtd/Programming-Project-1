@@ -10,7 +10,10 @@ import { Post } from '../models/post'
   providedIn: 'root'
 })
 export class PostService {
+  //The post Backend API URL
   private postUrl = environment.baseUrl + 'api/post';
+
+  //The post currently being looked at in the comments page
   public CurrentPost;
 
   constructor(private httpClient: HttpClient, private router: Router) { }
@@ -60,6 +63,7 @@ export class PostService {
     return true;
   }
 
+  //Validating a comment based on its variables
   public validateComment(comment: Comment) {
     if (comment.postId == null) {
       return false;

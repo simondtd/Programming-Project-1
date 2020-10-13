@@ -17,19 +17,24 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ProfilesService {
+  //The profile backend API URØ
   private profilesUrl = environment.baseUrl + 'api/profile';
+  //The users profile
   public Profile: Profile;
   private postId;
   constructor(private httpClient: HttpClient, private router: Router) { }
 
+  //returns the profile of a certain user
   public getProfileOfUser(id) {
     return this.httpClient.get<Profile>(this.profilesUrl + '/' + 'user' + '/' + id)
   }
 
+  //Gets the profile by its profile id
   public getProfile(id) {
     return this.httpClient.get(this.profilesUrl + '/' + id)
   }
 
+  //Validates a profile to be updated in the backend. doesnt tkae password int oaccont
   public validateUpdateUser(profile: Profile) {
 
     if (profile.UserName == null || (profile.UserName.length < 3 || profile.UserName.length > 12)) {
@@ -59,6 +64,7 @@ export class ProfilesService {
     return true;
   }
 
+  //validates a user when its registered. takes varaibles into account
   public validateUser(profile: Profile) {
     if ((profile.PasswordHash == null || profile.RePasswordHash == null) || profile.PasswordHash != profile.RePasswordHash) {
       return false;
@@ -91,10 +97,12 @@ export class ProfilesService {
     return true;
   }
 
+  //Updates a profile, POST Request
   public updateProfile(profile: Profile) {
     return this.httpClient.put<any>(this.profilesUrl + '/' + profile.ProfileId, profile);
   }
 
+  //createa new profile, POST Request
   public createProfile(profile: Profile) {
     return this.httpClient.post<any>(this.profilesUrl, profile)
   }
