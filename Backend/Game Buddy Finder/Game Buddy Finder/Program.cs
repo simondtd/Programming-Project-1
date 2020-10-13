@@ -15,8 +15,10 @@ namespace Game_Buddy_Finder
     {
         public static void Main(string[] args)
         {
+            //Builds a host with the specified arguments
             var host = CreateHostBuilder(args).Build();
-
+            
+            //Creating a scope to seed the database if needed
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -30,7 +32,7 @@ namespace Game_Buddy_Finder
                     logger.LogError(ex, "An error occurred seeding the DB.");
                 }
             }
-
+            //Starts the host after seeding
             host.Run();
         }
 

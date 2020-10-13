@@ -16,6 +16,7 @@ namespace Game_Buddy_Finder.DataManager
             _context = context;
         }
 
+        //Adds a friend item to the database
         public int Add(Friend item)
         {
             _context.Friends.Add(item);
@@ -24,27 +25,33 @@ namespace Game_Buddy_Finder.DataManager
             return item.FriendId;
         }
 
+        //Removes a friend relationship between the specified users
         public void RemoveFriend(int userId1, int userId2)
         {
             _context.Friends.Remove(_context.Friends.Where(x => (x.UserId1 == userId1 && x.UserId2 == userId2) || (x.UserId1 == userId2 && x.UserId2 == userId1)).FirstOrDefault());
             _context.SaveChanges();
         }
 
+        //Deletes a friend relationshipw ith the specified id
         public int Delete(int id)
         {
             _context.Friends.Remove(_context.Friends.Where(x => x.FriendId == id).FirstOrDefault());
             return id;
         }
 
+        //returns the matches for a user
         public IEnumerable<User> GetMatchesOfUser(int userId)
-        {
+        {   
+            //creating new array of user and matches, sets the list type
             var matches = new[] { new { user = new User(), matches = 0 } }.ToList();
+            //clears it so its empty
             matches.Clear();
 
             var users = _context.Users.ToArray();
             var user = _context.Users.Where(x => x.UserId == userId);
             var userInterests = _context.Interests.Where(x => x.UserId == userId).ToList();
 
+            //Loops through all users, sees how many common interests there are
             foreach (var u in users)
             {
                 if (u.UserId == userId || (_context.Friends.Where(x => (x.UserId1 == u.UserId && x.UserId2 == userId) || (x.UserId2 == u.UserId && x.UserId1 == userId)).Count() > 0))
@@ -67,16 +74,17 @@ namespace Game_Buddy_Finder.DataManager
 
             var matchList = new List<User>();
 
+            //Sorts the list
             matches.OrderByDescending(x => x.matches);
 
             foreach(var m in matches) {
-                Console.WriteLine($"User: {m.user.UserName}, Matches: {m.matches}");
                 matchList.Add(m.user);
             }
 
             return matchList;
         }
 
+        //gets a list of users who are friends with the user with the specified id
         public IEnumerable<User> GetFriendsOfUser(int id)
         {
             List<User> users = new List<User>();
@@ -95,6 +103,7 @@ namespace Game_Buddy_Finder.DataManager
                 }
             }
 
+            //Cannot be friend with self
             for (int i = users.Count - 1; i >= 0; i--)
             {
                 if (users[i].UserId == id) users.RemoveAt(i);

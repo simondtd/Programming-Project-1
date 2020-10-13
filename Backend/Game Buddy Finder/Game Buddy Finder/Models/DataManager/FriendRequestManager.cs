@@ -19,7 +19,6 @@ namespace Game_Buddy_Finder.DataManager
         public int Add(FriendRequest item)
         {
             _context.FriendRequests.Add(item);
-            Console.WriteLine("Adding new login attempt");
             _context.SaveChanges();
             return item.FriendRequestId;
         }
@@ -60,14 +59,12 @@ namespace Game_Buddy_Finder.DataManager
             _context.Friends.Add(friend);
             Delete(friendRequestId);
             _context.SaveChanges();
-            Console.WriteLine("Accepted Request");
             return 1;
         }
 
         public int RejectFriendRequest(int friendRequestId)
         {
             Delete(friendRequestId);
-            Console.WriteLine("Rejected Friend Request");
             return 1;
         }
 

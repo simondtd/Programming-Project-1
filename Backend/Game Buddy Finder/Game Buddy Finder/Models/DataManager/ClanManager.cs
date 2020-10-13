@@ -16,10 +16,12 @@ namespace Game_Buddy_Finder.DataManager
             _context = context;
         }
 
+        //Adds a new clan to the database
         public int Add(Clan item)
         {
             var clans = GetAll().ToList();
 
+            //Checks if a clan with the same name already exists
             if (!clans.Exists(x => x.ClanName == item.ClanName))
             {
                 var clan = _context.Clans.Add(item);
@@ -33,7 +35,7 @@ namespace Game_Buddy_Finder.DataManager
 
         public int Delete(int id)
         {
-            //TODO: Delete all clan memberships of that clan
+            //Deletes the clan with the specified ID, then deletes memberships for that clan
             _context.ClanMemberships.RemoveRange(_context.ClanMemberships.Where(x => x.ClanId == id));
             _context.Clans.Remove(_context.Clans.Where(x => x.ClanId == id).FirstOrDefault());
             
@@ -42,7 +44,7 @@ namespace Game_Buddy_Finder.DataManager
         }
 
         public void AddUserToClan(int userId, int clanId)
-        {
+        {   
             ClanMembership membership = new ClanMembership
             {
                 UserId = userId,
@@ -54,20 +56,22 @@ namespace Game_Buddy_Finder.DataManager
 
         public void RemoveUserFromClan(int userId, int clanId)
         {
+            //Removes the user from the clan specified
             _context.ClanMemberships.Remove(_context.ClanMemberships.Where(x => x.UserId == userId && x.ClanId == clanId).FirstOrDefault());
         }
 
         public Clan Get(int id)
         {
+            //Gets teh clan with the specified ID. then adds the user to the object to be returned
             Clan clan = _context.Clans.Find(id);
             clan.Owner = _context.Users.Where(x => x.UserId == clan.OwnerUserId).FirstOrDefault().UserName;
             return clan;
         }
 
+        // Gets the clans of the user specified
         public IEnumerable<Clan> GetClansOfUser(int userId)
         {
             List<ClanMembership> memberships = _context.ClanMemberships.Where(x => x.UserId == userId).ToList();
-
             List<Clan> clans = new List<Clan>();
 
             foreach (var membership in memberships)
@@ -75,6 +79,7 @@ namespace Game_Buddy_Finder.DataManager
                 clans.Add(_context.Clans.Where(x => x.ClanId == membership.ClanId).FirstOrDefault());
             }
 
+            //Adding the owner to the object to be returned
             foreach (var clan in clans)
             {
                 clan.Owner = _context.Users.Where(x => x.UserId == clan.OwnerUserId).FirstOrDefault().UserName;
@@ -83,6 +88,7 @@ namespace Game_Buddy_Finder.DataManager
             return clans;
         }
 
+        // Returns the members of a clan
         public IEnumerable<User> GetMembersInClan(int clanId)
         {
             List<ClanMembership> memberships = _context.ClanMemberships.Where(x => x.ClanId == clanId).ToList();
@@ -97,10 +103,12 @@ namespace Game_Buddy_Finder.DataManager
             return usersInClan;
         }
 
+        //Gets all clans in teh database
         public IEnumerable<Clan> GetAll()
         {
             var clans = _context.Clans.ToList();
 
+            //Adds owners to all clan objects to be returned
             foreach (var clan in clans)
             {
                 clan.Owner = _context.Users.Where(x => x.UserId == clan.OwnerUserId).FirstOrDefault().UserName;
@@ -108,7 +116,7 @@ namespace Game_Buddy_Finder.DataManager
 
             return clans;
         }
-
+        
         public int Update(int id, Clan item)
         {
             throw new NotImplementedException();

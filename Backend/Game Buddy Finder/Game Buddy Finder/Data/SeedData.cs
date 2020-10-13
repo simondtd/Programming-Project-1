@@ -15,6 +15,7 @@ namespace Game_Buddy_Finder.Data
             // Look for Users.
             if (!context.Users.Any())
             {
+                //If there arent any users, add sample data.
                 context.Users.AddRange(
                     new User
                     {
@@ -94,6 +95,7 @@ namespace Game_Buddy_Finder.Data
                 Console.WriteLine("Seeded Users");
             }
 
+            //If no profiles, Create profiles for each sample user
             if (!context.Profiles.Any())
             {
                 context.Profiles.AddRange(
@@ -184,6 +186,7 @@ namespace Game_Buddy_Finder.Data
                 Console.WriteLine("Seeded Profiles");
             }
 
+            //Add sample messages
             if (context.Messages.Any() == false)
             {
                 context.Messages.AddRange(
@@ -208,6 +211,7 @@ namespace Game_Buddy_Finder.Data
                 context.SaveChanges();
             }
 
+            //Add sample friend relatiosnhips
             if (context.Friends.Any() == false)
             {
                 context.Friends.AddRange(
@@ -247,6 +251,7 @@ namespace Game_Buddy_Finder.Data
                 context.SaveChanges();
             }
 
+            //Adds sample friendrequests
             if (context.FriendRequests.Any() == false)
             {
                 context.FriendRequests.AddRange(
@@ -287,6 +292,7 @@ namespace Game_Buddy_Finder.Data
                 context.SaveChanges();
             }
 
+            //Add sample intersts for all users
             if (context.Interests.Any() == false)
             {
                 for (int i = 1; i <= 6; i++)
@@ -362,6 +368,7 @@ namespace Game_Buddy_Finder.Data
                 context.SaveChanges();
             }
 
+            //Adds sample clan for admins
             if (context.Clans.Any() == false)
             {
                 context.Clans.AddRange(
@@ -380,6 +387,7 @@ namespace Game_Buddy_Finder.Data
                 context.SaveChanges();
             }
 
+            //Adds all users to the admin clan
             if (context.ClanMemberships.Any() == false)
             {
                 context.ClanMemberships.AddRange(
@@ -419,6 +427,7 @@ namespace Game_Buddy_Finder.Data
                 context.SaveChanges();
             }
 
+            //Adds sample posts
             if (context.Posts.Any() == false)
             {
                 context.Posts.AddRange(
