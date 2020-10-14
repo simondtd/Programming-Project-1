@@ -66,7 +66,7 @@ describe('ProfilesService', () => {
     expect(service.validateUser(profile)).toBeTrue();
   });
   it('Profile should be valid, event though mobile Number is 0', () => {
-    let profile = new Profile(1, "Adama", "Fofana", "AdamaF", "123", "123", "adama@gmail.com", "Oceania", "", null);
+    let profile = new Profile(1, "Adama", "Fofana", "AdamaF", "123", "123", "adama@gmail.com", "Oceania", "", null, "What's your first visited country", "China");
     expect(service.validateUser(profile)).toBeTrue();
   });
 });
